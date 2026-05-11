@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Noxta Studio</title>
+  <meta name="description" content="Start a web design project with Noxta Studio. 2 slots open for Q3 2026. I reply within 24 hours." />
+  <link rel="stylesheet" href="aurora.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="wo">No</span><span class="wx">x</span><span class="wo">ta</span></a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="contact.html" class="nav-cta">Book a call</a>
+  </div>
+</nav>
+
+<!-- ══ HERO + FORM ══ -->
+<section class="section mesh-a grain">
+  <div class="section-inner" style="position: relative; z-index: 1;">
+    <div class="grid-split">
+
+      <!-- Left: info -->
+      <div>
+        <span class="chip reveal"><span class="dot"></span>2 slots open · Q3 2026</span>
+        <h1 class="h-display reveal reveal-delay-1" style="font-size: clamp(64px,12vw,108px); margin-top: 20px;">Let's <span class="grad-serif">talk.</span></h1>
+        <p class="body-lg reveal reveal-delay-2" style="max-width: 440px; margin-top: 20px;">Tell me about your project — a paragraph is fine, more if you have it. I read every message and reply within 24 hours, usually faster.</p>
+
+        <div style="margin-top: 36px; display: flex; flex-direction: column; gap: 16px;" class="reveal reveal-delay-2">
+          <div class="contact-row">
+            <span class="contact-row-key">Email</span>
+            <a href="mailto:adrian@noxta.studio" class="contact-row-val" style="color: var(--ink);">adrian@noxta.studio</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-key">Book a call</span>
+            <span class="contact-row-val">30-minute discovery · Cal.com</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-key">Where</span>
+            <span class="contact-row-val">Tilburg, NL · UTC+1</span>
+          </div>
+          <div class="contact-row" style="border-bottom: none;">
+            <span class="contact-row-key">Hours</span>
+            <span class="contact-row-val">Mon–Fri · 09:00–18:00 CET</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="glass reveal reveal-delay-1" style="padding: 32px 36px; border-radius: 22px;">
+
+        <!-- Form -->
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--cyan); letter-spacing: 0.18em;">§ INTAKE · FORM 01</span>
+          </div>
+
+          <div class="grid-2" style="gap: 12px;">
+            <div class="form-group">
+              <label class="form-label" for="name">Your name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Jane Doe" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="jane@company.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="company">Company (optional)</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="What do you do?" />
+          </div>
+
+          <div class="form-group">
+            <div class="form-label" style="margin-bottom: 8px;">Project kind</div>
+            <div class="pills">
+              <span class="pill active" data-name="kind" data-value="website">Website</span>
+              <span class="pill" data-name="kind" data-value="brand">Brand identity</span>
+              <span class="pill" data-name="kind" data-value="shop">E-commerce</span>
+              <span class="pill" data-name="kind" data-value="retainer">Maintenance</span>
+              <span class="pill" data-name="kind" data-value="other">Something else</span>
+            </div>
+            <input type="hidden" name="kind" id="kind-val" value="website" />
+          </div>
+
+          <div class="form-group">
+            <div class="form-label" style="margin-bottom: 8px;">Budget</div>
+            <div class="pills">
+              <span class="pill" data-name="budget" data-value="small">€300–800</span>
+              <span class="pill active" data-name="budget" data-value="mid">€1,200–2,000</span>
+              <span class="pill" data-name="budget" data-value="large">€3,000–8,000</span>
+              <span class="pill" data-name="budget" data-value="unsure">Not sure yet</span>
+            </div>
+            <input type="hidden" name="budget" id="budget-val" value="mid" />
+          </div>
+
+          <div class="form-group">
+            <div class="form-label" style="margin-bottom: 8px;">Timeline</div>
+            <div class="pills">
+              <span class="pill active" data-name="timeline" data-value="soon">ASAP</span>
+              <span class="pill" data-name="timeline" data-value="1mo">&lt; 1 month</span>
+              <span class="pill" data-name="timeline" data-value="3mo">1–3 months</span>
+              <span class="pill" data-name="timeline" data-value="flex">Flexible</span>
+            </div>
+            <input type="hidden" name="timeline" id="timeline-val" value="soon" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Tell me about it</label>
+            <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="A few sentences about your business and what you need. Links welcome."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 15px;">Send it →</button>
+
+          <div style="font-family: var(--mono); font-size: 9px; color: var(--mute); letter-spacing: 0.14em; text-align: center;">NO TRACKING · NO MAILING LIST · NO AUTO-RESPONDER</div>
+        </form>
+
+        <!-- Success state -->
+        <div class="form-success" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; min-height: 400px;">
+          <span class="dot" style="width: 10px; height: 10px;"></span>
+          <div style="font-family: var(--display); font-size: 32px; color: var(--ink); margin-top: 20px; font-weight: 600; letter-spacing: -0.04em;">Got it. <span class="grad-serif" style="font-size: 34px;">Talk soon.</span></div>
+          <p class="body-md" style="margin-top: 12px; max-width: 340px;">You'll hear back within 24 hours. If it's urgent, email me directly at <a href="mailto:adrian@noxta.studio" style="color: var(--cyan);">adrian@noxta.studio</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="section" style="padding-bottom: 100px;">
+  <div class="section-inner reveal">
+    <div class="grid-2" style="gap: 14px;">
+      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
+        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">What happens after I send this?</div>
+        <p class="body-sm" style="margin-top: 8px;">You'll get a personal reply (not a templated one) within 24 hours. If it looks like a fit, I propose a 30-minute discovery call. If it doesn't, I'll tell you and point you somewhere useful.</p>
+      </div>
+      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
+        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">Do I have to know my budget?</div>
+        <p class="body-sm" style="margin-top: 8px;">No, but a ballpark helps me suggest the right tier. "Not sure" is a fine answer — we figure it out on the call.</p>
+      </div>
+      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
+        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">Can we meet in person?</div>
+        <p class="body-sm" style="margin-top: 8px;">Yes, if you're near Tilburg, Eindhoven, Breda or Antwerp. Otherwise we work over video and shared docs — fine for 95% of projects.</p>
+      </div>
+      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
+        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">Do you sign NDAs?</div>
+        <p class="body-sm" style="margin-top: 8px;">Yes, mutual NDAs before discovery if your project needs it. Just mention it in the message.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-logo-wrap"><span class="footer-logo-wo">No</span><span class="footer-logo-wx">x</span><span class="footer-logo-wo">ta</span></div><div class="footer-sub">STUDIO · TILBURG, NL · EST. 2026</div><p class="footer-desc">A one-person studio building considered websites for small companies that want a partner — not a vendor.</p></div>
+    <div class="footer-col"><span class="footer-col-label">Site</span><a href="work.html">Work</a><a href="services.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><span class="footer-col-label">Contact</span><a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a><a href="contact.html">Book a call</a><a href="about.html">Tilburg, NL</a></div>
+    <div class="footer-col"><span class="footer-col-label">Elsewhere</span><a href="#">Read.cv</a><a href="#">GitHub</a><a href="#">LinkedIn</a></div>
+  </div>
+  <div class="footer-bottom"><span>© <span data-year></span> ADRIAN TAJTI · NOXTA STUDIO</span><span>BUILT BY HAND · NO CMS · NO COOKIES · NO TRACKING</span></div>
+</footer>
+
+<script src="aurora.js"></script>
+<script>
+  /* pill → hidden input sync for form submission */
+  document.querySelectorAll('.pill[data-name]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const name = pill.dataset.name;
+      document.querySelectorAll(`.pill[data-name="${name}"]`).forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const hidden = document.getElementById(`${name}-val`);
+      if (hidden) hidden.value = pill.dataset.value;
+    });
+  });
+</script>
+</body>
+</html>
