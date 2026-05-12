@@ -543,8 +543,9 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   .faq-row { padding: 18px 20px; }
   .faq-q { font-size: 15px; }
 
-  /* VOEP section grids */
-  .voep-section-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  /* VOEP CTA grid */
+  .voep-cta-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .voep-cta-grid .btn { width: 100%; justify-content: center; text-align: center; }
 
   /* Maintenance rows: fully vertical */
   .maint-row {
