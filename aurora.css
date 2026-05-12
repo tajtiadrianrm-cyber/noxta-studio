@@ -478,20 +478,130 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .reveal-delay-3 { transition-delay: .3s; }
 
 /* ── RESPONSIVE ──────────────────────────────────────────── */
+/* ── TABLET ───────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .grid-3 { grid-template-columns: 1fr 1fr; }
-  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .grid-3     { grid-template-columns: 1fr 1fr; }
+  .grid-4     { grid-template-columns: 1fr 1fr; gap: 16px; }
   .grid-split { grid-template-columns: 1fr; gap: 40px; }
-  .grid-split-r { grid-template-columns: 1fr; gap: 40px; }
+  .grid-split-r { grid-template-columns: 1fr; gap: 32px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .stat-bar { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .stat-item { border-left: none; padding-left: 0; }
-  .nav-links { gap: 16px; padding-left: 16px; }
+  .stat-bar   { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .stat-item  { border-left: none; padding-left: 0; }
+  .nav-links  { gap: 16px; padding-left: 16px; }
+
+  /* FAQ: collapse 280px+1fr into single column */
+  .faq-layout { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+  /* VOEP sections: collapse 280px+1fr into single column */
+  .voep-section-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+  /* Maintenance rows: stack vertically */
+  .maint-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .maint-desc { grid-column: 1 / -1; }
 }
+
+/* ── MOBILE ───────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .grid-2 { grid-template-columns: 1fr; }
-  .grid-3 { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
+  :root { --gutter: 20px; }
+
+  /* Nav — logo + book a call only */
+  .nav { padding: 16px 20px; }
   .nav-links { display: none; }
-  .nav-mobile-cta { display: flex; }
+
+  /* Sections */
+  .section { padding: clamp(40px,8vw,80px) var(--gutter); }
+
+  /* All grids go single column */
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 16px; }
+  .grid-split, .grid-split-r { grid-template-columns: 1fr; gap: 28px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+
+  /* Stat bar: 2-col on mobile */
+  .stat-bar { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-item { border-left: none; padding-left: 0; }
+  .stat-value { font-size: 40px; }
+
+  /* Hero text scale down */
+  .h-display { letter-spacing: -0.03em; }
+
+  /* VOEP card: stack vertically, hide mockup panel */
+  .voep-card-grid { grid-template-columns: 1fr !important; }
+  .voep-card-mock-panel { display: none !important; }
+
+  /* VOEP mock: full width, don't overflow */
+  .voep-mock { width: 100%; overflow: hidden; }
+  .voep-body { padding: 20px; min-height: unset; }
+  .voep-headline { font-size: 24px; }
+  .voep-parts { grid-template-columns: repeat(4,1fr); gap: 6px; }
+
+  /* FAQ: always single column */
+  .faq-layout { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .faq-table { border-radius: 14px; }
+  .faq-row { padding: 18px 20px; }
+  .faq-q { font-size: 15px; }
+
+  /* VOEP section grids */
+  .voep-section-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+
+  /* Maintenance rows: fully vertical */
+  .maint-row {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+    padding: 16px 18px;
+  }
+  .maint-price { font-size: 20px; }
+
+  /* Ghost cards */
+  .ghost-card { min-height: 200px; padding: 24px 22px; }
+  .ghost-card-title { font-size: 32px; }
+
+  /* Tier cards */
+  .tier-card { padding: 24px 22px; }
+  .tier-name { font-size: 36px; }
+
+  /* CTA glass blocks */
+  .glass { border-radius: 16px; }
+
+  /* Contact form grid */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* About hero grid */
+  .about-hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+  /* Work card */
+  .work-card-grid { grid-template-columns: 1fr !important; }
+  .work-card-mock { display: none !important; }
+
+  /* Data table on VOEP */
+  .data-row { grid-template-columns: 100px 1fr !important; gap: 12px !important; }
+  .data-key { font-size: 10px; }
+
+  /* Chips wrap nicely */
+  .chip { font-size: 10px; padding: 5px 12px; }
+
+  /* Footer */
+  .footer { padding: 40px 20px 48px; }
+  .footer-logo-wo { font-size: 52px; }
+  .footer-logo-wx { font-size: 62px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* Hero headlines — scale down so nothing clips */
+  h1.h-display[style*="192px"],
+  h1.h-display[style*="176px"] { font-size: clamp(52px, 14vw, 120px) !important; line-height: 0.9 !important; }
+
+  /* General display font cap on mobile */
+  [style*="font-size: clamp"] { max-width: 100%; }
+  [style*="letter-spacing: -8"] { letter-spacing: -0.04em !important; }
+  [style*="letter-spacing: -10"] { letter-spacing: -0.05em !important; }
+  [style*="letter-spacing: -6"] { letter-spacing: -0.04em !important; }
+
+  /* Section inner always above mesh */
+  .section-inner { position: relative; z-index: 1; }
+
+  /* Prevent any horizontal scroll */
+  body { overflow-x: hidden; }
+  .section { overflow: hidden; }
 }
