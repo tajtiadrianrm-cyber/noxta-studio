@@ -438,7 +438,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .contact-row-val { font-family: var(--display); font-size: 19px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em; }
 
 /* ── MANIFESTO GRID ──────────────────────────────────────── */
-.manifesto-num { font-family: var(--display); font-size: 38px; color: transparent; -webkit-text-stroke: 1px var(--faint); font-weight: 700; letter-spacing: -0.04em; flex-shrink: 0; }
+.manifesto-num { font-family: var(--display); font-size: 38px; color: transparent; -webkit-text-stroke: 1.5px var(--ink-soft); font-weight: 700; letter-spacing: -0.04em; flex-shrink: 0; opacity: 0.5; }
 .manifesto-title { font-family: var(--display); font-size: 21px; color: var(--ink); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
 
 /* ── TOOLKIT PILLS ───────────────────────────────────────── */
