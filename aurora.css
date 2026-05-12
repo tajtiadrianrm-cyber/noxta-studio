@@ -374,7 +374,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 }
 
 /* ── VOEP MOCKUP ─────────────────────────────────────────── */
-.voep-mock { border-radius: 20px; overflow: hidden; background: linear-gradient(180deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,255,255,0.10); }
+.voep-mock { border-radius: 20px; overflow: hidden; background: linear-gradient(180deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,255,255,0.10); display: flex; flex-direction: column; }
+.voep-mock img { flex: 1; min-height: 0; object-fit: cover; object-position: top; }
 .voep-bar { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 10px; }
 .voep-dots { display: flex; gap: 5px; }
 .voep-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.12); }
