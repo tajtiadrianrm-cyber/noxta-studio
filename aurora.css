@@ -284,7 +284,55 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .body-md { font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft); font-weight: 300; }
 .body-sm { font-family: var(--sans); font-size: 13px; line-height: 1.55; color: var(--ink-soft); font-weight: 300; }
 
-/* ── FOOTER ─────────────────────────────────────────────── */
+/* ── MOBILE NAV BAR ──────────────────────────────────────── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: rgba(10,12,24,0.75);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 10px 20px;
+  display: none;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+}
+.mobile-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  color: var(--mute);
+  text-decoration: none;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.mobile-nav a:hover { color: var(--ink-soft); }
+.mobile-nav a.active {
+  background: linear-gradient(135deg, rgba(124,224,255,0.15), rgba(176,140,255,0.15));
+  color: var(--ink);
+}
+.mobile-nav a .mnav-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  opacity: 0;
+  transition: opacity .2s;
+}
+.mobile-nav a.active .mnav-dot { opacity: 1; }
+
+/* ── FOOTER MOBILE ───────────────────────────────────────── */
 .footer {
   border-top: 1px solid rgba(255,255,255,0.08);
   padding: 48px var(--gutter) 56px;
@@ -583,11 +631,26 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   /* Chips wrap nicely */
   .chip { font-size: 10px; padding: 5px 12px; }
 
-  /* Footer */
-  .footer { padding: 40px 20px 48px; }
-  .footer-logo-wo { font-size: 52px; }
-  .footer-logo-wx { font-size: 62px; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  /* Show mobile nav */
+  .mobile-nav { display: flex; }
+
+  /* Add padding so content isn't hidden behind mobile nav */
+  .footer { padding-bottom: 100px; }
+
+  /* Footer: 2-col grid instead of full stack */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px !important;
+  }
+  /* Footer logo spans full width */
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+  /* Shrink the big logo in footer */
+  .footer-logo-wo { font-size: 44px; }
+  .footer-logo-wx { font-size: 54px; }
+  .footer-sub { font-size: 9px; }
+  .footer-desc { margin-top: 10px; font-size: 12px; }
 
   /* Hero headlines — scale down so nothing clips */
   h1.h-display[style*="192px"],
