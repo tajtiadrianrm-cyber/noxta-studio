@@ -55,7 +55,7 @@
       <div class="glass reveal reveal-delay-1" style="padding: 32px 36px; border-radius: 22px;">
 
         <!-- Form -->
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+        <form id="intake-form" style="display: flex; flex-direction: column; gap: 16px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
             <span style="font-family: var(--mono); font-size: 10px; color: var(--cyan); letter-spacing: 0.18em;">§ INTAKE · FORM 01</span>
           </div>
@@ -115,17 +115,12 @@
             <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="A few sentences about your business and what you need. Links welcome."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 15px;">Send it →</button>
+          <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 15px;">Send it →</button>
+
+          <div id="form-error" style="display:none; font-family: var(--mono); font-size: 11px; color: #ff8cc5; text-align: center; letter-spacing: 0.10em;">Something went wrong — please email me directly at adrian@noxta.studio</div>
 
           <div style="font-family: var(--mono); font-size: 9px; color: var(--mute); letter-spacing: 0.14em; text-align: center;">NO TRACKING · NO MAILING LIST · NO AUTO-RESPONDER</div>
         </form>
-
-        <!-- Success state -->
-        <div class="form-success" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; min-height: 400px;">
-          <span class="dot" style="width: 10px; height: 10px;"></span>
-          <div style="font-family: var(--display); font-size: 32px; color: var(--ink); margin-top: 20px; font-weight: 600; letter-spacing: -0.04em;">Got it. <span class="grad-serif" style="font-size: 34px;">Talk soon.</span></div>
-          <p class="body-md" style="margin-top: 12px; max-width: 340px;">You'll hear back within 24 hours. If it's urgent, email me directly at <a href="mailto:adrian@noxta.studio" style="color: var(--cyan);">adrian@noxta.studio</a>.</p>
-        </div>
 
       </div>
     </div>
@@ -176,7 +171,7 @@
 </nav>
 <script src="aurora.js"></script>
 <script>
-  /* pill → hidden input sync for form submission */
+  /* pill → hidden input sync */
   document.querySelectorAll('.pill[data-name]').forEach(pill => {
     pill.addEventListener('click', () => {
       const name = pill.dataset.name;
@@ -185,6 +180,38 @@
       const hidden = document.getElementById(`${name}-val`);
       if (hidden) hidden.value = pill.dataset.value;
     });
+  });
+
+  /* Form submit → Manus endpoint → thankyou.html */
+  const form = document.getElementById('intake-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const errorMsg = document.getElementById('form-error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+    errorMsg.style.display = 'none';
+
+    const data = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch('https://3000-iybytvd5882xacfi2dzk7-a10763cf.us2.manus.computer/api/trpc/intake.submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ json: data })
+      });
+
+      if (res.ok) {
+        window.location.href = 'thankyou.html';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      submitBtn.textContent = 'Send it →';
+      submitBtn.disabled = false;
+      errorMsg.style.display = 'block';
+    }
   });
 </script>
 </body>
