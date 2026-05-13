@@ -182,7 +182,7 @@
     });
   });
 
-  /* Form submit → Manus endpoint → thankyou.html */
+  /* Form submit → Web3Forms → thankyou.html */
   const form = document.getElementById('intake-form');
   const submitBtn = document.getElementById('submit-btn');
   const errorMsg = document.getElementById('form-error');
@@ -194,18 +194,22 @@
     errorMsg.style.display = 'none';
 
     const data = Object.fromEntries(new FormData(form));
+    data.access_key = '95968130-8a3c-42ef-a57c-4f253b199e32';
+    data.subject = 'New project inquiry — Noxta Studio';
 
     try {
-      const res = await fetch('https://3000-iybytvd5882xacfi2dzk7-a10763cf.us2.manus.computer/api/trpc/intake.submit', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ json: data })
+        body: JSON.stringify(data)
       });
 
-      if (res.ok) {
+      const json = await res.json();
+
+      if (json.success) {
         window.location.href = 'thankyou.html';
       } else {
-        throw new Error('Server error');
+        throw new Error('Failed');
       }
     } catch (err) {
       submitBtn.textContent = 'Send it →';
