@@ -27,6 +27,12 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="aurora.css" />
+<style>
+@media (max-width: 640px) {
+  .toolkit-tagline { display: none; }
+  .glass h3[style*="36px"] { font-size: 24px !important; }
+}
+</style>
 </head>
 <body>
 
@@ -105,12 +111,12 @@
 <section class="section" style="padding-top: clamp(40px,5vw,60px); padding-bottom: clamp(40px,5vw,60px);">
   <div class="section-inner reveal">
     <div class="glass" style="padding: 36px 40px; border-radius: 22px;">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
         <div>
           <span class="chip">§ Toolkit · 2026</span>
           <h3 style="font-family: var(--display); font-size: 36px; color: var(--ink); margin-top: 12px; letter-spacing: -0.04em; font-weight: 500;">What I reach for.</h3>
         </div>
-        <span style="font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); font-weight: 300; max-width: 280px; text-align: right;">Boring tools, well used. I'd rather master five things than dabble in fifty.</span>
+        <span class="toolkit-tagline" style="font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); font-weight: 300; max-width: 280px; text-align: right;">Boring tools, well used. I'd rather master five things than dabble in fifty.</span>
       </div>
       <div class="grid-3" style="gap: 12px;">
         <div class="toolkit-card"><div class="toolkit-cat">Design</div><div class="toolkit-pills"><span class="toolkit-pill">Figma</span><span class="toolkit-pill">Pen + paper</span><span class="toolkit-pill">Procreate</span></div></div>
