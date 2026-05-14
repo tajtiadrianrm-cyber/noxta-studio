@@ -122,6 +122,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 }
 .grad-serif {
   padding-right: 0.2em;
+  padding-bottom: 0.15em;
   display: inline-block;
   font-family: var(--serif);
   font-style: italic;
