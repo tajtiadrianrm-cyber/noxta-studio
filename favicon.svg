@@ -1,36 +1,39 @@
-<svg width="100%" viewBox="0 0 680 480" role="img" style="" xmlns="http://www.w3.org/2000/svg">
-  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Noxta Studio favicon — N lettermark</title>
-  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Dark square with a stylised N lettermark in cyan-to-violet gradient</desc>
+<svg width="400" height="400" viewBox="0 0 400 400" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Noxta Studio — N lettermark</title>
+  <desc>Dark rounded square with a stylised N lettermark in full cyan-to-violet-to-pink Aurora gradient</desc>
   <defs>
-    <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7ce0ff"/>
-      <stop offset="100%" stop-color="#b08cff"/>
+    <!-- Full Aurora gradient: cyan → violet → pink at 135deg -->
+    <linearGradient id="aurora" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#7ce0ff"/>
+      <stop offset="50%"  stop-color="#b08cff"/>
+      <stop offset="100%" stop-color="#ff8cc5"/>
     </linearGradient>
-    <linearGradient id="ng2" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Subtle glow fill for background blooms -->
+    <radialGradient id="glow-tl" cx="25%" cy="25%" r="50%">
       <stop offset="0%" stop-color="#7ce0ff" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#b08cff" stop-opacity="0.10"/>
-    </linearGradient>
+      <stop offset="100%" stop-color="#7ce0ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-br" cx="75%" cy="75%" r="50%">
+      <stop offset="0%" stop-color="#ff8cc5" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ff8cc5" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
-  <!-- Favicon square — 400×400, centered in 680×480 canvas -->
-  <g transform="translate(140, 40)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <!-- Background -->
-    <rect x="0" y="0" width="400" height="400" rx="72" fill="#05060e" style="fill:rgb(5, 6, 14);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <!-- Border -->
-    <rect x="1.5" y="1.5" width="397" height="397" rx="71" fill="none" stroke="url(#ng)" stroke-width="1.5" stroke-opacity="0.35" style="fill:none;color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <!-- Corner glows -->
-    <circle cx="80" cy="80" r="60" fill="url(#ng2)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <circle cx="320" cy="320" r="60" fill="url(#ng2)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Background -->
+  <rect x="0" y="0" width="400" height="400" rx="72" fill="#05060e"/>
 
-    <!-- N lettermark — bold geometric, fills the square well -->
-    <!-- Left stem -->
-    <rect x="80" y="96" width="52" height="208" rx="6" fill="url(#ng)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <!-- Right stem -->
-    <rect x="268" y="96" width="52" height="208" rx="6" fill="url(#ng)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <!-- Diagonal — top-left to bottom-right -->
-    <polygon points="132,96 188,96 268,304 212,304" fill="url(#ng)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  </g>
+  <!-- Subtle border using Aurora gradient -->
+  <rect x="1.5" y="1.5" width="397" height="397" rx="71" fill="none" stroke="url(#aurora)" stroke-width="1.5" stroke-opacity="0.35"/>
 
-  <!-- Label -->
-  <text x="340" y="462" text-anchor="middle" fill="#7c84a0" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">512 × 512 favicon preview · noxta.studio</text>
+  <!-- Atmospheric corner glows -->
+  <circle cx="80"  cy="80"  r="80" fill="url(#glow-tl)"/>
+  <circle cx="320" cy="320" r="80" fill="url(#glow-br)"/>
+
+  <!-- N lettermark — bold geometric, full Aurora gradient -->
+  <!-- Left stem -->
+  <rect x="80" y="96" width="52" height="208" rx="6" fill="url(#aurora)"/>
+  <!-- Right stem -->
+  <rect x="268" y="96" width="52" height="208" rx="6" fill="url(#aurora)"/>
+  <!-- Diagonal crossbar — top-left to bottom-right -->
+  <polygon points="132,96 188,96 268,304 212,304" fill="url(#aurora)"/>
 </svg>
