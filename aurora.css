@@ -311,7 +311,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   padding: 6px 14px;
   border-radius: 999px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.10em;
   color: var(--mute);
   text-decoration: none;
