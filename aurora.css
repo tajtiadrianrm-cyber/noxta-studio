@@ -490,6 +490,15 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .manifesto-num { font-family: var(--display); font-size: 38px; color: transparent; -webkit-text-stroke: 1.5px var(--ink-soft); font-weight: 700; letter-spacing: -0.04em; flex-shrink: 0; opacity: 0.5; }
 .manifesto-title { font-family: var(--display); font-size: 21px; color: var(--ink); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
 
+/* ── ABOUT PORTRAIT CARD ─────────────────────────────────── */
+.about-portrait-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  min-height: 560px;
+}
+
 /* ── TOOLKIT PILLS ───────────────────────────────────────── */
 .toolkit-card { padding: 18px 20px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
 .toolkit-cat { font-family: var(--mono); font-size: 9px; color: var(--cyan); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 10px; }
@@ -554,10 +563,10 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 
 /* ── MOBILE ───────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  :root { --gutter: 20px; }
+  :root { --gutter: 16px; }
 
   /* Nav — logo + book a call only */
-  .nav { padding: 16px 20px; }
+  .nav { padding: 16px 16px; }
   .nav-links { display: none; }
 
   /* Sections */
@@ -612,8 +621,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   .tier-card { padding: 24px 22px; }
   .tier-name { font-size: 36px; }
 
-  /* CTA glass blocks */
-  .glass { border-radius: 16px; }
+  /* CTA glass blocks — slightly tighter radius on mobile */
+  .glass { border-radius: 18px; }
 
   /* Contact form grid */
   .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -668,7 +677,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 
   /* Prevent any horizontal scroll */
   body { overflow-x: hidden; }
-  .section { overflow: hidden; }
+  /* Note: .section overflow intentionally NOT hidden on mobile — clips glass cards */
 }
 
 /* ── Fixed grad-serif — no inline-block spacing issues ── */
