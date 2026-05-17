@@ -498,7 +498,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   padding: 0;
 }
 .about-portrait-card .portrait-img-wrap {
-  height: 480px;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -506,7 +506,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   display: block;
 }
 
