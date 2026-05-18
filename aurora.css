@@ -251,7 +251,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
 .grid-split { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: start; }
-.about-hero-grid { grid-template-columns: 1.2fr 1fr !important; }
+.about-hero-grid { grid-template-columns: 1.6fr 1fr !important; }
 .grid-split-r { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
 
 /* ── TYPOGRAPHY ─────────────────────────────────────────── */
@@ -502,7 +502,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   aspect-ratio: 3 / 4;
   overflow: hidden;
   flex-shrink: 0;
-  max-height: 480px;
+  max-height: 400px;
 }
 .about-portrait-card .portrait-img-wrap img {
   width: 100%;
