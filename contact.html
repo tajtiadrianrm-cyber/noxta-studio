@@ -1,247 +1,4333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Noxta Studio</title>
-  <meta name="description" content="Start a web design project with Noxta Studio. 2 slots open for Q3 2026. I reply within 24 hours." />
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Noxta Studio" />
-  <meta property="og:title" content="Contact — Noxta Studio" />
-  <meta property="og:description" content="Start a web design project with Noxta Studio. 2 slots open for Q3 2026. I reply within 24 hours. Based in Tilburg, NL — working globally." />
-  <meta property="og:url" content="https://noxta.studio/contact.html" />
-  <meta property="og:image" content="https://noxta.studio/og-image.jpg" />
-  <meta property="og:locale" content="en_GB" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact — Noxta Studio" />
-  <meta name="twitter:description" content="Start a web design project with Noxta Studio. 2 slots open for Q3 2026. I reply within 24 hours. Based in Tilburg, NL — working globally." />
-  <meta name="twitter:image" content="https://noxta.studio/og-image.jpg" />
-  <!-- Schema -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Noxta Studio","url":"https://noxta.studio","description":"One-person web design studio in Tilburg, NL. WordPress, WooCommerce, Shopify.","address":{"@type":"PostalAddress","addressLocality":"Tilburg","addressCountry":"NL"},"email":"adrian@noxta.studio","priceRange":"€300-€8000"}</script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="aurora.css" />
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact · Noxta Studio · Adrian Tajti</title>
+    <meta name="description" content="Tell me about your project. I read every message and reply within 24 hours, usually faster. adrian@noxta.studio · +31 6 17 657 327" />
+    <link rel="canonical" href="https://noxta.studio/contact" />
 
-<nav class="nav">
-  <a href="index.html" class="nav-logo"><span class="wo">No</span><span class="wx">x</span><span class="wo">ta</span></a>
-  <div class="nav-links">
-    <a href="work.html">Work</a>
-    <a href="services.html">Pricing</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
-    <a href="contact.html" class="nav-cta">Book a call</a>
-  </div>
-</nav>
+    <!-- Favicons / app icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+    <link rel="shortcut icon" href="assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#ff4d15" />
 
-<!-- ══ HERO + FORM ══ -->
-<section class="section mesh-a grain">
-  <div class="section-inner" style="position: relative; z-index: 1;">
-    <div class="grid-split contact-grid">
+    <!-- Open Graph / social previews -->
+    <meta property="og:title" content="Let's talk · Noxta Studio" />
+    <meta property="og:description" content="Tell me about your project. I read every message and reply within 24 hours, usually faster." />
+    <meta property="og:image" content="https://noxta.studio/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://noxta.studio/contact" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Noxta Studio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Let's talk · Noxta Studio" />
+    <meta name="twitter:description" content="adrian@noxta.studio · +31 6 17 657 327" />
+    <meta name="twitter:image" content="https://noxta.studio/og-image.png" />
 
-      <!-- Left: info -->
-      <div>
-        <span class="chip reveal"><span class="dot"></span>2 slots open · Q3 2026</span>
-        <h1 class="h-display reveal reveal-delay-1" style="font-size: clamp(64px,12vw,108px); margin-top: 20px;">Let's <span class="grad-serif">talk.</span></h1>
-        <p class="body-lg reveal reveal-delay-2" style="max-width: 440px; margin-top: 20px;">Tell me about your project — a paragraph is fine, more if you have it. I read every message and reply within 24 hours, usually faster.</p>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+/* =========================================================
+   Noxta Studio v3 — Home
+   Squared/tech display · sharp corners · gradient accents
+   ========================================================= */
 
-        <div style="margin-top: 36px; display: flex; flex-direction: column; gap: 16px;" class="reveal reveal-delay-2">
-          <div class="contact-row">
-            <span class="contact-row-key">Email</span>
-            <a href="mailto:adrian@noxta.studio" class="contact-row-val" style="color: var(--ink);">adrian@noxta.studio</a>
+:root {
+  /* palette — Obsidian Kinetic (dark + vibrant orange) */
+  --bg: #0a0a0a;
+  --bg-soft: #121414;
+  --bg-tint: #1a1c1c;
+  --ink: #f5f6f7;
+  --ink-soft: #cfcccb;
+  --mute: #8a8786;
+  --faint: #3a3838;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-soft: rgba(255, 255, 255, 0.04);
+
+  /* accents — orange only (purple/cyan retired) */
+  --cyan: #ff7a3d;
+  --violet: #ff4d15;
+  --pink: #d63a0d;
+
+  /* derived accent (changeable via Tweaks) */
+  --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
+  --accent-solid: #ff4d15;
+  --accent-glow: rgba(255, 77, 21, 0.5);
+
+  /* type — Orbitron (display, futuristic) + Manrope (body) */
+  --f-display: "Orbitron", system-ui, sans-serif;
+  --f-body: "Manrope", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+
+  /* shape */
+  --notch: 10px;
+  --notch-lg: 18px;
+
+  /* layout */
+  --pad-x: clamp(20px, 4vw, 64px);
+  --max-w: 1440px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* ──────────────── Focus + reduced motion (a11y) ──────────────── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent-solid);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent-solid);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ──────────────── Entrance animations (CSS-only stagger) ──────────────── */
+@keyframes nx-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes nx-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes nx-reveal {
+  from { opacity: 0; transform: translateY(28px); filter: blur(10px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+@keyframes nx-zoom-in {
+  from { opacity: 0; transform: scale(1.06); filter: blur(6px); }
+  to   { opacity: 1; transform: scale(1);    filter: blur(0); }
+}
+
+/* Hero — cinematic entrance, total ~1.6s */
+.hero-text > * {
+  animation: nx-reveal 1000ms cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-text > *:nth-child(1) { animation-delay: 150ms; }
+.hero-text > *:nth-child(2) { animation-delay: 500ms; }
+.hero-text > *:nth-child(3) { animation-delay: 700ms; }
+.hero-text > *:nth-child(4) { animation-delay: 950ms; }
+.hero-text > *:nth-child(5) { animation-delay: 1250ms; }
+.hero-portrait {
+  animation: nx-zoom-in 1600ms cubic-bezier(.2,.7,.2,1) both;
+  animation-delay: 200ms;
+}
+.hero-status-pill { animation: nx-fade 900ms ease-out both; animation-delay: 1400ms; }
+.hero-top-meta    { animation: nx-fade 900ms ease-out both; animation-delay: 1500ms; }
+.hero-tagbar      { animation: nx-fade 900ms ease-out both; animation-delay: 1700ms; }
+
+/* Below-the-fold — start hidden, animate when parent section enters viewport */
+.section .section-label,
+.section .section-h,
+.section .section-sub,
+.service,
+.work-card,
+.pricing-toggle,
+.believe-cell,
+.price {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+  transition:
+    opacity 800ms cubic-bezier(.2,.7,.2,1),
+    transform 800ms cubic-bezier(.2,.7,.2,1),
+    filter 800ms cubic-bezier(.2,.7,.2,1);
+}
+
+.nx-in-view .section-label,
+.nx-in-view .section-h,
+.nx-in-view .section-sub,
+.nx-in-view .service,
+.nx-in-view .work-card,
+.nx-in-view .pricing-toggle,
+.nx-in-view .believe-cell,
+.nx-in-view .price {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Stagger within each section */
+.nx-in-view .section-h   { transition-delay: 100ms; }
+.nx-in-view .section-sub { transition-delay: 200ms; }
+.nx-in-view .pricing-toggle { transition-delay: 220ms; }
+
+.nx-in-view .service:nth-child(1) { transition-delay: 240ms; }
+.nx-in-view .service:nth-child(2) { transition-delay: 340ms; }
+.nx-in-view .service:nth-child(3) { transition-delay: 440ms; }
+.nx-in-view .service:nth-child(4) { transition-delay: 540ms; }
+
+.nx-in-view .believe-cell:nth-child(1) { transition-delay: 240ms; }
+.nx-in-view .believe-cell:nth-child(2) { transition-delay: 360ms; }
+.nx-in-view .believe-cell:nth-child(3) { transition-delay: 480ms; }
+
+.nx-in-view .price:nth-child(1) { transition-delay: 320ms; }
+.nx-in-view .price:nth-child(2) { transition-delay: 440ms; }
+.nx-in-view .price:nth-child(3) { transition-delay: 560ms; }
+
+.nx-in-view .work-card { transition-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .section .section-label,
+  .section .section-h,
+  .section .section-sub,
+  .service,
+  .work-card,
+  .pricing-toggle,
+  .believe-cell,
+  .price {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* Subtle ambient noise grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 1 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ──────────────── Reusable shapes ──────────────── */
+
+/* notch-cut corners (Portilo-esque tech edge) — replaces rounding */
+.notch {
+  clip-path: polygon(
+    var(--notch) 0,
+    100% 0,
+    100% calc(100% - var(--notch)),
+    calc(100% - var(--notch)) 100%,
+    0 100%,
+    0 var(--notch)
+  );
+}
+
+.notch-lg {
+  clip-path: polygon(
+    var(--notch-lg) 0,
+    100% 0,
+    100% calc(100% - var(--notch-lg)),
+    calc(100% - var(--notch-lg)) 100%,
+    0 100%,
+    0 var(--notch-lg)
+  );
+}
+
+/* Panel = sharp dark surface with hairline border via box-shadow inset
+   (border-radius is 0; using inset shadow avoids visible corner doubling with clip-path) */
+.panel {
+  background: var(--bg-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.hair-top {
+  border-top: 1px solid var(--hairline);
+}
+.hair-bottom {
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* gradient text */
+.grad {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* mono label */
+.label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.label .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  margin-right: 8px;
+  vertical-align: 2px;
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+/* ──────────────── Buttons ──────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  color: #08091a;
+  background: var(--accent);
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 20px 40px -20px var(--accent-glow);
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-ghost {
+  color: var(--ink);
+  background: transparent;
+  position: relative;
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+  transition: transform 120ms ease, filter 120ms ease, color 180ms;
+}
+.btn-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  z-index: -1;
+  clip-path: inherit;
+  transition: background 180ms, box-shadow 180ms;
+}
+.btn-ghost:hover {
+  color: var(--accent-solid);
+}
+.btn-ghost:hover::before {
+  background: rgba(255, 77, 21, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
+}
+
+/* ──────────────── Layout container ──────────────── */
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  position: relative;
+  z-index: 2;
+}
+
+/* ──────────────── NAV ──────────────── */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px) saturate(120%);
+  background: rgba(5, 6, 14, 0.65);
+  border-bottom: 1px solid var(--hairline);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+}
+.nav-logo .x {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+  padding: 0 1px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.nav-links a {
+  padding: 10px 16px;
+  color: var(--ink-soft);
+  transition: color 150ms;
+}
+.nav-links a:hover {
+  color: var(--ink);
+}
+.nav-cta {
+  margin-left: 8px;
+  padding: 12px 18px !important;
+  background: rgba(255, 77, 21, 0.10);
+  color: var(--ink) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.35);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: background 180ms, box-shadow 180ms;
+}
+.nav-cta:hover {
+  background: rgba(255, 77, 21, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
+  color: var(--ink) !important;
+}
+
+/* ──────────────── HERO (Portilo split layout: text · big portrait · meta) ──────────────── */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 35% 40% at 75% 30%, rgba(255, 77, 21, 0.14), transparent 70%),
+    radial-gradient(ellipse 25% 30% at 18% 20%, rgba(255, 122, 61, 0.08), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-top {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px var(--pad-x) 0;
+}
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  background: rgba(255, 77, 21, 0.10);
+  color: var(--cyan);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hero-status-pill .pulse {
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  position: relative;
+  flex-shrink: 0;
+}
+.hero-status-pill .pulse::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border: 1px solid var(--cyan);
+  animation: pulse-ring 1.8s infinite ease-out;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.7); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.hero-top-meta {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+/* the body: 2-column grid — text + big portrait */
+.hero-body {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.95fr 1.6fr;
+  gap: 32px;
+  padding: 32px var(--pad-x) 0;
+  align-items: stretch;
+  min-height: 720px;
+}
+.hero-body::before,
+.hero-body::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--accent-solid);
+  line-height: 1;
+  z-index: 4;
+}
+.hero-body::before { top: 24px; left: calc(var(--pad-x) - 10px); }
+.hero-body::after  { bottom: 24px; right: calc(var(--pad-x) - 10px); }
+@media (max-width: 960px) {
+  .hero-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 24px;
+  }
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 110px;
+  max-width: 560px;
+  z-index: 3;
+  position: relative;
+}
+.hero-name {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(44px, 5.6vw, 92px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.hero-name .grad {
+  display: inline-block;
+}
+.hero-name .dot {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-role-line {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-role-line .dash {
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  display: block;
+  flex-shrink: 0;
+}
+.hero-rule {
+  border: 0;
+  height: 1px;
+  background: var(--hairline);
+  margin: 8px 0 4px;
+}
+.hero-bio {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 38ch;
+  text-wrap: pretty;
+}
+.hero-bio strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.hero-specs {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  box-shadow: 0 0 0 1px var(--hairline);
+  max-width: 480px;
+}
+@media (max-width: 760px) {
+  .hero-specs { grid-template-columns: 1fr; }
+}
+.hero-spec {
+  background: var(--bg);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-spec .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.hero-spec .v {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.hero-spec .v .accent { color: var(--accent-solid); }
+
+/* center: the big portrait, fills the right column with a strong vertical presence */
+.hero-portrait {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+}
+.hero-portrait img {
+  display: block;
+  height: clamp(560px, 78vh, 920px);
+  width: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
+}
+/* subtle glow behind the head (upper portion), not under the clothes */
+.hero-portrait::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: 55%;
+  height: 40%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, var(--accent-glow), transparent 70%);
+  filter: blur(60px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* right: aside info stack */
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-top: 24px;
+  z-index: 3;
+  position: relative;
+}
+.hero-badge {
+  background: var(--bg-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  padding: 16px 20px;
+  min-width: 200px;
+  text-align: right;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+.hero-badge .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 8px;
+}
+.hero-badge .v {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  line-height: 1;
+}
+.hero-badge .s {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+.hero-badge.accent {
+  background: linear-gradient(140deg, rgba(255, 122, 61, 0.12), rgba(255, 77, 21, 0.12) 50%, rgba(214, 58, 13, 0.10));
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.35);
+}
+.hero-badge.accent .v {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* tagline strip below */
+.hero-tagbar {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 22px var(--pad-x);
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: clamp(11px, 1.1vw, 14px);
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: rgba(5, 6, 14, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hero-tagbar .dash {
+  color: var(--mute);
+  margin: 0 12px;
+}
+
+/* hero info bar across the bottom */
+.hero-stat-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  z-index: 3;
+  background: rgba(5, 6, 14, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--hairline);
+}
+.hero-stat {
+  padding: 16px var(--pad-x);
+  border-right: 1px solid var(--hairline);
+}
+.hero-stat:last-child { border-right: 0; }
+.hero-stat .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.hero-stat .v {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-top: 6px;
+}
+@media (max-width: 760px) {
+  .hero-stat-bar { grid-template-columns: repeat(2, 1fr); }
+  .hero-aside { align-items: flex-start; }
+  .hero-portrait { min-height: 360px; }
+  .hero-portrait img { max-width: 100%; }
+  .hero-top-meta { display: none; }
+}
+
+/* ──────────────── Spec bar divider ──────────────── */
+
+.spec-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 4;
+}
+.spec-bar .cell {
+  padding: 22px var(--pad-x);
+  border-right: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.spec-bar .cell:last-child { border-right: 0; }
+.spec-bar .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.spec-bar .v {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.spec-bar .v .accent { color: var(--accent-solid); }
+
+@media (max-width: 760px) {
+  .spec-bar { grid-template-columns: repeat(2, 1fr); }
+  .spec-bar .cell:nth-child(2) { border-right: 0; }
+  .spec-bar .cell:nth-child(1),
+  .spec-bar .cell:nth-child(2) { border-bottom: 1px solid var(--hairline); }
+}
+
+/* ──────────────── Marquee divider ──────────────── */
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 22px 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 4;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 48px;
+  padding-left: 24px;
+  animation: marquee-scroll 60s linear infinite;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(14px, 1.3vw, 18px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 48px;
+}
+.marquee-item::after {
+  content: "✺";
+  color: var(--accent-solid);
+  font-family: var(--f-mono);
+  font-size: 0.85em;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ──────────────── Section atmosphere (corner glows) ──────────────── */
+
+#about {
+  background: radial-gradient(
+    ellipse 90% 90% at 100% 0%,
+    rgba(255, 77, 21, 0.10) 0%,
+    rgba(255, 77, 21, 0.04) 25%,
+    rgba(255, 77, 21, 0.015) 55%,
+    transparent 100%
+  );
+}
+
+#services {
+  background: radial-gradient(
+    ellipse 90% 95% at 0% 100%,
+    rgba(255, 77, 21, 0.09) 0%,
+    rgba(255, 77, 21, 0.035) 25%,
+    rgba(255, 77, 21, 0.012) 55%,
+    transparent 100%
+  );
+}
+
+#believe {
+  background: radial-gradient(
+    ellipse 90% 90% at 100% 0%,
+    rgba(255, 77, 21, 0.10) 0%,
+    rgba(255, 77, 21, 0.04) 25%,
+    rgba(255, 77, 21, 0.015) 55%,
+    transparent 100%
+  );
+}
+
+#pricing {
+  background: radial-gradient(
+    ellipse 95% 90% at 0% 100%,
+    rgba(255, 77, 21, 0.07) 0%,
+    rgba(255, 77, 21, 0.03) 30%,
+    rgba(255, 77, 21, 0.01) 60%,
+    transparent 100%
+  );
+}
+
+.footer {
+  background: radial-gradient(
+    ellipse 100% 80% at 50% 0%,
+    rgba(255, 77, 21, 0.08) 0%,
+    rgba(255, 77, 21, 0.03) 35%,
+    rgba(255, 77, 21, 0.01) 65%,
+    transparent 100%
+  );
+}
+
+/* ──────────────── Section header ──────────────── */
+
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.section-label .bar {
+  width: 36px;
+  height: 1px;
+  background: var(--accent);
+}
+.section-label span {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.section-h {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(40px, 6vw, 92px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+.section-sub {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 18px;
+  max-width: 54ch;
+  text-wrap: pretty;
+}
+
+/* ──────────────── WHAT I DO (services list) ──────────────── */
+
+.services {
+  margin-top: 56px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  position: relative;
+}
+.services::before,
+.services::after {
+  content: "+";
+  position: absolute;
+  top: -8px;
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--accent-solid);
+  line-height: 1;
+}
+.services::before { left: -10px; }
+.services::after  { right: -10px; }
+.service {
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px minmax(300px, 1.6fr) minmax(220px, 1.3fr) minmax(160px, 0.9fr) 40px;
+  gap: 40px;
+  align-items: center;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: padding 220ms ease, background 220ms ease;
+  overflow: hidden;
+}
+.service:hover {
+  padding-left: 16px;
+  background: rgba(255, 77, 21, 0.025);
+}
+.service::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 0;
+  background: var(--accent);
+  transition: height 220ms ease;
+  z-index: 2;
+}
+.service:hover::before {
+  height: 60%;
+}
+.service-bg {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(90px, 11vw, 150px);
+  line-height: 0.8;
+  letter-spacing: 0;
+  color: rgba(255, 77, 21, 0.11);
+  pointer-events: none;
+  z-index: 0;
+  transition: color 220ms ease, transform 380ms cubic-bezier(.2,.7,.2,1);
+}
+.service-bg span {
+  display: inline-block;
+  width: 0.62em;
+  text-align: center;
+}
+.service:hover .service-bg {
+  color: rgba(255, 77, 21, 0.20);
+  transform: translateY(-50%) translateX(-10px);
+}
+.service > *:not(.service-bg) { position: relative; z-index: 1; }
+.service .num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--mute);
+}
+.service .title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(26px, 3.2vw, 48px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 200ms;
+}
+.service:hover .title {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.service .tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.service .tags span {
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.service .desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  max-width: 36ch;
+}
+.service .arr {
+  font-family: var(--f-display);
+  color: var(--mute);
+  transition: color 200ms, transform 200ms;
+}
+.service:hover .arr {
+  color: var(--ink);
+  transform: translateX(6px);
+}
+
+/* ──────────────── FEATURED WORK (VOEP) ──────────────── */
+
+.work-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 0;
+  background: var(--bg-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  overflow: hidden;
+  margin-top: 56px;
+}
+.work-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 110% 90% at 80% 50%,
+      rgba(255, 122, 61, 0.18) 0%,
+      rgba(255, 122, 61, 0.08) 25%,
+      rgba(255, 122, 61, 0.025) 55%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 90% 80% at 20% 100%,
+      rgba(214, 58, 13, 0.13) 0%,
+      rgba(214, 58, 13, 0.045) 30%,
+      transparent 100%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+.work-card > * { position: relative; z-index: 1; }
+@media (max-width: 960px) {
+  .work-card { grid-template-columns: 1fr; }
+}
+.work-info {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.work-tag {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.work-title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(48px, 6vw, 100px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.work-sub {
+  font-size: 18px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.work-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--hairline);
+  margin-top: auto;
+}
+.work-meta .cell {
+  background: var(--bg-soft);
+  padding: 16px;
+}
+.work-meta .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.work-meta .v {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  margin-top: 6px;
+}
+.work-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.work-vis {
+  position: relative;
+  min-height: 480px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  overflow: hidden;
+}
+
+/* VOEP browser-window frame around the real site screenshot */
+.browser {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  background: #0a0e1a;
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 80px -20px rgba(0, 0, 0, 0.7);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms;
+}
+.browser:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.45),
+              0 40px 90px -20px rgba(0, 0, 0, 0.85),
+              0 20px 60px -20px rgba(255, 77, 21, 0.20);
+}
+.browser-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--mute);
+}
+.browser-bar .dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%; /* lights only — fine */
+}
+.browser-bar .url {
+  margin-left: 12px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+.browser-body {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.voep-mast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.voep-logo {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.voep-logo .ring {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  position: relative;
+}
+.voep-logo .ring::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+.voep-nav {
+  display: flex;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.voep-h {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.voep-h em {
+  font-style: normal;
+  background: linear-gradient(90deg, #ff7a3d, #ffaa55);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.voep-yrs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-top: 4px;
+}
+.voep-yr {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  color: var(--mute);
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+.voep-yr .y {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 11px;
+  color: #ff7a3d;
+}
+.voep-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+}
+.voep-quote {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: 9px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding: 8px 12px;
+  border-left: 2px solid var(--mute);
+}
+
+/* ──────────────── BELIEVE strip ──────────────── */
+
+.believe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+  position: relative;
+}
+.believe::before,
+.believe::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--accent-solid);
+  line-height: 1;
+}
+.believe::before { top: -10px; left: -10px; }
+.believe::after  { bottom: -10px; right: -10px; }
+@media (max-width: 800px) {
+  .believe { grid-template-columns: 1fr; gap: 16px; }
+}
+.believe-cell {
+  background: var(--bg-soft);
+  padding: 44px 32px 40px;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+}
+.believe-bg {
+  position: absolute;
+  right: 16px;
+  bottom: -10px;
+  display: flex;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(120px, 13vw, 200px);
+  line-height: 0.8;
+  letter-spacing: 0;
+  color: rgba(255, 77, 21, 0.11);
+  pointer-events: none;
+  z-index: 0;
+}
+.believe-bg span {
+  display: inline-block;
+  width: 0.62em;
+  text-align: center;
+}
+.believe-cell > *:not(.believe-bg) { position: relative; z-index: 1; }
+.believe-cell .n {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--accent-solid);
+  margin-bottom: 18px;
+}
+.believe-cell h3 {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(28px, 2.8vw, 42px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.believe-cell p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ──────────────── PRICING ──────────────── */
+
+.pricing-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.pricing-toggle {
+  display: inline-flex;
+  background: var(--bg-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  padding: 4px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.pricing-toggle button {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  background: transparent;
+  border: 0;
+  color: var(--mute);
+  cursor: pointer;
+  position: relative;
+  transition: color 180ms;
+}
+.pricing-toggle button.active {
+  color: #08091a;
+  background: var(--accent);
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+.pricing-toggle button:not(.active):hover {
+  color: var(--ink);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr 1fr;
+  gap: 16px;
+  margin-top: 48px;
+  align-items: stretch;
+  position: relative;
+}
+.pricing-grid::before,
+.pricing-grid::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--accent-solid);
+  line-height: 1;
+}
+.pricing-grid::before { top: -14px; left: -10px; }
+.pricing-grid::after  { bottom: -14px; right: -10px; }
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+.price {
+  position: relative;
+  background: var(--bg-soft);
+  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  transition:
+    transform 320ms cubic-bezier(.2,.7,.2,1),
+    box-shadow 320ms cubic-bezier(.2,.7,.2,1),
+    background-color 320ms;
+}
+.price::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(255, 77, 21, 0.18),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 320ms;
+}
+.price > * { position: relative; z-index: 1; }
+.price {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+.price > * { transform-style: preserve-3d; }
+.price-flag { transform: translateZ(50px); }
+.price-name { transform: translateZ(40px); }
+.price-head { transform: translateZ(20px); }
+.price-desc,
+.price-feat-label,
+.price-list { transform: translateZ(15px); }
+.price-foot { transform: translateZ(8px); }
+.price::after { transform: translateZ(2px); }
+.price:hover {
+  background-color: rgba(255, 77, 21, 0.04);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 77, 21, 0.40),
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 90px -30px rgba(255, 77, 21, 0.50);
+}
+.price:hover::after { opacity: 1; }
+.price:hover .price-name {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.price.featured:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 77, 21, 0.65),
+    0 40px 80px -20px rgba(0, 0, 0, 0.8),
+    0 0 110px -30px rgba(255, 77, 21, 0.55);
+}
+.pricing-grid { perspective: 1000px; }
+.price-name { transition: color 320ms; }
+.price-list li::before { transition: transform 240ms cubic-bezier(.2,.7,.2,1); }
+.price:hover .price-list li::before { transform: translateX(2px) scale(1.15); }
+.price.featured {
+  background: linear-gradient(180deg, rgba(255, 77, 21, 0.14) 0%, rgba(255, 122, 61, 0.06) 50%, rgba(214, 58, 13, 0.08) 100%), var(--bg-soft);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.45),
+              0 30px 60px -20px rgba(255, 77, 21, 0.18);
+  transform: translateY(-12px);
+  padding-top: 44px;
+  padding-bottom: 40px;
+  z-index: 2;
+}
+.price.featured:hover {
+  transform: translateY(-18px);
+}
+@media (max-width: 900px) {
+  .price.featured { transform: none; }
+  .price.featured:hover { transform: translateY(-4px); }
+}
+.price-flag {
+  position: absolute;
+  top: -1px;
+  left: 16px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #08091a;
+  background: var(--accent);
+  padding: 6px 12px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 6px 100%);
+}
+.price-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  margin-top: 6px;
+}
+.price-head .amt {
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+}
+.price-name {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.price-desc {
+  font-style: normal;
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.price-feat-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 14px;
+}
+.price-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  flex: 1;
+}
+.price-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.45;
+}
+.price-list li::before {
+  content: "+";
+  color: var(--cyan);
+  font-family: var(--f-display);
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 14px;
+  text-align: center;
+}
+.price.featured .price-list li::before {
+  color: var(--violet);
+}
+.price-foot {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.5;
+}
+.price-foot .ideal {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ──────────────── CTA (Portilo-style with portrait + wordmark behind) ──────────────── */
+
+.cta {
+  position: relative;
+  padding: 0;
+  margin-top: 0;
+  overflow: hidden;
+  background: var(--bg-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 100% at 50% 100%,
+    rgba(255, 77, 21, 0.14),
+    transparent 80%
+  );
+  pointer-events: none;
+}
+.cta-inner {
+  position: relative;
+  padding: 64px var(--pad-x) 48px;
+  min-height: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.cta-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: start;
+  z-index: 3;
+  position: relative;
+}
+.cta-top .mark {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.cta-top .mark .sub { color: var(--mute); }
+.cta-top .mark.tr { text-align: right; }
+
+.cta-stage {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 16px;
+  min-height: 560px;
+}
+.cta-h {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(64px, 10vw, 160px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
+.cta-h .grad { display: inline-block; }
+
+.cta-wordmark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+  padding-top: 80px;
+}
+.cta-wordmark .glyph {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(180px, 36vw, 600px);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.cta-photo-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+}
+.cta-photo {
+  display: block;
+  height: clamp(500px, 70vh, 820px);
+  width: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
+}
+
+.cta-bottom {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  text-align: center;
+}
+.cta-bottom .lede {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 52ch;
+}
+.cta-bottom .ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cta-bottom .note {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-top: 6px;
+}
+.cta-bottom .note strong {
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.cta-bottom .note .note-link {
+  transition: color 180ms;
+}
+.cta-bottom .note .note-link:hover strong {
+  color: var(--accent-solid);
+}
+
+@media (max-width: 760px) {
+  .cta-inner { padding: 48px 24px 32px; min-height: auto; }
+  .cta-top { grid-template-columns: 1fr; }
+  .cta-top .mark.tr { text-align: left; }
+}
+
+/* ──────────────── WORDMARK + FOOTER ──────────────── */
+
+.wordmark {
+  padding: 120px var(--pad-x) 40px;
+  text-align: center;
+  position: relative;
+}
+.wordmark .glyph {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(140px, 28vw, 460px);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.95;
+  position: relative;
+  display: inline-block;
+}
+.wordmark .glyph::after {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  background: var(--accent);
+  filter: blur(80px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding-top: 60px;
+  padding-bottom: 40px;
+  position: relative;
+}
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr 0.9fr 0.9fr;
+  gap: 0;
+  margin-bottom: 60px;
+  position: relative;
+}
+.foot-col {
+  padding: 4px 32px 4px 0;
+  position: relative;
+}
+.foot-col + .foot-col {
+  border-left: 1px solid var(--hairline);
+  padding-left: 32px;
+}
+@media (max-width: 800px) {
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .foot-col, .foot-col + .foot-col { padding: 0; border-left: 0; }
+}
+.foot-col h5 {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-solid);
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+.foot-col a, .foot-col p {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+  transition: color 150ms;
+}
+.foot-col a:hover { color: var(--ink); }
+.foot-brand .lg {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+.foot-brand .lg .x {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+}
+.foot-brand p {
+  max-width: 32ch;
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.5;
+}
+
+.foot-base {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--hairline);
+  padding-top: 24px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.foot-base .dots {
+  display: flex;
+  gap: 16px;
+}
+.foot-base .dots span {
+  position: relative;
+  padding-left: 14px;
+}
+.foot-base .dots span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background: var(--cyan);
+}
+
+/* ──────────────── responsive ──────────────── */
+
+@media (max-width: 760px) {
+  /* ── Nav ── */
+  .nav-links a:not(.nav-cta) { padding: 8px 10px; font-size: 11px; }
+  .nav-cta { padding: 10px 14px !important; font-size: 11px; }
+  .nav-inner { gap: 8px; }
+
+  /* ── Sections (general) ── */
+  .section { padding-top: 48px; padding-bottom: 48px; }
+  .section-h { font-size: clamp(32px, 9vw, 52px); }
+  .section-sub { font-size: 15px; }
+
+  /* ── Page hero ── */
+  .page-hero { min-height: calc(100dvh - 72px); }
+  .page-hero-inner { padding: 24px var(--pad-x) 80px; }
+  .page-hero-crumb { font-size: 10px; margin-bottom: 18px; }
+  .page-hero-h { font-size: clamp(54px, 16vw, 96px); line-height: 0.92; }
+  .page-hero-sub { font-size: 14px; margin-top: 18px; }
+
+  /* ── Contact grid: stack info above form ── */
+  .contact-grid { gap: 16px; margin-top: 8px; }
+  .contact-info { padding: 26px 22px; }
+  .contact-form { padding: 28px 22px; gap: 18px; }
+  .form-row.two { grid-template-columns: 1fr; gap: 14px; }
+
+  /* ── Form inputs/chips ── */
+  .field input, .field textarea { font-size: 16px; padding: 12px 14px; } /* 16px prevents iOS auto-zoom */
+  .chip { padding: 9px 14px; font-size: 11px; }
+
+  /* ── Contact info card ── */
+  .contact-fact { padding: 14px 0; }
+  .contact-fact .v { font-size: 15px; }
+
+  /* ── Success panel ── */
+  .success-h { font-size: clamp(28px, 8vw, 40px); }
+  .success-lede { font-size: 15px; margin-bottom: 24px; }
+
+  /* ── FAQ ── */
+  .faq-grid { gap: 12px; margin-top: 32px; }
+  .faq-card { padding: 24px 22px 22px; }
+  .faq-q { font-size: 16px; }
+
+  /* ── Marquee ── */
+  .marquee { padding: 16px 0; }
+  .marquee-track { font-size: 12px; gap: 32px; padding-left: 16px; }
+  .marquee-item { gap: 32px; }
+
+  /* ── Spec bar ── */
+  .spec-bar { grid-template-columns: repeat(2, 1fr); }
+  .spec-bar .cell { padding: 18px var(--pad-x); }
+  .spec-bar .cell:nth-child(2) { border-right: 0; }
+  .spec-bar .cell:nth-child(1),
+  .spec-bar .cell:nth-child(2) { border-bottom: 1px solid var(--hairline); }
+  .spec-bar .v { font-size: 16px; }
+
+  /* ── Footer ── */
+  .footer { padding-top: 40px; padding-bottom: 28px; }
+  .foot-grid { grid-template-columns: 1fr; gap: 0; margin-bottom: 32px; }
+  .foot-col { padding: 24px 0; border-left: 0 !important; }
+  .foot-col + .foot-col {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .foot-col:first-child { padding-top: 0; }
+  .foot-brand .lg { font-size: 26px; margin-bottom: 10px; }
+  .foot-brand p { font-size: 13px; max-width: 100%; }
+  .foot-col h5 { margin-bottom: 14px; }
+  .foot-col a, .foot-col p { font-size: 14px; margin-bottom: 8px; }
+  .foot-base { gap: 14px; flex-direction: column; align-items: flex-start; padding-top: 20px; }
+  .foot-base .dots { flex-wrap: wrap; row-gap: 8px; }
+
+  /* ── Scroll cue ── */
+  .scroll-cue { bottom: 20px; font-size: 9px; }
+}
+
+/* ──────────────── Page hero (shared with portfolio) ──────────────── */
+
+.page-hero {
+  min-height: calc(100vh - 72px);
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.page-hero-inner {
+  flex: 1;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 32px var(--pad-x) 100px;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.page-hero-crumb {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 28px;
+}
+.page-hero-crumb a { color: var(--mute); transition: color 180ms; }
+.page-hero-crumb a:hover { color: var(--accent-solid); }
+.page-hero-crumb .cur { color: var(--ink); }
+.page-hero-crumb span { margin: 0 8px; }
+.page-hero-h {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(72px, 11vw, 180px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.page-hero-sub {
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin: 28px auto 0;
+  text-wrap: pretty;
+}
+
+/* ──────────────── Scroll cue ──────────────── */
+
+.scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-solid);
+  z-index: 4;
+  text-decoration: none;
+  animation: scroll-bob 2s ease-in-out infinite;
+}
+.scroll-cue:hover { color: var(--ink); }
+.scroll-cue .scroll-arrow {
+  width: 24px;
+  height: 22px;
+  position: relative;
+}
+.scroll-cue .scroll-arrow::before,
+.scroll-cue .scroll-arrow::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 50%;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateX(-50%) rotate(45deg);
+}
+.scroll-cue .scroll-arrow::before { top: -4px; opacity: 0.5; }
+.scroll-cue .scroll-arrow::after  { top: 4px; }
+@keyframes scroll-bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue { animation: none; }
+}
+
+/* ──────────────── Contact grid: info + form ──────────────── */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.4fr;
+  gap: 48px;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-info {
+  --mx: 50%;
+  --my: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg-soft);
+  padding: 36px 32px;
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.32);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 320ms cubic-bezier(.2,.7,.2,1);
+}
+.contact-info:hover {
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
+}
+.contact-info::after,
+.contact-form::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 77, 21, 0.20),
+    rgba(255, 77, 21, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(.2,.7,.2,1);
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+.contact-info:hover::after,
+.contact-form:hover::after { opacity: 1; }
+.contact-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 0;
+  border-top: 1px solid var(--hairline);
+}
+.contact-fact:first-of-type { border-top: 0; padding-top: 0; }
+.contact-fact .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.60);
+}
+.contact-fact .v {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+a.contact-fact .v,
+.contact-fact a.v { transition: color 180ms; }
+.contact-fact a.v:hover { color: var(--accent-solid); }
+
+/* ──────────────── Contact form ──────────────── */
+
+.contact-form {
+  --mx: 50%;
+  --my: 50%;
+  background: var(--bg-soft);
+  padding: 40px 36px;
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.32);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 320ms cubic-bezier(.2,.7,.2,1);
+}
+.contact-form:hover {
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
+}
+.contact-form > * { position: relative; z-index: 1; }
+.form-row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .form-row.two { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field-k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.60);
+}
+.field-k .opt { color: rgba(255, 255, 255, 0.35); }
+
+.field input,
+.field textarea {
+  font-family: var(--f-body);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 0;
+  padding: 14px 16px;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  outline: none;
+  transition: box-shadow 180ms, background 180ms;
+  width: 100%;
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+.field input:focus,
+.field textarea:focus {
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.6);
+  background: rgba(255, 77, 21, 0.03);
+}
+
+/* Kill the yellow autofill highlight on Safari / Chrome */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:active,
+.field textarea:-webkit-autofill,
+.field textarea:-webkit-autofill:hover {
+  -webkit-box-shadow:
+    inset 0 0 0 1px var(--hairline),
+    inset 0 0 0 1000px var(--bg) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  caret-color: var(--ink);
+  transition:
+    background-color 9999s ease-in-out 0s,
+    color 9999s ease-in-out 0s,
+    -webkit-text-fill-color 9999s ease-in-out 0s;
+}
+.field input:-webkit-autofill:focus,
+.field textarea:-webkit-autofill:focus {
+  -webkit-box-shadow:
+    inset 0 0 0 1px rgba(255, 77, 21, 0.6),
+    inset 0 0 0 1000px rgba(255, 77, 21, 0.03) !important;
+}
+
+.chip-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chip {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--bg);
+  border: 0;
+  padding: 10px 16px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  transition: background 160ms, color 160ms, box-shadow 160ms;
+}
+.chip:hover { color: var(--ink); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18); }
+.chip.active {
+  color: #08091a;
+  background: var(--accent);
+  box-shadow: inset 0 0 0 1px transparent, 0 6px 20px -10px var(--accent-glow);
+  font-weight: 700;
+}
+
+.form-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  margin-top: 8px;
+}
+.form-foot .btn {
+  align-self: stretch;
+  justify-content: center;
+}
+.form-note {
+  text-align: center;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.form-error {
+  text-align: center;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #ff8a6a;
+  padding: 10px 14px;
+  background: rgba(255, 77, 21, 0.10);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.30);
+}
+.btn.btn-primary:disabled {
+  filter: grayscale(0.2) brightness(0.85);
+  cursor: wait;
+}
+
+/* Success panel after form submit */
+.contact-form-success {
+  align-items: stretch;
+}
+.success-h {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.success-lede {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 40ch;
+}
+.success-rows {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+.success-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0;
+  border-top: 1px solid var(--hairline);
+}
+.success-row:first-child { border-top: 0; padding-top: 0; }
+.success-row .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.success-row .v {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  transition: color 180ms;
+}
+a.v { display: inline-block; width: max-content; }
+.success-row a.v:hover { color: var(--accent-solid); }
+
+/* ──────────────── FAQ grid ──────────────── */
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+}
+@media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
+
+.faq-card {
+  background: var(--bg-soft);
+  padding: 28px 28px 26px;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  transition: transform 260ms cubic-bezier(.2,.7,.2,1), box-shadow 260ms;
+}
+.faq-card:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.30);
+}
+.faq-q {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.faq-a {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ──────────────── Page-hero cinematic entrance ──────────────── */
+
+.page-hero-crumb,
+.page-hero-h,
+.page-hero-sub {
+  animation: nx-reveal 1000ms cubic-bezier(.2,.7,.2,1) both;
+}
+.page-hero-crumb { animation-delay: 150ms; }
+.page-hero-h     { animation-delay: 380ms; animation-duration: 1100ms; }
+.page-hero-sub   { animation-delay: 800ms; }
+.page-hero .hero-status-pill { animation: nx-fade 900ms ease-out both; animation-delay: 1100ms; }
+.page-hero .hero-top-meta    { animation: nx-fade 900ms ease-out both; animation-delay: 1250ms; }
+
+/* ──────────────── Scroll-reveal: contact components ──────────────── */
+
+.contact-info,
+.contact-form,
+.faq-card {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+  transition:
+    opacity 800ms cubic-bezier(.2,.7,.2,1),
+    transform 800ms cubic-bezier(.2,.7,.2,1),
+    filter 800ms cubic-bezier(.2,.7,.2,1);
+}
+
+.nx-in-view .contact-info,
+.nx-in-view .contact-form,
+.nx-in-view .faq-card {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.nx-in-view .contact-info { transition-delay: 220ms; }
+.nx-in-view .contact-form { transition-delay: 360ms; }
+
+.nx-in-view .faq-grid > .faq-card:nth-child(1) { transition-delay: 240ms; }
+.nx-in-view .faq-grid > .faq-card:nth-child(2) { transition-delay: 340ms; }
+.nx-in-view .faq-grid > .faq-card:nth-child(3) { transition-delay: 440ms; }
+.nx-in-view .faq-grid > .faq-card:nth-child(4) { transition-delay: 540ms; }
+
+/* Cursor-following spotlight on FAQ cards */
+.faq-card { --mx: 50%; --my: 50%; }
+.faq-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 77, 21, 0.22),
+    rgba(255, 77, 21, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(.2,.7,.2,1);
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+.faq-card:hover::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-info, .contact-form, .faq-card,
+  .page-hero-crumb, .page-hero-h, .page-hero-sub {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (function () {
+        var t = new URLSearchParams(location.search).get("t");
+        if (!t) return;
+        var tokenize = function (el) {
+          if (!el || el.tagName !== "IMG") return;
+          var src = el.getAttribute("src");
+          if (!src || src.indexOf("?") !== -1 || /^https?:/.test(src) || /^data:/.test(src)) return;
+          el.src = src + "?t=" + t;
+        };
+        new MutationObserver(function (muts) {
+          for (var i = 0; i < muts.length; i++) {
+            var nodes = muts[i].addedNodes;
+            for (var j = 0; j < nodes.length; j++) {
+              var n = nodes[j];
+              if (n.nodeType !== 1) continue;
+              if (n.tagName === "IMG") tokenize(n);
+              if (n.querySelectorAll) n.querySelectorAll("img").forEach(tokenize);
+            }
+          }
+        }).observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+    <script type="text/babel" data-presets="react">
+
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;box-sizing:border-box;width:100%;min-width:0;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;box-sizing:border-box;min-width:0;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
+    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
+    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
+  .twk-chip:hover{transform:translateY(-1px);
+    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
+    0 2px 6px rgba(0,0,0,.15)}
+  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
+    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i:first-child{box-shadow:none}
+  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-omelette-chrome=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    const resolve = (s) => {
+      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+      return m === undefined ? s : typeof m === 'object' ? m.value : m;
+    };
+    return <TweakSelect label={label} value={value} options={options}
+                        onChange={(s) => onChange(resolve(s))} />;
+  }
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  const h = String(hex).replace('#', '');
+  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+
+const __TwkCheck = ({ light }) => (
+  <svg viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round"
+          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
+  </svg>
+);
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor({ label, value, options, onChange }) {
+  if (!options || !options.length) {
+    return (
+      <div className="twk-row twk-row-h">
+        <div className="twk-lbl"><span>{label}</span></div>
+        <input type="color" className="twk-swatch" value={value}
+               onChange={(e) => onChange(e.target.value)} />
+      </div>
+    );
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const cur = key(value);
+  return (
+    <TweakRow label={label}>
+      <div className="twk-chips" role="radiogroup">
+        {options.map((o, i) => {
+          const colors = Array.isArray(o) ? o : [o];
+          const [hero, ...rest] = colors;
+          const sup = rest.slice(0, 4);
+          const on = key(o) === cur;
+          return (
+            <button key={i} type="button" className="twk-chip" role="radio"
+                    aria-checked={on} data-on={on ? '1' : '0'}
+                    aria-label={colors.join(', ')} title={colors.join(' · ')}
+                    style={{ background: hero }}
+                    onClick={() => onChange(o)}>
+              {sup.length > 0 && (
+                <span>
+                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
+                </span>
+              )}
+              {on && <__TwkCheck light={__twkIsLight(hero)} />}
+            </button>
+          );
+        })}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+    </script>
+    <script type="text/babel" data-presets="react">
+/* Noxta v3 — Home app */
+
+const { useState, useEffect, useMemo } = React;
+
+/* ============ TWEAK DEFAULTS ============ */
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "gradient",
+  "backdropIntensity": 65
+}/*EDITMODE-END*/;
+
+/* accent → CSS variables (Obsidian Kinetic — orange family) */
+const ACCENTS = {
+  ember: {
+    grad: "linear-gradient(100deg, #ffb38a 0%, #ff8a4d 50%, #ff5c1f 100%)",
+    solid: "#ff7a3d",
+    glow: "rgba(255, 122, 61, 0.5)",
+  },
+  blaze: {
+    grad: "linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%)",
+    solid: "#ff4d15",
+    glow: "rgba(255, 77, 21, 0.5)",
+  },
+  rust: {
+    grad: "linear-gradient(100deg, #ff5c1f 0%, #d63a0d 50%, #8a1f00 100%)",
+    solid: "#d63a0d",
+    glow: "rgba(214, 58, 13, 0.5)",
+  },
+  gradient: {
+    grad: "linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%)",
+    solid: "#ff4d15",
+    glow: "rgba(255, 77, 21, 0.5)",
+  },
+};
+
+/* ============ DATA ============ */
+
+const NAV = [
+  { label: "Portfolio", href: "/portfolio" },
+];
+
+const onSpotlight = (e) => {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+};
+
+const WEB3FORMS_KEY = "65886917-fcb6-469d-bf77-91c79c91776b";
+
+const SERVICES = [
+  {
+    n: "/01",
+    title: "Websites",
+    tags: ["WordPress", "Hand-coded", "Mobile-first"],
+    desc: "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch.",
+  },
+  {
+    n: "/02",
+    title: "E-commerce",
+    tags: ["WooCommerce", "Shopify", "IDEAL / Bancontact"],
+    desc: "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built.",
+  },
+  {
+    n: "/03",
+    title: "Brand",
+    tags: ["Wordmark", "Palette", "Type system"],
+    desc: "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template.",
+  },
+  {
+    n: "/04",
+    title: "Maintenance",
+    tags: ["Retainer", "On call", "Same-week edits"],
+    desc: "I stick around after launch. Hosting, updates, backups, and the small edits you'd usually be afraid to ask for.",
+  },
+];
+
+const BELIEVE = [
+  {
+    n: "/01",
+    h: "I stay until it works.",
+    p: "Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway.",
+  },
+  {
+    n: "/02",
+    h: "Details are the work.",
+    p: "Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off.",
+  },
+  {
+    n: "/03",
+    h: "Yours to keep.",
+    p: "When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move.",
+  },
+];
+
+const PRICING_ONETIME = [
+  {
+    flag: null,
+    tier: "Tier · I",
+    amount: "€300 – 800",
+    name: "Small",
+    desc: "One thing, done well.",
+    feats: [
+      "Single landing page or minor redesign",
+      "Simple brand mark or wordmark refresh",
+      "Up to 600 words of copy I write with you",
+      "Basic SEO setup (title, meta, sitemap)",
+      "Mobile-first, hand-coded HTML / CSS",
+      "One round of revisions",
+    ],
+    ideal:
+      "A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks.",
+  },
+  {
+    flag: "Most common",
+    tier: "Tier · II",
+    amount: "€1,200 – 2,000",
+    name: "Mid",
+    desc: "A full site with a real brand.",
+    feats: [
+      "Full multi-page website (4–8 pages)",
+      "Brand identity: wordmark, palette, type",
+      "Copywriting across the site (~2,000 words)",
+      "On-page SEO, schema, sitemap",
+      "Contact form, analytics, social meta",
+      "Two rounds of revisions · 2–4 week turnaround",
+    ],
+    ideal:
+      "Small businesses that don't have a site yet, or whose current one is actively losing them work. Where most of my projects land.",
+  },
+  {
+    flag: null,
+    tier: "Tier · III",
+    amount: "€3,000 – 8,000",
+    name: "Large",
+    desc: "Real shops or custom builds.",
+    feats: [
+      "WooCommerce or Shopify e-commerce builds",
+      "Custom WordPress child theme",
+      "Product database setup & import",
+      "Payments (IDEAL, Bancontact, card) + shipping",
+      "Search, filters, custom mobile UX",
+      "Three revision rounds · 6–8 week turnaround",
+    ],
+    ideal:
+      "Shops with real inventory or custom flows that an off-the-shelf template can't handle. VOEP was a Large.",
+  },
+];
+
+const PRICING_MONTHLY = [
+  {
+    flag: null,
+    tier: "Plan · I",
+    amount: "€50 / month",
+    name: "Light",
+    desc: "Kept up to date and safe.",
+    feats: [
+      "Hosting check & uptime monitoring",
+      "Weekly automated backups",
+      "Security patches & plugin updates",
+      "1 hour of edits per month, rolled forward",
+      "Email support, 48h reply",
+    ],
+    ideal: "Finished sites that just need to stay alive and up to date.",
+  },
+  {
+    flag: "Most common",
+    tier: "Plan · II",
+    amount: "€150 / month",
+    name: "Standard",
+    desc: "Light plus active edits.",
+    feats: [
+      "Everything in Light",
+      "3 hours of edits per month",
+      "Copy tweaks & small layout changes",
+      "Monthly performance report",
+      "Same-week edits (Mon–Fri)",
+    ],
+    ideal: "Sites that change a few times a month: pricing, menu, content updates.",
+  },
+  {
+    flag: null,
+    tier: "Plan · III",
+    amount: "€300 / month",
+    name: "Active",
+    desc: "I'm basically on your team.",
+    feats: [
+      "Everything in Standard",
+      "8 hours of edits per month",
+      "Priority response (next business day)",
+      "Phone / WhatsApp support",
+      "Quarterly strategy call",
+    ],
+    ideal: "Growing shops and active marketing: new pages, campaigns, and ongoing work.",
+  },
+];
+
+/* ============ COMPONENTS ============ */
+
+function Nav() {
+  return (
+    <header className="nav">
+      <div className="container nav-inner">
+        <a href="/" className="nav-logo" aria-label="Noxta">
+          No<span className="x">x</span>ta
+        </a>
+        <nav className="nav-links">
+          {NAV.map((n) => (
+            <a key={n.label} href={n.href}>
+              {n.label}
+            </a>
+          ))}
+          <a className="nav-cta" href="#contact-form">
+            Book a call →
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="hero" id="top">
+      <div className="hero-top">
+        <span className="hero-status-pill">
+          <span className="pulse"></span>
+          <span>Available · Q3 2026 · 2 slots</span>
+        </span>
+        <span className="hero-top-meta">Hero · 01 — Noxta Studio · 2026</span>
+      </div>
+
+      <div className="hero-body">
+        <div className="hero-text">
+          <h1 className="hero-name">
+            Adrian
+            <br />
+            <span className="grad">Tajti<span className="dot">.</span></span>
+          </h1>
+          <div className="hero-role-line">
+            <span className="dash"></span>
+            <span>Freelance Web Designer, Tilburg</span>
           </div>
-          <div class="contact-row">
-            <span class="contact-row-key">Book a call</span>
-            <span class="contact-row-val">30-minute discovery · Cal.com</span>
+          <hr className="hero-rule" />
+          <p className="hero-bio">
+            I'm a freelance web designer in Tilburg. There's no agency behind
+            Noxta, just me. I do the design, write the copy, and write the
+            code. After launch I stick around to fix things and add new ones
+            as you need them. You email me, I email you back.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#contact">
+              Start a project →
+            </a>
+            <a className="btn btn-ghost" href="#work">
+              See the work
+            </a>
           </div>
-          <div class="contact-row">
-            <span class="contact-row-key">Where</span>
-            <span class="contact-row-val">Tilburg, NL · UTC+1</span>
-          </div>
-          <div class="contact-row">
-            <span class="contact-row-key">Hours</span>
-            <span class="contact-row-val">Mon–Fri · 09:00–18:00 CET</span>
-          </div>
-          <div class="contact-row" style="border-bottom: none;">
-            <span class="contact-row-key">WhatsApp</span>
-            <a href="https://wa.me/31617657327" class="contact-row-val" style="color: var(--ink);">+31 617 657 327</a>
-          </div>
+        </div>
+
+        <div className="hero-portrait">
+          <img
+            src="assets/portrait-hero.png"
+            alt="Adrian Tajti, founder of Noxta Studio"
+            width="999"
+            height="1048"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
 
-      <!-- Right: form -->
-      <div class="glass reveal reveal-delay-1" style="padding: 32px 36px; border-radius: 22px;">
+      <div className="hero-tagbar">
+        <span className="dash">—</span>
+        Freelance web designer and developer · Tilburg, Netherlands
+        <span className="dash">—</span>
+      </div>
+    </section>
+  );
+}
 
-        <!-- Form -->
-        <form id="intake-form" style="display: flex; flex-direction: column; gap: 16px;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
-            <span style="font-family: var(--mono); font-size: 10px; color: var(--cyan); letter-spacing: 0.18em;">§ INTAKE · FORM 01</span>
-          </div>
+function Intro() {
+  return (
+    <section className="section" id="about" style={{ paddingTop: 100, paddingBottom: 60 }}>
+      <div className="container">
+        <div className="section-label">
+          <span className="bar"></span>
+          <span>00 · Who I am</span>
+        </div>
+        <h2 className="section-h" style={{ maxWidth: "22ch" }}>
+          Just me.<br />
+          <span className="grad">No agency</span> in the back.
+        </h2>
+        <p className="section-sub" style={{ maxWidth: "60ch", fontSize: 19 }}>
+          I work alone on purpose. Keeping the whole project in one head means
+          nothing gets dropped between specialists who don't know your
+          business as well as you do. The trade-off is capacity: I usually
+          have <strong style={{ color: "var(--ink)", fontWeight: 600 }}>two clients at a time</strong>, which is why slots are
+          worth booking early.
+        </p>
+      </div>
+    </section>
+  );
+}
 
-          <div class="grid-2" style="gap: 12px;">
-            <div class="form-group">
-              <label class="form-label" for="name">Your name</label>
-              <input class="form-input" type="text" id="name" name="name" placeholder="Jane Doe" required />
+function Services() {
+  return (
+    <section className="section" id="services">
+      <div className="container">
+        <div className="section-label">
+          <span className="bar"></span>
+          <span>01 · What I do</span>
+        </div>
+        <h2 className="section-h">
+          Four jobs.
+          <br />
+          One head.
+        </h2>
+        <p className="section-sub">
+          I handle the design, the copy, the code, the payments, and the
+          hosting myself. So there's no handoff between people who barely know
+          each other, and if something breaks the person to call is me.
+        </p>
+        <div className="services">
+          {SERVICES.map((s, i) => {
+            const bg = String(i + 1).padStart(2, "0");
+            return (
+              <div key={s.title} className="service">
+                <span className="service-bg" aria-hidden="true">
+                  {bg.split("").map((ch, j) => <span key={j}>{ch}</span>)}
+                </span>
+                <span className="num">{s.n}</span>
+                <h3 className="title">{s.title}</h3>
+                <p className="desc">{s.desc}</p>
+                <div className="tags">
+                  {s.tags.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
+                <span className="arr">→</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VOEPMock() {
+  return (
+    <a
+      className="browser"
+      href="https://vintageoutboardparts.com"
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label="Open the VOEP live site in a new tab"
+    >
+      <div className="browser-bar">
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="url">vintageoutboardparts.com ↗</span>
+      </div>
+      <img
+        className="browser-shot"
+        src="voep-screenshot.png"
+        alt="Vintage Outboard Parts — homepage screenshot"
+        width="1812"
+        height="1624"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  );
+}
+
+function Work() {
+  return (
+    <section className="section" id="work">
+      <div className="container">
+        <div className="section-label">
+          <span className="bar"></span>
+          <span>02 · Selected work</span>
+        </div>
+        <h2 className="section-h">
+          One project, <br />
+          <span className="grad">worth showing.</span>
+        </h2>
+        <div className="work-card">
+          <div className="work-info">
+            <div className="work-tag">Case 001 · Vintage Outboard Parts</div>
+            <h3 className="work-title">VOEP</h3>
+            <p className="work-sub">
+              Alex runs a vintage outboard parts shop in Belgium. Sixty years
+              of inventory, no website. We built him a 4,200-SKU store with
+              IDEAL checkout and a product search I tuned by hand. First sale
+              came within a week.
+            </p>
+            <div className="work-meta">
+              <div className="cell">
+                <div className="k">// Built in</div>
+                <div className="v">~60 hours</div>
+              </div>
+              <div className="cell">
+                <div className="k">// First sale</div>
+                <div className="v">&lt; 7 days</div>
+              </div>
+              <div className="cell">
+                <div className="k">// Products</div>
+                <div className="v">4,200+ SKUs</div>
+              </div>
+              <div className="cell">
+                <div className="k">// Stack</div>
+                <div className="v">WP · Woo · Flat</div>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="email">Email</label>
-              <input class="form-input" type="email" id="email" name="email" placeholder="jane@company.com" required />
+            <div className="work-actions">
+              <a className="btn btn-ghost" href="#case-voep">Read the case →</a>
             </div>
           </div>
-
-          <div class="form-group">
-            <label class="form-label" for="company">Company (optional)</label>
-            <input class="form-input" type="text" id="company" name="company" placeholder="What do you do?" />
+          <div className="work-vis">
+            <VOEPMock />
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-          <div class="form-group">
-            <div class="form-label" style="margin-bottom: 8px;">Project kind</div>
-            <div class="pills">
-              <span class="pill active" data-name="kind" data-value="website">Website</span>
-              <span class="pill" data-name="kind" data-value="brand">Brand identity</span>
-              <span class="pill" data-name="kind" data-value="shop">E-commerce</span>
-              <span class="pill" data-name="kind" data-value="retainer">Maintenance</span>
-              <span class="pill" data-name="kind" data-value="other">Something else</span>
-            </div>
-            <input type="hidden" name="kind" id="kind-val" value="website" />
-          </div>
-
-          <div class="form-group">
-            <div class="form-label" style="margin-bottom: 8px;">Budget</div>
-            <div class="pills">
-              <span class="pill" data-name="budget" data-value="small">€300–800</span>
-              <span class="pill active" data-name="budget" data-value="mid">€1,200–2,000</span>
-              <span class="pill" data-name="budget" data-value="large">€3,000–8,000</span>
-              <span class="pill" data-name="budget" data-value="unsure">Not sure yet</span>
-            </div>
-            <input type="hidden" name="budget" id="budget-val" value="mid" />
-          </div>
-
-          <div class="form-group">
-            <div class="form-label" style="margin-bottom: 8px;">Timeline</div>
-            <div class="pills">
-              <span class="pill active" data-name="timeline" data-value="soon">ASAP</span>
-              <span class="pill" data-name="timeline" data-value="1mo">&lt; 1 month</span>
-              <span class="pill" data-name="timeline" data-value="3mo">1–3 months</span>
-              <span class="pill" data-name="timeline" data-value="flex">Flexible</span>
-            </div>
-            <input type="hidden" name="timeline" id="timeline-val" value="soon" />
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="message">Tell me about it</label>
-            <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="A few sentences about your business and what you need. Links welcome."></textarea>
-          </div>
-
-          <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 15px;">Send it →</button>
-
-          <div id="form-error" style="display:none; font-family: var(--mono); font-size: 11px; color: #ff8cc5; text-align: center; letter-spacing: 0.10em;">Something went wrong — please email me directly at adrian@noxta.studio</div>
-
-          <div style="font-family: var(--mono); font-size: 9px; color: var(--mute); letter-spacing: 0.14em; text-align: center;">NO TRACKING · NO MAILING LIST · NO AUTO-RESPONDER</div>
-        </form>
-
+function Marquee({ items }) {
+  const loop = [...items, ...items];
+  return (
+    <div className="marquee" aria-hidden="true">
+      <div className="marquee-track">
+        {loop.map((item, i) => (
+          <span className="marquee-item" key={i}>{item}</span>
+        ))}
       </div>
     </div>
-  </div>
-</section>
+  );
+}
 
-<!-- ══ FAQ ══ -->
-<section class="section" style="padding-bottom: 100px;">
-  <div class="section-inner reveal">
-    <div class="grid-2" style="gap: 14px;">
-      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
-        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">What happens after I send this?</div>
-        <p class="body-sm" style="margin-top: 8px;">You'll get a personal reply (not a templated one) within 24 hours. If it looks like a fit, I propose a 30-minute discovery call. If it doesn't, I'll tell you and point you somewhere useful.</p>
-      </div>
-      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
-        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">Do I have to know my budget?</div>
-        <p class="body-sm" style="margin-top: 8px;">No, but a ballpark helps me suggest the right tier. "Not sure" is a fine answer — we figure it out on the call.</p>
-      </div>
-      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
-        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">Can we meet in person?</div>
-        <p class="body-sm" style="margin-top: 8px;">Yes, if you're near Tilburg, Eindhoven or Breda. Otherwise we work over video and shared docs — fine for 95% of projects.</p>
-      </div>
-      <div class="glass" style="padding: 22px 26px; border-radius: 18px;">
-        <div style="font-family: var(--display); font-size: 17px; color: var(--ink); font-weight: 500; letter-spacing: -0.02em;">Do you sign NDAs?</div>
-        <p class="body-sm" style="margin-top: 8px;">Yes, mutual NDAs before discovery if your project needs it. Just mention it in the message.</p>
-      </div>
-    </div>
-  </div>
-</section>
+const MARQUEE_ITEMS = [
+  "Adrian Tajti",
+  "Noxta Studio",
+  "Freelance web design",
+  "Tilburg, Netherlands",
+  "Available Q3 2026",
+  "Two slots left",
+  "Reply within 24h",
+  "Est. 2026",
+  "Hand-coded",
+];
 
-<footer class="footer">
-  <div class="footer-grid">
-    <div><div class="footer-logo-wrap"><span class="footer-logo-wo">No</span><span class="footer-logo-wx">x</span><span class="footer-logo-wo">ta</span></div><div class="footer-sub">STUDIO · TILBURG, NL · EST. 2026</div><p class="footer-desc">A one-person studio building considered websites for small companies that want a partner — not a vendor.</p></div>
-    <div class="footer-col"><span class="footer-col-label">Site</span><a href="work.html">Work</a><a href="services.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-    <div class="footer-col"><span class="footer-col-label">Contact</span><a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a><a href="contact.html">Book a call</a><a href="about.html">Tilburg, NL</a></div>
-    <div class="footer-col"><span class="footer-col-label">Elsewhere</span><a href="#">Read.cv</a><a href="#">LinkedIn</a></div>
-  </div>
-  <div class="footer-bottom"><span>© <span data-year></span> ADRIAN TAJTI · NOXTA STUDIO</span><span>BUILT BY HAND · NO CMS · NO COOKIES · NO TRACKING</span></div>
-</footer>
+function Believe() {
+  return (
+    <section className="section" id="believe">
+      <div className="container">
+        <div className="section-label">
+          <span className="bar"></span>
+          <span>03 · How I work</span>
+        </div>
+        <h2 className="section-h">
+          How this <br />
+          usually goes.
+        </h2>
+        <div className="believe">
+          {BELIEVE.map((b, i) => {
+            const bg = String(i + 1).padStart(2, "0");
+            return (
+              <div className="believe-cell" key={b.h}>
+                <span className="believe-bg" aria-hidden="true">
+                  {bg.split("").map((ch, j) => <span key={j}>{ch}</span>)}
+                </span>
+                <div className="n">{b.n}</div>
+                <h3>{b.h}</h3>
+                <p>{b.p}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-<!-- ══ MOBILE NAV ══ -->
-<nav class="mobile-nav">
-  <a href="index.html"><span class="mnav-dot"></span>Home</a>
-  <a href="work.html"><span class="mnav-dot"></span>Work</a>
-  <a href="services.html"><span class="mnav-dot"></span>Pricing</a>
-  <a href="about.html"><span class="mnav-dot"></span>About</a>
-  <a href="contact.html" class="active"><span class="mnav-dot"></span>Contact</a>
-</nav>
-<script src="aurora.js"></script>
-<script>
-  /* pill → hidden input sync */
-  document.querySelectorAll('.pill[data-name]').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const name = pill.dataset.name;
-      document.querySelectorAll(`.pill[data-name="${name}"]`).forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      const hidden = document.getElementById(`${name}-val`);
-      if (hidden) hidden.value = pill.dataset.value;
+function PriceCard({ tier }) {
+  const ref = React.useRef(null);
+  const [style, setStyle] = React.useState({});
+  const reducedMotion = React.useMemo(
+    () => typeof window !== "undefined" &&
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    []
+  );
+  const baseLift = tier.flag ? -18 : -10;
+
+  const onMove = (e) => {
+    if (reducedMotion || !ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    const rx = ((y - r.height / 2) / (r.height / 2)) * -8;
+    const ry = ((x - r.width / 2) / (r.width / 2)) * 8;
+    setStyle({
+      transform: `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${baseLift}px) scale3d(1.04, 1.04, 1.04)`,
+      transition: "transform 100ms ease-out",
     });
+  };
+
+  const onLeave = () => {
+    setStyle({
+      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)",
+      transition: "transform 420ms cubic-bezier(.2,.7,.2,1)",
+    });
+  };
+
+  return (
+    <article
+      ref={ref}
+      className={"price" + (tier.flag ? " featured" : "")}
+      style={style}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {tier.flag && <div className="price-flag">{tier.flag}</div>}
+      <div className="price-head">
+        <span>{tier.tier}</span>
+        <span className="amt">{tier.amount}</span>
+      </div>
+      <h3 className="price-name">{tier.name}</h3>
+      <p className="price-desc">{tier.desc}</p>
+      <div className="price-feat-label">// What's included</div>
+      <ul className="price-list">
+        {tier.feats.map((f) => <li key={f}>{f}</li>)}
+      </ul>
+      <div className="price-foot">
+        <span className="ideal">// Ideal for</span>
+        {tier.ideal}
+      </div>
+    </article>
+  );
+}
+
+function Pricing() {
+  const [mode, setMode] = useState("onetime"); // onetime | monthly
+  const tiers = mode === "onetime" ? PRICING_ONETIME : PRICING_MONTHLY;
+  return (
+    <section className="section" id="pricing">
+      <div className="container">
+        <div className="pricing-head">
+          <div>
+            <div className="section-label">
+              <span className="bar"></span>
+              <span>04 · Pricing</span>
+            </div>
+            <h2 className="section-h">
+              What it <br />
+              costs.
+            </h2>
+            <p className="section-sub">
+              Honest ranges below. I quote you a fixed number after a 30-minute
+              call, and that number doesn't move unless the scope does.
+            </p>
+          </div>
+          <div className="pricing-toggle" role="tablist">
+            <button
+              className={mode === "onetime" ? "active" : ""}
+              onClick={() => setMode("onetime")}
+            >
+              One-time project
+            </button>
+            <button
+              className={mode === "monthly" ? "active" : ""}
+              onClick={() => setMode("monthly")}
+            >
+              Monthly retainer
+            </button>
+          </div>
+        </div>
+
+        <div className="pricing-grid" key={mode}>
+          {tiers.map((t) => <PriceCard key={t.name} tier={t} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTA() {
+  return (
+    <section id="contact">
+      <div className="cta">
+        <div className="cta-inner">
+            <div className="cta-top">
+              <div className="mark">
+                05 · Get in touch<br />
+                <span className="sub">Two slots open · Q3 2026</span>
+              </div>
+              <div></div>
+              <div className="mark tr">
+                Usual reply<br />
+                <span className="sub">Within 24 hours</span>
+              </div>
+            </div>
+
+            <div className="cta-stage">
+              <h2 className="cta-h">
+                Let&apos;s <span className="grad">talk.</span>
+              </h2>
+              <div className="cta-wordmark" aria-hidden="true">
+                <span className="glyph">NOXTA</span>
+              </div>
+              <div className="cta-photo-wrap">
+                <img
+                  className="cta-photo"
+                  src="assets/portrait-cta.png"
+                  alt=""
+                  width="1099"
+                  height="952"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <div className="cta-bottom">
+              <p className="lede">
+                Send me what you're working on and I'll come back within a day.
+                If I can help, I'll quote you. If I can't, I'll tell you, and
+                usually I know someone who can.
+              </p>
+              <div className="ctas">
+                <a className="btn btn-primary" href="mailto:adrian@noxta.studio">
+                  adrian@noxta.studio →
+                </a>
+                <a className="btn btn-ghost" href="#book">
+                  Book a 30-min call
+                </a>
+              </div>
+              <div className="note">
+                Or WhatsApp{" "}
+                <a
+                  href="https://wa.me/31617657327"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="note-link"
+                >
+                  <strong>+31 6 17 657 327</strong>
+                </a>{" "}
+                · I read every message
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+  );
+}
+
+function Wordmark() {
+  return (
+    <section className="wordmark" aria-hidden="true">
+      <div className="container">
+        <div className="glyph">NOXTA</div>
+      </div>
+    </section>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <path
+        fill="currentColor"
+        d="M17.5 14.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.7-1.5-3.8-3.4-.3-.5.3-.5.8-1.5.1-.2.1-.3 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.8.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"
+      />
+      <path
+        fill="currentColor"
+        d="M20.5 3.5A11 11 0 0 0 2.7 16.8L1 22l5.3-1.7a11 11 0 0 0 5.3 1.3h.1a11 11 0 0 0 7.8-18.6Zm-7.8 16.7a9 9 0 0 1-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3a9.2 9.2 0 1 1 7.4 4Z"
+      />
+    </svg>
+  );
+}
+function LinkedInIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z" />
+    </svg>
+  );
+}
+
+function SpecBar() {
+  return (
+    <div className="spec-bar" aria-label="Studio at a glance">
+      <div className="cell">
+        <span className="k">// Studio est.</span>
+        <span className="v">2026</span>
+      </div>
+      <div className="cell">
+        <span className="k">// Reply window</span>
+        <span className="v"><span className="accent">&lt; 24h</span></span>
+      </div>
+      <div className="cell">
+        <span className="k">// Location</span>
+        <span className="v">Tilburg, NL</span>
+      </div>
+      <div className="cell">
+        <span className="k">// Build</span>
+        <span className="v">Hand-coded</span>
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer" id="end">
+      <div className="container">
+        <div className="foot-grid">
+          <div className="foot-col foot-brand">
+            <div className="lg">No<span className="x">x</span>ta</div>
+            <div className="label" style={{ marginBottom: 14 }}>Studio · Tilburg, NL · Est. 2026</div>
+            <p>
+              Adrian Tajti. A one-person studio in Tilburg. I work with small
+              businesses, mostly Dutch and Belgian, who want a real person to
+              call when something on their site needs changing.
+            </p>
+          </div>
+          <div className="foot-col">
+            <h5>// Site</h5>
+            <a href="/">Home</a>
+            <a href="/portfolio">Portfolio</a>
+            <a href="/contact">Contact</a>
+          </div>
+          <div className="foot-col">
+            <h5>// Contact</h5>
+            <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
+            <a href="/contact">Book a call</a>
+            <p>Tilburg, NL · UTC+1</p>
+          </div>
+          <div className="foot-col">
+            <h5>// Elsewhere</h5>
+            <a href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <WhatsAppIcon /> WhatsApp
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <LinkedInIcon /> LinkedIn
+            </a>
+          </div>
+        </div>
+        <div className="foot-base">
+          <span>© 2026 Adrian Tajti · Noxta Studio</span>
+          <div className="dots">
+            <span>Hand-coded</span>
+            <span>Plain HTML</span>
+            <span>No analytics on this page</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ============ TWEAKS PANEL ============ */
+
+function NoxtaTweaks({ tweaks, setTweak }) {
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Accent">
+        <TweakColor
+          label="Accent color"
+          value={tweaks.accent}
+          onChange={(v) => setTweak("accent", v)}
+          options={[
+            { label: "Gradient", value: "gradient" },
+            { label: "Ember", value: "ember" },
+            { label: "Blaze", value: "blaze" },
+            { label: "Rust", value: "rust" },
+          ].map((o) => ({ value: o.value, label: o.label, color: ACCENTS[o.value].grad }))}
+        />
+      </TweakSection>
+      <TweakSection label="Backdrop">
+        <TweakSlider
+          label="Glow intensity"
+          value={tweaks.backdropIntensity}
+          onChange={(v) => setTweak("backdropIntensity", v)}
+          min={0}
+          max={100}
+          step={5}
+        />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+/* Custom TweakColor that accepts {value,label,color} with color being any CSS background */
+function TweakColor({ label, value, onChange, options }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <div style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".15em", textTransform: "uppercase", color: "var(--mute)" }}>
+        {label}
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
+        {options.map((o) => (
+          <button
+            key={o.value}
+            onClick={() => onChange(o.value)}
+            style={{
+              padding: 8,
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              border: 0,
+              background: value === o.value ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.02)",
+              boxShadow: value === o.value ? "inset 0 0 0 1px rgba(255,255,255,.25)" : "inset 0 0 0 1px rgba(255,255,255,.06)",
+              cursor: "pointer",
+              color: "var(--ink)",
+              fontFamily: "var(--f-mono)",
+              fontSize: 11,
+              letterSpacing: ".05em",
+              textAlign: "left",
+              clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)",
+            }}
+          >
+            <span style={{ width: 22, height: 22, background: o.color, flexShrink: 0, clipPath: "polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)" }} />
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ============ CONTACT PAGE COMPONENTS ============ */
+
+const CONTACT_FACTS = [
+  { k: "Email",      v: "adrian@noxta.studio",        href: "mailto:adrian@noxta.studio" },
+  { k: "Discovery",  v: "30-minute call · Cal.com",   href: "#contact-form" },
+  { k: "Where",      v: "Tilburg, NL · UTC+1" },
+  { k: "Hours",      v: "Mon–Fri · 09:00 – 18:00 CET" },
+  { k: "WhatsApp",   v: "+31 6 17 657 327",           href: "https://wa.me/31617657327" },
+];
+
+const FAQ_ITEMS = [
+  {
+    q: "What happens after I send this?",
+    a: "You'll get a personal reply (not a templated one) within 24 hours. If it looks like a fit, I propose a 30-minute discovery call. If it doesn't, I'll tell you and point you somewhere useful.",
+  },
+  {
+    q: "Do I have to know my budget?",
+    a: "No, but it helps. Even a rough number lets me suggest the right tier. \"Not sure\" is a fine answer — we'll figure it out on the call.",
+  },
+  {
+    q: "Can we meet in person?",
+    a: "Yes, if you're near Tilburg, Eindhoven or Breda. Otherwise we work over video and shared docs — fine for 95% of projects.",
+  },
+  {
+    q: "Do you sign NDAs?",
+    a: "Yes, mutual NDAs before discovery if your project needs it. Just mention it in the message.",
+  },
+];
+
+const PROJECT_TYPES = ["Website", "Brand identity", "E-commerce", "Maintenance", "Something else"];
+const BUDGETS = ["€300–800", "€1,200–2,000", "€3,000–8,000", "Not sure yet"];
+const TIMELINES = ["ASAP", "< 1 month", "1–3 months", "Flexible"];
+
+function ContactHero() {
+  return (
+    <section className="hero page-hero" id="top">
+      <div className="hero-top">
+        <span className="hero-status-pill">
+          <span className="pulse"></span>
+          <span>Available · Q3 2026 · 2 slots</span>
+        </span>
+        <span className="hero-top-meta">Contact · Form 01 — Noxta Studio · 2026</span>
+      </div>
+
+      <div className="page-hero-inner">
+        <div className="page-hero-crumb">
+          <a href="/">Home</a> <span>/</span> <span className="cur">Contact</span>
+        </div>
+        <h1 className="page-hero-h">
+          Let's <span className="grad">talk.</span>
+        </h1>
+        <p className="page-hero-sub">
+          Tell me about your project — a paragraph is fine, more if you have it.
+          I read every message and reply within 24 hours, usually faster.
+        </p>
+      </div>
+
+      <a className="scroll-cue" href="#contact" aria-label="Scroll to form">
+        <span>Scroll</span>
+        <span className="scroll-arrow" aria-hidden="true"></span>
+      </a>
+    </section>
+  );
+}
+
+function ContactInfo() {
+  return (
+    <aside className="contact-info" onMouseMove={onSpotlight}>
+      <div className="section-label" style={{ marginBottom: 28 }}>
+        <span className="bar"></span>
+        <span>Direct · No form needed</span>
+      </div>
+      {CONTACT_FACTS.map((f) => (
+        <div className="contact-fact" key={f.k}>
+          <span className="k">// {f.k}</span>
+          {f.href ? (
+            <a className="v" href={f.href} target={f.href.startsWith("http") ? "_blank" : undefined} rel={f.href.startsWith("http") ? "noreferrer noopener" : undefined}>
+              {f.v}
+            </a>
+          ) : (
+            <span className="v">{f.v}</span>
+          )}
+        </div>
+      ))}
+    </aside>
+  );
+}
+
+function ContactForm() {
+  const [sending, setSending] = React.useState(false);
+  const [sent, setSent] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const [data, setData] = React.useState({
+    name: "", email: "", company: "", type: "Website", budget: "€1,200–2,000", timeline: "1–3 months", message: "",
   });
+  const set = (k) => (e) => setData((d) => ({ ...d, [k]: e.target.value }));
+  const setVal = (k, v) => () => setData((d) => ({ ...d, [k]: v }));
 
-  /* Form submit → Web3Forms → thankyou.html */
-  const form = document.getElementById('intake-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const errorMsg = document.getElementById('form-error');
-
-  form.addEventListener('submit', async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    submitBtn.textContent = 'Sending…';
-    submitBtn.disabled = true;
-    errorMsg.style.display = 'none';
-
-    const data = Object.fromEntries(new FormData(form));
-    data.access_key = '65886917-fcb6-469d-bf77-91c79c91776b';
-    data.subject = 'New project inquiry — Noxta Studio';
-
+    if (sending) return;
+    setSending(true);
+    setError(null);
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Project enquiry — ${data.name || "new contact"}`,
+          from_name: data.name || "Noxta contact form",
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          project_type: data.type,
+          budget: data.budget,
+          timeline: data.timeline,
+          message: data.message,
+          botcheck: false,
+        }),
       });
-
       const json = await res.json();
-
       if (json.success) {
-        window.location.href = 'thankyou.html';
+        setSent(true);
       } else {
-        throw new Error('Failed');
+        setError(json.message || "Submission failed — please try again or email me directly.");
       }
     } catch (err) {
-      submitBtn.textContent = 'Send it →';
-      submitBtn.disabled = false;
-      errorMsg.style.display = 'block';
+      setError("Network error — please try again or email me directly.");
+    } finally {
+      setSending(false);
     }
-  });
-</script>
-</body>
+  };
+
+  if (sent) {
+    const firstName = (data.name || "").trim().split(/\s+/)[0] || "friend";
+    return (
+      <div className="contact-form contact-form-success" id="contact-form" onMouseMove={onSpotlight}>
+        <div className="section-label" style={{ marginBottom: 24 }}>
+          <span className="bar"></span>
+          <span>Sent · Form 01</span>
+        </div>
+        <h3 className="success-h">Got it, {firstName}.</h3>
+        <p className="success-lede">
+          Your message is in. I read every one personally.
+        </p>
+
+        <div className="success-rows">
+          <div className="success-row">
+            <span className="k">// Reply from</span>
+            <a className="v" href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
+          </div>
+          <div className="success-row">
+            <span className="k">// Usual time</span>
+            <span className="v">Within 24 hours</span>
+          </div>
+          <div className="success-row">
+            <span className="k">// Urgent · WhatsApp</span>
+            <a className="v" href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener">+31 6 17 657 327</a>
+          </div>
+        </div>
+
+        <div className="form-foot">
+          <button
+            type="button"
+            className="btn btn-ghost"
+            onClick={() => {
+              setSent(false);
+              setData({ name: "", email: "", company: "", type: "Website", budget: "€1,200–2,000", timeline: "1–3 months", message: "" });
+            }}
+          >
+            Send another →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <form className="contact-form" id="contact-form" onSubmit={submit} onMouseMove={onSpotlight}>
+      <div className="section-label" style={{ marginBottom: 28 }}>
+        <span className="bar"></span>
+        <span>Detailed · Form 01</span>
+      </div>
+
+      <div className="form-row two">
+        <label className="field">
+          <span className="field-k">// Your name</span>
+          <input type="text" required placeholder="Jane Doe" value={data.name} onChange={set("name")} />
+        </label>
+        <label className="field">
+          <span className="field-k">// Email</span>
+          <input type="email" required placeholder="jane@company.com" value={data.email} onChange={set("email")} />
+        </label>
+      </div>
+
+      <label className="field">
+        <span className="field-k">// Company <span className="opt">(optional)</span></span>
+        <input type="text" placeholder="Company name" value={data.company} onChange={set("company")} />
+      </label>
+
+      <div className="field">
+        <span className="field-k">// Project type</span>
+        <div className="chip-group">
+          {PROJECT_TYPES.map((t) => (
+            <button type="button" key={t} className={"chip" + (data.type === t ? " active" : "")} onClick={setVal("type", t)}>{t}</button>
+          ))}
+        </div>
+      </div>
+
+      <div className="field">
+        <span className="field-k">// Budget</span>
+        <div className="chip-group">
+          {BUDGETS.map((b) => (
+            <button type="button" key={b} className={"chip" + (data.budget === b ? " active" : "")} onClick={setVal("budget", b)}>{b}</button>
+          ))}
+        </div>
+      </div>
+
+      <div className="field">
+        <span className="field-k">// Timeline</span>
+        <div className="chip-group">
+          {TIMELINES.map((t) => (
+            <button type="button" key={t} className={"chip" + (data.timeline === t ? " active" : "")} onClick={setVal("timeline", t)}>{t}</button>
+          ))}
+        </div>
+      </div>
+
+      <label className="field">
+        <span className="field-k">// Tell me more</span>
+        <textarea rows="5" required placeholder="A few sentences about your business and what you need. Links welcome." value={data.message} onChange={set("message")} />
+      </label>
+
+      {/* honeypot — bots fill this, humans don't see it */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        tabIndex="-1"
+        autoComplete="off"
+        style={{ position: "absolute", left: "-9999px", opacity: 0 }}
+        aria-hidden="true"
+      />
+
+      <div className="form-foot">
+        <button type="submit" className="btn btn-primary" disabled={sending}>
+          {sending ? "Sending…" : "Send it →"}
+        </button>
+        {error && <span className="form-error">{error}</span>}
+        <span className="form-note">No tracking · No mailing list · I reply personally</span>
+      </div>
+    </form>
+  );
+}
+
+function ContactGrid() {
+  return (
+    <section className="section" id="contact">
+      <div className="container">
+        <div className="contact-grid">
+          <ContactInfo />
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  return (
+    <section className="section" id="faq">
+      <div className="container">
+        <div className="section-label">
+          <span className="bar"></span>
+          <span>02 · Common questions</span>
+        </div>
+        <h2 className="section-h">
+          Things people <span className="grad">usually ask.</span>
+        </h2>
+        <div className="faq-grid">
+          {FAQ_ITEMS.map((item) => (
+            <div className="faq-card" key={item.q} onMouseMove={onSpotlight}>
+              <h3 className="faq-q">{item.q}</h3>
+              <p className="faq-a">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ ROOT ============ */
+
+function App() {
+  const [tweaks, _setTweaks] = useTweaks(TWEAK_DEFAULTS);
+  const setTweak = (k, v) => _setTweaks({ [k]: v });
+
+  // apply accent to CSS vars
+  useEffect(() => {
+    const a = ACCENTS[tweaks.accent] || ACCENTS.gradient;
+    const root = document.documentElement;
+    root.style.setProperty("--accent", a.grad);
+    root.style.setProperty("--accent-solid", a.solid);
+    root.style.setProperty("--accent-glow", a.glow);
+  }, [tweaks.accent]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const v = (tweaks.backdropIntensity ?? 65) / 100;
+    root.style.setProperty("--bg-glow-strength", String(v));
+    // tweak the hero glow strength by overriding opacity on the ::before pseudo via custom var
+    document
+      .querySelectorAll(".portrait-glow")
+      .forEach((el) => (el.style.opacity = String(0.15 + v * 0.5)));
+  }, [tweaks.backdropIntensity]);
+
+  // Scroll position restoration — only on reload, per page
+  useEffect(() => {
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    const key = "nx-scroll:" + window.location.pathname;
+    const navType = (performance.getEntriesByType("navigation")[0] || {}).type;
+    const isReload = navType === "reload";
+
+    if (isReload) {
+      const saved = parseInt(sessionStorage.getItem(key) || "0", 10);
+      if (saved > 0) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: saved, behavior: "instant" });
+          });
+        });
+      }
+    } else {
+      sessionStorage.removeItem(key);
+      window.scrollTo(0, 0);
+    }
+
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        sessionStorage.setItem(key, String(window.scrollY));
+        raf = null;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-triggered animations for sections below the hero
+  useEffect(() => {
+    const sections = document.querySelectorAll(".section");
+    if (!sections.length) return;
+    const reduce = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      sections.forEach((s) => s.classList.add("nx-in-view"));
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("nx-in-view");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <Nav />
+      <main>
+        <ContactHero />
+        <ContactGrid />
+        <Marquee items={MARQUEE_ITEMS} />
+        <FAQ />
+      </main>
+      <SpecBar />
+      <Footer />
+      <NoxtaTweaks tweaks={tweaks} setTweak={setTweak} />
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+    </script>
+  </body>
 </html>

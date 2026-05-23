@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Noxta Studio · Business card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Saira:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      /* ── Print sizing: 91×61mm (85×55mm trim + 3mm bleed each side) ── */
+      @page {
+        size: 91mm 61mm;
+        margin: 0;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --ink: #f5f6f7;
+        --ink-soft: #cfcccb;
+        --mute: #8a8786;
+        --orange-light: #ff7a3d;
+        --orange: #ff4d15;
+        --orange-deep: #d63a0d;
+        --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        background: #0a0a0a;
+        color: var(--ink);
+        font-family: "Saira", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .card {
+        width: 91mm;
+        height: 61mm;
+        position: relative;
+        overflow: hidden;
+        background: var(--bg);
+        page-break-after: always;
+      }
+      .card:last-child { page-break-after: auto; }
+
+      /* Ambient orange glows */
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 60% 60% at 92% 18%, rgba(255, 122, 61, 0.22), transparent 60%),
+          radial-gradient(ellipse 55% 65% at 8% 92%, rgba(214, 58, 13, 0.18), transparent 60%);
+        z-index: 0;
+      }
+
+      /* ────────── FRONT ────────── */
+
+      .front-info {
+        position: relative;
+        z-index: 2;
+        padding: 8mm 50mm 8mm 8mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .logo {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: 6mm;
+        letter-spacing: -0.01em;
+        line-height: 1;
+        display: inline-flex;
+        align-items: baseline;
+      }
+      .logo .x {
+        color: var(--orange);
+      }
+      .logo-rule {
+        width: 12mm;
+        height: 0.4mm;
+        background: var(--accent);
+        margin-top: 2mm;
+      }
+
+      .name-block { margin-top: 1mm; }
+      .name {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 800;
+        font-size: 4.2mm;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        margin-bottom: 1mm;
+        margin-top: 4mm;
+        white-space: nowrap;
+      }
+      .role {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.7mm;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8mm;
+      }
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        font-family: "Saira", sans-serif;
+        font-weight: 500;
+        font-size: 2.3mm;
+        color: var(--ink);
+      }
+      .contact-row svg {
+        width: 3.2mm;
+        height: 3.2mm;
+        stroke: var(--orange);
+        stroke-width: 1.6;
+        fill: none;
+        flex-shrink: 0;
+      }
+
+      .footer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.5mm;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mute);
+        white-space: nowrap;
+      }
+
+      /* Portrait — transparent PNG, anchored bottom-right, hair top aligns with logo line */
+      .front-portrait {
+        position: absolute;
+        right: -4mm;
+        bottom: 0;
+        width: 52mm;
+        height: 59mm;
+        z-index: 1;
+        pointer-events: none;
+        filter: drop-shadow(0 4mm 8mm rgba(0, 0, 0, 0.6));
+      }
+      .front-portrait img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: 100% bottom;
+      }
+
+      /* Corner registration marks: red + signs (front + back) */
+      .corner {
+        position: absolute;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 2mm;
+        color: var(--orange);
+        line-height: 1;
+        z-index: 3;
+      }
+      .corner.tl { top: 3mm; left: 3mm; }
+      .corner.tr { top: 3mm; right: 3mm; }
+      .corner.bl { bottom: 3mm; left: 3mm; }
+      .corner.br { bottom: 3mm; right: 3mm; }
+
+      /* ────────── BACK ────────── */
+
+      .back {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 6mm 6mm 8mm;
+      }
+
+      .back-logo {
+        position: absolute;
+        top: 6mm;
+        left: 8mm;
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: 5mm;
+        letter-spacing: -0.01em;
+        line-height: 1;
+        display: inline-flex;
+        align-items: baseline;
+        z-index: 2;
+      }
+      .back-logo .x {
+        color: var(--orange);
+      }
+
+      /* Giant NOXTA wordmark behind the QR */
+      .back-wordmark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: 26mm;
+        line-height: 0.82;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        background: var(--accent);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        opacity: 0.18;
+        white-space: nowrap;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .qr-frame {
+        position: relative;
+        z-index: 2;
+        padding: 3mm;
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow:
+          inset 0 0 0 0.25mm rgba(255, 255, 255, 0.16),
+          0 4mm 12mm rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        clip-path: polygon(1.5mm 0, 100% 0, 100% calc(100% - 1.5mm), calc(100% - 1.5mm) 100%, 0 100%, 0 1.5mm);
+        margin-top: auto;
+      }
+      .qr-frame img {
+        display: block;
+        width: 26mm;
+        height: 26mm;
+      }
+
+      .back-url {
+        margin-top: 3mm;
+        font-family: "Orbitron", sans-serif;
+        font-weight: 700;
+        font-size: 2.6mm;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        position: relative;
+        z-index: 2;
+      }
+      .back-url .accent {
+        color: var(--orange);
+      }
+
+      .back-tag {
+        margin-top: 1.6mm;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.6mm;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--mute);
+        z-index: 2;
+        position: relative;
+      }
+
+      /* ── On-screen preview only: pair the two cards side by side ── */
+      @media screen {
+        body {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 14mm;
+          padding: 16mm 8mm;
+          flex-wrap: wrap;
+          background: #08090f;
+        }
+        .card {
+          box-shadow:
+            0 1mm 0 rgba(255, 255, 255, 0.04) inset,
+            0 12mm 32mm rgba(0, 0, 0, 0.55);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── FRONT ── -->
+    <section class="card front">
+      <span class="corner tl">+</span>
+      <span class="corner tr">+</span>
+      <span class="corner bl">+</span>
+      <span class="corner br">+</span>
+
+      <div class="front-info">
+        <div>
+          <div class="logo">No<span class="x">x</span>ta</div>
+          <div class="logo-rule"></div>
+          <div class="name-block">
+            <div class="name">Adrian Tajti</div>
+            <div class="role">Freelance web designer</div>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="1.5" />
+              <path d="m3.5 6.5 8.5 6 8.5-6" />
+            </svg>
+            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29396809b939cb29c9d8a8693dc818687969b9d">[email&#160;protected]</a>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+            </svg>
+            +31 6 17 657 327
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3a13 13 0 0 1 0 18" />
+              <path d="M12 3a13 13 0 0 0 0 18" />
+            </svg>
+            noxta.studio
+          </div>
+        </div>
+
+        <div class="footer">Web design · Tilburg, NL · Est. 2026</div>
+      </div>
+
+      <div class="front-portrait">
+        <img src="assets/portrait-card.png" alt="Adrian Tajti" />
+      </div>
+    </section>
+
+    <!-- ── BACK ── -->
+    <section class="card back">
+      <span class="corner tl">+</span>
+      <span class="corner tr">+</span>
+      <span class="corner bl">+</span>
+      <span class="corner br">+</span>
+
+      <div class="back-logo">No<span class="x">x</span>ta</div>
+
+      <div class="back-wordmark" aria-hidden="true">NOXTA</div>
+
+      <div class="qr-frame">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=0&data=https%3A%2F%2Fnoxta.studio%2Fcard" alt="QR code → noxta.studio/card" />
+      </div>
+
+      <div class="back-url">noxta<span class="accent">.</span>studio/card</div>
+
+      <div class="back-tag">Built by hand · Kept by hand</div>
+    </section>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+      // Wait for fonts + QR image, then auto-open the print dialog.
+      (async function () {
+        try {
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+          const imgs = Array.from(document.images);
+          await Promise.all(
+            imgs.map((img) =>
+              img.complete
+                ? Promise.resolve()
+                : new Promise((res) => {
+                    img.addEventListener("load", res, { once: true });
+                    img.addEventListener("error", res, { once: true });
+                  })
+            )
+          );
+          await new Promise((r) => setTimeout(r, 500));
+          window.print();
+        } catch (e) {
+          setTimeout(() => window.print(), 1000);
+        }
+      })();
+    </script>
+  </body>
+</html>

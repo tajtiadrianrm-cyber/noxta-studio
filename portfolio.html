@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Noxta Studio · Adrian Tajti, freelance web designer in Tilburg</title>
-    <meta name="description" content="Freelance web designer in Tilburg. One person, full stack — design, copy, code, payments, and hosting handled in one head." />
-    <link rel="canonical" href="https://noxta.studio/" />
+    <title>Portfolio · Noxta Studio · Adrian Tajti</title>
+    <meta name="description" content="One live build today. I'd rather show one thing in detail than ten things in thumbnail. New cases land here as they ship." />
+    <link rel="canonical" href="https://noxta.studio/portfolio" />
 
     <!-- Favicons / app icons -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -17,17 +17,17 @@
     <meta name="theme-color" content="#ff4d15" />
 
     <!-- Open Graph / social previews -->
-    <meta property="og:title" content="Noxta Studio · Built by hand, kept by hand." />
-    <meta property="og:description" content="Freelance web designer in Tilburg. One person, full stack — design, copy, code, payments, and hosting handled in one head." />
+    <meta property="og:title" content="Portfolio · Noxta Studio" />
+    <meta property="og:description" content="One live build today. I'd rather show one thing in detail than ten things in thumbnail." />
     <meta property="og:image" content="https://noxta.studio/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://noxta.studio/" />
+    <meta property="og:url" content="https://noxta.studio/portfolio" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Noxta Studio" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Noxta Studio · Built by hand, kept by hand." />
-    <meta name="twitter:description" content="Freelance web designer in Tilburg. One person, full stack." />
+    <meta name="twitter:title" content="Portfolio · Noxta Studio" />
+    <meta name="twitter:description" content="One live build today — VOEP and more shipping in Q3 2026." />
     <meta name="twitter:image" content="https://noxta.studio/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -171,7 +171,7 @@ button:focus-visible,
   filter: blur(8px);
   transition:
     opacity 800ms cubic-bezier(.2,.7,.2,1),
-    transform 320ms cubic-bezier(.2,.7,.2,1),
+    transform 800ms cubic-bezier(.2,.7,.2,1),
     filter 800ms cubic-bezier(.2,.7,.2,1);
 }
 
@@ -680,10 +680,9 @@ section {
 }
 .hero-portrait img {
   display: block;
-  width: 100%;
-  height: clamp(560px, 78vh, 880px);
-  object-fit: cover;
-  object-position: center 22%;
+  height: clamp(560px, 78vh, 920px);
+  width: auto;
+  max-width: 100%;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
   -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
@@ -912,36 +911,6 @@ section {
   .marquee-track { animation: none; }
 }
 
-/* ──────────────── Static strip divider ──────────────── */
-
-.strip {
-  position: relative;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  padding: 26px var(--pad-x);
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  z-index: 4;
-}
-.strip-mark {
-  color: var(--accent-solid);
-  font-family: var(--f-mono);
-  font-size: 0.9em;
-  line-height: 1;
-}
-.strip-text {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: clamp(14px, 1.4vw, 20px);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  text-align: center;
-}
-
 /* ──────────────── Section atmosphere (corner glows) ──────────────── */
 
 #about {
@@ -994,58 +963,11 @@ section {
   );
 }
 
-/* ──────────────── Scroll cue ──────────────── */
-
-.scroll-cue {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent-solid);
-  z-index: 4;
-  text-decoration: none;
-  animation: scroll-bob 2s ease-in-out infinite;
-}
-.scroll-cue:hover { color: var(--ink); }
-.scroll-cue .scroll-arrow {
-  width: 24px;
-  height: 22px;
-  position: relative;
-}
-.scroll-cue .scroll-arrow::before,
-.scroll-cue .scroll-arrow::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  left: 50%;
-  border-right: 1.6px solid currentColor;
-  border-bottom: 1.6px solid currentColor;
-  transform: translateX(-50%) rotate(45deg);
-}
-.scroll-cue .scroll-arrow::before { top: -4px; opacity: 0.5; }
-.scroll-cue .scroll-arrow::after  { top: 4px; }
-@keyframes scroll-bob {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 6px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .scroll-cue { animation: none; }
-}
-
 /* ──────────────── Section header ──────────────── */
 
 .section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 .section-label {
   display: flex;
@@ -1147,20 +1069,16 @@ section {
   color: rgba(255, 77, 21, 0.11);
   pointer-events: none;
   z-index: 0;
-  transition:
-    color 380ms cubic-bezier(.2,.7,.2,1),
-    transform 420ms cubic-bezier(.2,.7,.2,1),
-    filter 380ms cubic-bezier(.2,.7,.2,1);
+  transition: color 220ms ease, transform 380ms cubic-bezier(.2,.7,.2,1);
 }
 .service-bg span {
   display: inline-block;
-  width: 0.78em;
+  width: 0.62em;
   text-align: center;
 }
 .service:hover .service-bg {
-  color: rgba(255, 77, 21, 0.38);
-  transform: translateY(-50%) translateX(-12px);
-  filter: drop-shadow(0 0 60px rgba(255, 77, 21, 0.28));
+  color: rgba(255, 77, 21, 0.20);
+  transform: translateY(-50%) translateX(-10px);
 }
 .service > *:not(.service-bg) { position: relative; z-index: 1; }
 .service .num {
@@ -1487,62 +1405,12 @@ section {
   .believe { grid-template-columns: 1fr; gap: 16px; }
 }
 .believe-cell {
-  --mx: 50%;
-  --my: 50%;
   background: var(--bg-soft);
   padding: 44px 32px 40px;
   box-shadow: inset 0 0 0 1px var(--hairline);
   position: relative;
   overflow: hidden;
   clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  transition:
-    transform 320ms cubic-bezier(.2,.7,.2,1),
-    box-shadow 320ms cubic-bezier(.2,.7,.2,1),
-    background-color 320ms;
-  cursor: default;
-}
-/* Cursor-following spotlight — applied to all interactive cards */
-.believe-cell::after,
-.service::after,
-.work-card::after,
-.price::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    320px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(255, 77, 21, 0.22),
-    rgba(255, 77, 21, 0) 70%
-  );
-  opacity: 0;
-  transition: opacity 280ms cubic-bezier(.2,.7,.2,1);
-  z-index: 2;
-  mix-blend-mode: screen;
-}
-.believe-cell:hover::after,
-.service:hover::after,
-.work-card:hover::after,
-.price:hover::after { opacity: 1; }
-.service, .work-card, .price { --mx: 50%; --my: 50%; }
-.believe-cell:hover {
-  transform: translateY(-6px) scale(1.02);
-  background-color: rgba(255, 77, 21, 0.04);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 77, 21, 0.40),
-    0 24px 50px -20px rgba(0, 0, 0, 0.7),
-    0 0 80px -30px rgba(255, 77, 21, 0.45);
-}
-.believe-cell:hover .believe-bg {
-  color: rgba(255, 77, 21, 0.38);
-  transform: translateX(-8px);
-  filter: drop-shadow(0 0 60px rgba(255, 77, 21, 0.28));
-}
-.believe-bg {
-  transition:
-    color 380ms cubic-bezier(.2,.7,.2,1),
-    transform 420ms cubic-bezier(.2,.7,.2,1),
-    filter 380ms cubic-bezier(.2,.7,.2,1);
 }
 .believe-bg {
   position: absolute;
@@ -1560,7 +1428,7 @@ section {
 }
 .believe-bg span {
   display: inline-block;
-  width: 0.78em;
+  width: 0.62em;
   text-align: center;
 }
 .believe-cell > *:not(.believe-bg) { position: relative; z-index: 1; }
@@ -1661,6 +1529,19 @@ section {
     box-shadow 320ms cubic-bezier(.2,.7,.2,1),
     background-color 320ms;
 }
+.price::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(255, 77, 21, 0.18),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 320ms;
+}
 .price > * { position: relative; z-index: 1; }
 .price {
   will-change: transform;
@@ -1674,6 +1555,7 @@ section {
 .price-feat-label,
 .price-list { transform: translateZ(15px); }
 .price-foot { transform: translateZ(8px); }
+.price::after { transform: translateZ(2px); }
 .price:hover {
   background-color: rgba(255, 77, 21, 0.04);
   box-shadow:
@@ -1681,6 +1563,7 @@ section {
     0 30px 60px -20px rgba(0, 0, 0, 0.7),
     0 0 90px -30px rgba(255, 77, 21, 0.50);
 }
+.price:hover::after { opacity: 1; }
 .price:hover .price-name {
   background: var(--accent);
   -webkit-background-clip: text;
@@ -1701,7 +1584,17 @@ section {
   background: linear-gradient(180deg, rgba(255, 77, 21, 0.14) 0%, rgba(255, 122, 61, 0.06) 50%, rgba(214, 58, 13, 0.08) 100%), var(--bg-soft);
   box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.45),
               0 30px 60px -20px rgba(255, 77, 21, 0.18);
+  transform: translateY(-12px);
+  padding-top: 44px;
+  padding-bottom: 40px;
   z-index: 2;
+}
+.price.featured:hover {
+  transform: translateY(-18px);
+}
+@media (max-width: 900px) {
+  .price.featured { transform: none; }
+  .price.featured:hover { transform: translateY(-4px); }
 }
 .price-flag {
   position: absolute;
@@ -1914,11 +1807,9 @@ section {
 }
 .cta-photo {
   display: block;
-  width: 100%;
-  max-width: 720px;
-  height: clamp(500px, 70vh, 800px);
-  object-fit: cover;
-  object-position: center 25%;
+  height: clamp(500px, 70vh, 820px);
+  width: auto;
+  max-width: 100%;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
   -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
@@ -2109,67 +2000,45 @@ section {
   .nav-cta { padding: 10px 14px !important; font-size: 11px; }
   .nav-inner { gap: 8px; }
 
-  /* ── Hero ── */
-  .hero { min-height: calc(100dvh - 72px); padding: 16px 0 0; }
-  .hero-top { padding: 16px var(--pad-x); }
-  .hero-top-meta { display: none; }
-  .hero-body { padding: 16px var(--pad-x) 0; min-height: auto; gap: 16px; }
-  .hero-text { padding-top: 16px; max-width: 100%; gap: 12px; }
-  .hero-name { font-size: clamp(40px, 11vw, 60px); }
-  .hero-bio { font-size: 14px; max-width: 100%; }
-  .hero-actions { gap: 10px; }
-  .hero-portrait img {
-    height: clamp(320px, 50vh, 460px);
-    max-width: 100%;
-  }
-
   /* ── Sections (general) ── */
-  .section { padding-top: 56px; padding-bottom: 56px; }
+  .section { padding-top: 48px; padding-bottom: 48px; }
   .section-h { font-size: clamp(32px, 9vw, 52px); }
   .section-sub { font-size: 15px; }
 
-  /* ── Hide decorative corner marks (often overflow on small screens) ── */
+  /* ── Page hero (Portfolio + Contact share this) ── */
+  .page-hero { min-height: calc(100dvh - 72px); }
+  .page-hero-inner { padding: 24px var(--pad-x) 80px; }
+  .page-hero-crumb { font-size: 10px; margin-bottom: 18px; }
+  .page-hero-h { font-size: clamp(44px, 13vw, 80px); line-height: 0.96; }
+  .page-hero-sub { font-size: 14px; margin-top: 18px; }
+
+  /* ── Hide decorative corner marks ── */
   .services::before, .services::after,
   .believe::before, .believe::after,
-  .pricing-grid::before, .pricing-grid::after,
-  .hero-body::before, .hero-body::after { display: none; }
+  .pricing-grid::before, .pricing-grid::after { display: none; }
 
-  /* ── Services ── */
-  .service { grid-template-columns: 50px 1fr; padding: 18px 0; gap: 16px; }
-  .service .tags, .service .desc, .service .arr { display: none; }
-  .service .title { font-size: clamp(24px, 7vw, 36px); }
-  .service-bg { right: 0; font-size: clamp(72px, 22vw, 110px); }
+  /* ── Project cards ── */
+  .project-card { clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+  .project-info { padding: 28px 22px; gap: 14px; }
+  .project-card:not(.featured) .project-info { padding: 24px 20px; }
+  .project-title { font-size: clamp(36px, 11vw, 56px) !important; }
+  .project-card:not(.featured) .project-title { font-size: clamp(28px, 8vw, 40px) !important; }
+  .project-shot { padding: 24px; }
+  .project-stack { margin-top: 32px; gap: 18px; }
+  .project-row { gap: 18px; }
 
-  /* ── Work ── */
-  .work-info, .work-vis { padding: 32px 24px; }
-  .work-vis { min-height: auto; padding: 24px; }
-  .work-title { font-size: clamp(44px, 12vw, 64px); }
+  /* ── Steps grid ── */
+  .steps-grid { gap: 12px; margin-top: 32px; }
+  .step-card { padding: 24px 20px 22px; }
+  .step-title { font-size: clamp(20px, 6vw, 26px); }
 
-  /* ── Marquee + static strip ── */
+  /* ── Page CTA banner ── */
+  .page-cta-inner { padding: 32px 24px; gap: 24px; }
+
+  /* ── Marquee ── */
   .marquee { padding: 16px 0; }
   .marquee-track { font-size: 12px; gap: 32px; padding-left: 16px; }
   .marquee-item { gap: 32px; }
-  .strip { padding: 20px var(--pad-x); gap: 14px; }
-  .strip-text { font-size: 13px; letter-spacing: 0.14em; }
-
-  /* ── Believe ── */
-  .believe { gap: 14px; }
-  .believe-cell { padding: 32px 24px 28px; }
-  .believe-bg { font-size: clamp(90px, 26vw, 150px); }
-
-  /* ── Pricing ── */
-  .pricing-head { gap: 24px; }
-  .price { padding: 30px 24px 28px; }
-  .price-name { font-size: 38px; }
-  .pricing-toggle button { padding: 10px 16px; font-size: 11px; letter-spacing: 0.1em; }
-
-  /* ── CTA ── */
-  .cta-inner { padding: 48px 24px 36px; min-height: auto; }
-  .cta-h { font-size: clamp(48px, 14vw, 80px); }
-  .cta-photo { height: clamp(360px, 56vh, 540px); max-width: 100%; }
-  .cta-wordmark { padding-top: 60px; }
-  .cta-wordmark .glyph { font-size: clamp(140px, 42vw, 320px); }
-  .cta-top .mark { font-size: 10px; letter-spacing: 0.18em; }
 
   /* ── Spec bar ── */
   .spec-bar { grid-template-columns: repeat(2, 1fr); }
@@ -2178,10 +2047,6 @@ section {
   .spec-bar .cell:nth-child(1),
   .spec-bar .cell:nth-child(2) { border-bottom: 1px solid var(--hairline); }
   .spec-bar .v { font-size: 16px; }
-
-  /* ── Wordmark ── */
-  .wordmark { padding: 80px var(--pad-x) 30px; }
-  .wordmark .glyph { font-size: clamp(80px, 32vw, 200px); }
 
   /* ── Footer ── */
   .footer { padding-top: 40px; padding-bottom: 28px; }
@@ -2200,8 +2065,396 @@ section {
   .foot-base { gap: 14px; flex-direction: column; align-items: flex-start; padding-top: 20px; }
   .foot-base .dots { flex-wrap: wrap; row-gap: 8px; }
 
-  /* ── Scroll cue: hide on home (face already signals scrolling), keep on portfolio/contact ── */
-  .scroll-cue { display: none; }
+  /* ── Scroll cue ── */
+  .scroll-cue { bottom: 20px; font-size: 9px; }
+}
+
+/* ──────────────── Page hero (Portfolio + Contact) ──────────────── */
+
+.page-hero {
+  min-height: calc(100vh - 72px);
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.page-hero-inner {
+  flex: 1;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 32px var(--pad-x) 100px;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.page-hero-crumb {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 28px;
+}
+.page-hero-crumb a { color: var(--mute); transition: color 180ms; }
+.page-hero-crumb a:hover { color: var(--accent-solid); }
+.page-hero-crumb .cur { color: var(--ink); }
+.page-hero-crumb span { margin: 0 8px; }
+.page-hero-h {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(56px, 8vw, 132px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.page-hero-sub {
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin: 28px auto 0;
+  text-wrap: pretty;
+}
+
+/* ──────────────── Scroll cue ──────────────── */
+
+.scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-solid);
+  z-index: 4;
+  text-decoration: none;
+  animation: scroll-bob 2s ease-in-out infinite;
+}
+.scroll-cue:hover { color: var(--ink); }
+.scroll-cue .scroll-arrow {
+  width: 24px;
+  height: 22px;
+  position: relative;
+}
+.scroll-cue .scroll-arrow::before,
+.scroll-cue .scroll-arrow::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 50%;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateX(-50%) rotate(45deg);
+}
+.scroll-cue .scroll-arrow::before { top: -4px; opacity: 0.5; }
+.scroll-cue .scroll-arrow::after  { top: 4px; }
+@keyframes scroll-bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue { animation: none; }
+}
+
+/* ──────────────── Project cards (Portfolio) ──────────────── */
+
+.project-stack { margin-top: 56px; display: flex; flex-direction: column; gap: 32px; }
+.project-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+@media (max-width: 800px) {
+  .project-row { grid-template-columns: 1fr; }
+}
+
+.project-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--bg-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  overflow: hidden;
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+.project-card.featured {
+  grid-template-columns: 1fr 1.1fr;
+}
+.project-card.featured::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 110% 90% at 80% 50%, rgba(255, 122, 61, 0.18) 0%, rgba(255, 122, 61, 0.08) 25%, rgba(255, 122, 61, 0.025) 55%, transparent 100%),
+    radial-gradient(ellipse 90% 80% at 20% 100%, rgba(214, 58, 13, 0.13) 0%, rgba(214, 58, 13, 0.045) 30%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.project-card > * { position: relative; z-index: 1; }
+@media (max-width: 960px) {
+  .project-card.featured { grid-template-columns: 1fr; }
+}
+
+.project-card.placeholder {
+  background: linear-gradient(140deg, var(--bg-soft) 0%, rgba(255, 77, 21, 0.04) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.project-info {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.project-card:not(.featured) .project-info { padding: 36px 28px; }
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.project-status {
+  padding: 4px 8px;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  color: var(--mute);
+}
+.project-status.live {
+  color: var(--accent-solid);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.4);
+}
+.project-title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 80px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.project-card:not(.featured) .project-title {
+  font-size: clamp(28px, 3.2vw, 48px);
+}
+.project-card.placeholder .project-title {
+  color: var(--mute);
+}
+.project-subtitle {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+.project-body {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.project-tags span {
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.project-actions { display: flex; gap: 12px; margin-top: 12px; }
+
+.project-shot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: hidden;
+}
+
+/* ──────────────── Four steps grid ──────────────── */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+}
+@media (max-width: 960px) {
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+.step-card {
+  position: relative;
+  background: var(--bg-soft);
+  padding: 32px 24px 28px;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms;
+}
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.30);
+}
+.step-n {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--accent-solid);
+}
+.step-title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+.step-when {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.step-body {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ──────────────── Page-level CTA banner ──────────────── */
+
+.page-cta-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 64px;
+  background: var(--bg-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+  position: relative;
+  overflow: hidden;
+}
+.page-cta-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 100% at 0% 50%, rgba(255, 77, 21, 0.14), transparent 60%);
+  pointer-events: none;
+}
+.page-cta-inner > * { position: relative; z-index: 1; }
+.page-cta-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+@media (max-width: 800px) {
+  .page-cta-inner { grid-template-columns: 1fr; padding: 40px 28px; }
+  .page-cta-actions { justify-content: flex-start; }
+}
+
+/* ──────────────── Page-hero cinematic entrance ──────────────── */
+
+.page-hero-crumb,
+.page-hero-h,
+.page-hero-sub {
+  animation: nx-reveal 1000ms cubic-bezier(.2,.7,.2,1) both;
+}
+.page-hero-crumb { animation-delay: 150ms; }
+.page-hero-h     { animation-delay: 380ms; animation-duration: 1100ms; }
+.page-hero-sub   { animation-delay: 800ms; }
+.page-hero .hero-status-pill { animation: nx-fade 900ms ease-out both; animation-delay: 1100ms; }
+.page-hero .hero-top-meta    { animation: nx-fade 900ms ease-out both; animation-delay: 1250ms; }
+
+/* ──────────────── Scroll-reveal: portfolio cards ──────────────── */
+
+.project-card,
+.step-card,
+.page-cta-inner {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+  transition:
+    opacity 800ms cubic-bezier(.2,.7,.2,1),
+    transform 800ms cubic-bezier(.2,.7,.2,1),
+    filter 800ms cubic-bezier(.2,.7,.2,1);
+}
+
+.nx-in-view .project-card,
+.nx-in-view .step-card,
+.nx-in-view .page-cta-inner {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.nx-in-view .project-stack > .project-card  { transition-delay: 220ms; }
+.nx-in-view .project-row > .project-card:nth-child(1) { transition-delay: 380ms; }
+.nx-in-view .project-row > .project-card:nth-child(2) { transition-delay: 480ms; }
+
+.nx-in-view .steps-grid > .step-card:nth-child(1) { transition-delay: 240ms; }
+.nx-in-view .steps-grid > .step-card:nth-child(2) { transition-delay: 340ms; }
+.nx-in-view .steps-grid > .step-card:nth-child(3) { transition-delay: 440ms; }
+.nx-in-view .steps-grid > .step-card:nth-child(4) { transition-delay: 540ms; }
+
+.nx-in-view .page-cta-inner { transition-delay: 200ms; }
+
+/* Cursor-following spotlight on cards */
+.project-card,
+.step-card { --mx: 50%; --my: 50%; }
+.project-card::after,
+.step-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 77, 21, 0.22),
+    rgba(255, 77, 21, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(.2,.7,.2,1);
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+.project-card:hover::after,
+.step-card:hover::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card, .step-card, .page-cta-inner,
+  .page-hero-crumb, .page-hero-h, .page-hero-sub {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
     </style>
@@ -2808,7 +3061,6 @@ const NAV = [
   { label: "Portfolio", href: "/portfolio" },
 ];
 
-/* cursor-tracking spotlight handler — sets --mx / --my on the element */
 const onSpotlight = (e) => {
   const r = e.currentTarget.getBoundingClientRect();
   e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
@@ -2879,7 +3131,7 @@ const PRICING_ONETIME = [
       "A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks.",
   },
   {
-    flag: "Recommended",
+    flag: "Most common",
     tier: "Tier · II",
     amount: "€1,200 – 2,000",
     name: "Mid",
@@ -2893,7 +3145,7 @@ const PRICING_ONETIME = [
       "Two rounds of revisions · 2–4 week turnaround",
     ],
     ideal:
-      "Small businesses without a site, or whose current one is hurting them. Most of my projects land here.",
+      "Small businesses that don't have a site yet, or whose current one is actively losing them work. Where most of my projects land.",
   },
   {
     flag: null,
@@ -2931,7 +3183,7 @@ const PRICING_MONTHLY = [
     ideal: "Finished sites that just need to stay alive and up to date.",
   },
   {
-    flag: "Recommended",
+    flag: "Most common",
     tier: "Plan · II",
     amount: "€150 / month",
     name: "Standard",
@@ -2968,7 +3220,7 @@ function Nav() {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <a href="#top" className="nav-logo" aria-label="Noxta">
+        <a href="/" className="nav-logo" aria-label="Noxta">
           No<span className="x">x</span>ta
         </a>
         <nav className="nav-links">
@@ -3016,7 +3268,7 @@ function Hero() {
             as you need them. You email me, I email you back.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="/contact">
+            <a className="btn btn-primary" href="#contact">
               Start a project →
             </a>
             <a className="btn btn-ghost" href="#work">
@@ -3029,18 +3281,19 @@ function Hero() {
           <img
             src="assets/portrait-hero.png"
             alt="Adrian Tajti, founder of Noxta Studio"
-            width="1448"
-            height="1086"
+            width="999"
+            height="1048"
             loading="eager"
             decoding="async"
           />
         </div>
       </div>
 
-      <a className="scroll-cue" href="#about" aria-label="Scroll to content">
-        <span>Scroll</span>
-        <span className="scroll-arrow" aria-hidden="true"></span>
-      </a>
+      <div className="hero-tagbar">
+        <span className="dash">—</span>
+        Freelance web designer and developer · Tilburg, Netherlands
+        <span className="dash">—</span>
+      </div>
     </section>
   );
 }
@@ -3091,7 +3344,7 @@ function Services() {
           {SERVICES.map((s, i) => {
             const bg = String(i + 1).padStart(2, "0");
             return (
-              <div key={s.title} className="service" onMouseMove={onSpotlight}>
+              <div key={s.title} className="service">
                 <span className="service-bg" aria-hidden="true">
                   {bg.split("").map((ch, j) => <span key={j}>{ch}</span>)}
                 </span>
@@ -3153,7 +3406,7 @@ function Work() {
           One project, <br />
           <span className="grad">worth showing.</span>
         </h2>
-        <div className="work-card" onMouseMove={onSpotlight}>
+        <div className="work-card">
           <div className="work-info">
             <div className="work-tag">Case 001 · Vintage Outboard Parts</div>
             <h3 className="work-title">VOEP</h3>
@@ -3207,16 +3460,6 @@ function Marquee({ items }) {
   );
 }
 
-function StaticStrip({ text }) {
-  return (
-    <div className="strip" aria-hidden="true">
-      <span className="strip-mark">✺</span>
-      <span className="strip-text">{text}</span>
-      <span className="strip-mark">✺</span>
-    </div>
-  );
-}
-
 const MARQUEE_ITEMS = [
   "Adrian Tajti",
   "Noxta Studio",
@@ -3244,13 +3487,8 @@ function Believe() {
         <div className="believe">
           {BELIEVE.map((b, i) => {
             const bg = String(i + 1).padStart(2, "0");
-            const onMove = (e) => {
-              const r = e.currentTarget.getBoundingClientRect();
-              e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-              e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-            };
             return (
-              <div className="believe-cell" key={b.h} onMouseMove={onMove}>
+              <div className="believe-cell" key={b.h}>
                 <span className="believe-bg" aria-hidden="true">
                   {bg.split("").map((ch, j) => <span key={j}>{ch}</span>)}
                 </span>
@@ -3269,25 +3507,19 @@ function Believe() {
 function PriceCard({ tier }) {
   const ref = React.useRef(null);
   const [style, setStyle] = React.useState({});
-  const disableTilt = React.useMemo(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    return (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      window.matchMedia("(max-width: 760px)").matches ||
-      window.matchMedia("(pointer: coarse)").matches
-    );
-  }, []);
+  const reducedMotion = React.useMemo(
+    () => typeof window !== "undefined" &&
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    []
+  );
   const baseLift = tier.flag ? -18 : -10;
 
   const onMove = (e) => {
-    if (!ref.current) return;
+    if (reducedMotion || !ref.current) return;
     const r = ref.current.getBoundingClientRect();
     const x = e.clientX - r.left;
     const y = e.clientY - r.top;
-    // Spotlight (direct DOM, outside React's style reconciliation)
-    ref.current.style.setProperty("--mx", `${x}px`);
-    ref.current.style.setProperty("--my", `${y}px`);
-    if (disableTilt) return;
     const rx = ((y - r.height / 2) / (r.height / 2)) * -8;
     const ry = ((x - r.width / 2) / (r.width / 2)) * 8;
     setStyle({
@@ -3297,7 +3529,6 @@ function PriceCard({ tier }) {
   };
 
   const onLeave = () => {
-    if (disableTilt) return;
     setStyle({
       transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)",
       transition: "transform 420ms cubic-bezier(.2,.7,.2,1)",
@@ -3405,8 +3636,8 @@ function CTA() {
                   className="cta-photo"
                   src="assets/portrait-cta.png"
                   alt=""
-                  width="1593"
-                  height="987"
+                  width="1099"
+                  height="952"
                   loading="lazy"
                   decoding="async"
                 />
@@ -3423,7 +3654,7 @@ function CTA() {
                 <a className="btn btn-primary" href="mailto:adrian@noxta.studio">
                   adrian@noxta.studio →
                 </a>
-                <a className="btn btn-ghost" href="/contact">
+                <a className="btn btn-ghost" href="#book">
                   Book a 30-min call
                 </a>
               </div>
@@ -3620,6 +3851,238 @@ function TweakColor({ label, value, onChange, options }) {
   );
 }
 
+/* ============ PORTFOLIO PAGE COMPONENTS ============ */
+
+const PROJECTS = [
+  {
+    n: "Case 001",
+    status: "Live",
+    title: "VOEP",
+    subtitle: "Vintage outboard engine parts, online.",
+    body:
+      "A 4,200-SKU WooCommerce build from zero. Custom child theme, tuned SKU search, IDEAL + Bancontact checkout, and a Mercedes-on-rails order pipeline. Built in roughly 60 hours of focused work. First sale within a week.",
+    tags: ["WooCommerce", "WordPress", "IDEAL", "Bancontact"],
+    cta: { label: "Read the full case →", href: "https://vintageoutboardparts.com" },
+    shot: "voep-screenshot.png",
+  },
+  {
+    n: "Case 002",
+    status: "Coming Q3 2026",
+    title: "Brand + landing",
+    subtitle: "Hospitality client, full identity.",
+    body:
+      "Wordmark, palette, type system and a one-page launch site for a Tilburg-area hospitality client. Drops here when it ships.",
+    tags: ["Brand", "Landing", "Type"],
+    cta: { label: "Start a project →", href: "/contact" },
+    shot: null,
+  },
+  {
+    n: "Case 003",
+    status: "Coming Q3 2026",
+    title: "Custom WooCommerce",
+    subtitle: "Specialist e-commerce.",
+    body:
+      "Custom Woo build for a specialist retailer. Shipping here in Q3 2026.",
+    tags: ["WooCommerce", "Custom theme", "Payments"],
+    cta: { label: "Start a project →", href: "/contact" },
+    shot: null,
+  },
+];
+
+const STEPS = [
+  {
+    n: "/01",
+    title: "Discovery call",
+    when: "30 minutes · Free",
+    body:
+      "Tell me what you want and what you've tried. I'll tell you whether I can help and roughly what it'll cost.",
+  },
+  {
+    n: "/02",
+    title: "Written scope",
+    when: "Within 48 hours",
+    body:
+      "What gets built, what doesn't, what it costs, when it ships. One page. No surprise line items later.",
+  },
+  {
+    n: "/03",
+    title: "Build",
+    when: "1–8 weeks, depending on scope",
+    body:
+      "I disappear into the work. Every Friday you get a short update and a link to a live preview you can poke at.",
+  },
+  {
+    n: "/04",
+    title: "Launch & stay",
+    when: "Forever, if you want",
+    body:
+      "I keep the lights on. Updates, backups, small edits handled within the week. Retainer or ad-hoc, your call.",
+  },
+];
+
+function PortfolioHero() {
+  return (
+    <section className="hero page-hero" id="top">
+      <div className="hero-top">
+        <span className="hero-status-pill">
+          <span className="pulse"></span>
+          <span>Available · Q3 2026 · 2 slots</span>
+        </span>
+        <span className="hero-top-meta">Portfolio · 01 — Noxta Studio · 2026</span>
+      </div>
+
+      <div className="page-hero-inner">
+        <div className="page-hero-crumb">
+          <a href="/">Home</a> <span>/</span> <span className="cur">Work</span>
+        </div>
+        <h1 className="page-hero-h">
+          Built by hand,<br />
+          <span className="grad">kept by hand.</span>
+        </h1>
+        <p className="page-hero-sub">
+          One live build today. I'd rather show one thing in detail than ten things
+          in thumbnail. New cases land here as they ship — yours included, maybe.
+        </p>
+      </div>
+
+      <a className="scroll-cue" href="#projects" aria-label="Scroll to projects">
+        <span>Scroll</span>
+        <span className="scroll-arrow" aria-hidden="true"></span>
+      </a>
+    </section>
+  );
+}
+
+function ProjectCard({ project, featured }) {
+  return (
+    <article className={"project-card" + (featured ? " featured" : "") + (project.shot ? "" : " placeholder")} onMouseMove={onSpotlight}>
+      <div className="project-info">
+        <div className="project-meta">
+          <span>{project.n}</span>
+          <span className={"project-status" + (project.shot ? " live" : "")}>{project.status}</span>
+        </div>
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-subtitle">{project.subtitle}</p>
+        <p className="project-body">{project.body}</p>
+        <div className="project-tags">
+          {project.tags.map((t) => <span key={t}>{t}</span>)}
+        </div>
+        <div className="project-actions">
+          <a
+            className={"btn " + (project.shot ? "btn-primary" : "btn-ghost")}
+            href={project.cta.href}
+            target={project.cta.href.startsWith("http") ? "_blank" : undefined}
+            rel={project.cta.href.startsWith("http") ? "noreferrer noopener" : undefined}
+          >
+            {project.cta.label}
+          </a>
+        </div>
+      </div>
+      {project.shot && (
+        <div className="project-shot">
+          <a
+            className="browser"
+            href={project.cta.href}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label={`Open ${project.title} live site in a new tab`}
+          >
+            <div className="browser-bar">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="url">vintageoutboardparts.com ↗</span>
+            </div>
+            <img
+              className="browser-shot"
+              src={project.shot}
+              alt={`${project.title} homepage screenshot`}
+              width="1812"
+              height="1624"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </div>
+      )}
+    </article>
+  );
+}
+
+function PortfolioWork() {
+  return (
+    <section className="section" id="projects">
+      <div className="container">
+        <div className="section-label">
+          <span className="bar"></span>
+          <span>01 · Live + Coming</span>
+        </div>
+        <div className="project-stack">
+          <ProjectCard project={PROJECTS[0]} featured />
+          <div className="project-row">
+            <ProjectCard project={PROJECTS[1]} />
+            <ProjectCard project={PROJECTS[2]} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FourSteps() {
+  return (
+    <section className="section" id="steps">
+      <div className="container">
+        <div className="section-label">
+          <span className="bar"></span>
+          <span>02 · How a project goes</span>
+        </div>
+        <h2 className="section-h">
+          Four steps. <br />
+          <span className="grad">No theatre.</span>
+        </h2>
+        <p className="section-sub">
+          Every project follows the same four moves. You always know which one we're in.
+        </p>
+        <div className="steps-grid">
+          {STEPS.map((s) => (
+            <div key={s.n} className="step-card" onMouseMove={onSpotlight}>
+              <div className="step-n">{s.n}</div>
+              <h3 className="step-title">{s.title}</h3>
+              <div className="step-when">{s.when}</div>
+              <p className="step-body">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PortfolioCTA() {
+  return (
+    <section className="section page-cta" id="contact-cta">
+      <div className="container">
+        <div className="page-cta-inner">
+          <div>
+            <div className="section-label">
+              <span className="bar"></span>
+              <span>Two slots open · Q3 2026</span>
+            </div>
+            <h2 className="section-h" style={{ maxWidth: "20ch" }}>
+              Want me on <span className="grad">your project?</span>
+            </h2>
+          </div>
+          <div className="page-cta-actions">
+            <a className="btn btn-primary" href="/contact">Start a project →</a>
+            <a className="btn btn-ghost" href="/#pricing">See pricing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ============ ROOT ============ */
 
 function App() {
@@ -3662,7 +4125,6 @@ function App() {
         });
       }
     } else {
-      // Fresh navigation (link click, back/forward): clear and start at top
       sessionStorage.removeItem(key);
       window.scrollTo(0, 0);
     }
@@ -3681,9 +4143,7 @@ function App() {
 
   // Scroll-triggered animations for sections below the hero
   useEffect(() => {
-    const sections = document.querySelectorAll(
-      "#about, #services, #work, #believe, #pricing"
-    );
+    const sections = document.querySelectorAll(".section");
     if (!sections.length) return;
     const reduce = window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -3710,15 +4170,11 @@ function App() {
     <React.Fragment>
       <Nav />
       <main>
-        <Hero />
+        <PortfolioHero />
+        <PortfolioWork />
         <Marquee items={MARQUEE_ITEMS} />
-        <Intro />
-        <Services />
-        <Work />
-        <StaticStrip text="One person · One studio · No handoffs" />
-        <Believe />
-        <Pricing />
-        <CTA />
+        <FourSteps />
+        <PortfolioCTA />
       </main>
       <SpecBar />
       <Footer />

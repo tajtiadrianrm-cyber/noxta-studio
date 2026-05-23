@@ -1,131 +1,380 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adrian Tajti — Noxta Studio</title>
-  <meta name="robots" content="noindex" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;600;700&family=Newsreader:ital,wght@1,300;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #05060e; --bg-soft: #0a0c18; --ink: #f5f6fb; --ink-soft: #bfc6d9;
-      --mute: #7c84a0; --faint: #363c52; --cyan: #7ce0ff; --violet: #b08cff; --pink: #ff8cc5;
-    }
-    html, body { height: 100%; background: var(--bg); color: var(--ink); font-family: 'Bricolage Grotesque', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    .mesh { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-    .mesh::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 20% 10%, rgba(124,224,255,0.18) 0%, transparent 60%), radial-gradient(ellipse 500px 400px at 80% 30%, rgba(176,140,255,0.18) 0%, transparent 60%), radial-gradient(ellipse 400px 300px at 50% 90%, rgba(255,140,197,0.12) 0%, transparent 60%); }
-    .page { position: relative; z-index: 1; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px 80px; }
-    .logo { display: flex; align-items: baseline; gap: 1px; text-decoration: none; animation: rise 0.6s cubic-bezier(.22,1,.36,1) both; }
-    .logo-wo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 700; color: var(--ink); letter-spacing: -0.04em; }
-    .logo-wx { font-family: 'Newsreader', serif; font-style: italic; font-size: 42px; font-weight: 300; background: linear-gradient(135deg, var(--cyan), var(--violet), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.08em; margin: 0 1px; }
-    .grad-rule { width: 48px; height: 1.5px; background: linear-gradient(90deg, var(--cyan), var(--violet)); margin: 16px auto 0; border-radius: 2px; animation: rise 0.6s 0.05s cubic-bezier(.22,1,.36,1) both; }
-    .identity { margin-top: 20px; text-align: center; animation: rise 0.6s 0.1s cubic-bezier(.22,1,.36,1) both; }
-    .identity-name { font-size: 22px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); }
-    .identity-title { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--mute); margin-top: 5px; text-transform: uppercase; }
-    .divider { width: 100%; max-width: 320px; height: 1px; background: rgba(255,255,255,0.07); margin: 28px auto; animation: rise 0.6s 0.15s cubic-bezier(.22,1,.36,1) both; }
-    .buttons { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 320px; }
-    .btn { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 16px; text-decoration: none; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 500; color: var(--ink); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: background 0.18s, border-color 0.18s, transform 0.18s; -webkit-tap-highlight-color: transparent; }
-    .btn:active { transform: scale(0.97); }
-    .btn:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.16); }
-    .btn-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .btn-icon svg { width: 18px; height: 18px; }
-    .btn-label { flex: 1; }
-    .btn-label-main { display: block; font-weight: 600; letter-spacing: -0.02em; }
-    .btn-label-sub { display: block; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.10em; color: var(--mute); margin-top: 2px; }
-    .btn-arrow { font-size: 16px; color: var(--mute); flex-shrink: 0; }
-    .icon-website  { background: linear-gradient(135deg, rgba(124,224,255,0.2), rgba(124,224,255,0.05)); }
-    .icon-whatsapp { background: linear-gradient(135deg, rgba(37,211,102,0.25), rgba(37,211,102,0.05)); }
-    .icon-linkedin { background: linear-gradient(135deg, rgba(10,102,194,0.35), rgba(10,102,194,0.08)); }
-    .icon-email    { background: linear-gradient(135deg, rgba(176,140,255,0.2), rgba(176,140,255,0.05)); }
-    .btn:nth-child(1) { animation: rise 0.5s 0.20s cubic-bezier(.22,1,.36,1) both; }
-    .btn:nth-child(2) { animation: rise 0.5s 0.27s cubic-bezier(.22,1,.36,1) both; }
-    .btn:nth-child(3) { animation: rise 0.5s 0.34s cubic-bezier(.22,1,.36,1) both; }
-    .btn:nth-child(4) { animation: rise 0.5s 0.41s cubic-bezier(.22,1,.36,1) both; }
-    .footer { margin-top: 36px; font-family: 'Geist Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--faint); text-transform: uppercase; text-align: center; animation: rise 0.5s 0.5s cubic-bezier(.22,1,.36,1) both; }
-    @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
-</head>
-<body>
-<div class="mesh"></div>
-<div class="page">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adrian Tajti · Noxta Studio</title>
+    <meta name="description" content="Adrian Tajti — freelance web designer in Tilburg. Noxta Studio." />
+    <link rel="canonical" href="https://noxta.studio/card" />
 
-  <a href="https://noxta.studio" class="logo">
-    <span class="logo-wo">No</span><span class="logo-wx">x</span><span class="logo-wo">ta</span>
-  </a>
-  <div class="grad-rule"></div>
-  <div class="identity">
-    <div class="identity-name">Adrian Tajti</div>
-    <div class="identity-title">Founder · Noxta Studio</div>
-  </div>
-  <div class="divider"></div>
+    <!-- Favicons / app icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+    <link rel="shortcut icon" href="assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#ff4d15" />
 
-  <div class="buttons">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+:root {
+  --bg: #0a0a0a;
+  --bg-soft: #121414;
+  --bg-tint: #1a1c1c;
+  --ink: #f5f6f7;
+  --ink-soft: #cfcccb;
+  --mute: #8a8786;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
+  --accent-solid: #ff4d15;
+  --f-display: "Orbitron", system-ui, sans-serif;
+  --f-body: "Manrope", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", monospace;
+  --pad-x: clamp(20px, 5vw, 40px);
+}
 
-    <a href="https://noxta.studio" class="btn">
-      <div class="btn-icon icon-website">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7ce0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="9"/><path d="M12 3a14.5 14.5 0 0 1 0 18M12 3a14.5 14.5 0 0 0 0 18M3 12h18"/>
-        </svg>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  min-height: 100dvh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px var(--pad-x);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient orange glows */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+body::before {
+  background:
+    radial-gradient(ellipse 60% 50% at 12% 18%, rgba(255, 122, 61, 0.18), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 88% 82%, rgba(214, 58, 13, 0.15), transparent 60%);
+}
+body::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.card-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-wrap::before,
+.card-wrap::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--accent-solid);
+  line-height: 1;
+}
+.card-wrap::before { top: -28px; left: -8px; }
+.card-wrap::after  { bottom: -28px; right: -8px; }
+
+.logo {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: baseline;
+}
+.logo .x {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+  padding: 0 1px;
+}
+
+.logo-rule {
+  width: 56px;
+  height: 1px;
+  background: var(--accent);
+  margin: 18px 0 28px;
+}
+
+.name {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(34px, 7vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.role {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-top: 14px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--hairline);
+  margin: 36px 0 24px;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-soft);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  overflow: hidden;
+  transition:
+    transform 280ms cubic-bezier(.2,.7,.2,1),
+    box-shadow 280ms cubic-bezier(.2,.7,.2,1),
+    background-color 280ms;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 77, 21, 0.20),
+    rgba(255, 77, 21, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(.2,.7,.2,1);
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+.link > * { position: relative; z-index: 2; }
+.link:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 77, 21, 0.04);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 77, 21, 0.45),
+    0 18px 40px -20px rgba(0, 0, 0, 0.6),
+    0 0 60px -30px rgba(255, 77, 21, 0.35);
+}
+.link:hover::after { opacity: 1; }
+
+.link-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 77, 21, 0.10);
+  color: var(--accent-solid);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.30);
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  transition: background 280ms, box-shadow 280ms;
+}
+.link:hover .link-icon {
+  background: rgba(255, 77, 21, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
+}
+
+.link-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.link-label {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.link-sub {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-arrow {
+  color: var(--mute);
+  font-family: var(--f-display);
+  font-size: 18px;
+  transition: color 200ms cubic-bezier(.2,.7,.2,1), transform 200ms cubic-bezier(.2,.7,.2,1);
+}
+.link:hover .link-arrow {
+  color: var(--accent-solid);
+  transform: translateX(4px);
+}
+
+.foot {
+  margin-top: 32px;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  text-align: center;
+}
+
+/* Cinematic entrance */
+@keyframes cardrise {
+  from { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+.logo, .logo-rule, .name, .role, .divider, .links .link, .foot {
+  animation: cardrise 900ms cubic-bezier(.2,.7,.2,1) both;
+}
+.logo       { animation-delay:  80ms; }
+.logo-rule  { animation-delay: 180ms; }
+.name       { animation-delay: 260ms; }
+.role       { animation-delay: 380ms; }
+.divider    { animation-delay: 480ms; }
+.links .link:nth-child(1) { animation-delay: 540ms; }
+.links .link:nth-child(2) { animation-delay: 620ms; }
+.links .link:nth-child(3) { animation-delay: 700ms; }
+.links .link:nth-child(4) { animation-delay: 780ms; }
+.foot       { animation-delay: 900ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .logo, .logo-rule, .name, .role, .divider, .links .link, .foot {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="card-wrap" id="card">
+      <a href="/" class="logo" aria-label="Noxta">No<span class="x">x</span>ta</a>
+      <div class="logo-rule"></div>
+
+      <h1 class="name">Adrian Tajti</h1>
+      <div class="role">Founder · Noxta Studio</div>
+
+      <div class="divider"></div>
+
+      <div class="links">
+        <a class="link" href="https://noxta.studio" aria-label="Open noxta.studio">
+          <span class="link-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3a13 13 0 0 1 0 18" />
+              <path d="M12 3a13 13 0 0 0 0 18" />
+            </svg>
+          </span>
+          <span class="link-text">
+            <span class="link-label">Visit website</span>
+            <span class="link-sub">noxta.studio</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="link" href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp Adrian">
+          <span class="link-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.5 14.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.7-1.5-3.8-3.4-.3-.5.3-.5.8-1.5.1-.2.1-.3 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.8.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z" />
+              <path d="M20.5 3.5A11 11 0 0 0 2.7 16.8L1 22l5.3-1.7a11 11 0 0 0 5.3 1.3h.1a11 11 0 0 0 7.8-18.6Zm-7.8 16.7a9 9 0 0 1-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3a9.2 9.2 0 1 1 7.4 4Z" />
+            </svg>
+          </span>
+          <span class="link-text">
+            <span class="link-label">WhatsApp</span>
+            <span class="link-sub">+31 6 17 657 327</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn profile">
+          <span class="link-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z" />
+            </svg>
+          </span>
+          <span class="link-text">
+            <span class="link-label">LinkedIn</span>
+            <span class="link-sub">Connect with me</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="link" href="mailto:adrian@noxta.studio" aria-label="Email Adrian">
+          <span class="link-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="1.5" />
+              <path d="m3.5 6.5 8.5 6 8.5-6" />
+            </svg>
+          </span>
+          <span class="link-text">
+            <span class="link-label">Email</span>
+            <span class="link-sub">adrian@noxta.studio</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
-      <div class="btn-label">
-        <span class="btn-label-main">Visit website</span>
-        <span class="btn-label-sub">noxta.studio</span>
-      </div>
-      <span class="btn-arrow">→</span>
-    </a>
 
-    <a href="https://wa.me/31617657327" class="btn">
-      <div class="btn-icon icon-whatsapp">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 11.5a8.5 8.5 0 0 1-13 7.3L3 21l2.3-4.8A8.5 8.5 0 1 1 21 11.5z"/>
-          <path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5l1.5-1.5-2-1-1 .8a4 4 0 0 1-2.3-2.3l.8-1-1-2z"/>
-        </svg>
-      </div>
-      <div class="btn-label">
-        <span class="btn-label-main">WhatsApp</span>
-        <span class="btn-label-sub">+31 617 657 327</span>
-      </div>
-      <span class="btn-arrow">→</span>
-    </a>
+      <div class="foot">Web design · Tilburg, NL · Est. 2026</div>
+    </div>
 
-    <a href="https://linkedin.com/in/YOUR_HANDLE" class="btn">
-      <div class="btn-icon icon-linkedin">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0a66c2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="4"/>
-          <path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7"/>
-        </svg>
-      </div>
-      <div class="btn-label">
-        <span class="btn-label-main">LinkedIn</span>
-        <span class="btn-label-sub">Connect with me</span>
-      </div>
-      <span class="btn-arrow">→</span>
-    </a>
-
-    <a href="mailto:adrian@noxta.studio" class="btn">
-      <div class="btn-icon icon-email">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#b08cff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
-        </svg>
-      </div>
-      <div class="btn-label">
-        <span class="btn-label-main">Email</span>
-        <span class="btn-label-sub">adrian@noxta.studio</span>
-      </div>
-      <span class="btn-arrow">→</span>
-    </a>
-
-  </div>
-
-  <div class="footer">Web Design · Tilburg, NL · Est. 2025</div>
-
-</div>
-</body>
+    <script>
+      // Cursor-tracking spotlight on each link
+      document.querySelectorAll(".link").forEach((el) => {
+        el.addEventListener("mousemove", (e) => {
+          const r = el.getBoundingClientRect();
+          el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+          el.style.setProperty("--my", (e.clientY - r.top) + "px");
+        });
+      });
+    </script>
+  </body>
 </html>

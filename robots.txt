@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Don't index utility pages
+Disallow: /og-image.html
+Disallow: /business-card.html
+Disallow: /business-card-print.html
+
 Sitemap: https://noxta.studio/sitemap.xml

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Not found · Noxta Studio</title>
+    <meta name="description" content="That page isn't here. Head back to noxta.studio." />
+    <meta name="robots" content="noindex" />
+
+    <!-- Favicons / app icons -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ff4d15" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --ink: #f5f6f7;
+        --ink-soft: #cfcccb;
+        --mute: #8a8786;
+        --orange: #ff4d15;
+        --orange-light: #ff7a3d;
+        --orange-deep: #d63a0d;
+        --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Manrope", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+        padding: 24px;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 50% 60% at 90% 15%, rgba(255, 122, 61, 0.20), transparent 60%),
+          radial-gradient(ellipse 55% 65% at 8% 92%, rgba(214, 58, 13, 0.16), transparent 60%);
+        z-index: 0;
+        pointer-events: none;
+      }
+      .wrap {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        max-width: 640px;
+      }
+      .logo {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: 28px;
+        letter-spacing: -0.01em;
+        margin-bottom: 56px;
+        display: inline-flex;
+        align-items: baseline;
+      }
+      .logo .x {
+        background: var(--accent);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-style: italic;
+        padding: 0 1px;
+      }
+      .code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .code .bar {
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+      }
+      h1 {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: clamp(56px, 14vw, 128px);
+        line-height: 0.92;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      h1 .grad {
+        background: var(--accent);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p {
+        font-size: clamp(15px, 1.6vw, 18px);
+        line-height: 1.6;
+        color: var(--ink-soft);
+        max-width: 460px;
+        margin: 0 auto 36px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 28px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--bg);
+        background: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        transition: transform 200ms ease-out;
+      }
+      .btn:hover { transform: translateY(-2px); }
+      .btn .arrow {
+        transition: transform 200ms ease-out;
+      }
+      .btn:hover .arrow { transform: translateX(4px); }
+      .footer {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--mute);
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="logo">No<span class="x">x</span>ta</div>
+      <div class="code"><span class="bar"></span>Error · 404</div>
+      <h1>Page <span class="grad">not found</span></h1>
+      <p>The page you were looking for doesn't live at this address. It might have moved, or maybe it never existed in the first place.</p>
+      <a class="btn" href="/">
+        <span>Back to home</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="footer">noxta.studio · Tilburg, NL</div>
+  </body>
+</html>
