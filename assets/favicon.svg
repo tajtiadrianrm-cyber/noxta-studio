@@ -1,0 +1,36 @@
+<svg width="400" height="400" viewBox="0 0 400 400" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Noxta Studio — N lettermark</title>
+  <desc>Dark rounded square with a stylised N lettermark in the Noxta orange gradient</desc>
+  <defs>
+    <!-- Noxta accent: light orange → orange → deep orange at 100deg -->
+    <linearGradient id="ember" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#ff7a3d"/>
+      <stop offset="50%"  stop-color="#ff4d15"/>
+      <stop offset="100%" stop-color="#d63a0d"/>
+    </linearGradient>
+    <!-- Ambient orange blooms -->
+    <radialGradient id="glow-tr" cx="92%" cy="18%" r="55%">
+      <stop offset="0%"   stop-color="#ff7a3d" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ff7a3d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-bl" cx="8%" cy="92%" r="55%">
+      <stop offset="0%"   stop-color="#d63a0d" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#d63a0d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="400" height="400" rx="72" fill="#0a0a0a"/>
+
+  <!-- Subtle orange hairline border -->
+  <rect x="1.5" y="1.5" width="397" height="397" rx="71" fill="none" stroke="url(#ember)" stroke-width="1.5" stroke-opacity="0.42"/>
+
+  <!-- Atmospheric corner glows -->
+  <circle cx="320" cy="80"  r="120" fill="url(#glow-tr)"/>
+  <circle cx="80"  cy="320" r="120" fill="url(#glow-bl)"/>
+
+  <!-- N lettermark — bold geometric, ember gradient -->
+  <rect    x="80"  y="96" width="52" height="208" rx="6"                         fill="url(#ember)"/>
+  <rect    x="268" y="96" width="52" height="208" rx="6"                         fill="url(#ember)"/>
+  <polygon points="132,96 188,96 268,304 212,304"                                fill="url(#ember)"/>
+</svg>
