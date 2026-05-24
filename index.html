@@ -2264,11 +2264,9 @@ section {
         }).observe(document.documentElement, { childList: true, subtree: true });
       })();
     </script>
-    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-    <script type="text/babel" data-presets="react">
-
+    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+    <script>
 // tweaks-panel.jsx
 // Reusable Tweaks shell + form-control helpers.
 //
@@ -2435,13 +2433,22 @@ function useTweaks(defaults) {
   // useState-style call doesn't write a "[object Object]" key into the persisted
   // JSON block.
   const setTweak = React.useCallback((keyOrEdits, val) => {
-    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
-      ? keyOrEdits : { [keyOrEdits]: val };
-    setValues((prev) => ({ ...prev, ...edits }));
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null ? keyOrEdits : {
+      [keyOrEdits]: val
+    };
+    setValues(prev => ({
+      ...prev,
+      ...edits
+    }));
+    window.parent.postMessage({
+      type: '__edit_mode_set_keys',
+      edits
+    }, '*');
     // Same-window signal so in-page listeners (deck-stage rail thumbnails)
     // can react — the parent message only reaches the host, not peers.
-    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+    window.dispatchEvent(new CustomEvent('tweakchange', {
+      detail: edits
+    }));
   }, []);
   return [values, setTweak];
 }
@@ -2453,26 +2460,31 @@ function useTweaks(defaults) {
 // The close button posts __edit_mode_dismissed so the host's toolbar toggle
 // flips off in lockstep; the host echoes __deactivate_edit_mode back which
 // is what actually hides the panel.
-function TweaksPanel({ title = 'Tweaks', children }) {
+function TweaksPanel({
+  title = 'Tweaks',
+  children
+}) {
   const [open, setOpen] = React.useState(false);
   const dragRef = React.useRef(null);
-  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const offsetRef = React.useRef({
+    x: 16,
+    y: 16
+  });
   const PAD = 16;
-
   const clampToViewport = React.useCallback(() => {
     const panel = dragRef.current;
     if (!panel) return;
-    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const w = panel.offsetWidth,
+      h = panel.offsetHeight;
     const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
     const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
     offsetRef.current = {
       x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
-      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y))
     };
     panel.style.right = offsetRef.current.x + 'px';
     panel.style.bottom = offsetRef.current.y + 'px';
   }, []);
-
   React.useEffect(() => {
     if (!open) return;
     clampToViewport();
@@ -2484,34 +2496,35 @@ function TweaksPanel({ title = 'Tweaks', children }) {
     ro.observe(document.documentElement);
     return () => ro.disconnect();
   }, [open, clampToViewport]);
-
   React.useEffect(() => {
-    const onMsg = (e) => {
+    const onMsg = e => {
       const t = e?.data?.type;
-      if (t === '__activate_edit_mode') setOpen(true);
-      else if (t === '__deactivate_edit_mode') setOpen(false);
+      if (t === '__activate_edit_mode') setOpen(true);else if (t === '__deactivate_edit_mode') setOpen(false);
     };
     window.addEventListener('message', onMsg);
-    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    window.parent.postMessage({
+      type: '__edit_mode_available'
+    }, '*');
     return () => window.removeEventListener('message', onMsg);
   }, []);
-
   const dismiss = () => {
     setOpen(false);
-    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+    window.parent.postMessage({
+      type: '__edit_mode_dismissed'
+    }, '*');
   };
-
-  const onDragStart = (e) => {
+  const onDragStart = e => {
     const panel = dragRef.current;
     if (!panel) return;
     const r = panel.getBoundingClientRect();
-    const sx = e.clientX, sy = e.clientY;
+    const sx = e.clientX,
+      sy = e.clientY;
     const startRight = window.innerWidth - r.right;
     const startBottom = window.innerHeight - r.bottom;
-    const move = (ev) => {
+    const move = ev => {
       offsetRef.current = {
         x: startRight - (ev.clientX - sx),
-        y: startBottom - (ev.clientY - sy),
+        y: startBottom - (ev.clientY - sy)
       };
       clampToViewport();
     };
@@ -2522,73 +2535,101 @@ function TweaksPanel({ title = 'Tweaks', children }) {
     window.addEventListener('mousemove', move);
     window.addEventListener('mouseup', up);
   };
-
   if (!open) return null;
-  return (
-    <>
-      <style>{__TWEAKS_STYLE}</style>
-      <div ref={dragRef} className="twk-panel" data-omelette-chrome=""
-           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
-        <div className="twk-hd" onMouseDown={onDragStart}>
-          <b>{title}</b>
-          <button className="twk-x" aria-label="Close tweaks"
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onClick={dismiss}>✕</button>
-        </div>
-        <div className="twk-body">
-          {children}
-        </div>
-      </div>
-    </>
-  );
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, __TWEAKS_STYLE), /*#__PURE__*/React.createElement("div", {
+    ref: dragRef,
+    className: "twk-panel",
+    "data-omelette-chrome": "",
+    style: {
+      right: offsetRef.current.x,
+      bottom: offsetRef.current.y
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-hd",
+    onMouseDown: onDragStart
+  }, /*#__PURE__*/React.createElement("b", null, title), /*#__PURE__*/React.createElement("button", {
+    className: "twk-x",
+    "aria-label": "Close tweaks",
+    onMouseDown: e => e.stopPropagation(),
+    onClick: dismiss
+  }, "\u2715")), /*#__PURE__*/React.createElement("div", {
+    className: "twk-body"
+  }, children)));
 }
 
 // ── Layout helpers ──────────────────────────────────────────────────────────
 
-function TweakSection({ label, children }) {
-  return (
-    <>
-      <div className="twk-sect">{label}</div>
-      {children}
-    </>
-  );
+function TweakSection({
+  label,
+  children
+}) {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "twk-sect"
+  }, label), children);
 }
-
-function TweakRow({ label, value, children, inline = false }) {
-  return (
-    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
-      <div className="twk-lbl">
-        <span>{label}</span>
-        {value != null && <span className="twk-val">{value}</span>}
-      </div>
-      {children}
-    </div>
-  );
+function TweakRow({
+  label,
+  value,
+  children,
+  inline = false
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: inline ? 'twk-row twk-row-h' : 'twk-row'
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-lbl"
+  }, /*#__PURE__*/React.createElement("span", null, label), value != null && /*#__PURE__*/React.createElement("span", {
+    className: "twk-val"
+  }, value)), children);
 }
 
 // ── Controls ────────────────────────────────────────────────────────────────
 
-function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
-  return (
-    <TweakRow label={label} value={`${value}${unit}`}>
-      <input type="range" className="twk-slider" min={min} max={max} step={step}
-             value={value} onChange={(e) => onChange(Number(e.target.value))} />
-    </TweakRow>
-  );
+function TweakSlider({
+  label,
+  value,
+  min = 0,
+  max = 100,
+  step = 1,
+  unit = '',
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label,
+    value: `${value}${unit}`
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "range",
+    className: "twk-slider",
+    min: min,
+    max: max,
+    step: step,
+    value: value,
+    onChange: e => onChange(Number(e.target.value))
+  }));
 }
-
-function TweakToggle({ label, value, onChange }) {
-  return (
-    <div className="twk-row twk-row-h">
-      <div className="twk-lbl"><span>{label}</span></div>
-      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
-              role="switch" aria-checked={!!value}
-              onClick={() => onChange(!value)}><i /></button>
-    </div>
-  );
+function TweakToggle({
+  label,
+  value,
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "twk-row twk-row-h"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-lbl"
+  }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "twk-toggle",
+    "data-on": value ? '1' : '0',
+    role: "switch",
+    "aria-checked": !!value,
+    onClick: () => onChange(!value)
+  }, /*#__PURE__*/React.createElement("i", null)));
 }
-
-function TweakRadio({ label, value, options, onChange }) {
+function TweakRadio({
+  label,
+  value,
+  options,
+  onChange
+}) {
   const trackRef = React.useRef(null);
   const [dragging, setDragging] = React.useState(false);
   // The active value is read by pointer-move handlers attached for the lifetime
@@ -2601,35 +2642,43 @@ function TweakRadio({ label, value, options, onChange }) {
   // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
   // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
   // back to a dropdown rather than wrap.
-  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const labelLen = o => String(typeof o === 'object' ? o.label : o).length;
   const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
-  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  const fitsAsSegments = maxLen <= ({
+    2: 16,
+    3: 10
+  }[options.length] ?? 0);
   if (!fitsAsSegments) {
     // <select> emits strings — map back to the original option value so the
     // fallback stays type-preserving (numbers, booleans) like the segment path.
-    const resolve = (s) => {
-      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+    const resolve = s => {
+      const m = options.find(o => String(typeof o === 'object' ? o.value : o) === s);
       return m === undefined ? s : typeof m === 'object' ? m.value : m;
     };
-    return <TweakSelect label={label} value={value} options={options}
-                        onChange={(s) => onChange(resolve(s))} />;
+    return /*#__PURE__*/React.createElement(TweakSelect, {
+      label: label,
+      value: value,
+      options: options,
+      onChange: s => onChange(resolve(s))
+    });
   }
-  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
-  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const opts = options.map(o => typeof o === 'object' ? o : {
+    value: o,
+    label: o
+  });
+  const idx = Math.max(0, opts.findIndex(o => o.value === value));
   const n = opts.length;
-
-  const segAt = (clientX) => {
+  const segAt = clientX => {
     const r = trackRef.current.getBoundingClientRect();
     const inner = r.width - 4;
-    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    const i = Math.floor((clientX - r.left - 2) / inner * n);
     return opts[Math.max(0, Math.min(n - 1, i))].value;
   };
-
-  const onPointerDown = (e) => {
+  const onPointerDown = e => {
     setDragging(true);
     const v0 = segAt(e.clientX);
     if (v0 !== valueRef.current) onChange(v0);
-    const move = (ev) => {
+    const move = ev => {
       if (!trackRef.current) return;
       const v = segAt(ev.clientX);
       if (v !== valueRef.current) onChange(v);
@@ -2642,59 +2691,89 @@ function TweakRadio({ label, value, options, onChange }) {
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup', up);
   };
-
-  return (
-    <TweakRow label={label}>
-      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
-           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
-        <div className="twk-seg-thumb"
-             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
-                      width: `calc((100% - 4px) / ${n})` }} />
-        {opts.map((o) => (
-          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
-            {o.label}
-          </button>
-        ))}
-      </div>
-    </TweakRow>
-  );
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: trackRef,
+    role: "radiogroup",
+    onPointerDown: onPointerDown,
+    className: dragging ? 'twk-seg dragging' : 'twk-seg'
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-seg-thumb",
+    style: {
+      left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+      width: `calc((100% - 4px) / ${n})`
+    }
+  }), opts.map(o => /*#__PURE__*/React.createElement("button", {
+    key: o.value,
+    type: "button",
+    role: "radio",
+    "aria-checked": o.value === value
+  }, o.label))));
 }
-
-function TweakSelect({ label, value, options, onChange }) {
-  return (
-    <TweakRow label={label}>
-      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
-        {options.map((o) => {
-          const v = typeof o === 'object' ? o.value : o;
-          const l = typeof o === 'object' ? o.label : o;
-          return <option key={v} value={v}>{l}</option>;
-        })}
-      </select>
-    </TweakRow>
-  );
+function TweakSelect({
+  label,
+  value,
+  options,
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("select", {
+    className: "twk-field",
+    value: value,
+    onChange: e => onChange(e.target.value)
+  }, options.map(o => {
+    const v = typeof o === 'object' ? o.value : o;
+    const l = typeof o === 'object' ? o.label : o;
+    return /*#__PURE__*/React.createElement("option", {
+      key: v,
+      value: v
+    }, l);
+  })));
 }
-
-function TweakText({ label, value, placeholder, onChange }) {
-  return (
-    <TweakRow label={label}>
-      <input className="twk-field" type="text" value={value} placeholder={placeholder}
-             onChange={(e) => onChange(e.target.value)} />
-    </TweakRow>
-  );
+function TweakText({
+  label,
+  value,
+  placeholder,
+  onChange
+}) {
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "twk-field",
+    type: "text",
+    value: value,
+    placeholder: placeholder,
+    onChange: e => onChange(e.target.value)
+  }));
 }
-
-function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
-  const clamp = (n) => {
+function TweakNumber({
+  label,
+  value,
+  min,
+  max,
+  step = 1,
+  unit = '',
+  onChange
+}) {
+  const clamp = n => {
     if (min != null && n < min) return min;
     if (max != null && n > max) return max;
     return n;
   };
-  const startRef = React.useRef({ x: 0, val: 0 });
-  const onScrubStart = (e) => {
+  const startRef = React.useRef({
+    x: 0,
+    val: 0
+  });
+  const onScrubStart = e => {
     e.preventDefault();
-    startRef.current = { x: e.clientX, val: value };
+    startRef.current = {
+      x: e.clientX,
+      val: value
+    };
     const decimals = (String(step).split('.')[1] || '').length;
-    const move = (ev) => {
+    const move = ev => {
       const dx = ev.clientX - startRef.current.x;
       const raw = startRef.current.val + dx * step;
       const snapped = Math.round(raw / step) * step;
@@ -2707,14 +2786,21 @@ function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) 
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup', up);
   };
-  return (
-    <div className="twk-num">
-      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
-      <input type="number" value={value} min={min} max={max} step={step}
-             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
-      {unit && <span className="twk-num-unit">{unit}</span>}
-    </div>
-  );
+  return /*#__PURE__*/React.createElement("div", {
+    className: "twk-num"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "twk-num-lbl",
+    onPointerDown: onScrubStart
+  }, label), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: value,
+    min: min,
+    max: max,
+    step: step,
+    onChange: e => onChange(clamp(Number(e.target.value)))
+  }), unit && /*#__PURE__*/React.createElement("span", {
+    className: "twk-num-unit"
+  }, unit));
 }
 
 // Relative-luminance contrast pick — checkmarks drawn over a swatch need to
@@ -2722,20 +2808,27 @@ function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) 
 // only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
 function __twkIsLight(hex) {
   const h = String(hex).replace('#', '');
-  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const x = h.length === 3 ? h.replace(/./g, c => c + c) : h.padEnd(6, '0');
   const n = parseInt(x.slice(0, 6), 16);
   if (Number.isNaN(n)) return true;
-  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  const r = n >> 16 & 255,
+    g = n >> 8 & 255,
+    b = n & 255;
   return r * 299 + g * 587 + b * 114 > 148000;
 }
-
-const __TwkCheck = ({ light }) => (
-  <svg viewBox="0 0 14 14" aria-hidden="true">
-    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
-          strokeLinecap="round" strokeLinejoin="round"
-          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
-  </svg>
-);
+const __TwkCheck = ({
+  light
+}) => /*#__PURE__*/React.createElement("svg", {
+  viewBox: "0 0 14 14",
+  "aria-hidden": "true"
+}, /*#__PURE__*/React.createElement("path", {
+  d: "M3 7.2 5.8 10 11 4.2",
+  fill: "none",
+  strokeWidth: "2.2",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  stroke: light ? 'rgba(0,0,0,.78)' : '#fff'
+}));
 
 // TweakColor — curated color/palette picker. Each option is either a single
 // hex string or an array of 1-5 hex strings; the card adapts — a lone color
@@ -2743,577 +2836,543 @@ const __TwkCheck = ({ light }) => (
 // rest stacked in a sharp column on the right. onChange emits the
 // option in the shape it was passed (string stays string, array stays array).
 // Without options it falls back to the native color input for back-compat.
-function TweakColor({ label, value, options, onChange }) {
+function TweakColor({
+  label,
+  value,
+  options,
+  onChange
+}) {
   if (!options || !options.length) {
-    return (
-      <div className="twk-row twk-row-h">
-        <div className="twk-lbl"><span>{label}</span></div>
-        <input type="color" className="twk-swatch" value={value}
-               onChange={(e) => onChange(e.target.value)} />
-      </div>
-    );
+    return /*#__PURE__*/React.createElement("div", {
+      className: "twk-row twk-row-h"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "twk-lbl"
+    }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("input", {
+      type: "color",
+      className: "twk-swatch",
+      value: value,
+      onChange: e => onChange(e.target.value)
+    }));
   }
   // Native <input type=color> emits lowercase hex per the HTML spec, so
   // compare case-insensitively. String() guards JSON.stringify(undefined),
   // which returns the primitive undefined (no .toLowerCase).
-  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const key = o => String(JSON.stringify(o)).toLowerCase();
   const cur = key(value);
-  return (
-    <TweakRow label={label}>
-      <div className="twk-chips" role="radiogroup">
-        {options.map((o, i) => {
-          const colors = Array.isArray(o) ? o : [o];
-          const [hero, ...rest] = colors;
-          const sup = rest.slice(0, 4);
-          const on = key(o) === cur;
-          return (
-            <button key={i} type="button" className="twk-chip" role="radio"
-                    aria-checked={on} data-on={on ? '1' : '0'}
-                    aria-label={colors.join(', ')} title={colors.join(' · ')}
-                    style={{ background: hero }}
-                    onClick={() => onChange(o)}>
-              {sup.length > 0 && (
-                <span>
-                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
-                </span>
-              )}
-              {on && <__TwkCheck light={__twkIsLight(hero)} />}
-            </button>
-          );
-        })}
-      </div>
-    </TweakRow>
-  );
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-chips",
+    role: "radiogroup"
+  }, options.map((o, i) => {
+    const colors = Array.isArray(o) ? o : [o];
+    const [hero, ...rest] = colors;
+    const sup = rest.slice(0, 4);
+    const on = key(o) === cur;
+    return /*#__PURE__*/React.createElement("button", {
+      key: i,
+      type: "button",
+      className: "twk-chip",
+      role: "radio",
+      "aria-checked": on,
+      "data-on": on ? '1' : '0',
+      "aria-label": colors.join(', '),
+      title: colors.join(' · '),
+      style: {
+        background: hero
+      },
+      onClick: () => onChange(o)
+    }, sup.length > 0 && /*#__PURE__*/React.createElement("span", null, sup.map((c, j) => /*#__PURE__*/React.createElement("i", {
+      key: j,
+      style: {
+        background: c
+      }
+    }))), on && /*#__PURE__*/React.createElement(__TwkCheck, {
+      light: __twkIsLight(hero)
+    }));
+  })));
 }
-
-function TweakButton({ label, onClick, secondary = false }) {
-  return (
-    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
-            onClick={onClick}>{label}</button>
-  );
+function TweakButton({
+  label,
+  onClick,
+  secondary = false
+}) {
+  return /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: secondary ? 'twk-btn secondary' : 'twk-btn',
+    onClick: onClick
+  }, label);
 }
-
 Object.assign(window, {
-  useTweaks, TweaksPanel, TweakSection, TweakRow,
-  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
-  TweakText, TweakNumber, TweakColor, TweakButton,
+  useTweaks,
+  TweaksPanel,
+  TweakSection,
+  TweakRow,
+  TweakSlider,
+  TweakToggle,
+  TweakRadio,
+  TweakSelect,
+  TweakText,
+  TweakNumber,
+  TweakColor,
+  TweakButton
 });
-
-    </script>
-    <script type="text/babel" data-presets="react">
+</script>
+    <script>
 /* Noxta v3 — Home app */
 
-const { useState, useEffect, useMemo } = React;
+const {
+  useState,
+  useEffect,
+  useMemo
+} = React;
 
 /* ============ TWEAK DEFAULTS ============ */
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "gradient",
   "backdropIntensity": 65
-}/*EDITMODE-END*/;
+} /*EDITMODE-END*/;
 
 /* accent → CSS variables (Obsidian Kinetic — orange family) */
 const ACCENTS = {
   ember: {
     grad: "linear-gradient(100deg, #ffb38a 0%, #ff8a4d 50%, #ff5c1f 100%)",
     solid: "#ff7a3d",
-    glow: "rgba(255, 122, 61, 0.5)",
+    glow: "rgba(255, 122, 61, 0.5)"
   },
   blaze: {
     grad: "linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%)",
     solid: "#ff4d15",
-    glow: "rgba(255, 77, 21, 0.5)",
+    glow: "rgba(255, 77, 21, 0.5)"
   },
   rust: {
     grad: "linear-gradient(100deg, #ff5c1f 0%, #d63a0d 50%, #8a1f00 100%)",
     solid: "#d63a0d",
-    glow: "rgba(214, 58, 13, 0.5)",
+    glow: "rgba(214, 58, 13, 0.5)"
   },
   gradient: {
     grad: "linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%)",
     solid: "#ff4d15",
-    glow: "rgba(255, 77, 21, 0.5)",
-  },
+    glow: "rgba(255, 77, 21, 0.5)"
+  }
 };
 
 /* ============ DATA ============ */
 
-const NAV = [
-  { label: "Portfolio", href: "/portfolio" },
-];
+const NAV = [{
+  label: "Portfolio",
+  href: "/portfolio"
+}];
 
 /* cursor-tracking spotlight handler — sets --mx / --my on the element */
-const onSpotlight = (e) => {
+const onSpotlight = e => {
   const r = e.currentTarget.getBoundingClientRect();
   e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
   e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
-
-const SERVICES = [
-  {
-    n: "/01",
-    title: "Websites",
-    tags: ["WordPress", "Hand-coded", "Mobile-first"],
-    desc: "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch.",
-  },
-  {
-    n: "/02",
-    title: "E-commerce",
-    tags: ["WooCommerce", "Shopify", "IDEAL / Bancontact"],
-    desc: "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built.",
-  },
-  {
-    n: "/03",
-    title: "Brand",
-    tags: ["Wordmark", "Palette", "Type system"],
-    desc: "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template.",
-  },
-  {
-    n: "/04",
-    title: "Maintenance",
-    tags: ["Retainer", "On call", "Same-week edits"],
-    desc: "I stick around after launch. Hosting, updates, backups, and the small edits you'd usually be afraid to ask for.",
-  },
-];
-
-const BELIEVE = [
-  {
-    n: "/01",
-    h: "I stay until it works.",
-    p: "Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway.",
-  },
-  {
-    n: "/02",
-    h: "Details are the work.",
-    p: "Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off.",
-  },
-  {
-    n: "/03",
-    h: "Yours to keep.",
-    p: "When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move.",
-  },
-];
-
-const PRICING_ONETIME = [
-  {
-    flag: null,
-    tier: "Tier · I",
-    amount: "€300 – 800",
-    name: "Small",
-    desc: "One thing, done well.",
-    feats: [
-      "Single landing page or minor redesign",
-      "Simple brand mark or wordmark refresh",
-      "Up to 600 words of copy I write with you",
-      "Basic SEO setup (title, meta, sitemap)",
-      "Mobile-first, hand-coded HTML / CSS",
-      "One round of revisions",
-    ],
-    ideal:
-      "A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks.",
-  },
-  {
-    flag: "Recommended",
-    tier: "Tier · II",
-    amount: "€1,200 – 2,000",
-    name: "Mid",
-    desc: "A full site with a real brand.",
-    feats: [
-      "Full multi-page website (4–8 pages)",
-      "Brand identity: wordmark, palette, type",
-      "Copywriting across the site (~2,000 words)",
-      "On-page SEO, schema, sitemap",
-      "Contact form, analytics, social meta",
-      "Two rounds of revisions · 2–4 week turnaround",
-    ],
-    ideal:
-      "Small businesses without a site, or whose current one is hurting them. Most of my projects land here.",
-  },
-  {
-    flag: null,
-    tier: "Tier · III",
-    amount: "€3,000 – 8,000",
-    name: "Large",
-    desc: "Real shops or custom builds.",
-    feats: [
-      "WooCommerce or Shopify e-commerce builds",
-      "Custom WordPress child theme",
-      "Product database setup & import",
-      "Payments (IDEAL, Bancontact, card) + shipping",
-      "Search, filters, custom mobile UX",
-      "Three revision rounds · 6–8 week turnaround",
-    ],
-    ideal:
-      "Shops with real inventory or custom flows that an off-the-shelf template can't handle. VOEP was a Large.",
-  },
-];
-
-const PRICING_MONTHLY = [
-  {
-    flag: null,
-    tier: "Plan · I",
-    amount: "€50 / month",
-    name: "Light",
-    desc: "Kept up to date and safe.",
-    feats: [
-      "Hosting check & uptime monitoring",
-      "Weekly automated backups",
-      "Security patches & plugin updates",
-      "1 hour of edits per month, rolled forward",
-      "Email support, 48h reply",
-    ],
-    ideal: "Finished sites that just need to stay alive and up to date.",
-  },
-  {
-    flag: "Recommended",
-    tier: "Plan · II",
-    amount: "€150 / month",
-    name: "Standard",
-    desc: "Light plus active edits.",
-    feats: [
-      "Everything in Light",
-      "3 hours of edits per month",
-      "Copy tweaks & small layout changes",
-      "Monthly performance report",
-      "Same-week edits (Mon–Fri)",
-    ],
-    ideal: "Sites that change a few times a month: pricing, menu, content updates.",
-  },
-  {
-    flag: null,
-    tier: "Plan · III",
-    amount: "€300 / month",
-    name: "Active",
-    desc: "I'm basically on your team.",
-    feats: [
-      "Everything in Standard",
-      "8 hours of edits per month",
-      "Priority response (next business day)",
-      "Phone / WhatsApp support",
-      "Quarterly strategy call",
-    ],
-    ideal: "Growing shops and active marketing: new pages, campaigns, and ongoing work.",
-  },
-];
+const SERVICES = [{
+  n: "/01",
+  title: "Websites",
+  tags: ["WordPress", "Hand-coded", "Mobile-first"],
+  desc: "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch."
+}, {
+  n: "/02",
+  title: "E-commerce",
+  tags: ["WooCommerce", "Shopify", "IDEAL / Bancontact"],
+  desc: "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built."
+}, {
+  n: "/03",
+  title: "Brand",
+  tags: ["Wordmark", "Palette", "Type system"],
+  desc: "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template."
+}, {
+  n: "/04",
+  title: "Maintenance",
+  tags: ["Retainer", "On call", "Same-week edits"],
+  desc: "I stick around after launch. Hosting, updates, backups, and the small edits you'd usually be afraid to ask for."
+}];
+const BELIEVE = [{
+  n: "/01",
+  h: "I stay until it works.",
+  p: "Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway."
+}, {
+  n: "/02",
+  h: "Details are the work.",
+  p: "Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off."
+}, {
+  n: "/03",
+  h: "Yours to keep.",
+  p: "When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move."
+}];
+const PRICING_ONETIME = [{
+  flag: null,
+  tier: "Tier · I",
+  amount: "€300 – 800",
+  name: "Small",
+  desc: "One thing, done well.",
+  feats: ["Single landing page or minor redesign", "Simple brand mark or wordmark refresh", "Up to 600 words of copy I write with you", "Basic SEO setup (title, meta, sitemap)", "Mobile-first, hand-coded HTML / CSS", "One round of revisions"],
+  ideal: "A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks."
+}, {
+  flag: "Recommended",
+  tier: "Tier · II",
+  amount: "€1,200 – 2,000",
+  name: "Mid",
+  desc: "A full site with a real brand.",
+  feats: ["Full multi-page website (4–8 pages)", "Brand identity: wordmark, palette, type", "Copywriting across the site (~2,000 words)", "On-page SEO, schema, sitemap", "Contact form, analytics, social meta", "Two rounds of revisions · 2–4 week turnaround"],
+  ideal: "Small businesses without a site, or whose current one is hurting them. Most of my projects land here."
+}, {
+  flag: null,
+  tier: "Tier · III",
+  amount: "€3,000 – 8,000",
+  name: "Large",
+  desc: "Real shops or custom builds.",
+  feats: ["WooCommerce or Shopify e-commerce builds", "Custom WordPress child theme", "Product database setup & import", "Payments (IDEAL, Bancontact, card) + shipping", "Search, filters, custom mobile UX", "Three revision rounds · 6–8 week turnaround"],
+  ideal: "Shops with real inventory or custom flows that an off-the-shelf template can't handle. VOEP was a Large."
+}];
+const PRICING_MONTHLY = [{
+  flag: null,
+  tier: "Plan · I",
+  amount: "€50 / month",
+  name: "Light",
+  desc: "Kept up to date and safe.",
+  feats: ["Hosting check & uptime monitoring", "Weekly automated backups", "Security patches & plugin updates", "1 hour of edits per month, rolled forward", "Email support, 48h reply"],
+  ideal: "Finished sites that just need to stay alive and up to date."
+}, {
+  flag: "Recommended",
+  tier: "Plan · II",
+  amount: "€150 / month",
+  name: "Standard",
+  desc: "Light plus active edits.",
+  feats: ["Everything in Light", "3 hours of edits per month", "Copy tweaks & small layout changes", "Monthly performance report", "Same-week edits (Mon–Fri)"],
+  ideal: "Sites that change a few times a month: pricing, menu, content updates."
+}, {
+  flag: null,
+  tier: "Plan · III",
+  amount: "€300 / month",
+  name: "Active",
+  desc: "I'm basically on your team.",
+  feats: ["Everything in Standard", "8 hours of edits per month", "Priority response (next business day)", "Phone / WhatsApp support", "Quarterly strategy call"],
+  ideal: "Growing shops and active marketing: new pages, campaigns, and ongoing work."
+}];
 
 /* ============ COMPONENTS ============ */
 
 function Nav() {
-  return (
-    <header className="nav">
-      <div className="container nav-inner">
-        <a href="#top" className="nav-logo" aria-label="Noxta">
-          No<span className="x">x</span>ta
-        </a>
-        <nav className="nav-links">
-          {NAV.map((n) => (
-            <a key={n.label} href={n.href}>
-              {n.label}
-            </a>
-          ))}
-          <a className="nav-cta" href="/contact">
-            Book a call →
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
+  return /*#__PURE__*/React.createElement("header", {
+    className: "nav"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-inner"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#top",
+    className: "nav-logo",
+    "aria-label": "Noxta"
+  }, "No", /*#__PURE__*/React.createElement("span", {
+    className: "x"
+  }, "x"), "ta"), /*#__PURE__*/React.createElement("nav", {
+    className: "nav-links"
+  }, NAV.map(n => /*#__PURE__*/React.createElement("a", {
+    key: n.label,
+    href: n.href
+  }, n.label)), /*#__PURE__*/React.createElement("a", {
+    className: "nav-cta",
+    href: "/contact"
+  }, "Book a call \u2192"))));
 }
-
 function Hero() {
-  return (
-    <section className="hero" id="top">
-      <div className="hero-top">
-        <span className="hero-status-pill">
-          <span className="pulse"></span>
-          <span>Available · Q3 2026 · 2 slots</span>
-        </span>
-        <span className="hero-top-meta">Hero · 01 — Noxta Studio · 2026</span>
-      </div>
-
-      <div className="hero-body">
-        <div className="hero-text">
-          <h1 className="hero-name">
-            Adrian
-            <br />
-            <span className="grad">Tajti<span className="dot">.</span></span>
-          </h1>
-          <div className="hero-role-line">
-            <span className="dash"></span>
-            <span>Freelance Web Designer, Tilburg</span>
-          </div>
-          <hr className="hero-rule" />
-          <p className="hero-bio">
-            I'm a freelance web designer in Tilburg. There's no agency behind
-            Noxta, just me. I do the design, write the copy, and write the
-            code. After launch I stick around to fix things and add new ones
-            as you need them. You email me, I email you back.
-          </p>
-          <div className="hero-actions">
-            <a className="btn btn-primary" href="/contact">
-              Start a project →
-            </a>
-            <a className="btn btn-ghost" href="#work">
-              See the work
-            </a>
-          </div>
-        </div>
-
-        <div className="hero-portrait">
-          <img
-            src="assets/portrait-hero.webp"
-            alt="Adrian Tajti, founder of Noxta Studio"
-            width="1448"
-            height="1086"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </div>
-      </div>
-
-      <a className="scroll-cue" href="#about" aria-label="Scroll to content">
-        <span>Scroll</span>
-        <span className="scroll-arrow" aria-hidden="true"></span>
-      </a>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    className: "hero",
+    id: "top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-top"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hero-status-pill"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pulse"
+  }), /*#__PURE__*/React.createElement("span", null, "Available \xB7 Q3 2026 \xB7 2 slots")), /*#__PURE__*/React.createElement("span", {
+    className: "hero-top-meta"
+  }, "Hero \xB7 01 \u2014 Noxta Studio \xB7 2026")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-body"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-text"
+  }, /*#__PURE__*/React.createElement("h1", {
+    className: "hero-name"
+  }, "Adrian", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "grad"
+  }, "Tajti", /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  }, "."))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-role-line"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dash"
+  }), /*#__PURE__*/React.createElement("span", null, "Freelance Web Designer, Tilburg")), /*#__PURE__*/React.createElement("hr", {
+    className: "hero-rule"
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "hero-bio"
+  }, "I'm a freelance web designer in Tilburg. There's no agency behind Noxta, just me. I do the design, write the copy, and write the code. After launch I stick around to fix things and add new ones as you need them. You email me, I email you back."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: "/contact"
+  }, "Start a project \u2192"), /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-ghost",
+    href: "#work"
+  }, "See the work"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-portrait"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "assets/portrait-hero.webp",
+    alt: "Adrian Tajti, founder of Noxta Studio",
+    width: "1448",
+    height: "1086",
+    loading: "eager",
+    fetchpriority: "high",
+    decoding: "async"
+  }))), /*#__PURE__*/React.createElement("a", {
+    className: "scroll-cue",
+    href: "#about",
+    "aria-label": "Scroll to content"
+  }, /*#__PURE__*/React.createElement("span", null, "Scroll"), /*#__PURE__*/React.createElement("span", {
+    className: "scroll-arrow",
+    "aria-hidden": "true"
+  })));
 }
-
 function Intro() {
-  return (
-    <section className="section" id="about" style={{ paddingTop: 100, paddingBottom: 60 }}>
-      <div className="container">
-        <div className="section-label">
-          <span className="bar"></span>
-          <span>00 · Who I am</span>
-        </div>
-        <h2 className="section-h" style={{ maxWidth: "22ch" }}>
-          Just me.<br />
-          <span className="grad">No agency</span> in the back.
-        </h2>
-        <p className="section-sub" style={{ maxWidth: "60ch", fontSize: 19 }}>
-          I work alone on purpose. Keeping the whole project in one head means
-          nothing gets dropped between specialists who don't know your
-          business as well as you do. The trade-off is capacity: I usually
-          have <strong style={{ color: "var(--ink)", fontWeight: 600 }}>two clients at a time</strong>, which is why slots are
-          worth booking early.
-        </p>
-      </div>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "about",
+    style: {
+      paddingTop: 100,
+      paddingBottom: 60
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-label"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "bar"
+  }), /*#__PURE__*/React.createElement("span", null, "00 \xB7 Who I am")), /*#__PURE__*/React.createElement("h2", {
+    className: "section-h",
+    style: {
+      maxWidth: "22ch"
+    }
+  }, "Just me.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "grad"
+  }, "No agency"), " in the back."), /*#__PURE__*/React.createElement("p", {
+    className: "section-sub",
+    style: {
+      maxWidth: "60ch",
+      fontSize: 19
+    }
+  }, "I work alone on purpose. Keeping the whole project in one head means nothing gets dropped between specialists who don't know your business as well as you do. The trade-off is capacity: I usually have ", /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: "var(--ink)",
+      fontWeight: 600
+    }
+  }, "two clients at a time"), ", which is why slots are worth booking early.")));
 }
-
 function Services() {
-  return (
-    <section className="section" id="services">
-      <div className="container">
-        <div className="section-label">
-          <span className="bar"></span>
-          <span>01 · What I do</span>
-        </div>
-        <h2 className="section-h">
-          Four jobs.
-          <br />
-          One head.
-        </h2>
-        <p className="section-sub">
-          I handle the design, the copy, the code, the payments, and the
-          hosting myself. So there's no handoff between people who barely know
-          each other, and if something breaks the person to call is me.
-        </p>
-        <div className="services">
-          {SERVICES.map((s, i) => {
-            const bg = String(i + 1).padStart(2, "0");
-            return (
-              <div key={s.title} className="service" onMouseMove={onSpotlight}>
-                <span className="service-bg" aria-hidden="true">
-                  {bg.split("").map((ch, j) => <span key={j}>{ch}</span>)}
-                </span>
-                <span className="num">{s.n}</span>
-                <h3 className="title">{s.title}</h3>
-                <p className="desc">{s.desc}</p>
-                <div className="tags">
-                  {s.tags.map((t) => (
-                    <span key={t}>{t}</span>
-                  ))}
-                </div>
-                <span className="arr">→</span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "services"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-label"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "bar"
+  }), /*#__PURE__*/React.createElement("span", null, "01 \xB7 What I do")), /*#__PURE__*/React.createElement("h2", {
+    className: "section-h"
+  }, "Four jobs.", /*#__PURE__*/React.createElement("br", null), "One head."), /*#__PURE__*/React.createElement("p", {
+    className: "section-sub"
+  }, "I handle the design, the copy, the code, the payments, and the hosting myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me."), /*#__PURE__*/React.createElement("div", {
+    className: "services"
+  }, SERVICES.map((s, i) => {
+    const bg = String(i + 1).padStart(2, "0");
+    return /*#__PURE__*/React.createElement("div", {
+      key: s.title,
+      className: "service",
+      onMouseMove: onSpotlight
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "service-bg",
+      "aria-hidden": "true"
+    }, bg.split("").map((ch, j) => /*#__PURE__*/React.createElement("span", {
+      key: j
+    }, ch))), /*#__PURE__*/React.createElement("span", {
+      className: "num"
+    }, s.n), /*#__PURE__*/React.createElement("h3", {
+      className: "title"
+    }, s.title), /*#__PURE__*/React.createElement("p", {
+      className: "desc"
+    }, s.desc), /*#__PURE__*/React.createElement("div", {
+      className: "tags"
+    }, s.tags.map(t => /*#__PURE__*/React.createElement("span", {
+      key: t
+    }, t))), /*#__PURE__*/React.createElement("span", {
+      className: "arr"
+    }, "\u2192"));
+  }))));
 }
-
 function VOEPMock() {
-  return (
-    <a
-      className="browser"
-      href="https://vintageoutboardparts.com"
-      target="_blank"
-      rel="noreferrer noopener"
-      aria-label="Open the VOEP live site in a new tab"
-    >
-      <div className="browser-bar">
-        <span className="dot"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
-        <span className="url">vintageoutboardparts.com ↗</span>
-      </div>
-      <img
-        className="browser-shot"
-        src="voep-screenshot.png"
-        alt="Vintage Outboard Parts — homepage screenshot"
-        width="1812"
-        height="1624"
-        loading="lazy"
-        decoding="async"
-      />
-    </a>
-  );
+  return /*#__PURE__*/React.createElement("a", {
+    className: "browser",
+    href: "https://vintageoutboardparts.com",
+    target: "_blank",
+    rel: "noreferrer noopener",
+    "aria-label": "Open the VOEP live site in a new tab"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-bar"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "url"
+  }, "vintageoutboardparts.com \u2197")), /*#__PURE__*/React.createElement("img", {
+    className: "browser-shot",
+    src: "voep-screenshot.webp",
+    alt: "Vintage Outboard Parts \u2014 homepage screenshot",
+    width: "1812",
+    height: "1624",
+    loading: "lazy",
+    decoding: "async"
+  }));
 }
-
 function Work() {
-  return (
-    <section className="section" id="work">
-      <div className="container">
-        <div className="section-label">
-          <span className="bar"></span>
-          <span>02 · Selected work</span>
-        </div>
-        <h2 className="section-h">
-          One project, <br />
-          <span className="grad">worth showing.</span>
-        </h2>
-        <div className="work-card" onMouseMove={onSpotlight}>
-          <div className="work-info">
-            <div className="work-tag">Case 001 · Vintage Outboard Parts</div>
-            <h3 className="work-title">VOEP</h3>
-            <p className="work-sub">
-              Alex runs a vintage outboard parts shop in Belgium. Sixty years
-              of inventory, no website. We built him a 4,200-SKU store with
-              IDEAL checkout and a product search I tuned by hand. First sale
-              came within a week.
-            </p>
-            <div className="work-meta">
-              <div className="cell">
-                <div className="k">// Built in</div>
-                <div className="v">~60 hours</div>
-              </div>
-              <div className="cell">
-                <div className="k">// First sale</div>
-                <div className="v">&lt; 7 days</div>
-              </div>
-              <div className="cell">
-                <div className="k">// Products</div>
-                <div className="v">4,200+ SKUs</div>
-              </div>
-              <div className="cell">
-                <div className="k">// Stack</div>
-                <div className="v">WP · Woo · Flat</div>
-              </div>
-            </div>
-            <div className="work-actions">
-              <a className="btn btn-ghost" href="#case-voep">Read the case →</a>
-            </div>
-          </div>
-          <div className="work-vis">
-            <VOEPMock />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "work"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-label"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "bar"
+  }), /*#__PURE__*/React.createElement("span", null, "02 \xB7 Selected work")), /*#__PURE__*/React.createElement("h2", {
+    className: "section-h"
+  }, "One project, ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "grad"
+  }, "worth showing.")), /*#__PURE__*/React.createElement("div", {
+    className: "work-card",
+    onMouseMove: onSpotlight
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "work-info"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "work-tag"
+  }, "Case 001 \xB7 Vintage Outboard Parts"), /*#__PURE__*/React.createElement("h3", {
+    className: "work-title"
+  }, "VOEP"), /*#__PURE__*/React.createElement("p", {
+    className: "work-sub"
+  }, "Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week."), /*#__PURE__*/React.createElement("div", {
+    className: "work-meta"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "k"
+  }, "// Built in"), /*#__PURE__*/React.createElement("div", {
+    className: "v"
+  }, "~60 hours")), /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "k"
+  }, "// First sale"), /*#__PURE__*/React.createElement("div", {
+    className: "v"
+  }, "< 7 days")), /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "k"
+  }, "// Products"), /*#__PURE__*/React.createElement("div", {
+    className: "v"
+  }, "4,200+ SKUs")), /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "k"
+  }, "// Stack"), /*#__PURE__*/React.createElement("div", {
+    className: "v"
+  }, "WP \xB7 Woo \xB7 Flat"))), /*#__PURE__*/React.createElement("div", {
+    className: "work-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-ghost",
+    href: "#case-voep"
+  }, "Read the case \u2192"))), /*#__PURE__*/React.createElement("div", {
+    className: "work-vis"
+  }, /*#__PURE__*/React.createElement(VOEPMock, null)))));
 }
-
-function Marquee({ items }) {
+function Marquee({
+  items
+}) {
   const loop = [...items, ...items];
-  return (
-    <div className="marquee" aria-hidden="true">
-      <div className="marquee-track">
-        {loop.map((item, i) => (
-          <span className="marquee-item" key={i}>{item}</span>
-        ))}
-      </div>
-    </div>
-  );
+  return /*#__PURE__*/React.createElement("div", {
+    className: "marquee",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "marquee-track"
+  }, loop.map((item, i) => /*#__PURE__*/React.createElement("span", {
+    className: "marquee-item",
+    key: i
+  }, item))));
 }
-
-function StaticStrip({ text }) {
-  return (
-    <div className="strip" aria-hidden="true">
-      <span className="strip-mark">✺</span>
-      <span className="strip-text">{text}</span>
-      <span className="strip-mark">✺</span>
-    </div>
-  );
+function StaticStrip({
+  text
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "strip",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "strip-mark"
+  }, "\u273A"), /*#__PURE__*/React.createElement("span", {
+    className: "strip-text"
+  }, text), /*#__PURE__*/React.createElement("span", {
+    className: "strip-mark"
+  }, "\u273A"));
 }
-
-const MARQUEE_ITEMS = [
-  "Adrian Tajti",
-  "Noxta Studio",
-  "Freelance web design",
-  "Tilburg, Netherlands",
-  "Available Q3 2026",
-  "Two slots left",
-  "Reply within 24h",
-  "Est. 2026",
-  "Hand-coded",
-];
-
+const MARQUEE_ITEMS = ["Adrian Tajti", "Noxta Studio", "Freelance web design", "Tilburg, Netherlands", "Available Q3 2026", "Two slots left", "Reply within 24h", "Est. 2026", "Hand-coded"];
 function Believe() {
-  return (
-    <section className="section" id="believe">
-      <div className="container">
-        <div className="section-label">
-          <span className="bar"></span>
-          <span>03 · How I work</span>
-        </div>
-        <h2 className="section-h">
-          How this <br />
-          usually goes.
-        </h2>
-        <div className="believe">
-          {BELIEVE.map((b, i) => {
-            const bg = String(i + 1).padStart(2, "0");
-            const onMove = (e) => {
-              const r = e.currentTarget.getBoundingClientRect();
-              e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-              e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-            };
-            return (
-              <div className="believe-cell" key={b.h} onMouseMove={onMove}>
-                <span className="believe-bg" aria-hidden="true">
-                  {bg.split("").map((ch, j) => <span key={j}>{ch}</span>)}
-                </span>
-                <div className="n">{b.n}</div>
-                <h3>{b.h}</h3>
-                <p>{b.p}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "believe"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-label"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "bar"
+  }), /*#__PURE__*/React.createElement("span", null, "03 \xB7 How I work")), /*#__PURE__*/React.createElement("h2", {
+    className: "section-h"
+  }, "How this ", /*#__PURE__*/React.createElement("br", null), "usually goes."), /*#__PURE__*/React.createElement("div", {
+    className: "believe"
+  }, BELIEVE.map((b, i) => {
+    const bg = String(i + 1).padStart(2, "0");
+    const onMove = e => {
+      const r = e.currentTarget.getBoundingClientRect();
+      e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+    };
+    return /*#__PURE__*/React.createElement("div", {
+      className: "believe-cell",
+      key: b.h,
+      onMouseMove: onMove
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "believe-bg",
+      "aria-hidden": "true"
+    }, bg.split("").map((ch, j) => /*#__PURE__*/React.createElement("span", {
+      key: j
+    }, ch))), /*#__PURE__*/React.createElement("div", {
+      className: "n"
+    }, b.n), /*#__PURE__*/React.createElement("h3", null, b.h), /*#__PURE__*/React.createElement("p", null, b.p));
+  }))));
 }
-
-function PriceCard({ tier }) {
+function PriceCard({
+  tier
+}) {
   const ref = React.useRef(null);
   const [style, setStyle] = React.useState({});
   const disableTilt = React.useMemo(() => {
     if (typeof window === "undefined" || !window.matchMedia) return false;
-    return (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      window.matchMedia("(max-width: 760px)").matches ||
-      window.matchMedia("(pointer: coarse)").matches
-    );
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(max-width: 760px)").matches || window.matchMedia("(pointer: coarse)").matches;
   }, []);
   const baseLift = tier.flag ? -18 : -10;
-
-  const onMove = (e) => {
+  const onMove = e => {
     if (!ref.current) return;
     const r = ref.current.getBoundingClientRect();
     const x = e.clientX - r.left;
@@ -3322,343 +3381,375 @@ function PriceCard({ tier }) {
     ref.current.style.setProperty("--mx", `${x}px`);
     ref.current.style.setProperty("--my", `${y}px`);
     if (disableTilt) return;
-    const rx = ((y - r.height / 2) / (r.height / 2)) * -8;
-    const ry = ((x - r.width / 2) / (r.width / 2)) * 8;
+    const rx = (y - r.height / 2) / (r.height / 2) * -8;
+    const ry = (x - r.width / 2) / (r.width / 2) * 8;
     setStyle({
       transform: `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${baseLift}px) scale3d(1.04, 1.04, 1.04)`,
-      transition: "transform 100ms ease-out",
+      transition: "transform 100ms ease-out"
     });
   };
-
   const onLeave = () => {
     if (disableTilt) return;
     setStyle({
       transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)",
-      transition: "transform 420ms cubic-bezier(.2,.7,.2,1)",
+      transition: "transform 420ms cubic-bezier(.2,.7,.2,1)"
     });
   };
-
-  return (
-    <article
-      ref={ref}
-      className={"price" + (tier.flag ? " featured" : "")}
-      style={style}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-    >
-      {tier.flag && <div className="price-flag">{tier.flag}</div>}
-      <div className="price-head">
-        <span>{tier.tier}</span>
-        <span className="amt">{tier.amount}</span>
-      </div>
-      <h3 className="price-name">{tier.name}</h3>
-      <p className="price-desc">{tier.desc}</p>
-      <div className="price-feat-label">// What's included</div>
-      <ul className="price-list">
-        {tier.feats.map((f) => <li key={f}>{f}</li>)}
-      </ul>
-      <div className="price-foot">
-        <span className="ideal">// Ideal for</span>
-        {tier.ideal}
-      </div>
-    </article>
-  );
+  return /*#__PURE__*/React.createElement("article", {
+    ref: ref,
+    className: "price" + (tier.flag ? " featured" : ""),
+    style: style,
+    onMouseMove: onMove,
+    onMouseLeave: onLeave
+  }, tier.flag && /*#__PURE__*/React.createElement("div", {
+    className: "price-flag"
+  }, tier.flag), /*#__PURE__*/React.createElement("div", {
+    className: "price-head"
+  }, /*#__PURE__*/React.createElement("span", null, tier.tier), /*#__PURE__*/React.createElement("span", {
+    className: "amt"
+  }, tier.amount)), /*#__PURE__*/React.createElement("h3", {
+    className: "price-name"
+  }, tier.name), /*#__PURE__*/React.createElement("p", {
+    className: "price-desc"
+  }, tier.desc), /*#__PURE__*/React.createElement("div", {
+    className: "price-feat-label"
+  }, "// What's included"), /*#__PURE__*/React.createElement("ul", {
+    className: "price-list"
+  }, tier.feats.map(f => /*#__PURE__*/React.createElement("li", {
+    key: f
+  }, f))), /*#__PURE__*/React.createElement("div", {
+    className: "price-foot"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ideal"
+  }, "// Ideal for"), tier.ideal));
 }
-
 function Pricing() {
   const [mode, setMode] = useState("onetime"); // onetime | monthly
   const tiers = mode === "onetime" ? PRICING_ONETIME : PRICING_MONTHLY;
-  return (
-    <section className="section" id="pricing">
-      <div className="container">
-        <div className="pricing-head">
-          <div>
-            <div className="section-label">
-              <span className="bar"></span>
-              <span>04 · Pricing</span>
-            </div>
-            <h2 className="section-h">
-              What it <br />
-              costs.
-            </h2>
-            <p className="section-sub">
-              Honest ranges below. I quote you a fixed number after a 30-minute
-              call, and that number doesn't move unless the scope does.
-            </p>
-          </div>
-          <div className="pricing-toggle" role="tablist">
-            <button
-              className={mode === "onetime" ? "active" : ""}
-              onClick={() => setMode("onetime")}
-            >
-              One-time project
-            </button>
-            <button
-              className={mode === "monthly" ? "active" : ""}
-              onClick={() => setMode("monthly")}
-            >
-              Monthly retainer
-            </button>
-          </div>
-        </div>
-
-        <div className="pricing-grid" key={mode}>
-          {tiers.map((t) => <PriceCard key={t.name} tier={t} />)}
-        </div>
-      </div>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "pricing"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pricing-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "section-label"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "bar"
+  }), /*#__PURE__*/React.createElement("span", null, "04 \xB7 Pricing")), /*#__PURE__*/React.createElement("h2", {
+    className: "section-h"
+  }, "What it ", /*#__PURE__*/React.createElement("br", null), "costs."), /*#__PURE__*/React.createElement("p", {
+    className: "section-sub"
+  }, "Honest ranges below. I quote you a fixed number after a 30-minute call, and that number doesn't move unless the scope does.")), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-toggle",
+    role: "tablist"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: mode === "onetime" ? "active" : "",
+    onClick: () => setMode("onetime")
+  }, "One-time project"), /*#__PURE__*/React.createElement("button", {
+    className: mode === "monthly" ? "active" : "",
+    onClick: () => setMode("monthly")
+  }, "Monthly retainer"))), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-grid",
+    key: mode
+  }, tiers.map(t => /*#__PURE__*/React.createElement(PriceCard, {
+    key: t.name,
+    tier: t
+  })))));
 }
-
 function CTA() {
-  return (
-    <section id="contact">
-      <div className="cta">
-        <div className="cta-inner">
-            <div className="cta-top">
-              <div className="mark">
-                05 · Get in touch<br />
-                <span className="sub">Two slots open · Q3 2026</span>
-              </div>
-              <div></div>
-              <div className="mark tr">
-                Usual reply<br />
-                <span className="sub">Within 24 hours</span>
-              </div>
-            </div>
-
-            <div className="cta-stage">
-              <h2 className="cta-h">
-                Let&apos;s <span className="grad">talk.</span>
-              </h2>
-              <div className="cta-wordmark" aria-hidden="true">
-                <span className="glyph">NOXTA</span>
-              </div>
-              <div className="cta-photo-wrap">
-                <img
-                  className="cta-photo"
-                  src="assets/portrait-cta.webp"
-                  alt=""
-                  width="1593"
-                  height="987"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
-
-            <div className="cta-bottom">
-              <p className="lede">
-                Send me what you're working on and I'll come back within a day.
-                If I can help, I'll quote you. If I can't, I'll tell you, and
-                usually I know someone who can.
-              </p>
-              <div className="ctas">
-                <a className="btn btn-primary" href="mailto:adrian@noxta.studio">
-                  adrian@noxta.studio →
-                </a>
-                <a className="btn btn-ghost" href="/contact">
-                  Book a 30-min call
-                </a>
-              </div>
-              <div className="note">
-                Or WhatsApp{" "}
-                <a
-                  href="https://wa.me/31617657327"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="note-link"
-                >
-                  <strong>+31 6 17 657 327</strong>
-                </a>{" "}
-                · I read every message
-              </div>
-            </div>
-          </div>
-        </div>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    id: "contact"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cta"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cta-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cta-top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mark"
+  }, "05 \xB7 Get in touch", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "sub"
+  }, "Two slots open \xB7 Q3 2026")), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
+    className: "mark tr"
+  }, "Usual reply", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "sub"
+  }, "Within 24 hours"))), /*#__PURE__*/React.createElement("div", {
+    className: "cta-stage"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "cta-h"
+  }, "Let's ", /*#__PURE__*/React.createElement("span", {
+    className: "grad"
+  }, "talk.")), /*#__PURE__*/React.createElement("div", {
+    className: "cta-wordmark",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "glyph"
+  }, "NOXTA")), /*#__PURE__*/React.createElement("div", {
+    className: "cta-photo-wrap"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "cta-photo",
+    src: "assets/portrait-cta.webp",
+    alt: "",
+    width: "1593",
+    height: "987",
+    loading: "lazy",
+    decoding: "async"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "cta-bottom"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "lede"
+  }, "Send me what you're working on and I'll come back within a day. If I can help, I'll quote you. If I can't, I'll tell you, and usually I know someone who can."), /*#__PURE__*/React.createElement("div", {
+    className: "ctas"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: "mailto:adrian@noxta.studio"
+  }, "adrian@noxta.studio \u2192"), /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-ghost",
+    href: "/contact"
+  }, "Book a 30-min call")), /*#__PURE__*/React.createElement("div", {
+    className: "note"
+  }, "Or WhatsApp", " ", /*#__PURE__*/React.createElement("a", {
+    href: "https://wa.me/31617657327",
+    target: "_blank",
+    rel: "noreferrer noopener",
+    className: "note-link"
+  }, /*#__PURE__*/React.createElement("strong", null, "+31 6 17 657 327")), " ", "\xB7 I read every message")))));
 }
-
 function Wordmark() {
-  return (
-    <section className="wordmark" aria-hidden="true">
-      <div className="container">
-        <div className="glyph">NOXTA</div>
-      </div>
-    </section>
-  );
+  return /*#__PURE__*/React.createElement("section", {
+    className: "wordmark",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "glyph"
+  }, "NOXTA")));
 }
-
 function WhatsAppIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-      <path
-        fill="currentColor"
-        d="M17.5 14.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.7-1.5-3.8-3.4-.3-.5.3-.5.8-1.5.1-.2.1-.3 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.8.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"
-      />
-      <path
-        fill="currentColor"
-        d="M20.5 3.5A11 11 0 0 0 2.7 16.8L1 22l5.3-1.7a11 11 0 0 0 5.3 1.3h.1a11 11 0 0 0 7.8-18.6Zm-7.8 16.7a9 9 0 0 1-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3a9.2 9.2 0 1 1 7.4 4Z"
-      />
-    </svg>
-  );
+  return /*#__PURE__*/React.createElement("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none"
+  }, /*#__PURE__*/React.createElement("path", {
+    fill: "currentColor",
+    d: "M17.5 14.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.7-1.5-3.8-3.4-.3-.5.3-.5.8-1.5.1-.2.1-.3 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.8.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"
+  }), /*#__PURE__*/React.createElement("path", {
+    fill: "currentColor",
+    d: "M20.5 3.5A11 11 0 0 0 2.7 16.8L1 22l5.3-1.7a11 11 0 0 0 5.3 1.3h.1a11 11 0 0 0 7.8-18.6Zm-7.8 16.7a9 9 0 0 1-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3a9.2 9.2 0 1 1 7.4 4Z"
+  }));
 }
 function LinkedInIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z" />
-    </svg>
-  );
+  return /*#__PURE__*/React.createElement("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z"
+  }));
 }
-
 function SpecBar() {
-  return (
-    <div className="spec-bar" aria-label="Studio at a glance">
-      <div className="cell">
-        <span className="k">// Studio est.</span>
-        <span className="v">2026</span>
-      </div>
-      <div className="cell">
-        <span className="k">// Reply window</span>
-        <span className="v"><span className="accent">&lt; 24h</span></span>
-      </div>
-      <div className="cell">
-        <span className="k">// Location</span>
-        <span className="v">Tilburg, NL</span>
-      </div>
-      <div className="cell">
-        <span className="k">// Build</span>
-        <span className="v">Hand-coded</span>
-      </div>
-    </div>
-  );
+  return /*#__PURE__*/React.createElement("div", {
+    className: "spec-bar",
+    "aria-label": "Studio at a glance"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "// Studio est."), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "2026")), /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "// Reply window"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "accent"
+  }, "< 24h"))), /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "// Location"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "Tilburg, NL")), /*#__PURE__*/React.createElement("div", {
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "// Build"), /*#__PURE__*/React.createElement("span", {
+    className: "v"
+  }, "Hand-coded")));
 }
-
 function Footer() {
-  return (
-    <footer className="footer" id="end">
-      <div className="container">
-        <div className="foot-grid">
-          <div className="foot-col foot-brand">
-            <div className="lg">No<span className="x">x</span>ta</div>
-            <div className="label" style={{ marginBottom: 14 }}>Studio · Tilburg, NL · Est. 2026</div>
-            <p>
-              Adrian Tajti. A one-person studio in Tilburg. I work with small
-              businesses, mostly Dutch and Belgian, who want a real person to
-              call when something on their site needs changing.
-            </p>
-          </div>
-          <div className="foot-col">
-            <h5>// Site</h5>
-            <a href="/">Home</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/contact">Contact</a>
-          </div>
-          <div className="foot-col">
-            <h5>// Contact</h5>
-            <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
-            <a href="/contact">Book a call</a>
-            <p>Tilburg, NL · UTC+1</p>
-          </div>
-          <div className="foot-col">
-            <h5>// Elsewhere</h5>
-            <a href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <WhatsAppIcon /> WhatsApp
-            </a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <LinkedInIcon /> LinkedIn
-            </a>
-          </div>
-        </div>
-        <div className="foot-base">
-          <span>© 2026 Adrian Tajti · Noxta Studio</span>
-          <div className="dots">
-            <span>Hand-coded</span>
-            <span>Plain HTML</span>
-            <span>No analytics on this page</span>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+  return /*#__PURE__*/React.createElement("footer", {
+    className: "footer",
+    id: "end"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "foot-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "foot-col foot-brand"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lg"
+  }, "No", /*#__PURE__*/React.createElement("span", {
+    className: "x"
+  }, "x"), "ta"), /*#__PURE__*/React.createElement("div", {
+    className: "label",
+    style: {
+      marginBottom: 14
+    }
+  }, "Studio \xB7 Tilburg, NL \xB7 Est. 2026"), /*#__PURE__*/React.createElement("p", null, "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.")), /*#__PURE__*/React.createElement("div", {
+    className: "foot-col"
+  }, /*#__PURE__*/React.createElement("h5", null, "// Site"), /*#__PURE__*/React.createElement("a", {
+    href: "/"
+  }, "Home"), /*#__PURE__*/React.createElement("a", {
+    href: "/portfolio"
+  }, "Portfolio"), /*#__PURE__*/React.createElement("a", {
+    href: "/contact"
+  }, "Contact")), /*#__PURE__*/React.createElement("div", {
+    className: "foot-col"
+  }, /*#__PURE__*/React.createElement("h5", null, "// Contact"), /*#__PURE__*/React.createElement("a", {
+    href: "mailto:adrian@noxta.studio"
+  }, "adrian@noxta.studio"), /*#__PURE__*/React.createElement("a", {
+    href: "/contact"
+  }, "Book a call"), /*#__PURE__*/React.createElement("p", null, "Tilburg, NL \xB7 UTC+1")), /*#__PURE__*/React.createElement("div", {
+    className: "foot-col"
+  }, /*#__PURE__*/React.createElement("h5", null, "// Elsewhere"), /*#__PURE__*/React.createElement("a", {
+    href: "https://wa.me/31617657327",
+    target: "_blank",
+    rel: "noreferrer noopener",
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement(WhatsAppIcon, null), " WhatsApp"), /*#__PURE__*/React.createElement("a", {
+    href: "https://www.linkedin.com/",
+    target: "_blank",
+    rel: "noreferrer noopener",
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement(LinkedInIcon, null), " LinkedIn"))), /*#__PURE__*/React.createElement("div", {
+    className: "foot-base"
+  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Adrian Tajti \xB7 Noxta Studio"), /*#__PURE__*/React.createElement("div", {
+    className: "dots"
+  }, /*#__PURE__*/React.createElement("span", null, "Hand-coded"), /*#__PURE__*/React.createElement("span", null, "Plain HTML"), /*#__PURE__*/React.createElement("span", null, "No analytics on this page")))));
 }
 
 /* ============ TWEAKS PANEL ============ */
 
-function NoxtaTweaks({ tweaks, setTweak }) {
-  return (
-    <TweaksPanel title="Tweaks">
-      <TweakSection label="Accent">
-        <TweakColor
-          label="Accent color"
-          value={tweaks.accent}
-          onChange={(v) => setTweak("accent", v)}
-          options={[
-            { label: "Gradient", value: "gradient" },
-            { label: "Ember", value: "ember" },
-            { label: "Blaze", value: "blaze" },
-            { label: "Rust", value: "rust" },
-          ].map((o) => ({ value: o.value, label: o.label, color: ACCENTS[o.value].grad }))}
-        />
-      </TweakSection>
-      <TweakSection label="Backdrop">
-        <TweakSlider
-          label="Glow intensity"
-          value={tweaks.backdropIntensity}
-          onChange={(v) => setTweak("backdropIntensity", v)}
-          min={0}
-          max={100}
-          step={5}
-        />
-      </TweakSection>
-    </TweaksPanel>
-  );
+function NoxtaTweaks({
+  tweaks,
+  setTweak
+}) {
+  return /*#__PURE__*/React.createElement(TweaksPanel, {
+    title: "Tweaks"
+  }, /*#__PURE__*/React.createElement(TweakSection, {
+    label: "Accent"
+  }, /*#__PURE__*/React.createElement(TweakColor, {
+    label: "Accent color",
+    value: tweaks.accent,
+    onChange: v => setTweak("accent", v),
+    options: [{
+      label: "Gradient",
+      value: "gradient"
+    }, {
+      label: "Ember",
+      value: "ember"
+    }, {
+      label: "Blaze",
+      value: "blaze"
+    }, {
+      label: "Rust",
+      value: "rust"
+    }].map(o => ({
+      value: o.value,
+      label: o.label,
+      color: ACCENTS[o.value].grad
+    }))
+  })), /*#__PURE__*/React.createElement(TweakSection, {
+    label: "Backdrop"
+  }, /*#__PURE__*/React.createElement(TweakSlider, {
+    label: "Glow intensity",
+    value: tweaks.backdropIntensity,
+    onChange: v => setTweak("backdropIntensity", v),
+    min: 0,
+    max: 100,
+    step: 5
+  })));
 }
 
 /* Custom TweakColor that accepts {value,label,color} with color being any CSS background */
-function TweakColor({ label, value, onChange, options }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <div style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".15em", textTransform: "uppercase", color: "var(--mute)" }}>
-        {label}
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
-        {options.map((o) => (
-          <button
-            key={o.value}
-            onClick={() => onChange(o.value)}
-            style={{
-              padding: 8,
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              border: 0,
-              background: value === o.value ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.02)",
-              boxShadow: value === o.value ? "inset 0 0 0 1px rgba(255,255,255,.25)" : "inset 0 0 0 1px rgba(255,255,255,.06)",
-              cursor: "pointer",
-              color: "var(--ink)",
-              fontFamily: "var(--f-mono)",
-              fontSize: 11,
-              letterSpacing: ".05em",
-              textAlign: "left",
-              clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)",
-            }}
-          >
-            <span style={{ width: 22, height: 22, background: o.color, flexShrink: 0, clipPath: "polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)" }} />
-            {o.label}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+function TweakColor({
+  label,
+  value,
+  onChange,
+  options
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--f-mono)",
+      fontSize: 10,
+      letterSpacing: ".15em",
+      textTransform: "uppercase",
+      color: "var(--mute)"
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(2, 1fr)",
+      gap: 8
+    }
+  }, options.map(o => /*#__PURE__*/React.createElement("button", {
+    key: o.value,
+    onClick: () => onChange(o.value),
+    style: {
+      padding: 8,
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      border: 0,
+      background: value === o.value ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.02)",
+      boxShadow: value === o.value ? "inset 0 0 0 1px rgba(255,255,255,.25)" : "inset 0 0 0 1px rgba(255,255,255,.06)",
+      cursor: "pointer",
+      color: "var(--ink)",
+      fontFamily: "var(--f-mono)",
+      fontSize: 11,
+      letterSpacing: ".05em",
+      textAlign: "left",
+      clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 22,
+      height: 22,
+      background: o.color,
+      flexShrink: 0,
+      clipPath: "polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)"
+    }
+  }), o.label))));
 }
 
 /* ============ ROOT ============ */
 
 function App() {
   const [tweaks, _setTweaks] = useTweaks(TWEAK_DEFAULTS);
-  const setTweak = (k, v) => _setTweaks({ [k]: v });
+  const setTweak = (k, v) => _setTweaks({
+    [k]: v
+  });
 
   // apply accent to CSS vars
   useEffect(() => {
@@ -3668,15 +3759,12 @@ function App() {
     root.style.setProperty("--accent-solid", a.solid);
     root.style.setProperty("--accent-glow", a.glow);
   }, [tweaks.accent]);
-
   useEffect(() => {
     const root = document.documentElement;
     const v = (tweaks.backdropIntensity ?? 65) / 100;
     root.style.setProperty("--bg-glow-strength", String(v));
     // tweak the hero glow strength by overriding opacity on the ::before pseudo via custom var
-    document
-      .querySelectorAll(".portrait-glow")
-      .forEach((el) => (el.style.opacity = String(0.15 + v * 0.5)));
+    document.querySelectorAll(".portrait-glow").forEach(el => el.style.opacity = String(0.15 + v * 0.5));
   }, [tweaks.backdropIntensity]);
 
   // Scroll position restoration — only on reload, per page
@@ -3685,13 +3773,15 @@ function App() {
     const key = "nx-scroll:" + window.location.pathname;
     const navType = (performance.getEntriesByType("navigation")[0] || {}).type;
     const isReload = navType === "reload";
-
     if (isReload) {
       const saved = parseInt(sessionStorage.getItem(key) || "0", 10);
       if (saved > 0) {
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            window.scrollTo({ top: saved, behavior: "instant" });
+            window.scrollTo({
+              top: saved,
+              behavior: "instant"
+            });
           });
         });
       }
@@ -3700,7 +3790,6 @@ function App() {
       sessionStorage.removeItem(key);
       window.scrollTo(0, 0);
     }
-
     let raf = null;
     const onScroll = () => {
       if (raf) return;
@@ -3709,60 +3798,45 @@ function App() {
         raf = null;
       });
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, {
+      passive: true
+    });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Scroll-triggered animations for sections below the hero
   useEffect(() => {
-    const sections = document.querySelectorAll(
-      "#about, #services, #work, #believe, #pricing"
-    );
+    const sections = document.querySelectorAll("#about, #services, #work, #believe, #pricing");
     if (!sections.length) return;
-    const reduce = window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
-      sections.forEach((s) => s.classList.add("nx-in-view"));
+      sections.forEach(s => s.classList.add("nx-in-view"));
       return;
     }
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("nx-in-view");
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    sections.forEach((s) => obs.observe(s));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("nx-in-view");
+          obs.unobserve(e.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px"
+    });
+    sections.forEach(s => obs.observe(s));
     return () => obs.disconnect();
   }, []);
-
-  return (
-    <React.Fragment>
-      <Nav />
-      <main>
-        <Hero />
-        <Marquee items={MARQUEE_ITEMS} />
-        <Intro />
-        <Services />
-        <Work />
-        <StaticStrip text="One person · One studio · No handoffs" />
-        <Believe />
-        <Pricing />
-        <CTA />
-      </main>
-      <SpecBar />
-      <Footer />
-      <NoxtaTweaks tweaks={tweaks} setTweak={setTweak} />
-    </React.Fragment>
-  );
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(Marquee, {
+    items: MARQUEE_ITEMS
+  }), /*#__PURE__*/React.createElement(Intro, null), /*#__PURE__*/React.createElement(Services, null), /*#__PURE__*/React.createElement(Work, null), /*#__PURE__*/React.createElement(StaticStrip, {
+    text: "One person \xB7 One studio \xB7 No handoffs"
+  }), /*#__PURE__*/React.createElement(Believe, null), /*#__PURE__*/React.createElement(Pricing, null), /*#__PURE__*/React.createElement(CTA, null)), /*#__PURE__*/React.createElement(SpecBar, null), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(NoxtaTweaks, {
+    tweaks: tweaks,
+    setTweak: setTweak
+  }));
 }
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-
-    </script>
+ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
+</script>
   </body>
 </html>
