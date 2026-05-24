@@ -66,7 +66,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <style>
 /* =========================================================
    Noxta Studio v3 — Home
@@ -3062,11 +3064,12 @@ function Hero() {
 
         <div className="hero-portrait">
           <img
-            src="assets/portrait-hero.png"
+            src="assets/portrait-hero.webp"
             alt="Adrian Tajti, oprichter van Noxta Studio"
             width="1448"
             height="1086"
             loading="eager"
+            fetchpriority="high"
             decoding="async"
           />
         </div>
@@ -3440,7 +3443,7 @@ function CTA() {
               <div className="cta-photo-wrap">
                 <img
                   className="cta-photo"
-                  src="assets/portrait-cta.png"
+                  src="assets/portrait-cta.webp"
                   alt=""
                   width="1593"
                   height="987"
