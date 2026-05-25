@@ -455,7 +455,9 @@ section {
   font-size: 22px;
   letter-spacing: -0.01em;
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
 }
 .nav-logo .x {
   background: var(--accent);
@@ -476,11 +478,21 @@ section {
 }
 .nav-links a {
   padding: 10px 16px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: var(--ink-soft);
   transition: color 150ms;
 }
 .nav-links a:hover {
   color: var(--ink);
+}
+.nav-links a[aria-current="page"] {
+  color: var(--ink);
+}
+.nav-cta[aria-current="page"] {
+  background: rgba(255, 77, 21, 0.20);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.65);
 }
 .nav-cta {
   margin-left: 8px;
@@ -2079,6 +2091,12 @@ section {
   margin-bottom: 10px;
   transition: color 150ms;
 }
+.foot-col a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 2px;
+}
 .foot-col a:hover { color: var(--ink); }
 .foot-brand .lg {
   font-family: var(--f-display);
@@ -3076,7 +3094,7 @@ function Nav() {
   }, n.label)), /*#__PURE__*/React.createElement("a", {
     className: "nav-cta",
     href: "/contact"
-  }, "Book a call \u2192"))));
+  }, "Contact \u2192"))));
 }
 function Hero() {
   return /*#__PURE__*/React.createElement("section", {
@@ -3508,7 +3526,7 @@ function CTA() {
   }, "adrian@noxta.studio \u2192"), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-ghost",
     href: "/contact"
-  }, "Book a 30-min call")), /*#__PURE__*/React.createElement("div", {
+  }, "Contact")), /*#__PURE__*/React.createElement("div", {
     className: "note"
   }, "Or WhatsApp", " ", /*#__PURE__*/React.createElement("a", {
     href: "https://wa.me/31617657327",
@@ -3616,7 +3634,7 @@ function Footer() {
     href: "mailto:adrian@noxta.studio"
   }, "adrian@noxta.studio"), /*#__PURE__*/React.createElement("a", {
     href: "/contact"
-  }, "Book a call"), /*#__PURE__*/React.createElement("p", null, "Tilburg, NL \xB7 UTC+1")), /*#__PURE__*/React.createElement("div", {
+  }, "Contact"), /*#__PURE__*/React.createElement("p", null, "Tilburg, NL \xB7 UTC+1")), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
   }, /*#__PURE__*/React.createElement("h5", null, "// Elsewhere"), /*#__PURE__*/React.createElement("a", {
     href: "https://wa.me/31617657327",
