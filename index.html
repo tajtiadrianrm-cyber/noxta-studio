@@ -63,6 +63,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preload" as="script" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin />
+    <link rel="preload" as="script" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
@@ -2075,7 +2078,7 @@ section {
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .foot-col, .foot-col + .foot-col { padding: 0; border-left: 0; }
 }
-.foot-col h5 {
+.foot-col h4 {
   font-family: var(--f-mono);
   font-size: 11px;
   letter-spacing: 0.22em;
@@ -2246,7 +2249,7 @@ section {
   .foot-col:first-child { padding-top: 0; }
   .foot-brand .lg { font-size: 26px; margin-bottom: 10px; }
   .foot-brand p { font-size: 13px; max-width: 100%; }
-  .foot-col h5 { margin-bottom: 14px; }
+  .foot-col h4 { margin-bottom: 14px; }
   .foot-col a, .foot-col p { font-size: 14px; margin-bottom: 8px; }
   .foot-base { gap: 14px; flex-direction: column; align-items: flex-start; padding-top: 20px; }
   .foot-base .dots { flex-wrap: wrap; row-gap: 8px; }
@@ -3461,16 +3464,28 @@ function Pricing() {
     className: "section-sub"
   }, "Honest ranges below. I quote you a fixed number after a 30-minute call, and that number doesn't move unless the scope does.")), /*#__PURE__*/React.createElement("div", {
     className: "pricing-toggle",
-    role: "tablist"
+    role: "tablist",
+    "aria-label": "Pricing model"
   }, /*#__PURE__*/React.createElement("button", {
     className: mode === "onetime" ? "active" : "",
-    onClick: () => setMode("onetime")
+    onClick: () => setMode("onetime"),
+    role: "tab",
+    "aria-selected": mode === "onetime",
+    "aria-controls": "pricing-panel",
+    id: "tab-onetime"
   }, "One-time project"), /*#__PURE__*/React.createElement("button", {
     className: mode === "monthly" ? "active" : "",
-    onClick: () => setMode("monthly")
+    onClick: () => setMode("monthly"),
+    role: "tab",
+    "aria-selected": mode === "monthly",
+    "aria-controls": "pricing-panel",
+    id: "tab-monthly"
   }, "Monthly retainer"))), /*#__PURE__*/React.createElement("div", {
     className: "pricing-grid",
-    key: mode
+    key: mode,
+    role: "tabpanel",
+    id: "pricing-panel",
+    "aria-labelledby": mode === "onetime" ? "tab-onetime" : "tab-monthly"
   }, tiers.map(t => /*#__PURE__*/React.createElement(PriceCard, {
     key: t.name,
     tier: t
@@ -3622,7 +3637,7 @@ function Footer() {
     }
   }, "Studio \xB7 Tilburg, NL \xB7 Est. 2026"), /*#__PURE__*/React.createElement("p", null, "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.")), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
-  }, /*#__PURE__*/React.createElement("h5", null, "// Site"), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("h4", null, "// Site"), /*#__PURE__*/React.createElement("a", {
     href: "/"
   }, "Home"), /*#__PURE__*/React.createElement("a", {
     href: "/portfolio"
@@ -3630,13 +3645,13 @@ function Footer() {
     href: "/contact"
   }, "Contact")), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
-  }, /*#__PURE__*/React.createElement("h5", null, "// Contact"), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("h4", null, "// Contact"), /*#__PURE__*/React.createElement("a", {
     href: "mailto:adrian@noxta.studio"
   }, "adrian@noxta.studio"), /*#__PURE__*/React.createElement("a", {
     href: "/contact"
   }, "Contact"), /*#__PURE__*/React.createElement("p", null, "Tilburg, NL \xB7 UTC+1")), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
-  }, /*#__PURE__*/React.createElement("h5", null, "// Elsewhere"), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("h4", null, "// Elsewhere"), /*#__PURE__*/React.createElement("a", {
     href: "https://wa.me/31617657327",
     target: "_blank",
     rel: "noreferrer noopener",
