@@ -177,22 +177,22 @@ button:focus-visible,
   to   { opacity: 1; transform: scale(1);    filter: blur(0); }
 }
 
-/* Hero — cinematic entrance, total ~1.6s */
+/* Hero — cinematic entrance, total ~0.8s (halved) */
 .hero-text > * {
-  animation: nx-reveal 1000ms cubic-bezier(.2,.7,.2,1) both;
+  animation: nx-reveal 500ms cubic-bezier(.2,.7,.2,1) both;
 }
-.hero-text > *:nth-child(1) { animation-delay: 150ms; }
-.hero-text > *:nth-child(2) { animation-delay: 500ms; }
-.hero-text > *:nth-child(3) { animation-delay: 700ms; }
-.hero-text > *:nth-child(4) { animation-delay: 950ms; }
-.hero-text > *:nth-child(5) { animation-delay: 1250ms; }
+.hero-text > *:nth-child(1) { animation-delay: 75ms; }
+.hero-text > *:nth-child(2) { animation-delay: 250ms; }
+.hero-text > *:nth-child(3) { animation-delay: 350ms; }
+.hero-text > *:nth-child(4) { animation-delay: 475ms; }
+.hero-text > *:nth-child(5) { animation-delay: 625ms; }
 .hero-portrait {
-  animation: nx-zoom-in 1600ms cubic-bezier(.2,.7,.2,1) both;
-  animation-delay: 200ms;
+  animation: nx-zoom-in 800ms cubic-bezier(.2,.7,.2,1) both;
+  animation-delay: 100ms;
 }
-.hero-status-pill { animation: nx-fade 900ms ease-out both; animation-delay: 1400ms; }
-.hero-top-meta    { animation: nx-fade 900ms ease-out both; animation-delay: 1500ms; }
-.hero-tagbar      { animation: nx-fade 900ms ease-out both; animation-delay: 1700ms; }
+.hero-status-pill { animation: nx-fade 450ms ease-out both; animation-delay: 700ms; }
+.hero-top-meta    { animation: nx-fade 450ms ease-out both; animation-delay: 750ms; }
+.hero-tagbar      { animation: nx-fade 450ms ease-out both; animation-delay: 850ms; }
 
 /* Below-the-fold — start hidden, animate when parent section enters viewport */
 .section .section-label,
