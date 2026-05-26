@@ -1789,7 +1789,7 @@ section {
 .price-name {
   font-family: var(--f-display);
   font-weight: 900;
-  font-size: 48px;
+  font-size: clamp(36px, 3.5vw, 48px);
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -2174,8 +2174,11 @@ section {
   .hero-bio { font-size: 14px; max-width: 100%; }
   .hero-actions { gap: 10px; }
   .hero-portrait img {
-    height: clamp(320px, 50vh, 460px);
+    height: clamp(380px, 58vh, 540px);
     max-width: 100%;
+    object-position: center 12%;
+    -webkit-mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
   }
 
   /* ── Sections (general) ── */
@@ -2221,7 +2224,13 @@ section {
   /* ── CTA ── */
   .cta-inner { padding: 48px 24px 36px; min-height: auto; }
   .cta-h { font-size: clamp(48px, 14vw, 80px); }
-  .cta-photo { height: clamp(360px, 56vh, 540px); max-width: 100%; }
+  .cta-photo {
+    height: clamp(380px, 58vh, 560px);
+    max-width: 100%;
+    object-position: center 12%;
+    -webkit-mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
+  }
   .cta-wordmark { padding-top: 60px; }
   .cta-wordmark .glyph { font-size: clamp(140px, 42vw, 320px); }
   .cta-top .mark { font-size: 10px; letter-spacing: 0.18em; }
@@ -3538,11 +3547,11 @@ function CTA() {
     className: "ctas"
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary",
-    href: "mailto:adrian@noxta.studio"
-  }, "adrian@noxta.studio \u2192"), /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-ghost",
     href: "/contact"
-  }, "Contact")), /*#__PURE__*/React.createElement("div", {
+  }, "Start a project \u2192"), /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-ghost",
+    href: "mailto:adrian@noxta.studio"
+  }, "Mail")), /*#__PURE__*/React.createElement("div", {
     className: "note"
   }, "Or WhatsApp", " ", /*#__PURE__*/React.createElement("a", {
     href: "https://wa.me/31617657327",
