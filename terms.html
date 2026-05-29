@@ -1,70 +1,322 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General Terms &amp; Conditions — Noxta Studio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>General Terms &amp; Conditions · Noxta Studio</title>
   <meta name="description" content="General Terms and Conditions of Noxta Studio." />
   <meta name="robots" content="noindex,follow" />
   <link rel="canonical" href="https://noxta.studio/terms" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="aurora.css" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#ff4d15" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+
   <style>
-    .legal-wrap { max-width: 760px; margin: 0 auto; }
-    .legal-wrap h2 {
-      font-family: var(--display);
+    :root {
+      --bg: #0a0a0a;
+      --bg-soft: #121414;
+      --bg-tint: #1a1c1c;
+      --ink: #f5f6f7;
+      --ink-soft: #cfcccb;
+      --mute: #8a8786;
+      --hairline: rgba(255, 255, 255, 0.08);
+      --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
+      --accent-solid: #ff4d15;
+      --accent-glow: rgba(255, 77, 21, 0.5);
+      --f-display: "Orbitron", system-ui, sans-serif;
+      --f-body: "Manrope", system-ui, -apple-system, sans-serif;
+      --f-mono: "JetBrains Mono", ui-monospace, monospace;
+      --pad-x: clamp(20px, 5vw, 64px);
+      --max-w: 1440px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: clip;
+    }
+
+    body { position: relative; isolation: isolate; min-height: 100dvh; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 60% 50% at 12% 18%, rgba(255, 122, 61, 0.12), transparent 60%),
+        radial-gradient(ellipse 50% 60% at 88% 82%, rgba(214, 58, 13, 0.10), transparent 60%);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      opacity: 0.4;
+      mix-blend-mode: screen;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(10, 10, 10, 0.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+    .nav-logo {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo .x {
+      background: var(--accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-style: italic;
+    }
+    .nav-back {
+      font-family: var(--f-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      transition: color 150ms;
+    }
+    .nav-back:hover { color: var(--accent-solid); }
+
+    /* ── Article ── */
+    .article {
+      padding: clamp(48px, 8vw, 120px) 0;
+    }
+    .article-wrap { max-width: 760px; margin: 0 auto; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-solid);
+      margin-bottom: 28px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--accent-solid);
+      box-shadow: 0 0 12px var(--accent-glow);
+      border-radius: 50%;
+    }
+
+    h1.title {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(36px, 5.5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .lead {
+      color: var(--mute);
+      font-size: 14px;
+      font-family: var(--f-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+
+    .article-wrap h2 {
+      font-family: var(--f-display);
+      font-weight: 600;
       font-size: clamp(20px, 2.6vw, 24px);
       letter-spacing: -0.01em;
       color: var(--ink);
-      margin: 40px 0 12px;
-      font-weight: 500;
+      margin: 48px 0 14px;
+      padding-top: 24px;
+      border-top: 1px solid var(--hairline);
     }
-    .legal-wrap p,
-    .legal-wrap li {
-      font-family: var(--sans);
+    .article-wrap p,
+    .article-wrap li {
+      font-family: var(--f-body);
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: var(--ink-soft);
       font-weight: 300;
     }
-    .legal-wrap p { margin-bottom: 14px; }
-    .legal-wrap ul { padding-left: 22px; margin-bottom: 14px; }
-    .legal-wrap li { margin-bottom: 6px; }
-    .legal-wrap a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(124, 224, 255, 0.3); }
-    .legal-wrap a:hover { border-bottom-color: var(--cyan); }
-    .legal-wrap strong { color: var(--ink); font-weight: 500; }
+    .article-wrap p { margin-bottom: 14px; }
+    .article-wrap ul { padding-left: 22px; margin-bottom: 14px; }
+    .article-wrap li { margin-bottom: 6px; }
+    .article-wrap a {
+      color: var(--accent-solid);
+      border-bottom: 1px solid rgba(255, 77, 21, 0.35);
+      transition: border-color 150ms;
+    }
+    .article-wrap a:hover { border-bottom-color: var(--accent-solid); }
+    .article-wrap strong { color: var(--ink); font-weight: 600; }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 22px;
+      font-family: var(--f-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid var(--hairline);
+      background: var(--bg-soft);
+      transition: all 150ms;
+    }
+    .btn:hover {
+      border-color: var(--accent-solid);
+      color: var(--accent-solid);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--hairline);
+      padding-top: 60px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 0.9fr 0.9fr 0.9fr;
+      gap: 0;
+      margin-bottom: 60px;
+    }
+    .foot-col { padding: 4px 32px 4px 0; }
+    .foot-col + .foot-col { border-left: 1px solid var(--hairline); padding-left: 32px; }
+    @media (max-width: 800px) {
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .foot-col, .foot-col + .foot-col { padding: 0; border-left: 0; }
+    }
+    .foot-col h4 {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-solid);
+      margin-bottom: 18px;
+      font-weight: 400;
+    }
+    .foot-col a, .foot-col p {
+      display: block;
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+      transition: color 150ms;
+    }
+    .foot-col a { min-height: 32px; }
+    .foot-col a:hover { color: var(--ink); }
+    .foot-brand .lg {
+      font-family: var(--f-display);
+      font-weight: 900;
+      font-size: 32px;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+    .foot-brand .lg .x {
+      background: var(--accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-style: italic;
+    }
+    .foot-brand .label {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 14px;
+    }
+    .foot-brand p {
+      max-width: 32ch;
+      font-size: 13px;
+      color: var(--mute);
+      line-height: 1.5;
+    }
+    .foot-base {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--hairline);
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mute);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="index.html" class="nav-logo"><span class="wo">No</span><span class="wx">x</span><span class="wo">ta</span></a>
-  <div class="nav-links">
-    <a href="work.html">Work</a>
-    <a href="services.html">Pricing</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="contact.html" class="nav-cta">Book a call</a>
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">No<span class="x">x</span>ta</a>
+    <a href="/" class="nav-back">← Back to home</a>
   </div>
-</nav>
+</header>
 
-<section class="section grain" style="padding-top: 120px;">
-  <div class="section-inner">
-    <div class="legal-wrap">
+<section class="article">
+  <div class="container">
+    <div class="article-wrap">
 
-      <span class="chip" style="margin-bottom: 28px; display: inline-flex;">
-        <span class="dot"></span>Legal
-      </span>
+      <span class="eyebrow">Legal · Terms</span>
 
-      <h1 class="h-display" style="font-size: clamp(40px, 6vw, 64px); line-height: 1.05; margin-bottom: 16px;">
-        General Terms &amp; Conditions
-      </h1>
-      <p class="body-md" style="margin-bottom: 24px;">Noxta Studio · Version 1.0 · 29 May 2026</p>
+      <h1 class="title">General Terms &amp; Conditions</h1>
+      <p class="lead">Noxta Studio · Version 1.0 · 29 May 2026</p>
 
       <h2>Article 1 — Definitions</h2>
       <ul>
@@ -213,9 +465,9 @@
         time the Agreement is formed governs that Agreement.
       </p>
 
-      <div style="display: flex; gap: 12px; margin-top: 48px; flex-wrap: wrap;">
-        <a href="index.html" class="btn btn-ghost">&larr; Back to home</a>
-        <a href="privacy.html" class="btn btn-ghost">Read privacy policy</a>
+      <div class="btn-row">
+        <a href="/" class="btn">← Home</a>
+        <a href="/privacy" class="btn">Privacy Policy →</a>
       </div>
 
     </div>
@@ -223,27 +475,39 @@
 </section>
 
 <footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-wrap"><span class="footer-logo-wo">No</span><span class="footer-logo-wx">x</span><span class="footer-logo-wo">ta</span></div>
-      <div class="footer-sub">STUDIO · TILBURG, NL · EST. 2026</div>
-      <p class="footer-desc">A one-person studio building considered websites for small companies that want a partner — not a vendor.</p>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <div class="lg">No<span class="x">x</span>ta</div>
+        <div class="label">Studio · Tilburg, NL · Est. 2026</div>
+        <p>A one-person studio building considered websites for small companies that want a partner — not a vendor.</p>
+      </div>
+      <div class="foot-col">
+        <h4>// Site</h4>
+        <a href="/">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+      <div class="foot-col">
+        <h4>// Contact</h4>
+        <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
+        <a href="/contact">Book a call</a>
+        <p>Tilburg, NL · UTC+1</p>
+      </div>
+      <div class="foot-col">
+        <h4>// Elsewhere</h4>
+        <a href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener">WhatsApp</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+      </div>
     </div>
-    <div class="footer-col"><span class="footer-col-label">Site</span><a href="work.html">Work</a><a href="services.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-    <div class="footer-col"><span class="footer-col-label">Contact</span><a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a><a href="contact.html">Book a call</a><a href="about.html">Tilburg, NL</a></div>
-    <div class="footer-col"><span class="footer-col-label">Legal</span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    <div class="foot-base">
+      <span>© 2026 Adrian Tajti · Noxta Studio</span>
+      <span>Hand-coded · Plain HTML · No tracking</span>
+    </div>
   </div>
-  <div class="footer-bottom"><span>© <span data-year></span> ADRIAN TAJTI · NOXTA STUDIO</span><span>BUILT BY HAND · NO CMS · NO COOKIES · NO TRACKING</span></div>
 </footer>
 
-<nav class="mobile-nav">
-  <a href="index.html"><span class="mnav-dot"></span>Home</a>
-  <a href="work.html"><span class="mnav-dot"></span>Work</a>
-  <a href="services.html"><span class="mnav-dot"></span>Pricing</a>
-  <a href="about.html"><span class="mnav-dot"></span>About</a>
-  <a href="contact.html"><span class="mnav-dot"></span>Contact</a>
-</nav>
-
-<script src="aurora.js"></script>
 </body>
 </html>
