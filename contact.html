@@ -150,6 +150,30 @@ button:focus-visible,
   outline-offset: 4px;
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  background: var(--accent-solid);
+  color: var(--bg);
+  font-family: var(--f-body);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 9999;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2608,6 +2632,7 @@ a.v { display: inline-block; width: max-content; }
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <div id="root"></div>
     <script>
       (function () {
@@ -4321,6 +4346,7 @@ function ContactForm() {
   }, "// Your name"), /*#__PURE__*/React.createElement("input", {
     type: "text",
     required: true,
+    autoComplete: "name",
     placeholder: "Jane Doe",
     value: data.name,
     onChange: set("name")
@@ -4331,6 +4357,7 @@ function ContactForm() {
   }, "// Email"), /*#__PURE__*/React.createElement("input", {
     type: "email",
     required: true,
+    autoComplete: "email",
     placeholder: "jane@company.com",
     value: data.email,
     onChange: set("email")
@@ -4342,41 +4369,54 @@ function ContactForm() {
     className: "opt"
   }, "(optional)")), /*#__PURE__*/React.createElement("input", {
     type: "text",
+    autoComplete: "organization",
     placeholder: "Company name",
     value: data.company,
     onChange: set("company")
   })), /*#__PURE__*/React.createElement("div", {
     className: "field"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "field-k"
+    className: "field-k",
+    id: "lbl-project-type"
   }, "// Project type"), /*#__PURE__*/React.createElement("div", {
-    className: "chip-group"
+    className: "chip-group",
+    role: "group",
+    "aria-labelledby": "lbl-project-type"
   }, PROJECT_TYPES.map(t => /*#__PURE__*/React.createElement("button", {
     type: "button",
     key: t,
     className: "chip" + (data.type === t ? " active" : ""),
+    "aria-pressed": data.type === t,
     onClick: setVal("type", t)
   }, t)))), /*#__PURE__*/React.createElement("div", {
     className: "field"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "field-k"
+    className: "field-k",
+    id: "lbl-budget"
   }, "// Budget"), /*#__PURE__*/React.createElement("div", {
-    className: "chip-group"
+    className: "chip-group",
+    role: "group",
+    "aria-labelledby": "lbl-budget"
   }, BUDGETS.map(b => /*#__PURE__*/React.createElement("button", {
     type: "button",
     key: b,
     className: "chip" + (data.budget === b ? " active" : ""),
+    "aria-pressed": data.budget === b,
     onClick: setVal("budget", b)
   }, b)))), /*#__PURE__*/React.createElement("div", {
     className: "field"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "field-k"
+    className: "field-k",
+    id: "lbl-timeline"
   }, "// Timeline"), /*#__PURE__*/React.createElement("div", {
-    className: "chip-group"
+    className: "chip-group",
+    role: "group",
+    "aria-labelledby": "lbl-timeline"
   }, TIMELINES.map(t => /*#__PURE__*/React.createElement("button", {
     type: "button",
     key: t,
     className: "chip" + (data.timeline === t ? " active" : ""),
+    "aria-pressed": data.timeline === t,
     onClick: setVal("timeline", t)
   }, t)))), /*#__PURE__*/React.createElement("label", {
     className: "field"
@@ -4531,7 +4571,7 @@ function App() {
     sections.forEach(s => obs.observe(s));
     return () => obs.disconnect();
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(ContactHero, null), /*#__PURE__*/React.createElement(ContactGrid, null), /*#__PURE__*/React.createElement(Marquee, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement(ContactHero, null), /*#__PURE__*/React.createElement(ContactGrid, null), /*#__PURE__*/React.createElement(Marquee, {
     items: MARQUEE_ITEMS
   }), /*#__PURE__*/React.createElement(FAQ, null)), /*#__PURE__*/React.createElement(SpecBar, null), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(NoxtaTweaks, {
     tweaks: tweaks,

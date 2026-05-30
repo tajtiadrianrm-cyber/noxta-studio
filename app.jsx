@@ -254,8 +254,13 @@ function Hero() {
 
         <div className="hero-portrait">
           <img
-            src="assets/portrait-hero.png"
+            src="assets/portrait-hero.webp"
             alt="Adrian Tajti, founder of Noxta Studio"
+            width="1448"
+            height="1086"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       </div>
@@ -555,7 +560,7 @@ function CTA() {
                 <span className="glyph">NOXTA</span>
               </div>
               <div className="cta-photo-wrap">
-                <img className="cta-photo" src="assets/portrait-cta.png" alt="" />
+                <img className="cta-photo" src="assets/portrait-cta.webp" alt="" width="1593" height="987" loading="lazy" decoding="async" />
               </div>
             </div>
 
@@ -766,7 +771,7 @@ function App() {
   return (
     <React.Fragment>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <Intro />
         <Services />
