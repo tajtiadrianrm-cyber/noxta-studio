@@ -255,9 +255,11 @@ function Hero() {
         <div className="hero-portrait">
           <img
             src="assets/portrait-hero.webp"
+            srcSet="assets/portrait-hero-mobile.webp 720w, assets/portrait-hero.webp 1000w"
+            sizes="(max-width: 768px) 90vw, 50vw"
             alt="Adrian Tajti, founder of Noxta Studio"
-            width="1448"
-            height="1086"
+            width="1000"
+            height="750"
             loading="eager"
             fetchPriority="high"
             decoding="async"

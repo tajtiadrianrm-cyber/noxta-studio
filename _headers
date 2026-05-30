@@ -1,0 +1,19 @@
+# Long cache for static assets — change filename when contents change
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+# Long cache for image files at root
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000
+/*.ico
+  Cache-Control: public, max-age=2592000
+
+# HTML stays short-cached so updates ship quickly
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate

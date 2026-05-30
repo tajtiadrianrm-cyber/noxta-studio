@@ -65,7 +65,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="script" href="assets/react.production.min.js" />
     <link rel="preload" as="script" href="assets/react-dom.production.min.js" />
-    <link rel="preload" as="image" href="assets/portrait-hero.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/portrait-hero.webp" imagesrcset="assets/portrait-hero-mobile.webp 720w, assets/portrait-hero.webp 1000w" imagesizes="(max-width: 768px) 90vw, 50vw" fetchpriority="high" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
@@ -3175,9 +3175,11 @@ function Hero() {
     className: "hero-portrait"
   }, /*#__PURE__*/React.createElement("img", {
     src: "assets/portrait-hero.webp",
+    srcSet: "assets/portrait-hero-mobile.webp 720w, assets/portrait-hero.webp 1000w",
+    sizes: "(max-width: 768px) 90vw, 50vw",
     alt: "Adrian Tajti, founder of Noxta Studio",
-    width: "1448",
-    height: "1086",
+    width: "1000",
+    height: "750",
     loading: "eager",
     fetchpriority: "high",
     decoding: "async"
@@ -3286,9 +3288,11 @@ function VOEPMock() {
   }, "vintageoutboardengineparts.com \u2197")), /*#__PURE__*/React.createElement("img", {
     className: "browser-shot",
     src: "voep-screenshot.webp",
+    srcSet: "voep-screenshot-mobile.webp 480w, voep-screenshot.webp 700w",
+    sizes: "(max-width: 768px) 90vw, 50vw",
     alt: "Vintage Outboard Parts \u2014 homepage screenshot",
-    width: "1812",
-    height: "1624",
+    width: "700",
+    height: "627",
     loading: "lazy",
     decoding: "async"
   }));
