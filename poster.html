@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noxta Studio · Poster (A4 / A3, printable)</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Saira:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <style>
+      /* ─────────────────────────────────────────────────────────
+         Noxta Studio · Wall poster
+         Designed at A4 (210×297mm) · scales 1:1 to A3 via toggle.
+         Brand: Obsidian Kinetic — #0a0a0a + orange #ff4d15
+         ───────────────────────────────────────────────────────── */
+
+      :root {
+        --bg: #0a0a0a;
+        --bg-soft: #111111;
+        --ink: #f5f6f7;
+        --ink-soft: #cfcccb;
+        --mute: #8a8786;
+        --hairline: rgba(255, 255, 255, 0.1);
+        --hairline-strong: rgba(255, 255, 255, 0.22);
+
+        --orange-light: #ff7a3d;
+        --orange: #ff4d15;
+        --orange-deep: #d63a0d;
+        --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
+
+        --f-display: "Orbitron", system-ui, sans-serif;
+        --f-body: "Saira", system-ui, -apple-system, sans-serif;
+        --f-mono: "JetBrains Mono", ui-monospace, monospace;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        background: #1a1a1a;
+        color: var(--ink);
+        font-family: var(--f-body);
+        -webkit-font-smoothing: antialiased;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* ── Named pages: pick A4 or A3 portrait at print time ── */
+      @page a4 { size: A4 portrait; margin: 0; }
+      @page a3 { size: A3 portrait; margin: 0; }
+      body.size-a4 .poster { page: a4; }
+      body.size-a3 .poster { page: a3; }
+
+      /* ── Screen-only toolbar ── */
+      .toolbar {
+        position: fixed;
+        top: 14px;
+        left: 14px;
+        z-index: 20;
+        display: flex;
+        gap: 8px;
+        padding: 8px 10px;
+        background: rgba(10, 10, 10, 0.92);
+        border: 1px solid var(--hairline-strong);
+        font-family: var(--f-mono);
+        font-size: 11px;
+        color: var(--ink-soft);
+        backdrop-filter: blur(8px);
+        align-items: center;
+      }
+      .toolbar label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+      .toolbar input { accent-color: var(--orange); }
+      .toolbar button {
+        font-family: var(--f-mono);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        color: var(--bg);
+        background: var(--orange);
+        border: 0;
+        cursor: pointer;
+      }
+      .toolbar button:hover { background: var(--orange-light); }
+      .toolbar .sep { width: 1px; height: 16px; background: var(--hairline-strong); margin: 0 4px; }
+
+      /* ── Poster sheet ── */
+      .poster {
+        position: relative;
+        margin: 56px auto 32px;
+        width: 210mm;
+        height: 297mm;
+        background: var(--bg);
+        color: var(--ink);
+        overflow: hidden;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      }
+      body.size-a3 .poster {
+        width: 297mm;
+        height: 420mm;
+      }
+
+      /* Ambient orange glows */
+      .poster::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 55% 38% at 85% 12%, rgba(255, 122, 61, 0.28), transparent 65%),
+          radial-gradient(ellipse 60% 45% at 8% 92%, rgba(214, 58, 13, 0.22), transparent 65%),
+          radial-gradient(ellipse 35% 30% at 50% 50%, rgba(255, 77, 21, 0.06), transparent 70%);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* Subtle film grain */
+      .poster::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 0.45 0 0 0 0 0.2 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        opacity: 0.55;
+        mix-blend-mode: screen;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .sheet {
+        position: relative;
+        z-index: 2;
+        width: 210mm;
+        height: 297mm;
+        padding: 14mm;
+        display: flex;
+        flex-direction: column;
+        transform-origin: top left;
+      }
+      /* A3 is just A4 scaled up uniformly (√2 ratio), so all spacing/typography
+         keeps its A4 proportions instead of looking marooned on a bigger sheet. */
+      body.size-a3 .sheet {
+        transform: scale(1.41428571);
+      }
+
+      /* ─── Top utility strip ─── */
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--f-mono);
+        font-size: 2.6mm;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mute);
+        padding-bottom: 4mm;
+        border-bottom: 0.4mm solid var(--hairline);
+      }
+      .topbar .dot {
+        display: inline-block;
+        width: 2.6mm;
+        height: 2.6mm;
+        background: var(--orange);
+        margin-right: 2mm;
+        vertical-align: -0.4mm;
+      }
+      .topbar .id { color: var(--ink-soft); }
+
+      /* ─── Wordmark strip ─── */
+      .wordmark {
+        margin-top: 6mm;
+        font-family: var(--f-display);
+        font-weight: 800;
+        font-size: 11mm;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--ink);
+        display: flex;
+        align-items: baseline;
+        gap: 5mm;
+      }
+      .wordmark .sub {
+        font-family: var(--f-mono);
+        font-size: 3mm;
+        font-weight: 400;
+        letter-spacing: 0.4em;
+        color: var(--mute);
+        text-transform: uppercase;
+      }
+
+      /* ─── Hero row: text + portrait ─── */
+      .hero-row {
+        margin-top: 8mm;
+        display: grid;
+        grid-template-columns: 1fr 64mm;
+        gap: 6mm;
+        align-items: start;
+      }
+      .hero-left { min-width: 0; }
+
+      .hero {
+        font-family: var(--f-display);
+        font-weight: 800;
+        font-size: 19mm;
+        line-height: 0.95;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+      .hero .line-2 {
+        background: var(--accent);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
+
+      .lede {
+        margin-top: 7mm;
+        font-family: var(--f-body);
+        font-weight: 300;
+        font-size: 5mm;
+        line-height: 1.35;
+        color: var(--ink-soft);
+      }
+      .lede strong { color: var(--ink); font-weight: 600; }
+
+      /* Portrait — bare image, no frame; blends into dark sheet like the site header.
+         Radial mask feathers the photo edges so its bounding rectangle never shows
+         against the sheet, even when scaled up to A3. */
+      .portrait {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        object-position: center 18%;
+        -webkit-mask-image: radial-gradient(
+          ellipse 95% 100% at 50% 35%,
+          #000 42%,
+          transparent 96%
+        );
+                mask-image: radial-gradient(
+          ellipse 95% 100% at 50% 35%,
+          #000 42%,
+          transparent 96%
+        );
+      }
+
+      /* ─── Value tags row ─── */
+      .tags {
+        margin-top: 9mm;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3mm;
+        font-family: var(--f-mono);
+        font-size: 2.9mm;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--ink-soft);
+      }
+      .tag {
+        padding: 1.6mm 3.2mm;
+        border: 0.35mm solid var(--hairline-strong);
+        clip-path: polygon(2mm 0, 100% 0, 100% calc(100% - 2mm), calc(100% - 2mm) 100%, 0 100%, 0 2mm);
+      }
+      .tag.accent {
+        background: var(--orange);
+        color: var(--bg);
+        border-color: var(--orange);
+        font-weight: 500;
+      }
+
+      /* ─── QR block ─── */
+      .qr-block {
+        margin-top: auto;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8mm;
+        align-items: stretch;
+        padding-top: 10mm;
+      }
+
+      .qr-panel {
+        position: relative;
+        width: 78mm;
+        height: 78mm;
+        background: #ffffff;
+        padding: 5mm;
+        clip-path: polygon(5mm 0, 100% 0, 100% calc(100% - 5mm), calc(100% - 5mm) 100%, 0 100%, 0 5mm);
+      }
+      .qr-panel svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      /* Decorative outer frame */
+      .qr-wrap {
+        position: relative;
+        padding: 1.6mm;
+        background: var(--accent);
+        clip-path: polygon(6mm 0, 100% 0, 100% calc(100% - 6mm), calc(100% - 6mm) 100%, 0 100%, 0 6mm);
+      }
+
+      .qr-meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4mm;
+        font-family: var(--f-body);
+      }
+      .qr-meta .scan-label {
+        font-family: var(--f-mono);
+        font-size: 2.8mm;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: var(--orange-light);
+      }
+      .qr-meta .scan-headline {
+        font-family: var(--f-display);
+        font-weight: 700;
+        font-size: 10mm;
+        line-height: 1;
+        text-transform: uppercase;
+        color: var(--ink);
+        letter-spacing: -0.005em;
+      }
+      .qr-meta .scan-url {
+        font-family: var(--f-mono);
+        font-size: 4mm;
+        letter-spacing: 0.04em;
+        color: var(--ink-soft);
+      }
+      .qr-meta .scan-url .slash { color: var(--orange); }
+      .qr-meta .scan-help {
+        font-family: var(--f-body);
+        font-weight: 300;
+        font-size: 3.6mm;
+        line-height: 1.4;
+        color: var(--mute);
+        max-width: 70mm;
+      }
+
+      /* ─── Footer contact strip ─── */
+      .footer {
+        margin-top: 10mm;
+        padding-top: 4mm;
+        border-top: 0.4mm solid var(--hairline);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4mm;
+        font-family: var(--f-mono);
+        font-size: 2.9mm;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .footer .group { display: flex; gap: 4mm; align-items: center; flex-wrap: wrap; }
+      .footer .sep { color: var(--orange); }
+      .footer .muted { color: var(--mute); }
+
+      /* ─── Corner brackets (registration-mark style) ─── */
+      .bracket {
+        position: absolute;
+        width: 8mm;
+        height: 8mm;
+        border-color: var(--hairline-strong);
+        border-style: solid;
+        border-width: 0;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .bracket.tl { top: 6mm; left: 6mm; border-top-width: 0.4mm; border-left-width: 0.4mm; }
+      .bracket.tr { top: 6mm; right: 6mm; border-top-width: 0.4mm; border-right-width: 0.4mm; }
+      .bracket.bl { bottom: 6mm; left: 6mm; border-bottom-width: 0.4mm; border-left-width: 0.4mm; }
+      .bracket.br { bottom: 6mm; right: 6mm; border-bottom-width: 0.4mm; border-right-width: 0.4mm; }
+
+      /* ── Print rules ── */
+      @media print {
+        html, body { background: var(--bg); }
+        .toolbar { display: none !important; }
+        .poster {
+          margin: 0;
+          box-shadow: none;
+          page-break-after: always;
+        }
+      }
+    </style>
+  </head>
+  <body class="size-a4">
+    <div class="toolbar" aria-label="Poster controls">
+      <span>SIZE</span>
+      <label><input type="radio" name="size" value="a4" checked /> A4</label>
+      <label><input type="radio" name="size" value="a3" /> A3</label>
+      <span class="sep"></span>
+      <button type="button" id="printBtn">PRINT</button>
+    </div>
+
+    <article class="poster" aria-label="Noxta Studio poster">
+      <span class="bracket tl"></span>
+      <span class="bracket tr"></span>
+      <span class="bracket bl"></span>
+      <span class="bracket br"></span>
+
+      <div class="sheet">
+        <!-- TOP UTILITY -->
+        <header class="topbar">
+          <div><span class="dot"></span><span class="id">NOXTA · STUDIO</span></div>
+          <div>TILBURG · NL · v.2026</div>
+        </header>
+
+        <!-- WORDMARK -->
+        <div class="wordmark">
+          NOXTA
+          <span class="sub">STUDIO / TILBURG</span>
+        </div>
+
+        <!-- HERO + PORTRAIT -->
+        <div class="hero-row">
+          <div class="hero-left">
+            <h1 class="hero">
+              Built by hand,<br />
+              <span class="line-2">kept by hand.</span>
+            </h1>
+
+            <p class="lede">
+              I'm a freelance web designer in Tilburg. <strong>No agency behind Noxta</strong>,
+              just me. Design, copy, code, and payments all live in one head. You email me,
+              I email you back.
+            </p>
+          </div>
+
+          <img
+            class="portrait"
+            src="assets/portrait-hero.png"
+            alt="Adrian Tajti, founder of Noxta Studio"
+          />
+        </div>
+
+        <!-- VALUE TAGS -->
+        <div class="tags">
+          <span class="tag accent">Design</span>
+          <span class="tag">Code</span>
+          <span class="tag">Copy</span>
+          <span class="tag">Payments</span>
+          <span class="tag">SEO</span>
+        </div>
+
+        <!-- QR + META -->
+        <div class="qr-block">
+          <div class="qr-wrap">
+            <div class="qr-panel">
+              <!-- QR encoding: https://noxta.studio/card  (ECC level H, 33×33 modules) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792 792" aria-label="QR code linking to noxta.studio/card">
+                <path fill="#0a0a0a" d="M 0,0 l 24,0 0,24 -24,0 z M 24,0 l 24,0 0,24 -24,0 z M 48,0 l 24,0 0,24 -24,0 z M 72,0 l 24,0 0,24 -24,0 z M 96,0 l 24,0 0,24 -24,0 z M 120,0 l 24,0 0,24 -24,0 z M 144,0 l 24,0 0,24 -24,0 z M 192,0 l 24,0 0,24 -24,0 z M 240,0 l 24,0 0,24 -24,0 z M 312,0 l 24,0 0,24 -24,0 z M 360,0 l 24,0 0,24 -24,0 z M 384,0 l 24,0 0,24 -24,0 z M 504,0 l 24,0 0,24 -24,0 z M 552,0 l 24,0 0,24 -24,0 z M 576,0 l 24,0 0,24 -24,0 z M 624,0 l 24,0 0,24 -24,0 z M 648,0 l 24,0 0,24 -24,0 z M 672,0 l 24,0 0,24 -24,0 z M 696,0 l 24,0 0,24 -24,0 z M 720,0 l 24,0 0,24 -24,0 z M 744,0 l 24,0 0,24 -24,0 z M 768,0 l 24,0 0,24 -24,0 z M 0,24 l 24,0 0,24 -24,0 z M 144,24 l 24,0 0,24 -24,0 z M 192,24 l 24,0 0,24 -24,0 z M 216,24 l 24,0 0,24 -24,0 z M 240,24 l 24,0 0,24 -24,0 z M 288,24 l 24,0 0,24 -24,0 z M 312,24 l 24,0 0,24 -24,0 z M 384,24 l 24,0 0,24 -24,0 z M 432,24 l 24,0 0,24 -24,0 z M 576,24 l 24,0 0,24 -24,0 z M 624,24 l 24,0 0,24 -24,0 z M 768,24 l 24,0 0,24 -24,0 z M 0,48 l 24,0 0,24 -24,0 z M 48,48 l 24,0 0,24 -24,0 z M 72,48 l 24,0 0,24 -24,0 z M 96,48 l 24,0 0,24 -24,0 z M 144,48 l 24,0 0,24 -24,0 z M 192,48 l 24,0 0,24 -24,0 z M 240,48 l 24,0 0,24 -24,0 z M 288,48 l 24,0 0,24 -24,0 z M 336,48 l 24,0 0,24 -24,0 z M 360,48 l 24,0 0,24 -24,0 z M 384,48 l 24,0 0,24 -24,0 z M 408,48 l 24,0 0,24 -24,0 z M 432,48 l 24,0 0,24 -24,0 z M 504,48 l 24,0 0,24 -24,0 z M 528,48 l 24,0 0,24 -24,0 z M 552,48 l 24,0 0,24 -24,0 z M 576,48 l 24,0 0,24 -24,0 z M 624,48 l 24,0 0,24 -24,0 z M 672,48 l 24,0 0,24 -24,0 z M 696,48 l 24,0 0,24 -24,0 z M 720,48 l 24,0 0,24 -24,0 z M 768,48 l 24,0 0,24 -24,0 z M 0,72 l 24,0 0,24 -24,0 z M 48,72 l 24,0 0,24 -24,0 z M 72,72 l 24,0 0,24 -24,0 z M 96,72 l 24,0 0,24 -24,0 z M 144,72 l 24,0 0,24 -24,0 z M 216,72 l 24,0 0,24 -24,0 z M 288,72 l 24,0 0,24 -24,0 z M 360,72 l 24,0 0,24 -24,0 z M 408,72 l 24,0 0,24 -24,0 z M 432,72 l 24,0 0,24 -24,0 z M 456,72 l 24,0 0,24 -24,0 z M 528,72 l 24,0 0,24 -24,0 z M 552,72 l 24,0 0,24 -24,0 z M 576,72 l 24,0 0,24 -24,0 z M 624,72 l 24,0 0,24 -24,0 z M 672,72 l 24,0 0,24 -24,0 z M 696,72 l 24,0 0,24 -24,0 z M 720,72 l 24,0 0,24 -24,0 z M 768,72 l 24,0 0,24 -24,0 z M 0,96 l 24,0 0,24 -24,0 z M 48,96 l 24,0 0,24 -24,0 z M 72,96 l 24,0 0,24 -24,0 z M 96,96 l 24,0 0,24 -24,0 z M 144,96 l 24,0 0,24 -24,0 z M 216,96 l 24,0 0,24 -24,0 z M 240,96 l 24,0 0,24 -24,0 z M 336,96 l 24,0 0,24 -24,0 z M 384,96 l 24,0 0,24 -24,0 z M 408,96 l 24,0 0,24 -24,0 z M 432,96 l 24,0 0,24 -24,0 z M 504,96 l 24,0 0,24 -24,0 z M 528,96 l 24,0 0,24 -24,0 z M 624,96 l 24,0 0,24 -24,0 z M 672,96 l 24,0 0,24 -24,0 z M 696,96 l 24,0 0,24 -24,0 z M 720,96 l 24,0 0,24 -24,0 z M 768,96 l 24,0 0,24 -24,0 z M 0,120 l 24,0 0,24 -24,0 z M 144,120 l 24,0 0,24 -24,0 z M 192,120 l 24,0 0,24 -24,0 z M 216,120 l 24,0 0,24 -24,0 z M 240,120 l 24,0 0,24 -24,0 z M 264,120 l 24,0 0,24 -24,0 z M 336,120 l 24,0 0,24 -24,0 z M 360,120 l 24,0 0,24 -24,0 z M 408,120 l 24,0 0,24 -24,0 z M 552,120 l 24,0 0,24 -24,0 z M 576,120 l 24,0 0,24 -24,0 z M 624,120 l 24,0 0,24 -24,0 z M 768,120 l 24,0 0,24 -24,0 z M 0,144 l 24,0 0,24 -24,0 z M 24,144 l 24,0 0,24 -24,0 z M 48,144 l 24,0 0,24 -24,0 z M 72,144 l 24,0 0,24 -24,0 z M 96,144 l 24,0 0,24 -24,0 z M 120,144 l 24,0 0,24 -24,0 z M 144,144 l 24,0 0,24 -24,0 z M 192,144 l 24,0 0,24 -24,0 z M 240,144 l 24,0 0,24 -24,0 z M 288,144 l 24,0 0,24 -24,0 z M 336,144 l 24,0 0,24 -24,0 z M 384,144 l 24,0 0,24 -24,0 z M 432,144 l 24,0 0,24 -24,0 z M 480,144 l 24,0 0,24 -24,0 z M 528,144 l 24,0 0,24 -24,0 z M 576,144 l 24,0 0,24 -24,0 z M 624,144 l 24,0 0,24 -24,0 z M 648,144 l 24,0 0,24 -24,0 z M 672,144 l 24,0 0,24 -24,0 z M 696,144 l 24,0 0,24 -24,0 z M 720,144 l 24,0 0,24 -24,0 z M 744,144 l 24,0 0,24 -24,0 z M 768,144 l 24,0 0,24 -24,0 z M 192,168 l 24,0 0,24 -24,0 z M 240,168 l 24,0 0,24 -24,0 z M 312,168 l 24,0 0,24 -24,0 z M 336,168 l 24,0 0,24 -24,0 z M 360,168 l 24,0 0,24 -24,0 z M 408,168 l 24,0 0,24 -24,0 z M 432,168 l 24,0 0,24 -24,0 z M 456,168 l 24,0 0,24 -24,0 z M 480,168 l 24,0 0,24 -24,0 z M 504,168 l 24,0 0,24 -24,0 z M 552,168 l 24,0 0,24 -24,0 z M 48,192 l 24,0 0,24 -24,0 z M 72,192 l 24,0 0,24 -24,0 z M 96,192 l 24,0 0,24 -24,0 z M 144,192 l 24,0 0,24 -24,0 z M 192,192 l 24,0 0,24 -24,0 z M 264,192 l 24,0 0,24 -24,0 z M 288,192 l 24,0 0,24 -24,0 z M 312,192 l 24,0 0,24 -24,0 z M 408,192 l 24,0 0,24 -24,0 z M 432,192 l 24,0 0,24 -24,0 z M 480,192 l 24,0 0,24 -24,0 z M 528,192 l 24,0 0,24 -24,0 z M 552,192 l 24,0 0,24 -24,0 z M 600,192 l 24,0 0,24 -24,0 z M 624,192 l 24,0 0,24 -24,0 z M 648,192 l 24,0 0,24 -24,0 z M 720,192 l 24,0 0,24 -24,0 z M 744,192 l 24,0 0,24 -24,0 z M 768,192 l 24,0 0,24 -24,0 z M 0,216 l 24,0 0,24 -24,0 z M 72,216 l 24,0 0,24 -24,0 z M 120,216 l 24,0 0,24 -24,0 z M 240,216 l 24,0 0,24 -24,0 z M 264,216 l 24,0 0,24 -24,0 z M 288,216 l 24,0 0,24 -24,0 z M 408,216 l 24,0 0,24 -24,0 z M 432,216 l 24,0 0,24 -24,0 z M 456,216 l 24,0 0,24 -24,0 z M 504,216 l 24,0 0,24 -24,0 z M 552,216 l 24,0 0,24 -24,0 z M 600,216 l 24,0 0,24 -24,0 z M 624,216 l 24,0 0,24 -24,0 z M 696,216 l 24,0 0,24 -24,0 z M 720,216 l 24,0 0,24 -24,0 z M 768,216 l 24,0 0,24 -24,0 z M 0,240 l 24,0 0,24 -24,0 z M 48,240 l 24,0 0,24 -24,0 z M 72,240 l 24,0 0,24 -24,0 z M 144,240 l 24,0 0,24 -24,0 z M 192,240 l 24,0 0,24 -24,0 z M 240,240 l 24,0 0,24 -24,0 z M 288,240 l 24,0 0,24 -24,0 z M 336,240 l 24,0 0,24 -24,0 z M 384,240 l 24,0 0,24 -24,0 z M 432,240 l 24,0 0,24 -24,0 z M 456,240 l 24,0 0,24 -24,0 z M 480,240 l 24,0 0,24 -24,0 z M 504,240 l 24,0 0,24 -24,0 z M 600,240 l 24,0 0,24 -24,0 z M 648,240 l 24,0 0,24 -24,0 z M 720,240 l 24,0 0,24 -24,0 z M 744,240 l 24,0 0,24 -24,0 z M 0,264 l 24,0 0,24 -24,0 z M 48,264 l 24,0 0,24 -24,0 z M 72,264 l 24,0 0,24 -24,0 z M 96,264 l 24,0 0,24 -24,0 z M 168,264 l 24,0 0,24 -24,0 z M 192,264 l 24,0 0,24 -24,0 z M 288,264 l 24,0 0,24 -24,0 z M 360,264 l 24,0 0,24 -24,0 z M 432,264 l 24,0 0,24 -24,0 z M 504,264 l 24,0 0,24 -24,0 z M 528,264 l 24,0 0,24 -24,0 z M 576,264 l 24,0 0,24 -24,0 z M 696,264 l 24,0 0,24 -24,0 z M 720,264 l 24,0 0,24 -24,0 z M 768,264 l 24,0 0,24 -24,0 z M 24,288 l 24,0 0,24 -24,0 z M 120,288 l 24,0 0,24 -24,0 z M 144,288 l 24,0 0,24 -24,0 z M 168,288 l 24,0 0,24 -24,0 z M 216,288 l 24,0 0,24 -24,0 z M 240,288 l 24,0 0,24 -24,0 z M 288,288 l 24,0 0,24 -24,0 z M 384,288 l 24,0 0,24 -24,0 z M 408,288 l 24,0 0,24 -24,0 z M 432,288 l 24,0 0,24 -24,0 z M 456,288 l 24,0 0,24 -24,0 z M 504,288 l 24,0 0,24 -24,0 z M 600,288 l 24,0 0,24 -24,0 z M 744,288 l 24,0 0,24 -24,0 z M 768,288 l 24,0 0,24 -24,0 z M 0,312 l 24,0 0,24 -24,0 z M 48,312 l 24,0 0,24 -24,0 z M 120,312 l 24,0 0,24 -24,0 z M 168,312 l 24,0 0,24 -24,0 z M 240,312 l 24,0 0,24 -24,0 z M 288,312 l 24,0 0,24 -24,0 z M 408,312 l 24,0 0,24 -24,0 z M 456,312 l 24,0 0,24 -24,0 z M 528,312 l 24,0 0,24 -24,0 z M 552,312 l 24,0 0,24 -24,0 z M 624,312 l 24,0 0,24 -24,0 z M 648,312 l 24,0 0,24 -24,0 z M 720,312 l 24,0 0,24 -24,0 z M 768,312 l 24,0 0,24 -24,0 z M 48,336 l 24,0 0,24 -24,0 z M 144,336 l 24,0 0,24 -24,0 z M 192,336 l 24,0 0,24 -24,0 z M 240,336 l 24,0 0,24 -24,0 z M 264,336 l 24,0 0,24 -24,0 z M 432,336 l 24,0 0,24 -24,0 z M 456,336 l 24,0 0,24 -24,0 z M 528,336 l 24,0 0,24 -24,0 z M 576,336 l 24,0 0,24 -24,0 z M 600,336 l 24,0 0,24 -24,0 z M 624,336 l 24,0 0,24 -24,0 z M 696,336 l 24,0 0,24 -24,0 z M 720,336 l 24,0 0,24 -24,0 z M 744,336 l 24,0 0,24 -24,0 z M 0,360 l 24,0 0,24 -24,0 z M 120,360 l 24,0 0,24 -24,0 z M 168,360 l 24,0 0,24 -24,0 z M 240,360 l 24,0 0,24 -24,0 z M 264,360 l 24,0 0,24 -24,0 z M 360,360 l 24,0 0,24 -24,0 z M 384,360 l 24,0 0,24 -24,0 z M 408,360 l 24,0 0,24 -24,0 z M 432,360 l 24,0 0,24 -24,0 z M 504,360 l 24,0 0,24 -24,0 z M 528,360 l 24,0 0,24 -24,0 z M 552,360 l 24,0 0,24 -24,0 z M 600,360 l 24,0 0,24 -24,0 z M 624,360 l 24,0 0,24 -24,0 z M 648,360 l 24,0 0,24 -24,0 z M 720,360 l 24,0 0,24 -24,0 z M 744,360 l 24,0 0,24 -24,0 z M 0,384 l 24,0 0,24 -24,0 z M 48,384 l 24,0 0,24 -24,0 z M 96,384 l 24,0 0,24 -24,0 z M 144,384 l 24,0 0,24 -24,0 z M 168,384 l 24,0 0,24 -24,0 z M 264,384 l 24,0 0,24 -24,0 z M 312,384 l 24,0 0,24 -24,0 z M 384,384 l 24,0 0,24 -24,0 z M 432,384 l 24,0 0,24 -24,0 z M 456,384 l 24,0 0,24 -24,0 z M 552,384 l 24,0 0,24 -24,0 z M 600,384 l 24,0 0,24 -24,0 z M 648,384 l 24,0 0,24 -24,0 z M 672,384 l 24,0 0,24 -24,0 z M 696,384 l 24,0 0,24 -24,0 z M 720,384 l 24,0 0,24 -24,0 z M 768,384 l 24,0 0,24 -24,0 z M 0,408 l 24,0 0,24 -24,0 z M 72,408 l 24,0 0,24 -24,0 z M 96,408 l 24,0 0,24 -24,0 z M 120,408 l 24,0 0,24 -24,0 z M 216,408 l 24,0 0,24 -24,0 z M 240,408 l 24,0 0,24 -24,0 z M 264,408 l 24,0 0,24 -24,0 z M 288,408 l 24,0 0,24 -24,0 z M 336,408 l 24,0 0,24 -24,0 z M 408,408 l 24,0 0,24 -24,0 z M 456,408 l 24,0 0,24 -24,0 z M 480,408 l 24,0 0,24 -24,0 z M 504,408 l 24,0 0,24 -24,0 z M 552,408 l 24,0 0,24 -24,0 z M 576,408 l 24,0 0,24 -24,0 z M 624,408 l 24,0 0,24 -24,0 z M 648,408 l 24,0 0,24 -24,0 z M 24,432 l 24,0 0,24 -24,0 z M 96,432 l 24,0 0,24 -24,0 z M 144,432 l 24,0 0,24 -24,0 z M 168,432 l 24,0 0,24 -24,0 z M 192,432 l 24,0 0,24 -24,0 z M 216,432 l 24,0 0,24 -24,0 z M 288,432 l 24,0 0,24 -24,0 z M 336,432 l 24,0 0,24 -24,0 z M 360,432 l 24,0 0,24 -24,0 z M 384,432 l 24,0 0,24 -24,0 z M 504,432 l 24,0 0,24 -24,0 z M 528,432 l 24,0 0,24 -24,0 z M 600,432 l 24,0 0,24 -24,0 z M 624,432 l 24,0 0,24 -24,0 z M 672,432 l 24,0 0,24 -24,0 z M 720,432 l 24,0 0,24 -24,0 z M 744,432 l 24,0 0,24 -24,0 z M 768,432 l 24,0 0,24 -24,0 z M 24,456 l 24,0 0,24 -24,0 z M 72,456 l 24,0 0,24 -24,0 z M 96,456 l 24,0 0,24 -24,0 z M 168,456 l 24,0 0,24 -24,0 z M 192,456 l 24,0 0,24 -24,0 z M 216,456 l 24,0 0,24 -24,0 z M 288,456 l 24,0 0,24 -24,0 z M 384,456 l 24,0 0,24 -24,0 z M 432,456 l 24,0 0,24 -24,0 z M 456,456 l 24,0 0,24 -24,0 z M 504,456 l 24,0 0,24 -24,0 z M 552,456 l 24,0 0,24 -24,0 z M 576,456 l 24,0 0,24 -24,0 z M 624,456 l 24,0 0,24 -24,0 z M 672,456 l 24,0 0,24 -24,0 z M 696,456 l 24,0 0,24 -24,0 z M 720,456 l 24,0 0,24 -24,0 z M 768,456 l 24,0 0,24 -24,0 z M 24,480 l 24,0 0,24 -24,0 z M 144,480 l 24,0 0,24 -24,0 z M 168,480 l 24,0 0,24 -24,0 z M 192,480 l 24,0 0,24 -24,0 z M 336,480 l 24,0 0,24 -24,0 z M 360,480 l 24,0 0,24 -24,0 z M 528,480 l 24,0 0,24 -24,0 z M 600,480 l 24,0 0,24 -24,0 z M 624,480 l 24,0 0,24 -24,0 z M 672,480 l 24,0 0,24 -24,0 z M 696,480 l 24,0 0,24 -24,0 z M 744,480 l 24,0 0,24 -24,0 z M 768,480 l 24,0 0,24 -24,0 z M 0,504 l 24,0 0,24 -24,0 z M 96,504 l 24,0 0,24 -24,0 z M 120,504 l 24,0 0,24 -24,0 z M 168,504 l 24,0 0,24 -24,0 z M 264,504 l 24,0 0,24 -24,0 z M 288,504 l 24,0 0,24 -24,0 z M 336,504 l 24,0 0,24 -24,0 z M 480,504 l 24,0 0,24 -24,0 z M 504,504 l 24,0 0,24 -24,0 z M 528,504 l 24,0 0,24 -24,0 z M 576,504 l 24,0 0,24 -24,0 z M 696,504 l 24,0 0,24 -24,0 z M 768,504 l 24,0 0,24 -24,0 z M 0,528 l 24,0 0,24 -24,0 z M 96,528 l 24,0 0,24 -24,0 z M 120,528 l 24,0 0,24 -24,0 z M 144,528 l 24,0 0,24 -24,0 z M 168,528 l 24,0 0,24 -24,0 z M 192,528 l 24,0 0,24 -24,0 z M 216,528 l 24,0 0,24 -24,0 z M 288,528 l 24,0 0,24 -24,0 z M 312,528 l 24,0 0,24 -24,0 z M 336,528 l 24,0 0,24 -24,0 z M 384,528 l 24,0 0,24 -24,0 z M 432,528 l 24,0 0,24 -24,0 z M 480,528 l 24,0 0,24 -24,0 z M 504,528 l 24,0 0,24 -24,0 z M 528,528 l 24,0 0,24 -24,0 z M 648,528 l 24,0 0,24 -24,0 z M 696,528 l 24,0 0,24 -24,0 z M 744,528 l 24,0 0,24 -24,0 z M 0,552 l 24,0 0,24 -24,0 z M 48,552 l 24,0 0,24 -24,0 z M 120,552 l 24,0 0,24 -24,0 z M 168,552 l 24,0 0,24 -24,0 z M 216,552 l 24,0 0,24 -24,0 z M 240,552 l 24,0 0,24 -24,0 z M 312,552 l 24,0 0,24 -24,0 z M 336,552 l 24,0 0,24 -24,0 z M 408,552 l 24,0 0,24 -24,0 z M 456,552 l 24,0 0,24 -24,0 z M 480,552 l 24,0 0,24 -24,0 z M 504,552 l 24,0 0,24 -24,0 z M 576,552 l 24,0 0,24 -24,0 z M 648,552 l 24,0 0,24 -24,0 z M 672,552 l 24,0 0,24 -24,0 z M 696,552 l 24,0 0,24 -24,0 z M 720,552 l 24,0 0,24 -24,0 z M 744,552 l 24,0 0,24 -24,0 z M 0,576 l 24,0 0,24 -24,0 z M 48,576 l 24,0 0,24 -24,0 z M 72,576 l 24,0 0,24 -24,0 z M 96,576 l 24,0 0,24 -24,0 z M 120,576 l 24,0 0,24 -24,0 z M 144,576 l 24,0 0,24 -24,0 z M 192,576 l 24,0 0,24 -24,0 z M 216,576 l 24,0 0,24 -24,0 z M 288,576 l 24,0 0,24 -24,0 z M 312,576 l 24,0 0,24 -24,0 z M 336,576 l 24,0 0,24 -24,0 z M 360,576 l 24,0 0,24 -24,0 z M 384,576 l 24,0 0,24 -24,0 z M 480,576 l 24,0 0,24 -24,0 z M 504,576 l 24,0 0,24 -24,0 z M 576,576 l 24,0 0,24 -24,0 z M 600,576 l 24,0 0,24 -24,0 z M 624,576 l 24,0 0,24 -24,0 z M 648,576 l 24,0 0,24 -24,0 z M 672,576 l 24,0 0,24 -24,0 z M 696,576 l 24,0 0,24 -24,0 z M 744,576 l 24,0 0,24 -24,0 z M 192,600 l 24,0 0,24 -24,0 z M 216,600 l 24,0 0,24 -24,0 z M 288,600 l 24,0 0,24 -24,0 z M 384,600 l 24,0 0,24 -24,0 z M 456,600 l 24,0 0,24 -24,0 z M 576,600 l 24,0 0,24 -24,0 z M 672,600 l 24,0 0,24 -24,0 z M 768,600 l 24,0 0,24 -24,0 z M 0,624 l 24,0 0,24 -24,0 z M 24,624 l 24,0 0,24 -24,0 z M 48,624 l 24,0 0,24 -24,0 z M 72,624 l 24,0 0,24 -24,0 z M 96,624 l 24,0 0,24 -24,0 z M 120,624 l 24,0 0,24 -24,0 z M 144,624 l 24,0 0,24 -24,0 z M 264,624 l 24,0 0,24 -24,0 z M 288,624 l 24,0 0,24 -24,0 z M 312,624 l 24,0 0,24 -24,0 z M 336,624 l 24,0 0,24 -24,0 z M 360,624 l 24,0 0,24 -24,0 z M 384,624 l 24,0 0,24 -24,0 z M 432,624 l 24,0 0,24 -24,0 z M 456,624 l 24,0 0,24 -24,0 z M 480,624 l 24,0 0,24 -24,0 z M 528,624 l 24,0 0,24 -24,0 z M 552,624 l 24,0 0,24 -24,0 z M 576,624 l 24,0 0,24 -24,0 z M 624,624 l 24,0 0,24 -24,0 z M 672,624 l 24,0 0,24 -24,0 z M 696,624 l 24,0 0,24 -24,0 z M 720,624 l 24,0 0,24 -24,0 z M 744,624 l 24,0 0,24 -24,0 z M 0,648 l 24,0 0,24 -24,0 z M 144,648 l 24,0 0,24 -24,0 z M 216,648 l 24,0 0,24 -24,0 z M 240,648 l 24,0 0,24 -24,0 z M 264,648 l 24,0 0,24 -24,0 z M 288,648 l 24,0 0,24 -24,0 z M 312,648 l 24,0 0,24 -24,0 z M 360,648 l 24,0 0,24 -24,0 z M 456,648 l 24,0 0,24 -24,0 z M 552,648 l 24,0 0,24 -24,0 z M 576,648 l 24,0 0,24 -24,0 z M 672,648 l 24,0 0,24 -24,0 z M 696,648 l 24,0 0,24 -24,0 z M 720,648 l 24,0 0,24 -24,0 z M 744,648 l 24,0 0,24 -24,0 z M 768,648 l 24,0 0,24 -24,0 z M 0,672 l 24,0 0,24 -24,0 z M 48,672 l 24,0 0,24 -24,0 z M 72,672 l 24,0 0,24 -24,0 z M 96,672 l 24,0 0,24 -24,0 z M 144,672 l 24,0 0,24 -24,0 z M 192,672 l 24,0 0,24 -24,0 z M 216,672 l 24,0 0,24 -24,0 z M 240,672 l 24,0 0,24 -24,0 z M 288,672 l 24,0 0,24 -24,0 z M 312,672 l 24,0 0,24 -24,0 z M 336,672 l 24,0 0,24 -24,0 z M 384,672 l 24,0 0,24 -24,0 z M 456,672 l 24,0 0,24 -24,0 z M 504,672 l 24,0 0,24 -24,0 z M 528,672 l 24,0 0,24 -24,0 z M 576,672 l 24,0 0,24 -24,0 z M 600,672 l 24,0 0,24 -24,0 z M 624,672 l 24,0 0,24 -24,0 z M 648,672 l 24,0 0,24 -24,0 z M 672,672 l 24,0 0,24 -24,0 z M 744,672 l 24,0 0,24 -24,0 z M 768,672 l 24,0 0,24 -24,0 z M 0,696 l 24,0 0,24 -24,0 z M 48,696 l 24,0 0,24 -24,0 z M 72,696 l 24,0 0,24 -24,0 z M 96,696 l 24,0 0,24 -24,0 z M 144,696 l 24,0 0,24 -24,0 z M 192,696 l 24,0 0,24 -24,0 z M 360,696 l 24,0 0,24 -24,0 z M 384,696 l 24,0 0,24 -24,0 z M 408,696 l 24,0 0,24 -24,0 z M 456,696 l 24,0 0,24 -24,0 z M 480,696 l 24,0 0,24 -24,0 z M 552,696 l 24,0 0,24 -24,0 z M 600,696 l 24,0 0,24 -24,0 z M 672,696 l 24,0 0,24 -24,0 z M 696,696 l 24,0 0,24 -24,0 z M 744,696 l 24,0 0,24 -24,0 z M 0,720 l 24,0 0,24 -24,0 z M 48,720 l 24,0 0,24 -24,0 z M 72,720 l 24,0 0,24 -24,0 z M 96,720 l 24,0 0,24 -24,0 z M 144,720 l 24,0 0,24 -24,0 z M 192,720 l 24,0 0,24 -24,0 z M 216,720 l 24,0 0,24 -24,0 z M 336,720 l 24,0 0,24 -24,0 z M 360,720 l 24,0 0,24 -24,0 z M 384,720 l 24,0 0,24 -24,0 z M 408,720 l 24,0 0,24 -24,0 z M 456,720 l 24,0 0,24 -24,0 z M 480,720 l 24,0 0,24 -24,0 z M 504,720 l 24,0 0,24 -24,0 z M 528,720 l 24,0 0,24 -24,0 z M 576,720 l 24,0 0,24 -24,0 z M 600,720 l 24,0 0,24 -24,0 z M 624,720 l 24,0 0,24 -24,0 z M 0,744 l 24,0 0,24 -24,0 z M 144,744 l 24,0 0,24 -24,0 z M 264,744 l 24,0 0,24 -24,0 z M 288,744 l 24,0 0,24 -24,0 z M 312,744 l 24,0 0,24 -24,0 z M 336,744 l 24,0 0,24 -24,0 z M 360,744 l 24,0 0,24 -24,0 z M 504,744 l 24,0 0,24 -24,0 z M 648,744 l 24,0 0,24 -24,0 z M 696,744 l 24,0 0,24 -24,0 z M 0,768 l 24,0 0,24 -24,0 z M 24,768 l 24,0 0,24 -24,0 z M 48,768 l 24,0 0,24 -24,0 z M 72,768 l 24,0 0,24 -24,0 z M 96,768 l 24,0 0,24 -24,0 z M 120,768 l 24,0 0,24 -24,0 z M 144,768 l 24,0 0,24 -24,0 z M 240,768 l 24,0 0,24 -24,0 z M 264,768 l 24,0 0,24 -24,0 z M 288,768 l 24,0 0,24 -24,0 z M 360,768 l 24,0 0,24 -24,0 z M 408,768 l 24,0 0,24 -24,0 z M 432,768 l 24,0 0,24 -24,0 z M 456,768 l 24,0 0,24 -24,0 z M 480,768 l 24,0 0,24 -24,0 z M 504,768 l 24,0 0,24 -24,0 z M 576,768 l 24,0 0,24 -24,0 z M 600,768 l 24,0 0,24 -24,0 z M 720,768 l 24,0 0,24 -24,0 z M 744,768 l 24,0 0,24 -24,0 z " />
+              </svg>
+            </div>
+          </div>
+
+          <div class="qr-meta">
+            <div class="scan-label">// Scan</div>
+            <div class="scan-headline">Scan it. You've got my number.</div>
+            <div class="scan-url">noxta.studio<span class="slash">/</span>card</div>
+            <div class="scan-help">
+              Point your phone camera at the code. You'll get my number, email, and a link
+              to recent work. No app needed.
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+          <div class="group">
+            <span>adrian@noxta.studio</span>
+            <span class="sep">·</span>
+            <span>+31 6 17 65 73 27</span>
+          </div>
+          <div class="group muted">
+            <span>Tilburg</span>
+            <span class="sep">·</span>
+            <span>Eindhoven</span>
+            <span class="sep">·</span>
+            <span>Breda</span>
+          </div>
+        </footer>
+      </div>
+    </article>
+
+    <script>
+      (function () {
+        var body = document.body;
+        var radios = document.querySelectorAll('input[name="size"]');
+
+        function setSize(size) {
+          if (size !== "a3" && size !== "a4") return;
+          body.classList.remove("size-a4", "size-a3");
+          body.classList.add("size-" + size);
+          radios.forEach(function (r) { r.checked = (r.value === size); });
+        }
+
+        var initial = new URLSearchParams(location.search).get("size");
+        if (initial) setSize(initial);
+
+        radios.forEach(function (r) {
+          r.addEventListener("change", function () { setSize(r.value); });
+        });
+        document.getElementById("printBtn").addEventListener("click", function () {
+          window.print();
+        });
+      })();
+    </script>
+  </body>
+</html>
