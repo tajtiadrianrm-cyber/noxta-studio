@@ -1,0 +1,78 @@
+{
+  "site": {
+    "name": "Noxta Studio",
+    "viewUrl": "https://noxta.studio"
+  },
+  "media": {
+    "folder": "assets/cms",
+    "publicPrefix": "/assets/cms"
+  },
+  "collections": [
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "file": "content/portfolio.json",
+      "kind": "list",
+      "listPath": "items",
+      "itemLabel": "{{title}} — {{status}}",
+      "itemSingular": "case",
+      "fields": [
+        {
+          "name": "n",
+          "label": "Case number",
+          "widget": "string",
+          "placeholder": "e.g. Case 004",
+          "required": true
+        },
+        {
+          "name": "status",
+          "label": "Status",
+          "widget": "select",
+          "options": ["Live", "Coming Q3 2026", "Coming Q4 2026", "Drafting", "Archived"],
+          "required": true
+        },
+        {
+          "name": "title",
+          "label": "Title",
+          "widget": "string",
+          "placeholder": "Short, distinctive name",
+          "required": true
+        },
+        {
+          "name": "subtitle",
+          "label": "Subtitle",
+          "widget": "string",
+          "placeholder": "One-liner under the title"
+        },
+        {
+          "name": "body",
+          "label": "Description",
+          "widget": "text",
+          "rows": 6,
+          "placeholder": "What was built, in plain language"
+        },
+        {
+          "name": "tags",
+          "label": "Tags",
+          "widget": "string-list",
+          "placeholder": "Type a tag and press Enter"
+        },
+        {
+          "name": "cta",
+          "label": "Button",
+          "widget": "object",
+          "fields": [
+            { "name": "label", "label": "Button label", "widget": "string", "placeholder": "Read the full case →" },
+            { "name": "href",  "label": "Button link",  "widget": "url",    "placeholder": "https://… or /contact" }
+          ]
+        },
+        {
+          "name": "shot",
+          "label": "Screenshot",
+          "widget": "image",
+          "hint": "Optional. Leave empty for upcoming cases."
+        }
+      ]
+    }
+  ]
+}

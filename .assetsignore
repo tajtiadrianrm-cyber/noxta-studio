@@ -1,0 +1,26 @@
+# Files Cloudflare should NOT upload as static assets.
+# Same syntax as .gitignore. The Worker (_worker.js) handles dynamic routes;
+# everything else under the repo root is served as static assets.
+
+# Git internals
+.git
+.gitignore
+
+# Local OS junk
+.DS_Store
+**/.DS_Store
+
+# Claude Code / IDE session state
+.claude
+.claude-flow
+.vscode
+
+# Build-time tooling, not served at runtime
+scripts
+node_modules
+
+# Wrangler's own scratch
+.wrangler
+
+# Markdown / docs
+*.md
