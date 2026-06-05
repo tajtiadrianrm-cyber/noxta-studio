@@ -63,6 +63,7 @@
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/website-laten-maken-tilburg.html","timestamp":1780225256161,"sessionId":null}
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/website-laten-maken-tilburg.html","timestamp":1780225267090,"sessionId":null}
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/website-laten-maken-tilburg.html","timestamp":1780225276547,"sessionId":null}
+<<<<<<< Updated upstream
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/content/portfolio.json","timestamp":1780649242597,"sessionId":null}
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/content/portfolio.json","timestamp":1780649284517,"sessionId":null}
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/portfolio.html","timestamp":1780649294803,"sessionId":null}
@@ -76,3 +77,7 @@
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/admin/config.yml","timestamp":1780649432127,"sessionId":null}
 {"type":"edit","file":"/tmp/noxta-smoke.py","timestamp":1780649465829,"sessionId":null}
 {"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/admin/config.yml","timestamp":1780650466407,"sessionId":null}
+=======
+{"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/privacy.html","timestamp":1780657575787,"sessionId":null}
+{"type":"edit","file":"/Users/adriantajti/Documents/GitHub/noxta-studio/terms.html","timestamp":1780657587458,"sessionId":null}
+>>>>>>> Stashed changes
