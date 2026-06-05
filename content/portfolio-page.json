@@ -1,7 +1,7 @@
 {
   "hero": {
     "statusPill": "Available · Q3 2026 · 2 slots",
-    "topMeta": "Portfolio · 01 — Noxta Studio · 2026",
+    "topMeta": "Portfolio — Noxta Studio · 2026",
     "crumb": "Work",
     "h1Line1": "Built by hand,",
     "h1Line2": "kept by hand.",
@@ -9,7 +9,7 @@
   },
   "stepsSection": {
     "label": "02 · How a project goes",
-    "h1Line1": "Four steps. ",
+    "h1Line1": "Four steps.",
     "h1Line2": "No theatre.",
     "sub": "Every project follows the same four moves. You always know which one we're in."
   },
@@ -47,10 +47,22 @@
     "secondaryLabel": "See pricing"
   },
   "spec": [
-    { "label": "// Studio est.",   "value": "2026" },
-    { "label": "// Reply window",  "value": "< 24h" },
-    { "label": "// Location",      "value": "Tilburg, NL" },
-    { "label": "// Build",         "value": "Hand-coded" }
+    {
+      "label": "// Studio est.",
+      "value": "2026"
+    },
+    {
+      "label": "// Reply window",
+      "value": "< 24h"
+    },
+    {
+      "label": "// Location",
+      "value": "Tilburg, NL"
+    },
+    {
+      "label": "// Build",
+      "value": "Hand-coded"
+    }
   ],
   "footer": {
     "studioLine": "Studio · Tilburg, NL · Est. 2026",
