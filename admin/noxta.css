@@ -97,9 +97,10 @@ input:focus, textarea:focus, select:focus, button:focus { outline: 0; }
   margin-bottom: 4px;
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 10px;
 }
-.login-brand .brand-mark { color: var(--accent-solid); }
+.login-brand .brand-word { color: var(--ink); letter-spacing: 0.04em; }
+.login-brand .brand-mark { color: var(--accent-solid); font-style: italic; }
 .login-brand .brand-sub {
   font: 400 11px/1 var(--f-mono);
   letter-spacing: 0.18em;
@@ -170,7 +171,8 @@ input:focus, textarea:focus, select:focus, button:focus { outline: 0; }
   font: 700 16px/1 var(--f-display);
   letter-spacing: 0.04em;
 }
-.topbar-brand .brand-mark { color: var(--accent-solid); }
+.topbar-brand .brand-word { color: var(--ink); letter-spacing: 0.04em; }
+.topbar-brand .brand-mark { color: var(--accent-solid); font-style: italic; }
 .topbar-brand .brand-sub {
   font: 400 10px/1 var(--f-mono);
   letter-spacing: 0.22em;
