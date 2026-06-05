@@ -76,16 +76,83 @@
     },
     {
       "id": "portfolio-page",
-      "label": "Portfolio header",
+      "label": "Portfolio page content",
       "file": "content/portfolio-page.json",
       "kind": "single",
       "fields": [
-        { "name": "statusPill", "label": "Status pill (top-left)",   "widget": "string", "placeholder": "Available · Q3 2026 · 2 slots" },
-        { "name": "topMeta",    "label": "Top-right meta",            "widget": "string", "placeholder": "Portfolio · 01 — Noxta Studio · 2026" },
-        { "name": "crumb",      "label": "Breadcrumb (current page)", "widget": "string", "placeholder": "Work" },
-        { "name": "h1Line1",    "label": "Headline — line 1 (white)", "widget": "string", "placeholder": "Built by hand," },
-        { "name": "h1Line2",    "label": "Headline — line 2 (orange gradient)", "widget": "string", "placeholder": "kept by hand." },
-        { "name": "sub",        "label": "Subtitle paragraph",         "widget": "text",   "rows": 4 }
+        {
+          "name": "hero",
+          "label": "Hero — top of page",
+          "widget": "object",
+          "fields": [
+            { "name": "statusPill", "label": "Status pill (top-left)",            "widget": "string" },
+            { "name": "topMeta",    "label": "Top-right meta",                     "widget": "string" },
+            { "name": "crumb",      "label": "Breadcrumb — current page",          "widget": "string" },
+            { "name": "h1Line1",    "label": "Headline — line 1 (white)",          "widget": "string" },
+            { "name": "h1Line2",    "label": "Headline — line 2 (orange gradient)", "widget": "string" },
+            { "name": "sub",        "label": "Subtitle paragraph",                 "widget": "text", "rows": 4 }
+          ]
+        },
+        {
+          "name": "stepsSection",
+          "label": "Steps section — header",
+          "widget": "object",
+          "fields": [
+            { "name": "label",   "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1", "label": "Headline — line 1 (white)",          "widget": "string" },
+            { "name": "h1Line2", "label": "Headline — line 2 (orange gradient)", "widget": "string" },
+            { "name": "sub",     "label": "Subtitle",                           "widget": "text", "rows": 3 }
+          ]
+        },
+        {
+          "name": "steps",
+          "label": "Steps — the 4 process cards",
+          "widget": "list",
+          "itemLabel": "{{n}} {{title}}",
+          "itemSingular": "step",
+          "itemSchema": {
+            "fields": [
+              { "name": "n",     "label": "Number (e.g. /01)",       "widget": "string" },
+              { "name": "title", "label": "Step title",              "widget": "string" },
+              { "name": "when",  "label": "Timeline (e.g. 30 min)",  "widget": "string" },
+              { "name": "body",  "label": "Description",             "widget": "text", "rows": 4 }
+            ]
+          }
+        },
+        {
+          "name": "cta",
+          "label": "CTA — bottom call-to-action",
+          "widget": "object",
+          "fields": [
+            { "name": "label",          "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1",        "label": "Headline — line 1 (white)",          "widget": "string" },
+            { "name": "h1Line2",        "label": "Headline — line 2 (orange gradient)", "widget": "string" },
+            { "name": "primaryLabel",   "label": "Primary button text",                "widget": "string" },
+            { "name": "secondaryLabel", "label": "Secondary button text",              "widget": "string" }
+          ]
+        },
+        {
+          "name": "spec",
+          "label": "Spec bar — 4 stats below the CTA",
+          "widget": "list",
+          "itemLabel": "{{label}} → {{value}}",
+          "itemSingular": "spec",
+          "itemSchema": {
+            "fields": [
+              { "name": "label", "label": "Label (e.g. // Studio est.)", "widget": "string" },
+              { "name": "value", "label": "Value (e.g. 2026)",           "widget": "string" }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "label": "Footer — brand block",
+          "widget": "object",
+          "fields": [
+            { "name": "studioLine", "label": "Studio line (small caps)", "widget": "string" },
+            { "name": "bio",        "label": "Bio paragraph",            "widget": "text", "rows": 4 }
+          ]
+        }
       ]
     }
   ]

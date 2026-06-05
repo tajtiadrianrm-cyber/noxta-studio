@@ -1,8 +1,59 @@
 {
-  "statusPill": "Available · Q3 2026 · 2 slots",
-  "topMeta": "Portfolio · 01 — Noxta Studio · 2026",
-  "crumb": "Work",
-  "h1Line1": "Built by hand,",
-  "h1Line2": "kept by hand.",
-  "sub": "One live build today. I'd rather show one thing in detail than ten things in thumbnail. New cases land here as they ship — yours included, maybe."
+  "hero": {
+    "statusPill": "Available · Q3 2026 · 2 slots",
+    "topMeta": "Portfolio · 01 — Noxta Studio · 2026",
+    "crumb": "Work",
+    "h1Line1": "Built by hand,",
+    "h1Line2": "kept by hand.",
+    "sub": "One live build today. I'd rather show one thing in detail than ten things in thumbnail. New cases land here as they ship — yours included, maybe."
+  },
+  "stepsSection": {
+    "label": "02 · How a project goes",
+    "h1Line1": "Four steps. ",
+    "h1Line2": "No theatre.",
+    "sub": "Every project follows the same four moves. You always know which one we're in."
+  },
+  "steps": [
+    {
+      "n": "/01",
+      "title": "Discovery call",
+      "when": "30 minutes · Free",
+      "body": "Tell me what you want and what you've tried. I'll tell you whether I can help and roughly what it'll cost."
+    },
+    {
+      "n": "/02",
+      "title": "Written scope",
+      "when": "Within 48 hours",
+      "body": "What gets built, what doesn't, what it costs, when it ships. One page. No surprise line items later."
+    },
+    {
+      "n": "/03",
+      "title": "Build",
+      "when": "1–8 weeks, depending on scope",
+      "body": "I disappear into the work. Every Friday you get a short update and a link to a live preview you can poke at."
+    },
+    {
+      "n": "/04",
+      "title": "Launch & stay",
+      "when": "Forever, if you want",
+      "body": "I keep the lights on. Updates, backups, small edits handled within the week. Retainer or ad-hoc, your call."
+    }
+  ],
+  "cta": {
+    "label": "Two slots open · Q3 2026",
+    "h1Line1": "Want me on ",
+    "h1Line2": "your project?",
+    "primaryLabel": "Start a project →",
+    "secondaryLabel": "See pricing"
+  },
+  "spec": [
+    { "label": "// Studio est.",   "value": "2026" },
+    { "label": "// Reply window",  "value": "< 24h" },
+    { "label": "// Location",      "value": "Tilburg, NL" },
+    { "label": "// Build",         "value": "Hand-coded" }
+  ],
+  "footer": {
+    "studioLine": "Studio · Tilburg, NL · Est. 2026",
+    "bio": "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing."
+  }
 }

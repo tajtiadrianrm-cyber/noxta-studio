@@ -3796,38 +3796,23 @@ function LinkedInIcon() {
   }));
 }
 function SpecBar() {
+  const SPEC = getPage().spec;
   return /*#__PURE__*/React.createElement("div", {
     className: "spec-bar",
     "aria-label": "Studio at a glance"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, SPEC.map((cell, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
     className: "cell"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Studio est."), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "2026")), /*#__PURE__*/React.createElement("div", {
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Reply window"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "accent"
-  }, "< 24h"))), /*#__PURE__*/React.createElement("div", {
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Location"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "Tilburg, NL")), /*#__PURE__*/React.createElement("div", {
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Build"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "Hand-coded")));
+    className: "k",
+    "data-cms-field": `portfolio-page.spec.${i}.label`
+  }, cell.label), /*#__PURE__*/React.createElement("span", {
+    className: "v",
+    "data-cms-field": `portfolio-page.spec.${i}.value`
+  }, cell.value))));
 }
 function Footer() {
+  const FOOT = getPage().footer;
   return /*#__PURE__*/React.createElement("footer", {
     className: "footer",
     id: "end"
@@ -3845,8 +3830,12 @@ function Footer() {
     className: "label",
     style: {
       marginBottom: 14
-    }
-  }, "Studio \xB7 Tilburg, NL \xB7 Est. 2026"), /*#__PURE__*/React.createElement("p", null, "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.")), /*#__PURE__*/React.createElement("div", {
+    },
+    "data-cms-field": "portfolio-page.footer.studioLine"
+  }, FOOT.studioLine), /*#__PURE__*/React.createElement("p", {
+    "data-cms-multiline": "true",
+    "data-cms-field": "portfolio-page.footer.bio"
+  }, FOOT.bio)), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
   }, /*#__PURE__*/React.createElement("h4", null, "// Site"), /*#__PURE__*/React.createElement("a", {
     href: "/"
@@ -4030,37 +4019,58 @@ const PROJECTS_FALLBACK = [{
   },
   shot: null
 }];
-const STEPS = [{
-  n: "/01",
-  title: "Discovery call",
-  when: "30 minutes · Free",
-  body: "Tell me what you want and what you've tried. I'll tell you whether I can help and roughly what it'll cost."
-}, {
-  n: "/02",
-  title: "Written scope",
-  when: "Within 48 hours",
-  body: "What gets built, what doesn't, what it costs, when it ships. One page. No surprise line items later."
-}, {
-  n: "/03",
-  title: "Build",
-  when: "1–8 weeks, depending on scope",
-  body: "I disappear into the work. Every Friday you get a short update and a link to a live preview you can poke at."
-}, {
-  n: "/04",
-  title: "Launch & stay",
-  when: "Forever, if you want",
-  body: "I keep the lights on. Updates, backups, small edits handled within the week. Retainer or ad-hoc, your call."
-}];
 const PAGE_FALLBACK = {
-  statusPill: "Available \xB7 Q3 2026 \xB7 2 slots",
-  topMeta:    "Portfolio \xB7 01 \u2014 Noxta Studio \xB7 2026",
-  crumb:      "Work",
-  h1Line1:    "Built by hand,",
-  h1Line2:    "kept by hand.",
-  sub:        "One live build today. I'd rather show one thing in detail than ten things in thumbnail. New cases land here as they ship \u2014 yours included, maybe."
+  hero: {
+    statusPill: "Available \xB7 Q3 2026 \xB7 2 slots",
+    topMeta:    "Portfolio \xB7 01 \u2014 Noxta Studio \xB7 2026",
+    crumb:      "Work",
+    h1Line1:    "Built by hand,",
+    h1Line2:    "kept by hand.",
+    sub:        "One live build today. I'd rather show one thing in detail than ten things in thumbnail. New cases land here as they ship \u2014 yours included, maybe."
+  },
+  stepsSection: {
+    label:   "02 \xB7 How a project goes",
+    h1Line1: "Four steps. ",
+    h1Line2: "No theatre.",
+    sub:     "Every project follows the same four moves. You always know which one we're in."
+  },
+  steps: [
+    { n: "/01", title: "Discovery call",  when: "30 minutes \xB7 Free",                body: "Tell me what you want and what you've tried. I'll tell you whether I can help and roughly what it'll cost." },
+    { n: "/02", title: "Written scope",   when: "Within 48 hours",                     body: "What gets built, what doesn't, what it costs, when it ships. One page. No surprise line items later." },
+    { n: "/03", title: "Build",           when: "1\u20138 weeks, depending on scope",       body: "I disappear into the work. Every Friday you get a short update and a link to a live preview you can poke at." },
+    { n: "/04", title: "Launch & stay",   when: "Forever, if you want",                body: "I keep the lights on. Updates, backups, small edits handled within the week. Retainer or ad-hoc, your call." }
+  ],
+  cta: {
+    label:          "Two slots open \xB7 Q3 2026",
+    h1Line1:        "Want me on ",
+    h1Line2:        "your project?",
+    primaryLabel:   "Start a project \u2192",
+    secondaryLabel: "See pricing"
+  },
+  spec: [
+    { label: "// Studio est.",  value: "2026" },
+    { label: "// Reply window", value: "< 24h" },
+    { label: "// Location",     value: "Tilburg, NL" },
+    { label: "// Build",        value: "Hand-coded" }
+  ],
+  footer: {
+    studioLine: "Studio \xB7 Tilburg, NL \xB7 Est. 2026",
+    bio:        "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing."
+  }
 };
+function getPage() {
+  const p = (typeof window !== "undefined" && window.__PAGE__) ? window.__PAGE__ : {};
+  return {
+    hero:         { ...PAGE_FALLBACK.hero,         ...(p.hero         || {}) },
+    stepsSection: { ...PAGE_FALLBACK.stepsSection, ...(p.stepsSection || {}) },
+    steps:        Array.isArray(p.steps) && p.steps.length ? p.steps : PAGE_FALLBACK.steps,
+    cta:          { ...PAGE_FALLBACK.cta,          ...(p.cta          || {}) },
+    spec:         Array.isArray(p.spec)  && p.spec.length  ? p.spec  : PAGE_FALLBACK.spec,
+    footer:       { ...PAGE_FALLBACK.footer,       ...(p.footer       || {}) }
+  };
+}
 function PortfolioHero() {
-  const PAGE = (typeof window !== "undefined" && window.__PAGE__) ? { ...PAGE_FALLBACK, ...window.__PAGE__ } : PAGE_FALLBACK;
+  const PAGE = getPage().hero;
   return /*#__PURE__*/React.createElement("section", {
     className: "hero page-hero",
     id: "top"
@@ -4071,10 +4081,10 @@ function PortfolioHero() {
   }, /*#__PURE__*/React.createElement("span", {
     className: "pulse"
   }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "portfolio-page.statusPill"
+    "data-cms-field": "portfolio-page.hero.statusPill"
   }, PAGE.statusPill)), /*#__PURE__*/React.createElement("span", {
     className: "hero-top-meta",
-    "data-cms-field": "portfolio-page.topMeta"
+    "data-cms-field": "portfolio-page.hero.topMeta"
   }, PAGE.topMeta)), /*#__PURE__*/React.createElement("div", {
     className: "page-hero-inner"
   }, /*#__PURE__*/React.createElement("div", {
@@ -4083,18 +4093,18 @@ function PortfolioHero() {
     href: "/"
   }, "Home"), " ", /*#__PURE__*/React.createElement("span", null, "/"), " ", /*#__PURE__*/React.createElement("span", {
     className: "cur",
-    "data-cms-field": "portfolio-page.crumb"
+    "data-cms-field": "portfolio-page.hero.crumb"
   }, PAGE.crumb)), /*#__PURE__*/React.createElement("h1", {
     className: "page-hero-h"
   }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "portfolio-page.h1Line1"
+    "data-cms-field": "portfolio-page.hero.h1Line1"
   }, PAGE.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
     className: "grad",
-    "data-cms-field": "portfolio-page.h1Line2"
+    "data-cms-field": "portfolio-page.hero.h1Line2"
   }, PAGE.h1Line2)), /*#__PURE__*/React.createElement("p", {
     className: "page-hero-sub",
     "data-cms-multiline": "true",
-    "data-cms-field": "portfolio-page.sub"
+    "data-cms-field": "portfolio-page.hero.sub"
   }, PAGE.sub)), /*#__PURE__*/React.createElement("a", {
     className: "scroll-cue",
     href: "#projects",
@@ -4206,6 +4216,9 @@ function PortfolioWork() {
   })))))));
 }
 function FourSteps() {
+  const PAGE = getPage();
+  const SECT = PAGE.stepsSection;
+  const STEPS = PAGE.steps;
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "steps"
@@ -4215,29 +4228,42 @@ function FourSteps() {
     className: "section-label"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
-  }), /*#__PURE__*/React.createElement("span", null, "02 \xB7 How a project goes")), /*#__PURE__*/React.createElement("h2", {
+  }), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "portfolio-page.stepsSection.label"
+  }, SECT.label)), /*#__PURE__*/React.createElement("h2", {
     className: "section-h"
-  }, "Four steps. ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "grad"
-  }, "No theatre.")), /*#__PURE__*/React.createElement("p", {
-    className: "section-sub"
-  }, "Every project follows the same four moves. You always know which one we're in."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "portfolio-page.stepsSection.h1Line1"
+  }, SECT.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "grad",
+    "data-cms-field": "portfolio-page.stepsSection.h1Line2"
+  }, SECT.h1Line2)), /*#__PURE__*/React.createElement("p", {
+    className: "section-sub",
+    "data-cms-multiline": "true",
+    "data-cms-field": "portfolio-page.stepsSection.sub"
+  }, SECT.sub), /*#__PURE__*/React.createElement("div", {
     className: "steps-grid"
-  }, STEPS.map(s => /*#__PURE__*/React.createElement("div", {
-    key: s.n,
+  }, STEPS.map((s, i) => /*#__PURE__*/React.createElement("div", {
+    key: s.n || i,
     className: "step-card",
     onMouseMove: onSpotlight
   }, /*#__PURE__*/React.createElement("div", {
-    className: "step-n"
+    className: "step-n",
+    "data-cms-field": `portfolio-page.steps.${i}.n`
   }, s.n), /*#__PURE__*/React.createElement("h3", {
-    className: "step-title"
+    className: "step-title",
+    "data-cms-field": `portfolio-page.steps.${i}.title`
   }, s.title), /*#__PURE__*/React.createElement("div", {
-    className: "step-when"
+    className: "step-when",
+    "data-cms-field": `portfolio-page.steps.${i}.when`
   }, s.when), /*#__PURE__*/React.createElement("p", {
-    className: "step-body"
+    className: "step-body",
+    "data-cms-multiline": "true",
+    "data-cms-field": `portfolio-page.steps.${i}.body`
   }, s.body))))));
 }
 function PortfolioCTA() {
+  const CTA = getPage().cta;
   return /*#__PURE__*/React.createElement("section", {
     className: "section page-cta",
     id: "contact-cta"
@@ -4249,22 +4275,29 @@ function PortfolioCTA() {
     className: "section-label"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
-  }), /*#__PURE__*/React.createElement("span", null, "Two slots open \xB7 Q3 2026")), /*#__PURE__*/React.createElement("h2", {
+  }), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "portfolio-page.cta.label"
+  }, CTA.label)), /*#__PURE__*/React.createElement("h2", {
     className: "section-h",
     style: {
       maxWidth: "20ch"
     }
-  }, "Want me on ", /*#__PURE__*/React.createElement("span", {
-    className: "grad"
-  }, "your project?"))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "portfolio-page.cta.h1Line1"
+  }, CTA.h1Line1), /*#__PURE__*/React.createElement("span", {
+    className: "grad",
+    "data-cms-field": "portfolio-page.cta.h1Line2"
+  }, CTA.h1Line2))), /*#__PURE__*/React.createElement("div", {
     className: "page-cta-actions"
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary",
-    href: "/contact"
-  }, "Start a project \u2192"), /*#__PURE__*/React.createElement("a", {
+    href: "/contact",
+    "data-cms-field": "portfolio-page.cta.primaryLabel"
+  }, CTA.primaryLabel), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-ghost",
-    href: "/#pricing"
-  }, "See pricing")))));
+    href: "/#pricing",
+    "data-cms-field": "portfolio-page.cta.secondaryLabel"
+  }, CTA.secondaryLabel)))));
 }
 
 /* ============ ROOT ============ */
