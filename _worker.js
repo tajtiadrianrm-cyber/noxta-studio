@@ -28,21 +28,6 @@ export default {
       return handleAdmin(request, env);
     }
 
-    // TEMPORARY DIAGNOSTIC — reports binding presence/length, not values.
-    // Remove this block once login works.
-    if (url.pathname === "/api/admin/_diag") {
-      const env_keys = Object.keys(env || {});
-      return json({
-        env_keys,
-        has_ADMIN_PASSWORD: typeof env.ADMIN_PASSWORD === "string" && env.ADMIN_PASSWORD.length > 0,
-        ADMIN_PASSWORD_length: (env.ADMIN_PASSWORD || "").length,
-        has_GITHUB_TOKEN: typeof env.GITHUB_TOKEN === "string" && env.GITHUB_TOKEN.length > 0,
-        GITHUB_TOKEN_length: (env.GITHUB_TOKEN || "").length,
-        has_GITHUB_REPO: typeof env.GITHUB_REPO === "string" && env.GITHUB_REPO.length > 0,
-        GITHUB_REPO_value: env.GITHUB_REPO || "(unset)",
-      });
-    }
-
     // Worker only runs when no static asset matched — nothing else to do.
     return new Response("Not found", { status: 404 });
   },
