@@ -369,6 +369,7 @@ function paintEditor(host) {
     host.appendChild(el("div", { class: "editor-header" },
       el("div", { class: "editor-title" }, title),
       el("div", { class: "editor-meta" }, coll.label || coll.id + " · #" + String(state.activeItemIndex + 1).padStart(2, "0")),
+      liveEditButton(coll),
     ));
     onChangeItem = (newItem) => {
       const draftItems = getListItems(coll, file.draft);
@@ -381,6 +382,7 @@ function paintEditor(host) {
     host.appendChild(el("div", { class: "editor-header" },
       el("div", { class: "editor-title" }, coll.label || coll.id),
       el("div", { class: "editor-meta" }, "Single file"),
+      liveEditButton(coll),
     ));
     onChangeItem = (newItem) => {
       file.draft = newItem;
@@ -418,6 +420,17 @@ function paintEditor(host) {
       },
     }, "Delete this item"));
   }
+}
+
+function liveEditButton(coll) {
+  if (!coll || !coll.liveEditUrl) return null;
+  return el("a", {
+    class: "editor-live-edit",
+    href: coll.liveEditUrl,
+    target: "_blank",
+    rel: "noopener",
+    title: "Open this page with the click-to-edit overlay",
+  }, "Live edit ↗");
 }
 
 function refreshSidebarItemLabel(coll, newItem) {

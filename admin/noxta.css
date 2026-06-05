@@ -383,6 +383,21 @@ input:focus, textarea:focus, select:focus, button:focus { outline: 0; }
   text-transform: uppercase;
   color: var(--mute);
 }
+.editor-live-edit {
+  margin-left: auto;
+  padding: 8px 14px;
+  font: 600 10px/1 var(--f-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter 120ms var(--ease);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.editor-live-edit:hover { filter: brightness(1.1); }
 
 /* ── Field primitives ─────────────────────────────────── */
 .field { margin-bottom: 24px; }

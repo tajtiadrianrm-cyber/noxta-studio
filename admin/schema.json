@@ -527,7 +527,8 @@
           ]
         }
       ],
-      "group": "Pages"
+      "group": "Pages",
+      "liveEditUrl": "/?edit=1"
     },
     {
       "id": "contact",
@@ -870,7 +871,8 @@
           ]
         }
       ],
-      "group": "Pages"
+      "group": "Pages",
+      "liveEditUrl": "/contact.html?edit=1"
     },
     {
       "id": "portfolio",
@@ -953,7 +955,8 @@
           "hint": "Optional. Leave empty for upcoming cases."
         }
       ],
-      "group": "Portfolio cases"
+      "group": "Portfolio cases",
+      "liveEditUrl": "/portfolio.html?edit=1"
     },
     {
       "id": "portfolio-page",
@@ -1131,7 +1134,8 @@
           ]
         }
       ],
-      "group": "Pages"
+      "group": "Pages",
+      "liveEditUrl": "/portfolio.html?edit=1"
     },
     {
       "id": "theme",
