@@ -3993,7 +3993,7 @@ function TweakColor({
 
 /* ============ PORTFOLIO PAGE COMPONENTS ============ */
 
-const PROJECTS = [{
+const PROJECTS_FALLBACK = [{
   n: "Case 001",
   status: "Live",
   title: "VOEP",
@@ -4148,6 +4148,12 @@ function ProjectCard({
   })))));
 }
 function PortfolioWork() {
+  const PROJECTS = (Array.isArray(window.__PROJECTS__) && window.__PROJECTS__.length) ? window.__PROJECTS__ : PROJECTS_FALLBACK;
+  if (!PROJECTS.length) return null;
+  const featured = PROJECTS[0];
+  const rest = PROJECTS.slice(1);
+  const rows = [];
+  for (let i = 0; i < rest.length; i += 2) rows.push(rest.slice(i, i + 2));
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "projects"
@@ -4160,15 +4166,15 @@ function PortfolioWork() {
   }), /*#__PURE__*/React.createElement("span", null, "01 \xB7 Live + Coming")), /*#__PURE__*/React.createElement("div", {
     className: "project-stack"
   }, /*#__PURE__*/React.createElement(ProjectCard, {
-    project: PROJECTS[0],
+    project: featured,
     featured: true
-  }), /*#__PURE__*/React.createElement("div", {
+  }), rows.map((row, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
     className: "project-row"
-  }, /*#__PURE__*/React.createElement(ProjectCard, {
-    project: PROJECTS[1]
-  }), /*#__PURE__*/React.createElement(ProjectCard, {
-    project: PROJECTS[2]
-  })))));
+  }, row.map(p => /*#__PURE__*/React.createElement(ProjectCard, {
+    key: p.n,
+    project: p
+  })))))));
 }
 function FourSteps() {
   return /*#__PURE__*/React.createElement("section", {
@@ -4322,7 +4328,18 @@ function App() {
     setTweak: setTweak
   }));
 }
-ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
+(async function bootstrap() {
+  try {
+    const res = await fetch("/content/portfolio.json?v=" + Date.now(), { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && Array.isArray(data.items) && data.items.length) {
+        window.__PROJECTS__ = data.items;
+      }
+    }
+  } catch (_) { /* fall back to PROJECTS_FALLBACK baked into the page */ }
+  ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
+})();
 </script>
   </body>
 </html>
