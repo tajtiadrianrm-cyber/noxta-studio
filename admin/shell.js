@@ -25,7 +25,16 @@ const state = {
   status: "idle",                // idle | dirty | saving | saved | error
   errorMessage: "",
   ctx: null,                     // shared widget context (media config, toast fn)
+  collapsedGroups: loadCollapsedGroups(),  // Set<string> of group names hidden by user
 };
+
+function loadCollapsedGroups() {
+  try { return new Set(JSON.parse(sessionStorage.getItem("admin-collapsed-groups") || "[]")); }
+  catch { return new Set(); }
+}
+function saveCollapsedGroups() {
+  try { sessionStorage.setItem("admin-collapsed-groups", JSON.stringify([...state.collapsedGroups])); } catch {}
+}
 
 // ─── Bootstrap ────────────────────────────────────────────
 
@@ -216,40 +225,65 @@ function renderApp(root) {
 
 function paintSidebar(host) {
   host.innerHTML = "";
+  // Bucket collections by group, preserving schema order
+  const groups = new Map(); // groupName → [coll, …]
   for (const coll of state.schema.collections || []) {
-    const group = el("div", { class: "sidebar-group" });
-    const file = state.files.get(coll.file);
+    const g = coll.group || "Other";
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(coll);
+  }
+  for (const [groupName, collections] of groups.entries()) {
+    const collapsed = state.collapsedGroups.has(groupName);
+    const groupEl = el("div", { class: "sidebar-group" + (collapsed ? " is-collapsed" : "") });
 
-    const labelRow = el("div", { class: "sidebar-group-label" },
-      el("span", null, coll.label || coll.id),
-      coll.kind === "list" && file ? el("span", { class: "sidebar-group-count" }, `(${getListItems(coll, file.draft).length})`) : null,
+    // Group header — clickable to toggle collapse
+    const header = el("button", {
+      class: "sidebar-group-header",
+      onClick: () => {
+        if (state.collapsedGroups.has(groupName)) state.collapsedGroups.delete(groupName);
+        else state.collapsedGroups.add(groupName);
+        saveCollapsedGroups();
+        paintSidebar(host);
+      },
+    },
+      el("span", { class: "sidebar-group-chevron" }, "▾"),
+      el("span", { class: "sidebar-group-label" }, groupName),
+      el("span", { class: "sidebar-group-count" }, collections.length === 1 && collections[0].kind === "list" && state.files.get(collections[0].file)
+        ? `(${getListItems(collections[0], state.files.get(collections[0].file).draft).length})`
+        : ""),
     );
-    group.appendChild(labelRow);
+    groupEl.appendChild(header);
 
-    if (coll.kind === "list" && file) {
-      const items = getListItems(coll, file.draft);
-      const list = el("div", { class: "sidebar-list" });
-      items.forEach((item, i) => {
-        const isActive = state.activeCollection === coll.id && state.activeItemIndex === i;
-        list.appendChild(el("button", {
-          class: "sidebar-item" + (isActive ? " is-active" : ""),
-          onClick: () => selectItem(coll.id, i),
-        },
-          interpolate(coll.itemLabel || "Item {{i}}", item, i),
-          el("span", { class: "sidebar-item-meta" }, "#" + String(i + 1).padStart(2, "0")),
-        ));
-      });
-      group.appendChild(list);
-    } else {
-      // Single-file collection (or not yet loaded)
-      const isActive = state.activeCollection === coll.id;
-      const btn = el("button", {
-        class: "sidebar-item" + (isActive ? " is-active" : ""),
-        onClick: () => selectCollection(coll.id),
-      }, coll.kind === "list" ? "Load…" : coll.label || coll.id);
-      group.appendChild(btn);
+    if (!collapsed) {
+      const body = el("div", { class: "sidebar-group-body" });
+      for (const coll of collections) {
+        const file = state.files.get(coll.file);
+        if (coll.kind === "list" && file) {
+          const items = getListItems(coll, file.draft);
+          const list = el("div", { class: "sidebar-list" });
+          items.forEach((item, i) => {
+            const isActive = state.activeCollection === coll.id && state.activeItemIndex === i;
+            list.appendChild(el("button", {
+              class: "sidebar-item" + (isActive ? " is-active" : ""),
+              onClick: () => selectItem(coll.id, i),
+            },
+              interpolate(coll.itemLabel || "Item {{i}}", item, i),
+              el("span", { class: "sidebar-item-meta" }, "#" + String(i + 1).padStart(2, "0")),
+            ));
+          });
+          body.appendChild(list);
+        } else {
+          // Single-file collection (or not yet loaded)
+          const isActive = state.activeCollection === coll.id;
+          body.appendChild(el("button", {
+            class: "sidebar-item" + (isActive ? " is-active" : ""),
+            onClick: () => selectCollection(coll.id),
+          }, coll.kind === "list" ? "Load…" : coll.label || coll.id));
+        }
+      }
+      groupEl.appendChild(body);
     }
-    host.appendChild(group);
+    host.appendChild(groupEl);
   }
 }
 

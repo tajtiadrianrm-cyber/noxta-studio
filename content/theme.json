@@ -1,0 +1,11 @@
+{
+  "bg":          "#0a0a0a",
+  "bgSoft":      "#121414",
+  "bgTint":      "#1a1c1c",
+  "ink":         "#f5f6f7",
+  "inkSoft":     "#cfcccb",
+  "mute":        "#8a8786",
+  "accentLight": "#ff7a3d",
+  "accentSolid": "#ff4d15",
+  "accentDark":  "#d63a0d"
+}

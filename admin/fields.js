@@ -71,6 +71,42 @@ function widgetUrl(value, schema, onChange) {
   });
 }
 
+function widgetColor(value, schema, onChange) {
+  const initial = normalizeHex(value) || "#000000";
+  const wrap = el("div", { class: "field-color" });
+  const swatch = el("input", {
+    type: "color",
+    class: "field-color-swatch",
+    value: initial,
+    onInput: (e) => {
+      const v = e.target.value;
+      hex.value = v;
+      onChange(v);
+    },
+  });
+  const hex = el("input", {
+    type: "text",
+    class: "field-input field-color-hex",
+    value: value ?? "",
+    placeholder: "#ff4d15",
+    onInput: (e) => {
+      const v = e.target.value.trim();
+      const norm = normalizeHex(v);
+      if (norm) swatch.value = norm;
+      onChange(v);
+    },
+  });
+  wrap.appendChild(swatch);
+  wrap.appendChild(hex);
+  return wrap;
+}
+
+function normalizeHex(v) {
+  if (typeof v !== "string") return null;
+  const m = v.match(/^#?([0-9a-fA-F]{6})$/);
+  return m ? "#" + m[1].toLowerCase() : null;
+}
+
 // ─── String-list (chips) ────────────────────────────────
 
 function widgetStringList(value, schema, onChange) {
@@ -345,6 +381,7 @@ function widgetImage(value, schema, onChange, ctx) {
 function defaultFor(schema) {
   switch (schema.widget) {
     case "string": case "text": case "markdown": case "url": case "image": return "";
+    case "color": return "#000000";
     case "select": return (schema.options || [])[0] || "";
     case "string-list": return [];
     case "object":
@@ -379,6 +416,7 @@ export function renderField(schema, value, onChange, ctx) {
     case "list":        widget = widgetList(value, schema, onChange); break;
     case "image":       widget = widgetImage(value, schema, onChange, ctx); break;
     case "url":         widget = widgetUrl(value, schema, onChange); break;
+    case "color":       widget = widgetColor(value, schema, onChange); break;
     default:
       widget = el("div", { style: "color: var(--err); font: 500 11px var(--f-mono);" }, `Unknown widget: ${schema.widget}`);
   }
