@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: tajtiadrianrm-cyber/noxta-studio
+  branch: main
+  base_url: https://sveltia-cms-auth.tajtiadrian-rm.workers.dev
+
+site_url: https://noxta.studio
+display_url: https://noxta.studio
+logo_url: /android-chrome-192x192.png
+
+media_folder: assets/portfolio
+public_folder: /assets/portfolio
+
+collections:
+  - name: portfolio
+    label: Portfolio
+    label_singular: Portfolio entry
+    files:
+      - name: portfolio
+        label: Portfolio items
+        file: content/portfolio.json
+        format: json
+        fields:
+          - name: items
+            label: Cases
+            label_singular: Case
+            widget: list
+            summary: "{{fields.title}} — {{fields.status}}"
+            fields:
+              - { name: n,        label: "Case number (e.g. Case 004)", widget: string }
+              - { name: status,   label: "Status (Live / Coming Q3 2026 / …)", widget: string }
+              - { name: title,    label: "Title", widget: string }
+              - { name: subtitle, label: "Subtitle", widget: string }
+              - { name: body,     label: "Description", widget: text }
+              - name: tags
+                label: Tags
+                widget: list
+                field: { name: tag, label: Tag, widget: string }
+              - name: cta
+                label: Call-to-action button
+                widget: object
+                fields:
+                  - { name: label, label: "Button label", widget: string }
+                  - { name: href,  label: "Button link (URL or /path)", widget: string }
+              - name: shot
+                label: Screenshot (optional)
+                widget: image
+                required: false
+                hint: "Leave empty if the case is upcoming. Files land in /assets/."
