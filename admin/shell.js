@@ -269,15 +269,26 @@ function paintSidebar(host) {
           const list = el("div", { class: "sidebar-list" });
           items.forEach((item, i) => {
             const isActive = state.activeCollection === coll.id && state.activeItemIndex === i;
-            list.appendChild(el("button", {
-              class: "sidebar-item" + (isActive ? " is-active" : ""),
+            const btn = el("button", {
+              class: "sidebar-item is-draggable" + (isActive ? " is-active" : ""),
+              draggable: "true",
               onClick: () => selectItem(coll.id, i),
             },
-              interpolate(coll.itemLabel || "Item {{i}}", item, i),
+              el("span", { class: "sidebar-item-grip", "aria-hidden": "true" }, "⠿"),
+              el("span", { class: "sidebar-item-text" },
+                interpolate(coll.itemLabel || "Item {{i}}", item, i),
+              ),
               el("span", { class: "sidebar-item-meta" }, "#" + String(i + 1).padStart(2, "0")),
-            ));
+            );
+            attachSidebarDragHandlers(btn, coll, i);
+            list.appendChild(btn);
           });
           body.appendChild(list);
+          // + Add new <thing> button
+          body.appendChild(el("button", {
+            class: "sidebar-add",
+            onClick: () => addItem(coll.id),
+          }, `+ Add ${coll.itemSingular || "item"}`));
         } else {
           // Single-file collection (or not yet loaded)
           const isActive = state.activeCollection === coll.id;
@@ -451,6 +462,75 @@ async function ensureLoaded(coll) {
     if (e.status === 401) { api.clearPassword(); location.reload(); return; }
     toast(`Load failed: ${e.message}`, "error");
   }
+}
+
+function addItem(collId) {
+  const coll = findCollection(collId);
+  if (!coll || coll.kind !== "list") return;
+  const file = state.files.get(coll.file);
+  if (!file) return;
+  const items = getListItems(coll, file.draft);
+  const empty = {};
+  for (const sub of (coll.fields || [])) empty[sub.name] = defaultFor(sub);
+  items.push(empty);
+  setListItems(coll, file.draft, items);
+  state.activeCollection = collId;
+  state.activeItemIndex = items.length - 1;
+  onAnyChange();
+  rerenderAll();
+}
+
+function reorderItems(coll, from, to) {
+  const file = state.files.get(coll.file);
+  if (!file) return;
+  const items = getListItems(coll, file.draft);
+  if (from < 0 || from >= items.length || to < 0 || to > items.length) return;
+  const [moved] = items.splice(from, 1);
+  const insertAt = from < to ? to - 1 : to;
+  items.splice(insertAt, 0, moved);
+  setListItems(coll, file.draft, items);
+  // Track where the user was so the active selection follows
+  if (state.activeCollection === coll.id && state.activeItemIndex !== null) {
+    if (state.activeItemIndex === from) state.activeItemIndex = insertAt;
+    else if (from < state.activeItemIndex && insertAt >= state.activeItemIndex) state.activeItemIndex -= 1;
+    else if (from > state.activeItemIndex && insertAt <= state.activeItemIndex) state.activeItemIndex += 1;
+  }
+  onAnyChange();
+  rerenderAll();
+}
+
+function attachSidebarDragHandlers(btn, coll, idx) {
+  btn.addEventListener("dragstart", (e) => {
+    e.dataTransfer.setData("text/plain", JSON.stringify({ collId: coll.id, idx }));
+    e.dataTransfer.effectAllowed = "move";
+    btn.classList.add("is-dragging");
+  });
+  btn.addEventListener("dragend", () => {
+    btn.classList.remove("is-dragging");
+    document.querySelectorAll(".sidebar-item").forEach((el) => el.classList.remove("drop-before", "drop-after"));
+  });
+  btn.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const rect = btn.getBoundingClientRect();
+    const before = (e.clientY - rect.top) < rect.height / 2;
+    btn.classList.toggle("drop-before", before);
+    btn.classList.toggle("drop-after", !before);
+  });
+  btn.addEventListener("dragleave", () => {
+    btn.classList.remove("drop-before", "drop-after");
+  });
+  btn.addEventListener("drop", (e) => {
+    e.preventDefault();
+    btn.classList.remove("drop-before", "drop-after");
+    let payload;
+    try { payload = JSON.parse(e.dataTransfer.getData("text/plain") || "{}"); } catch { return; }
+    if (!payload || payload.collId !== coll.id) return;
+    const rect = btn.getBoundingClientRect();
+    const before = (e.clientY - rect.top) < rect.height / 2;
+    const to = idx + (before ? 0 : 1);
+    if (payload.idx === to || payload.idx === to - 1) return;  // no-op move
+    reorderItems(coll, payload.idx, to);
+  });
 }
 
 // ─── Change tracking ─────────────────────────────────────
