@@ -4088,8 +4088,10 @@ function PortfolioHero() {
 }
 function ProjectCard({
   project,
-  featured
+  featured,
+  index
 }) {
+  const fieldPath = (sub) => `portfolio.items.${index}.${sub}`;
   return /*#__PURE__*/React.createElement("article", {
     className: "project-card" + (featured ? " featured" : "") + (project.shot ? "" : " placeholder"),
     onMouseMove: onSpotlight
@@ -4098,13 +4100,18 @@ function ProjectCard({
   }, /*#__PURE__*/React.createElement("div", {
     className: "project-meta"
   }, /*#__PURE__*/React.createElement("span", null, project.n), /*#__PURE__*/React.createElement("span", {
-    className: "project-status" + (project.shot ? " live" : "")
+    className: "project-status" + (project.shot ? " live" : ""),
+    "data-cms-field": fieldPath("status")
   }, project.status)), /*#__PURE__*/React.createElement("h3", {
-    className: "project-title"
+    className: "project-title",
+    "data-cms-field": fieldPath("title")
   }, project.title), /*#__PURE__*/React.createElement("p", {
-    className: "project-subtitle"
+    className: "project-subtitle",
+    "data-cms-field": fieldPath("subtitle")
   }, project.subtitle), /*#__PURE__*/React.createElement("p", {
-    className: "project-body"
+    className: "project-body",
+    "data-cms-multiline": "true",
+    "data-cms-field": fieldPath("body")
   }, project.body), /*#__PURE__*/React.createElement("div", {
     className: "project-tags"
   }, project.tags.map(t => /*#__PURE__*/React.createElement("span", {
@@ -4115,7 +4122,8 @@ function ProjectCard({
     className: "btn " + (project.shot ? "btn-primary" : "btn-ghost"),
     href: project.cta.href,
     target: project.cta.href.startsWith("http") ? "_blank" : undefined,
-    rel: project.cta.href.startsWith("http") ? "noreferrer noopener" : undefined
+    rel: project.cta.href.startsWith("http") ? "noreferrer noopener" : undefined,
+    "data-cms-field": fieldPath("cta.label")
   }, project.cta.label))), project.shot && /*#__PURE__*/React.createElement("div", {
     className: "project-shot"
   }, /*#__PURE__*/React.createElement("a", {
@@ -4144,7 +4152,8 @@ function ProjectCard({
     width: "720",
     height: "646",
     loading: "lazy",
-    decoding: "async"
+    decoding: "async",
+    "data-cms-field": fieldPath("shot")
   })))));
 }
 function PortfolioWork() {
@@ -4167,13 +4176,15 @@ function PortfolioWork() {
     className: "project-stack"
   }, /*#__PURE__*/React.createElement(ProjectCard, {
     project: featured,
-    featured: true
+    featured: true,
+    index: 0
   }), rows.map((row, idx) => /*#__PURE__*/React.createElement("div", {
     key: idx,
     className: "project-row"
-  }, row.map(p => /*#__PURE__*/React.createElement(ProjectCard, {
+  }, row.map((p, j) => /*#__PURE__*/React.createElement(ProjectCard, {
     key: p.n,
-    project: p
+    project: p,
+    index: 1 + idx * 2 + j
   })))))));
 }
 function FourSteps() {
@@ -4341,5 +4352,6 @@ function App() {
   ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
 })();
 </script>
+    <script type="module" src="/admin/live-edit.js"></script>
   </body>
 </html>
