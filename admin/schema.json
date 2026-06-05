@@ -226,6 +226,151 @@
       ]
     },
     {
+      "id": "contact",
+      "label": "Contact page content",
+      "file": "content/contact.json",
+      "kind": "single",
+      "fields": [
+        {
+          "name": "hero",
+          "label": "Hero — top of page",
+          "widget": "object",
+          "fields": [
+            { "name": "statusPill", "label": "Status pill (top-left)",            "widget": "string" },
+            { "name": "topMeta",    "label": "Top-right meta",                     "widget": "string" },
+            { "name": "crumb",      "label": "Breadcrumb (current page)",          "widget": "string" },
+            { "name": "h1Line1",    "label": "Headline — line 1 (white)",          "widget": "string" },
+            { "name": "h1Line2",    "label": "Headline — line 2 (orange gradient)", "widget": "string" },
+            { "name": "sub",        "label": "Subtitle paragraph",                 "widget": "text", "rows": 3 }
+          ]
+        },
+        {
+          "name": "info",
+          "label": "Direct info sidebar",
+          "widget": "object",
+          "fields": [
+            { "name": "label", "label": "Section label (above the list)", "widget": "string" },
+            {
+              "name": "facts",
+              "label": "Facts (k = label, v = value, href = link)",
+              "widget": "list",
+              "itemLabel": "{{k}} → {{v}}",
+              "itemSingular": "fact",
+              "itemSchema": {
+                "fields": [
+                  { "name": "k",    "label": "Label (e.g. Email)",          "widget": "string" },
+                  { "name": "v",    "label": "Value shown",                 "widget": "string" },
+                  { "name": "href", "label": "Link (mailto:, https://, or empty)", "widget": "string" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "form",
+          "label": "Form — labels, placeholders, chips, button",
+          "widget": "object",
+          "fields": [
+            { "name": "label",        "label": "Form section label",          "widget": "string" },
+            {
+              "name": "fieldLabels",
+              "label": "Field labels (above each input)",
+              "widget": "object",
+              "fields": [
+                { "name": "name",      "label": "Name label",       "widget": "string" },
+                { "name": "email",     "label": "Email label",      "widget": "string" },
+                { "name": "company",   "label": "Company label",    "widget": "string" },
+                { "name": "companyOpt","label": "Company '(optional)' tail", "widget": "string" },
+                { "name": "type",      "label": "Project type label", "widget": "string" },
+                { "name": "budget",    "label": "Budget label",     "widget": "string" },
+                { "name": "timeline",  "label": "Timeline label",   "widget": "string" },
+                { "name": "message",   "label": "Message label",    "widget": "string" }
+              ]
+            },
+            {
+              "name": "placeholders",
+              "label": "Input placeholders",
+              "widget": "object",
+              "fields": [
+                { "name": "name",    "label": "Name placeholder",    "widget": "string" },
+                { "name": "email",   "label": "Email placeholder",   "widget": "string" },
+                { "name": "company", "label": "Company placeholder", "widget": "string" },
+                { "name": "message", "label": "Message placeholder", "widget": "text", "rows": 3 }
+              ]
+            },
+            { "name": "projectTypes", "label": "Project type chips",       "widget": "string-list" },
+            { "name": "budgets",      "label": "Budget chips",             "widget": "string-list" },
+            { "name": "timelines",    "label": "Timeline chips",           "widget": "string-list" },
+            { "name": "submitLabel",  "label": "Submit button text",       "widget": "string" },
+            { "name": "sendingLabel", "label": "Submit button while sending", "widget": "string" },
+            { "name": "formNote",     "label": "Small note under submit",  "widget": "string" }
+          ]
+        },
+        {
+          "name": "success",
+          "label": "Success state (after submit)",
+          "widget": "object",
+          "fields": [
+            { "name": "label",          "label": "Section label",                "widget": "string" },
+            { "name": "h1Prefix",       "label": "Headline prefix (before first name)", "widget": "string" },
+            { "name": "lede",           "label": "Lede paragraph",               "widget": "text", "rows": 3 },
+            { "name": "replyFromLabel", "label": "Row 1 — label",                "widget": "string" },
+            { "name": "replyFromValue", "label": "Row 1 — value (email address)", "widget": "string" },
+            { "name": "usualTimeLabel", "label": "Row 2 — label",                "widget": "string" },
+            { "name": "usualTimeValue", "label": "Row 2 — value",                "widget": "string" },
+            { "name": "urgentLabel",    "label": "Row 3 — label",                "widget": "string" },
+            { "name": "urgentValue",    "label": "Row 3 — value (phone)",        "widget": "string" },
+            { "name": "anotherLabel",   "label": "'Send another' button text",   "widget": "string" }
+          ]
+        },
+        {
+          "name": "faqSection",
+          "label": "FAQ — section header",
+          "widget": "object",
+          "fields": [
+            { "name": "label",   "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1", "label": "Headline — line 1 (white)",          "widget": "string" },
+            { "name": "h1Line2", "label": "Headline — line 2 (orange gradient)", "widget": "string" }
+          ]
+        },
+        {
+          "name": "faq",
+          "label": "FAQ — questions + answers",
+          "widget": "list",
+          "itemLabel": "{{q}}",
+          "itemSingular": "FAQ",
+          "itemSchema": {
+            "fields": [
+              { "name": "q", "label": "Question", "widget": "string" },
+              { "name": "a", "label": "Answer",   "widget": "text", "rows": 4 }
+            ]
+          }
+        },
+        {
+          "name": "spec",
+          "label": "Spec bar — 4 stats",
+          "widget": "list",
+          "itemLabel": "{{label}} → {{value}}",
+          "itemSingular": "spec",
+          "itemSchema": {
+            "fields": [
+              { "name": "label", "label": "Label", "widget": "string" },
+              { "name": "value", "label": "Value", "widget": "string" }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "label": "Footer — brand block",
+          "widget": "object",
+          "fields": [
+            { "name": "studioLine", "label": "Studio line", "widget": "string" },
+            { "name": "bio",        "label": "Bio",         "widget": "text", "rows": 4 }
+          ]
+        }
+      ]
+    },
+    {
       "id": "portfolio",
       "label": "Portfolio",
       "file": "content/portfolio.json",
