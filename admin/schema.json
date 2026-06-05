@@ -68,6 +68,121 @@
           }
         },
         {
+          "name": "workSection",
+          "label": "Selected work — section header",
+          "widget": "object",
+          "fields": [
+            { "name": "label",   "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1", "label": "Headline — line 1 (white)",          "widget": "string" },
+            { "name": "h1Line2", "label": "Headline — line 2 (orange gradient)", "widget": "string" }
+          ]
+        },
+        {
+          "name": "work",
+          "label": "Selected work — VOEP case card",
+          "widget": "object",
+          "fields": [
+            { "name": "tag",      "label": "Tag (top of card)",            "widget": "string" },
+            { "name": "title",    "label": "Title",                        "widget": "string" },
+            { "name": "sub",      "label": "Description",                  "widget": "text", "rows": 5 },
+            { "name": "ctaLabel", "label": "Button text",                  "widget": "string" },
+            {
+              "name": "cells",
+              "label": "4 metric cells",
+              "widget": "list",
+              "itemLabel": "{{label}} → {{value}}",
+              "itemSingular": "cell",
+              "itemSchema": {
+                "fields": [
+                  { "name": "label", "label": "Label", "widget": "string" },
+                  { "name": "value", "label": "Value", "widget": "string" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "strip",
+          "label": "Static strip — between Work and Believe",
+          "widget": "object",
+          "fields": [
+            { "name": "text", "label": "Strip text", "widget": "string" }
+          ]
+        },
+        {
+          "name": "believeSection",
+          "label": "Believe — section header",
+          "widget": "object",
+          "fields": [
+            { "name": "label",   "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1", "label": "Headline — line 1",                  "widget": "string" },
+            { "name": "h1Line2", "label": "Headline — line 2",                  "widget": "string" }
+          ]
+        },
+        {
+          "name": "believe",
+          "label": "Believe — 3 belief cards",
+          "widget": "list",
+          "itemLabel": "{{n}} {{h}}",
+          "itemSingular": "belief",
+          "itemSchema": {
+            "fields": [
+              { "name": "n", "label": "Number (e.g. /01)", "widget": "string" },
+              { "name": "h", "label": "Headline",          "widget": "string" },
+              { "name": "p", "label": "Paragraph",         "widget": "text", "rows": 5 }
+            ]
+          }
+        },
+        {
+          "name": "pricingSection",
+          "label": "Pricing — section header + tabs",
+          "widget": "object",
+          "fields": [
+            { "name": "label",      "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1",    "label": "Headline — line 1",                  "widget": "string" },
+            { "name": "h1Line2",    "label": "Headline — line 2",                  "widget": "string" },
+            { "name": "sub",        "label": "Subtitle",                            "widget": "text", "rows": 3 },
+            { "name": "tabOnetime", "label": "Tab 1 label",                         "widget": "string" },
+            { "name": "tabMonthly", "label": "Tab 2 label",                         "widget": "string" }
+          ]
+        },
+        {
+          "name": "pricingOnetime",
+          "label": "Pricing — one-time project tiers",
+          "widget": "list",
+          "itemLabel": "{{tier}} · {{name}} · {{amount}}",
+          "itemSingular": "tier",
+          "itemSchema": {
+            "fields": [
+              { "name": "flag",   "label": "Flag (e.g. Recommended) — empty for none", "widget": "string" },
+              { "name": "tier",   "label": "Tier label (e.g. Tier · I)",               "widget": "string" },
+              { "name": "amount", "label": "Amount (e.g. €600 – 1,200)",                "widget": "string" },
+              { "name": "name",   "label": "Tier name (e.g. Small)",                    "widget": "string" },
+              { "name": "desc",   "label": "Short description",                          "widget": "string" },
+              { "name": "feats",  "label": "Features (one per line)",                    "widget": "string-list" },
+              { "name": "ideal",  "label": "Ideal-for paragraph",                        "widget": "text", "rows": 3 }
+            ]
+          }
+        },
+        {
+          "name": "pricingMonthly",
+          "label": "Pricing — monthly retainer plans",
+          "widget": "list",
+          "itemLabel": "{{tier}} · {{name}} · {{amount}}",
+          "itemSingular": "plan",
+          "itemSchema": {
+            "fields": [
+              { "name": "flag",   "label": "Flag (e.g. Recommended) — empty for none", "widget": "string" },
+              { "name": "tier",   "label": "Plan label (e.g. Plan · I)",                "widget": "string" },
+              { "name": "amount", "label": "Amount (e.g. €50 / month)",                  "widget": "string" },
+              { "name": "name",   "label": "Plan name (e.g. Light)",                     "widget": "string" },
+              { "name": "desc",   "label": "Short description",                          "widget": "string" },
+              { "name": "feats",  "label": "Features (one per line)",                    "widget": "string-list" },
+              { "name": "ideal",  "label": "Ideal-for paragraph",                        "widget": "text", "rows": 3 }
+            ]
+          }
+        },
+        {
           "name": "cta",
           "label": "CTA — 'Let's talk.'",
           "widget": "object",
@@ -82,7 +197,8 @@
             { "name": "primaryLabel",   "label": "Primary button text",         "widget": "string" },
             { "name": "secondaryLabel", "label": "Secondary button text",       "widget": "string" },
             { "name": "noteText",       "label": "Note before phone",           "widget": "string" },
-            { "name": "notePhone",      "label": "Phone number (display)",      "widget": "string" }
+            { "name": "notePhone",      "label": "Phone number (display)",      "widget": "string" },
+            { "name": "noteTail",       "label": "Tail (after phone, e.g. · I read every message)", "widget": "string" }
           ]
         },
         {
