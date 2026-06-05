@@ -42,6 +42,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Verify the stored password before painting the full UI
   try {
     await api.login();
+    // Honor ?return=<url> when set by live-edit.js so users land back on
+    // the page they came from instead of getting stuck in /admin/.
+    const returnTo = new URLSearchParams(location.search).get("return");
+    if (returnTo && isSafeReturn(returnTo)) {
+      location.replace(returnTo);
+      return;
+    }
     await boot(root);
   } catch (e) {
     if (e.status === 401) {
@@ -52,6 +59,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 });
+
+// Only follow same-origin paths to avoid open-redirect.
+function isSafeReturn(url) {
+  return typeof url === "string" && url.startsWith("/") && !url.startsWith("//");
+}
 
 async function boot(root) {
   state.loading = true;
@@ -108,6 +120,11 @@ function renderLogin(root, errorMsg) {
       api.setPassword(pw);
       try {
         await api.login();
+        const returnTo = new URLSearchParams(location.search).get("return");
+        if (returnTo && isSafeReturn(returnTo)) {
+          location.replace(returnTo);
+          return;
+        }
         await boot(root);
       } catch (err) {
         api.clearPassword();
