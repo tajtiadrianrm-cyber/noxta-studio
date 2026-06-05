@@ -4051,7 +4051,16 @@ const STEPS = [{
   when: "Forever, if you want",
   body: "I keep the lights on. Updates, backups, small edits handled within the week. Retainer or ad-hoc, your call."
 }];
+const PAGE_FALLBACK = {
+  statusPill: "Available \xB7 Q3 2026 \xB7 2 slots",
+  topMeta:    "Portfolio \xB7 01 \u2014 Noxta Studio \xB7 2026",
+  crumb:      "Work",
+  h1Line1:    "Built by hand,",
+  h1Line2:    "kept by hand.",
+  sub:        "One live build today. I'd rather show one thing in detail than ten things in thumbnail. New cases land here as they ship \u2014 yours included, maybe."
+};
 function PortfolioHero() {
+  const PAGE = (typeof window !== "undefined" && window.__PAGE__) ? { ...PAGE_FALLBACK, ...window.__PAGE__ } : PAGE_FALLBACK;
   return /*#__PURE__*/React.createElement("section", {
     className: "hero page-hero",
     id: "top"
@@ -4061,23 +4070,32 @@ function PortfolioHero() {
     className: "hero-status-pill"
   }, /*#__PURE__*/React.createElement("span", {
     className: "pulse"
-  }), /*#__PURE__*/React.createElement("span", null, "Available \xB7 Q3 2026 \xB7 2 slots")), /*#__PURE__*/React.createElement("span", {
-    className: "hero-top-meta"
-  }, "Portfolio \xB7 01 \u2014 Noxta Studio \xB7 2026")), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "portfolio-page.statusPill"
+  }, PAGE.statusPill)), /*#__PURE__*/React.createElement("span", {
+    className: "hero-top-meta",
+    "data-cms-field": "portfolio-page.topMeta"
+  }, PAGE.topMeta)), /*#__PURE__*/React.createElement("div", {
     className: "page-hero-inner"
   }, /*#__PURE__*/React.createElement("div", {
     className: "page-hero-crumb"
   }, /*#__PURE__*/React.createElement("a", {
     href: "/"
   }, "Home"), " ", /*#__PURE__*/React.createElement("span", null, "/"), " ", /*#__PURE__*/React.createElement("span", {
-    className: "cur"
-  }, "Work")), /*#__PURE__*/React.createElement("h1", {
+    className: "cur",
+    "data-cms-field": "portfolio-page.crumb"
+  }, PAGE.crumb)), /*#__PURE__*/React.createElement("h1", {
     className: "page-hero-h"
-  }, "Built by hand,", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "grad"
-  }, "kept by hand.")), /*#__PURE__*/React.createElement("p", {
-    className: "page-hero-sub"
-  }, "One live build today. I'd rather show one thing in detail than ten things in thumbnail. New cases land here as they ship \u2014 yours included, maybe.")), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "portfolio-page.h1Line1"
+  }, PAGE.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "grad",
+    "data-cms-field": "portfolio-page.h1Line2"
+  }, PAGE.h1Line2)), /*#__PURE__*/React.createElement("p", {
+    className: "page-hero-sub",
+    "data-cms-multiline": "true",
+    "data-cms-field": "portfolio-page.sub"
+  }, PAGE.sub)), /*#__PURE__*/React.createElement("a", {
     className: "scroll-cue",
     href: "#projects",
     "aria-label": "Scroll to projects"
@@ -4340,15 +4358,23 @@ function App() {
   }));
 }
 (async function bootstrap() {
-  try {
-    const res = await fetch("/content/portfolio.json?v=" + Date.now(), { cache: "no-store" });
-    if (res.ok) {
+  const cacheBust = "?v=" + Date.now();
+  // Fetch both content files in parallel; each is independent — failure of
+  // one falls back to its inline default without affecting the other.
+  await Promise.allSettled([
+    (async () => {
+      const res = await fetch("/content/portfolio.json" + cacheBust, { cache: "no-store" });
+      if (!res.ok) return;
       const data = await res.json();
-      if (data && Array.isArray(data.items) && data.items.length) {
-        window.__PROJECTS__ = data.items;
-      }
-    }
-  } catch (_) { /* fall back to PROJECTS_FALLBACK baked into the page */ }
+      if (data && Array.isArray(data.items) && data.items.length) window.__PROJECTS__ = data.items;
+    })(),
+    (async () => {
+      const res = await fetch("/content/portfolio-page.json" + cacheBust, { cache: "no-store" });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data && typeof data === "object") window.__PAGE__ = data;
+    })(),
+  ]);
   ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
 })();
 </script>

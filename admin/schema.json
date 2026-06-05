@@ -73,6 +73,20 @@
           "hint": "Optional. Leave empty for upcoming cases."
         }
       ]
+    },
+    {
+      "id": "portfolio-page",
+      "label": "Portfolio header",
+      "file": "content/portfolio-page.json",
+      "kind": "single",
+      "fields": [
+        { "name": "statusPill", "label": "Status pill (top-left)",   "widget": "string", "placeholder": "Available · Q3 2026 · 2 slots" },
+        { "name": "topMeta",    "label": "Top-right meta",            "widget": "string", "placeholder": "Portfolio · 01 — Noxta Studio · 2026" },
+        { "name": "crumb",      "label": "Breadcrumb (current page)", "widget": "string", "placeholder": "Work" },
+        { "name": "h1Line1",    "label": "Headline — line 1 (white)", "widget": "string", "placeholder": "Built by hand," },
+        { "name": "h1Line2",    "label": "Headline — line 2 (orange gradient)", "widget": "string", "placeholder": "kept by hand." },
+        { "name": "sub",        "label": "Subtitle paragraph",         "widget": "text",   "rows": 4 }
+      ]
     }
   ]
 }
