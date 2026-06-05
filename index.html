@@ -3025,27 +3025,73 @@ const onSpotlight = e => {
   e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
   e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
-const SERVICES = [{
-  n: "/01",
-  title: "Websites",
-  tags: ["WordPress", "Hand-coded", "Mobile-first"],
-  desc: "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch."
-}, {
-  n: "/02",
-  title: "E-commerce",
-  tags: ["WooCommerce", "Shopify", "IDEAL / Bancontact"],
-  desc: "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built."
-}, {
-  n: "/03",
-  title: "Brand",
-  tags: ["Wordmark", "Palette", "Type system"],
-  desc: "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template."
-}, {
-  n: "/04",
-  title: "Maintenance",
-  tags: ["Retainer", "On call", "Same-week edits"],
-  desc: "I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for."
-}];
+const PAGE_FALLBACK = {
+  hero: {
+    statusPill: "Available \xB7 Q3 2026 \xB7 2 slots",
+    topMeta:    "Hero \xB7 01 — Noxta Studio \xB7 2026",
+    nameLine1:  "Adrian",
+    nameLine2:  "Tajti",
+    role:       "Freelance Web Designer, Tilburg",
+    bio:        "I'm a freelance web designer in Tilburg. There's no agency behind Noxta, just me. I do the design, write the copy, and write the code. After launch I stick around to fix things and add new ones as you need them. You email me, I email you back.",
+    primaryLabel:   "Start a project →",
+    secondaryLabel: "See the work"
+  },
+  intro: {
+    label:        "00 \xB7 Who I am",
+    h1Line1:      "Just me.",
+    h1Line2Grad:  "No agency",
+    h1Line2Tail:  " in the back.",
+    sub:          "I work alone on purpose. Keeping the whole project in one head means nothing gets dropped between specialists who don't know your business as well as you do. The trade-off is capacity: I usually have two clients at a time, which is why slots are worth booking early."
+  },
+  servicesSection: {
+    label:   "01 \xB7 What I do",
+    h1Line1: "Four jobs.",
+    h1Line2: "One head.",
+    sub:     "I handle the design, the copy, the code, and the payments myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me."
+  },
+  services: [
+    { n: "/01", title: "Websites",    tags: ["WordPress", "Hand-coded", "Mobile-first"],     desc: "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch." },
+    { n: "/02", title: "E-commerce",  tags: ["WooCommerce", "Shopify", "IDEAL / Bancontact"], desc: "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built." },
+    { n: "/03", title: "Brand",       tags: ["Wordmark", "Palette", "Type system"],          desc: "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template." },
+    { n: "/04", title: "Maintenance", tags: ["Retainer", "On call", "Same-week edits"],      desc: "I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for." }
+  ],
+  cta: {
+    labelTL:        "05 \xB7 Get in touch",
+    subTL:          "Two slots open \xB7 Q3 2026",
+    labelTR:        "Usual reply",
+    subTR:          "Within 24 hours",
+    h1Line1:        "Let's ",
+    h1Line2:        "talk.",
+    lede:           "Send me what you're working on and I'll come back within a day. If I can help, I'll quote you. If I can't, I'll tell you, and usually I know someone who can.",
+    primaryLabel:   "Start a project →",
+    secondaryLabel: "Mail",
+    noteText:       "Or WhatsApp",
+    notePhone:      "+31 6 17 657 327"
+  },
+  spec: [
+    { label: "// Studio est.",  value: "2026" },
+    { label: "// Reply window", value: "< 24h" },
+    { label: "// Location",     value: "Tilburg, NL" },
+    { label: "// Build",        value: "Hand-coded" }
+  ],
+  footer: {
+    studioLine: "Studio \xB7 Tilburg, NL \xB7 Est. 2026",
+    bio:        "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing."
+  }
+};
+function getPage() {
+  const p = (typeof window !== "undefined" && window.__PAGE__) ? window.__PAGE__ : {};
+  return {
+    hero:            { ...PAGE_FALLBACK.hero,            ...(p.hero            || {}) },
+    intro:           { ...PAGE_FALLBACK.intro,           ...(p.intro           || {}) },
+    servicesSection: { ...PAGE_FALLBACK.servicesSection, ...(p.servicesSection || {}) },
+    services:        Array.isArray(p.services) && p.services.length ? p.services : PAGE_FALLBACK.services,
+    cta:             { ...PAGE_FALLBACK.cta,             ...(p.cta             || {}) },
+    spec:            Array.isArray(p.spec)     && p.spec.length     ? p.spec     : PAGE_FALLBACK.spec,
+    footer:          { ...PAGE_FALLBACK.footer,          ...(p.footer          || {}) }
+  };
+}
+const SERVICES = PAGE_FALLBACK.services;
 const BELIEVE = [{
   n: "/01",
   h: "I stay until it works.",
@@ -3134,6 +3180,7 @@ function Nav() {
   }, "Contact \u2192"))));
 }
 function Hero() {
+  const H = getPage().hero;
   return /*#__PURE__*/React.createElement("section", {
     className: "hero",
     id: "top"
@@ -3143,35 +3190,48 @@ function Hero() {
     className: "hero-status-pill"
   }, /*#__PURE__*/React.createElement("span", {
     className: "pulse"
-  }), /*#__PURE__*/React.createElement("span", null, "Available \xB7 Q3 2026 \xB7 2 slots")), /*#__PURE__*/React.createElement("span", {
-    className: "hero-top-meta"
-  }, "Hero \xB7 01 \u2014 Noxta Studio \xB7 2026")), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.hero.statusPill"
+  }, H.statusPill)), /*#__PURE__*/React.createElement("span", {
+    className: "hero-top-meta",
+    "data-cms-field": "home.hero.topMeta"
+  }, H.topMeta)), /*#__PURE__*/React.createElement("div", {
     className: "hero-body"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-text"
   }, /*#__PURE__*/React.createElement("h1", {
     className: "hero-name"
-  }, "Adrian", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.hero.nameLine1"
+  }, H.nameLine1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
     className: "grad"
-  }, "Tajti", /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.hero.nameLine2"
+  }, H.nameLine2), /*#__PURE__*/React.createElement("span", {
     className: "dot"
   }, "."))), /*#__PURE__*/React.createElement("div", {
     className: "hero-role-line"
   }, /*#__PURE__*/React.createElement("span", {
     className: "dash"
-  }), /*#__PURE__*/React.createElement("span", null, "Freelance Web Designer, Tilburg")), /*#__PURE__*/React.createElement("hr", {
+  }), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.hero.role"
+  }, H.role)), /*#__PURE__*/React.createElement("hr", {
     className: "hero-rule"
   }), /*#__PURE__*/React.createElement("p", {
-    className: "hero-bio"
-  }, "I'm a freelance web designer in Tilburg. There's no agency behind Noxta, just me. I do the design, write the copy, and write the code. After launch I stick around to fix things and add new ones as you need them. You email me, I email you back."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-bio",
+    "data-cms-multiline": "true",
+    "data-cms-field": "home.hero.bio"
+  }, H.bio), /*#__PURE__*/React.createElement("div", {
     className: "hero-actions"
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary",
-    href: "/contact"
-  }, "Start a project \u2192"), /*#__PURE__*/React.createElement("a", {
+    href: "/contact",
+    "data-cms-field": "home.hero.primaryLabel"
+  }, H.primaryLabel), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-ghost",
-    href: "#work"
-  }, "See the work"))), /*#__PURE__*/React.createElement("div", {
+    href: "#work",
+    "data-cms-field": "home.hero.secondaryLabel"
+  }, H.secondaryLabel))), /*#__PURE__*/React.createElement("div", {
     className: "hero-portrait"
   }, /*#__PURE__*/React.createElement("img", {
     src: "assets/portrait-hero.webp",
@@ -3193,6 +3253,7 @@ function Hero() {
   })));
 }
 function Intro() {
+  const I = getPage().intro;
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "about",
@@ -3206,27 +3267,34 @@ function Intro() {
     className: "section-label"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
-  }), /*#__PURE__*/React.createElement("span", null, "00 \xB7 Who I am")), /*#__PURE__*/React.createElement("h2", {
+  }), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.intro.label"
+  }, I.label)), /*#__PURE__*/React.createElement("h2", {
     className: "section-h",
     style: {
       maxWidth: "22ch"
     }
-  }, "Just me.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "grad"
-  }, "No agency"), " in the back."), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.intro.h1Line1"
+  }, I.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "grad",
+    "data-cms-field": "home.intro.h1Line2Grad"
+  }, I.h1Line2Grad), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.intro.h1Line2Tail"
+  }, I.h1Line2Tail)), /*#__PURE__*/React.createElement("p", {
     className: "section-sub",
     style: {
       maxWidth: "60ch",
       fontSize: 19
-    }
-  }, "I work alone on purpose. Keeping the whole project in one head means nothing gets dropped between specialists who don't know your business as well as you do. The trade-off is capacity: I usually have ", /*#__PURE__*/React.createElement("strong", {
-    style: {
-      color: "var(--ink)",
-      fontWeight: 600
-    }
-  }, "two clients at a time"), ", which is why slots are worth booking early.")));
+    },
+    "data-cms-multiline": "true",
+    "data-cms-field": "home.intro.sub"
+  }, I.sub)));
 }
 function Services() {
+  const PAGE = getPage();
+  const SECT = PAGE.servicesSection;
+  const SERVICES = PAGE.services;
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "services"
@@ -3236,16 +3304,24 @@ function Services() {
     className: "section-label"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
-  }), /*#__PURE__*/React.createElement("span", null, "01 \xB7 What I do")), /*#__PURE__*/React.createElement("h2", {
+  }), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.servicesSection.label"
+  }, SECT.label)), /*#__PURE__*/React.createElement("h2", {
     className: "section-h"
-  }, "Four jobs.", /*#__PURE__*/React.createElement("br", null), "One head."), /*#__PURE__*/React.createElement("p", {
-    className: "section-sub"
-  }, "I handle the design, the copy, the code, and the payments myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.servicesSection.h1Line1"
+  }, SECT.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.servicesSection.h1Line2"
+  }, SECT.h1Line2)), /*#__PURE__*/React.createElement("p", {
+    className: "section-sub",
+    "data-cms-multiline": "true",
+    "data-cms-field": "home.servicesSection.sub"
+  }, SECT.sub), /*#__PURE__*/React.createElement("div", {
     className: "services"
   }, SERVICES.map((s, i) => {
     const bg = String(i + 1).padStart(2, "0");
     return /*#__PURE__*/React.createElement("div", {
-      key: s.title,
+      key: s.title || i,
       className: "service",
       onMouseMove: onSpotlight
     }, /*#__PURE__*/React.createElement("span", {
@@ -3254,14 +3330,18 @@ function Services() {
     }, bg.split("").map((ch, j) => /*#__PURE__*/React.createElement("span", {
       key: j
     }, ch))), /*#__PURE__*/React.createElement("span", {
-      className: "num"
+      className: "num",
+      "data-cms-field": `home.services.${i}.n`
     }, s.n), /*#__PURE__*/React.createElement("h3", {
-      className: "title"
+      className: "title",
+      "data-cms-field": `home.services.${i}.title`
     }, s.title), /*#__PURE__*/React.createElement("p", {
-      className: "desc"
+      className: "desc",
+      "data-cms-multiline": "true",
+      "data-cms-field": `home.services.${i}.desc`
     }, s.desc), /*#__PURE__*/React.createElement("div", {
       className: "tags"
-    }, s.tags.map(t => /*#__PURE__*/React.createElement("span", {
+    }, (s.tags || []).map(t => /*#__PURE__*/React.createElement("span", {
       key: t
     }, t))), /*#__PURE__*/React.createElement("span", {
       className: "arr"
@@ -3531,6 +3611,7 @@ function Pricing() {
   })))));
 }
 function CTA() {
+  const C = getPage().cta;
   return /*#__PURE__*/React.createElement("section", {
     id: "contact"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3541,19 +3622,28 @@ function CTA() {
     className: "cta-top"
   }, /*#__PURE__*/React.createElement("div", {
     className: "mark"
-  }, "05 \xB7 Get in touch", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "sub"
-  }, "Two slots open \xB7 Q3 2026")), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.cta.labelTL"
+  }, C.labelTL), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "sub",
+    "data-cms-field": "home.cta.subTL"
+  }, C.subTL)), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
     className: "mark tr"
-  }, "Usual reply", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "sub"
-  }, "Within 24 hours"))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.cta.labelTR"
+  }, C.labelTR), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+    className: "sub",
+    "data-cms-field": "home.cta.subTR"
+  }, C.subTR))), /*#__PURE__*/React.createElement("div", {
     className: "cta-stage"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "cta-h"
-  }, "Let's ", /*#__PURE__*/React.createElement("span", {
-    className: "grad"
-  }, "talk.")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.cta.h1Line1"
+  }, C.h1Line1), /*#__PURE__*/React.createElement("span", {
+    className: "grad",
+    "data-cms-field": "home.cta.h1Line2"
+  }, C.h1Line2)), /*#__PURE__*/React.createElement("div", {
     className: "cta-wordmark",
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("span", {
@@ -3571,23 +3661,31 @@ function CTA() {
   }))), /*#__PURE__*/React.createElement("div", {
     className: "cta-bottom"
   }, /*#__PURE__*/React.createElement("p", {
-    className: "lede"
-  }, "Send me what you're working on and I'll come back within a day. If I can help, I'll quote you. If I can't, I'll tell you, and usually I know someone who can."), /*#__PURE__*/React.createElement("div", {
+    className: "lede",
+    "data-cms-multiline": "true",
+    "data-cms-field": "home.cta.lede"
+  }, C.lede), /*#__PURE__*/React.createElement("div", {
     className: "ctas"
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary",
-    href: "/contact"
-  }, "Start a project \u2192"), /*#__PURE__*/React.createElement("a", {
+    href: "/contact",
+    "data-cms-field": "home.cta.primaryLabel"
+  }, C.primaryLabel), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-ghost",
-    href: "mailto:adrian@noxta.studio"
-  }, "Mail")), /*#__PURE__*/React.createElement("div", {
+    href: "mailto:adrian@noxta.studio",
+    "data-cms-field": "home.cta.secondaryLabel"
+  }, C.secondaryLabel)), /*#__PURE__*/React.createElement("div", {
     className: "note"
-  }, "Or WhatsApp", " ", /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.cta.noteText"
+  }, C.noteText), " ", /*#__PURE__*/React.createElement("a", {
     href: "https://wa.me/31617657327",
     target: "_blank",
     rel: "noreferrer noopener",
     className: "note-link"
-  }, /*#__PURE__*/React.createElement("strong", null, "+31 6 17 657 327")), " ", "\xB7 I read every message")))));
+  }, /*#__PURE__*/React.createElement("strong", {
+    "data-cms-field": "home.cta.notePhone"
+  }, C.notePhone)), " ", "\xB7 I read every message")))));
 }
 function Wordmark() {
   return /*#__PURE__*/React.createElement("section", {
@@ -3624,38 +3722,23 @@ function LinkedInIcon() {
   }));
 }
 function SpecBar() {
+  const SPEC = getPage().spec;
   return /*#__PURE__*/React.createElement("div", {
     className: "spec-bar",
     "aria-label": "Studio at a glance"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, SPEC.map((cell, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
     className: "cell"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Studio est."), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "2026")), /*#__PURE__*/React.createElement("div", {
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Reply window"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "accent"
-  }, "< 24h"))), /*#__PURE__*/React.createElement("div", {
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Location"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "Tilburg, NL")), /*#__PURE__*/React.createElement("div", {
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "k"
-  }, "// Build"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "Hand-coded")));
+    className: "k",
+    "data-cms-field": `home.spec.${i}.label`
+  }, cell.label), /*#__PURE__*/React.createElement("span", {
+    className: "v",
+    "data-cms-field": `home.spec.${i}.value`
+  }, cell.value))));
 }
 function Footer() {
+  const FOOT = getPage().footer;
   return /*#__PURE__*/React.createElement("footer", {
     className: "footer",
     id: "end"
@@ -3673,8 +3756,12 @@ function Footer() {
     className: "label",
     style: {
       marginBottom: 14
-    }
-  }, "Studio \xB7 Tilburg, NL \xB7 Est. 2026"), /*#__PURE__*/React.createElement("p", null, "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.")), /*#__PURE__*/React.createElement("div", {
+    },
+    "data-cms-field": "home.footer.studioLine"
+  }, FOOT.studioLine), /*#__PURE__*/React.createElement("p", {
+    "data-cms-multiline": "true",
+    "data-cms-field": "home.footer.bio"
+  }, FOOT.bio)), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
   }, /*#__PURE__*/React.createElement("h4", null, "// Site"), /*#__PURE__*/React.createElement("a", {
     href: "/"
@@ -3912,7 +3999,17 @@ function App() {
     setTweak: setTweak
   }));
 }
-ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
+(async function bootstrap() {
+  try {
+    const res = await fetch("/content/home.json?v=" + Date.now(), { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && typeof data === "object") window.__PAGE__ = data;
+    }
+  } catch (_) { /* fall back to PAGE_FALLBACK baked into the page */ }
+  ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
+})();
 </script>
+    <script type="module" src="/admin/live-edit.js"></script>
   </body>
 </html>

@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "statusPill": "Available · Q3 2026 · 2 slots",
+    "topMeta": "Hero · 01 — Noxta Studio · 2026",
+    "nameLine1": "Adrian",
+    "nameLine2": "Tajti",
+    "role": "Freelance Web Designer, Tilburg",
+    "bio": "I'm a freelance web designer in Tilburg. There's no agency behind Noxta, just me. I do the design, write the copy, and write the code. After launch I stick around to fix things and add new ones as you need them. You email me, I email you back.",
+    "primaryLabel": "Start a project →",
+    "secondaryLabel": "See the work"
+  },
+  "intro": {
+    "label": "00 · Who I am",
+    "h1Line1": "Just me.",
+    "h1Line2Grad": "No agency",
+    "h1Line2Tail": " in the back.",
+    "sub": "I work alone on purpose. Keeping the whole project in one head means nothing gets dropped between specialists who don't know your business as well as you do. The trade-off is capacity: I usually have two clients at a time, which is why slots are worth booking early."
+  },
+  "servicesSection": {
+    "label": "01 · What I do",
+    "h1Line1": "Four jobs.",
+    "h1Line2": "One head.",
+    "sub": "I handle the design, the copy, the code, and the payments myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me."
+  },
+  "services": [
+    {
+      "n": "/01",
+      "title": "Websites",
+      "tags": ["WordPress", "Hand-coded", "Mobile-first"],
+      "desc": "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch."
+    },
+    {
+      "n": "/02",
+      "title": "E-commerce",
+      "tags": ["WooCommerce", "Shopify", "IDEAL / Bancontact"],
+      "desc": "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built."
+    },
+    {
+      "n": "/03",
+      "title": "Brand",
+      "tags": ["Wordmark", "Palette", "Type system"],
+      "desc": "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template."
+    },
+    {
+      "n": "/04",
+      "title": "Maintenance",
+      "tags": ["Retainer", "On call", "Same-week edits"],
+      "desc": "I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for."
+    }
+  ],
+  "cta": {
+    "labelTL": "05 · Get in touch",
+    "subTL": "Two slots open · Q3 2026",
+    "labelTR": "Usual reply",
+    "subTR": "Within 24 hours",
+    "h1Line1": "Let's ",
+    "h1Line2": "talk.",
+    "lede": "Send me what you're working on and I'll come back within a day. If I can help, I'll quote you. If I can't, I'll tell you, and usually I know someone who can.",
+    "primaryLabel": "Start a project →",
+    "secondaryLabel": "Mail",
+    "noteText": "Or WhatsApp",
+    "notePhone": "+31 6 17 657 327"
+  },
+  "spec": [
+    { "label": "// Studio est.",   "value": "2026" },
+    { "label": "// Reply window",  "value": "< 24h" },
+    { "label": "// Location",      "value": "Tilburg, NL" },
+    { "label": "// Build",         "value": "Hand-coded" }
+  ],
+  "footer": {
+    "studioLine": "Studio · Tilburg, NL · Est. 2026",
+    "bio": "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing."
+  }
+}

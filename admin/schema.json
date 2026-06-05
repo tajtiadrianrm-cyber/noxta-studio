@@ -9,6 +9,107 @@
   },
   "collections": [
     {
+      "id": "home",
+      "label": "Home page content",
+      "file": "content/home.json",
+      "kind": "single",
+      "fields": [
+        {
+          "name": "hero",
+          "label": "Hero — top of page",
+          "widget": "object",
+          "fields": [
+            { "name": "statusPill",     "label": "Status pill (top-left)",            "widget": "string" },
+            { "name": "topMeta",        "label": "Top-right meta",                     "widget": "string" },
+            { "name": "nameLine1",      "label": "Name — line 1 (white)",              "widget": "string" },
+            { "name": "nameLine2",      "label": "Name — line 2 (orange gradient)",    "widget": "string" },
+            { "name": "role",           "label": "Role line under the name",           "widget": "string" },
+            { "name": "bio",            "label": "Bio paragraph",                      "widget": "text", "rows": 6 },
+            { "name": "primaryLabel",   "label": "Primary button text",                "widget": "string" },
+            { "name": "secondaryLabel", "label": "Secondary button text",              "widget": "string" }
+          ]
+        },
+        {
+          "name": "intro",
+          "label": "Intro — 'Just me. No agency.'",
+          "widget": "object",
+          "fields": [
+            { "name": "label",        "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1",      "label": "Headline — line 1 (white)",          "widget": "string" },
+            { "name": "h1Line2Grad",  "label": "Line 2 — orange gradient portion",   "widget": "string" },
+            { "name": "h1Line2Tail",  "label": "Line 2 — trailing portion",          "widget": "string" },
+            { "name": "sub",          "label": "Subtitle paragraph",                 "widget": "text", "rows": 4 }
+          ]
+        },
+        {
+          "name": "servicesSection",
+          "label": "Services — section header",
+          "widget": "object",
+          "fields": [
+            { "name": "label",   "label": "Section label",                      "widget": "string" },
+            { "name": "h1Line1", "label": "Headline — line 1",                  "widget": "string" },
+            { "name": "h1Line2", "label": "Headline — line 2",                  "widget": "string" },
+            { "name": "sub",     "label": "Subtitle",                           "widget": "text", "rows": 3 }
+          ]
+        },
+        {
+          "name": "services",
+          "label": "Services — the 4 cards",
+          "widget": "list",
+          "itemLabel": "{{n}} {{title}}",
+          "itemSingular": "service",
+          "itemSchema": {
+            "fields": [
+              { "name": "n",     "label": "Number (e.g. /01)",          "widget": "string" },
+              { "name": "title", "label": "Title (e.g. Websites)",      "widget": "string" },
+              { "name": "tags",  "label": "Tags",                        "widget": "string-list" },
+              { "name": "desc",  "label": "Description",                 "widget": "text", "rows": 3 }
+            ]
+          }
+        },
+        {
+          "name": "cta",
+          "label": "CTA — 'Let's talk.'",
+          "widget": "object",
+          "fields": [
+            { "name": "labelTL",        "label": "Top-left mark — main",       "widget": "string" },
+            { "name": "subTL",          "label": "Top-left mark — sub",        "widget": "string" },
+            { "name": "labelTR",        "label": "Top-right mark — main",      "widget": "string" },
+            { "name": "subTR",          "label": "Top-right mark — sub",       "widget": "string" },
+            { "name": "h1Line1",        "label": "Headline part (white)",       "widget": "string" },
+            { "name": "h1Line2",        "label": "Headline part (orange gradient)", "widget": "string" },
+            { "name": "lede",           "label": "Lede paragraph",              "widget": "text", "rows": 4 },
+            { "name": "primaryLabel",   "label": "Primary button text",         "widget": "string" },
+            { "name": "secondaryLabel", "label": "Secondary button text",       "widget": "string" },
+            { "name": "noteText",       "label": "Note before phone",           "widget": "string" },
+            { "name": "notePhone",      "label": "Phone number (display)",      "widget": "string" }
+          ]
+        },
+        {
+          "name": "spec",
+          "label": "Spec bar — 4 stats",
+          "widget": "list",
+          "itemLabel": "{{label}} → {{value}}",
+          "itemSingular": "spec",
+          "itemSchema": {
+            "fields": [
+              { "name": "label", "label": "Label", "widget": "string" },
+              { "name": "value", "label": "Value", "widget": "string" }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "label": "Footer — brand block",
+          "widget": "object",
+          "fields": [
+            { "name": "studioLine", "label": "Studio line", "widget": "string" },
+            { "name": "bio",        "label": "Bio",         "widget": "text", "rows": 4 }
+          ]
+        }
+      ]
+    },
+    {
       "id": "portfolio",
       "label": "Portfolio",
       "file": "content/portfolio.json",
