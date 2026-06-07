@@ -228,6 +228,21 @@
       "ideal": "Growing shops and active marketing: new pages, campaigns, and ongoing work."
     }
   ],
+  "careplus": {
+    "tag": "// Add-on · Standard & Active plans",
+    "name": "Care+ FAQ assistant",
+    "amount": "+ €89 / month",
+    "setup": "€750 one-time",
+    "desc": "A small chat box on your site for the questions you already get by email ten times a week. Opening hours, prices, parking, do you take walk-ins. The answers come from a FAQ I write with you. When someone's ready to book, it sends them to your calendar. When it doesn't know the answer, it says so instead of guessing.",
+    "feats": [
+      "Lives in the bottom corner of your site, in your colours",
+      "Answers come from a FAQ I write with you",
+      "Books straight into your calendar",
+      "I read every month's transcripts and tune it so it doesn't start making things up",
+      "API and hosting costs come out of the €89, not your card"
+    ],
+    "footnote": "Standard and Active retainers only. Limited availability for now. Ask if you'd like a spot."
+  },
   "cta": {
     "labelTL": "05 · Get in touch",
     "subTL": "Two slots open · Q3 2026",

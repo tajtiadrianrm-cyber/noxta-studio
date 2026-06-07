@@ -1116,8 +1116,26 @@ section {
 /* ──────────────── Section header ──────────────── */
 
 .section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: clamp(80px, 12vh, 160px);
+  padding-bottom: clamp(80px, 12vh, 160px);
+}
+/* Content-heavy sections expand to fill the viewport when they would otherwise be shorter */
+#services,
+#work,
+#believe,
+#pricing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (max-width: 760px) {
+  #services,
+  #work,
+  #believe,
+  #pricing {
+    min-height: auto;
+  }
 }
 .section-label {
   display: flex;
@@ -1577,7 +1595,8 @@ section {
 .believe-cell::after,
 .service::after,
 .work-card::after,
-.price::after {
+.price::after,
+.careplus::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -1595,8 +1614,9 @@ section {
 .believe-cell:hover::after,
 .service:hover::after,
 .work-card:hover::after,
-.price:hover::after { opacity: 1; }
-.service, .work-card, .price { --mx: 50%; --my: 50%; }
+.price:hover::after,
+.careplus:hover::after { opacity: 1; }
+.service, .work-card, .price, .careplus { --mx: 50%; --my: 50%; }
 .believe-cell:hover {
   transform: translateY(-6px) scale(1.02);
   background-color: rgba(255, 77, 21, 0.04);
@@ -1875,6 +1895,136 @@ section {
   color: var(--mute);
   display: block;
   margin-bottom: 8px;
+}
+
+/* ──────────────── CARE+ ADD-ON ROW (monthly tab only) ──────────────── */
+
+.careplus {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  margin-top: 32px;
+  background: linear-gradient(140deg, rgba(255, 122, 61, 0.06), rgba(255, 77, 21, 0.04) 60%, rgba(214, 58, 13, 0.03));
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.22);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  padding: 32px 36px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.6fr);
+  gap: 36px 48px;
+  align-items: start;
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(6px);
+  animation: nx-reveal 600ms cubic-bezier(.2,.7,.2,1) 120ms forwards;
+  transition: transform 320ms cubic-bezier(.2,.7,.2,1), box-shadow 320ms;
+}
+.careplus:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.40);
+}
+@media (max-width: 760px) {
+  .careplus {
+    grid-template-columns: 1fr;
+    padding: 24px 22px;
+    gap: 24px;
+  }
+}
+.careplus-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.careplus-tag {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-solid);
+}
+.careplus-name {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(26px, 2.6vw, 34px);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+.careplus-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+.careplus-amt {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.01em;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.careplus-setup {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.careplus-setup-k {
+  color: var(--mute);
+  margin-right: 4px;
+}
+.careplus-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.careplus-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+.careplus-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+@media (max-width: 760px) {
+  .careplus-list { grid-template-columns: 1fr; }
+}
+.careplus-list li {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding-left: 18px;
+  position: relative;
+}
+.careplus-list li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-solid);
+  font-family: var(--f-mono);
+  font-weight: 700;
+}
+.careplus-foot {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(255, 77, 21, 0.15);
+  padding-top: 18px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  color: var(--mute);
+  text-wrap: pretty;
 }
 
 /* ──────────────── CTA (Portilo-style with portrait + wordmark behind) ──────────────── */
@@ -3101,6 +3251,21 @@ const PAGE_FALLBACK = {
     { flag: "Recommended", tier: "Plan \xB7 II",  amount: "€150 / month", name: "Standard", desc: "Light plus active edits.",   feats: ["Everything in Light", "3 hours of edits per month", "Copy tweaks & small layout changes", "Monthly performance report", "Same-week edits (Mon–Fri)", "Annual prepay \xB7 12 months for the price of 11"], ideal: "Sites that change a few times a month: pricing, menu, content updates." },
     { flag: "",            tier: "Plan \xB7 III", amount: "€450 / month", name: "Active",   desc: "I'm basically on your team.", feats: ["Everything in Standard", "8 hours of edits per month", "Priority response (next business day)", "Phone / WhatsApp support (Mon–Fri 9–17, urgent only)", "Quarterly strategy call", "Annual prepay \xB7 12 months for the price of 11"], ideal: "Growing shops and active marketing: new pages, campaigns, and ongoing work." }
   ],
+  careplus: {
+    tag:      "// Add-on \xB7 Standard & Active plans",
+    name:     "Care+ FAQ assistant",
+    amount:   "+ €89 / month",
+    setup:    "€750 one-time",
+    desc:     "A small chat box on your site for the questions you already get by email ten times a week. Opening hours, prices, parking, do you take walk-ins. The answers come from a FAQ I write with you. When someone's ready to book, it sends them to your calendar. When it doesn't know the answer, it says so instead of guessing.",
+    feats: [
+      "Lives in the bottom corner of your site, in your colours",
+      "Answers come from a FAQ I write with you",
+      "Books straight into your calendar",
+      "I read every month's transcripts and tune it so it doesn't start making things up",
+      "API and hosting costs come out of the €89, not your card"
+    ],
+    footnote: "Standard and Active retainers only. Limited availability for now. Ask if you'd like a spot."
+  },
   cta: {
     labelTL:        "05 \xB7 Get in touch",
     subTL:          "Two slots open \xB7 Q3 2026",
@@ -3141,6 +3306,7 @@ function getPage() {
     pricingSection:  { ...PAGE_FALLBACK.pricingSection,  ...(p.pricingSection  || {}) },
     pricingOnetime:  Array.isArray(p.pricingOnetime) && p.pricingOnetime.length ? p.pricingOnetime : PAGE_FALLBACK.pricingOnetime,
     pricingMonthly:  Array.isArray(p.pricingMonthly) && p.pricingMonthly.length ? p.pricingMonthly : PAGE_FALLBACK.pricingMonthly,
+    careplus:        { ...PAGE_FALLBACK.careplus,        ...(p.careplus        || {}), feats: (Array.isArray(p.careplus && p.careplus.feats) && p.careplus.feats.length) ? p.careplus.feats : PAGE_FALLBACK.careplus.feats },
     cta:             { ...PAGE_FALLBACK.cta,             ...(p.cta             || {}) },
     spec:            Array.isArray(p.spec)     && p.spec.length     ? p.spec     : PAGE_FALLBACK.spec,
     footer:          { ...PAGE_FALLBACK.footer,          ...(p.footer          || {}) }
@@ -3240,17 +3406,6 @@ function Hero() {
     className: "hero",
     id: "top"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "hero-top"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "hero-status-pill"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pulse"
-  }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.hero.statusPill"
-  }, H.statusPill)), /*#__PURE__*/React.createElement("span", {
-    className: "hero-top-meta",
-    "data-cms-field": "home.hero.topMeta"
-  }, H.topMeta)), /*#__PURE__*/React.createElement("div", {
     className: "hero-body"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-text"
@@ -3703,7 +3858,52 @@ function Pricing() {
     key: i,
     tier: t,
     fieldRoot: `home.${tierKey}.${i}`
-  })))));
+  }))), /*#__PURE__*/React.createElement(CarePlus, {
+    data: PAGE.careplus
+  })));
+}
+function CarePlus({ data }) {
+  if (!data) return null;
+  return /*#__PURE__*/React.createElement("aside", {
+    className: "careplus",
+    onMouseMove: onSpotlight
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "careplus-head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "careplus-tag",
+    "data-cms-field": "home.careplus.tag"
+  }, data.tag), /*#__PURE__*/React.createElement("h3", {
+    className: "careplus-name"
+  }, /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.careplus.name"
+  }, data.name)), /*#__PURE__*/React.createElement("div", {
+    className: "careplus-prices"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "careplus-amt",
+    "data-cms-field": "home.careplus.amount"
+  }, data.amount), /*#__PURE__*/React.createElement("span", {
+    className: "careplus-setup"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "careplus-setup-k"
+  }, "+ setup"), " ", /*#__PURE__*/React.createElement("span", {
+    "data-cms-field": "home.careplus.setup"
+  }, data.setup)))), /*#__PURE__*/React.createElement("div", {
+    className: "careplus-body"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "careplus-desc",
+    "data-cms-multiline": "true",
+    "data-cms-field": "home.careplus.desc"
+  }, data.desc), /*#__PURE__*/React.createElement("ul", {
+    className: "careplus-list"
+  }, (data.feats || []).map((f, i) => /*#__PURE__*/React.createElement("li", {
+    key: i,
+    "data-cms-multiline": "true",
+    "data-cms-field": `home.careplus.feats.${i}`
+  }, f)))), /*#__PURE__*/React.createElement("p", {
+    className: "careplus-foot",
+    "data-cms-multiline": "true",
+    "data-cms-field": "home.careplus.footnote"
+  }, data.footnote));
 }
 function CTA() {
   const C = getPage().cta;
