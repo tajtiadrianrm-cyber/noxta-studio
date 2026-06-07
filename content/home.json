@@ -1,7 +1,7 @@
 {
   "hero": {
     "statusPill": "Available · Q3 2026 · 2 slots",
-    "topMeta": "Hero · 01 — Noxta Studio · 2026",
+    "topMeta": "Hero · Noxta Studio · 2026",
     "nameLine1": "Adrian",
     "nameLine2": "Tajti",
     "role": "Freelance Web Designer, Tilburg",
@@ -23,10 +23,46 @@
     "sub": "I handle the design, the copy, the code, and the payments myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me."
   },
   "services": [
-    { "n": "/01", "title": "Websites",    "tags": ["WordPress", "Hand-coded", "Mobile-first"],      "desc": "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch." },
-    { "n": "/02", "title": "E-commerce",  "tags": ["WooCommerce", "Shopify", "IDEAL / Bancontact"], "desc": "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built." },
-    { "n": "/03", "title": "Brand",       "tags": ["Wordmark", "Palette", "Type system"],           "desc": "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template." },
-    { "n": "/04", "title": "Maintenance", "tags": ["Retainer", "On call", "Same-week edits"],       "desc": "I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for." }
+    {
+      "n": "/01",
+      "title": "Websites",
+      "tags": [
+        "WordPress",
+        "Hand-coded",
+        "Mobile-first"
+      ],
+      "desc": "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch."
+    },
+    {
+      "n": "/02",
+      "title": "E-commerce",
+      "tags": [
+        "WooCommerce",
+        "Shopify",
+        "IDEAL / Bancontact"
+      ],
+      "desc": "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built."
+    },
+    {
+      "n": "/03",
+      "title": "Brand",
+      "tags": [
+        "Wordmark",
+        "Palette",
+        "Type system"
+      ],
+      "desc": "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template."
+    },
+    {
+      "n": "/04",
+      "title": "Maintenance",
+      "tags": [
+        "Retainer",
+        "On call",
+        "Same-week edits"
+      ],
+      "desc": "I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for."
+    }
   ],
   "workSection": {
     "label": "02 · Selected work",
@@ -38,10 +74,22 @@
     "title": "VOEP",
     "sub": "Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.",
     "cells": [
-      { "label": "// Built in",    "value": "~60 hours" },
-      { "label": "// First sale",  "value": "< 7 days" },
-      { "label": "// Products",    "value": "4,200+ SKUs" },
-      { "label": "// Stack",       "value": "WP · Woo · Flat" }
+      {
+        "label": "// Built in",
+        "value": "~60 hours"
+      },
+      {
+        "label": "// First sale",
+        "value": "< 7 days"
+      },
+      {
+        "label": "// Products",
+        "value": "4,200+ SKUs"
+      },
+      {
+        "label": "// Stack",
+        "value": "WP · Woo · Flat"
+      }
     ],
     "ctaLabel": "Read the case →"
   },
@@ -54,9 +102,21 @@
     "h1Line2": "usually goes."
   },
   "believe": [
-    { "n": "/01", "h": "I stay until it works.", "p": "Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway." },
-    { "n": "/02", "h": "Details are the work.",  "p": "Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off." },
-    { "n": "/03", "h": "Yours to keep.",         "p": "When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move." }
+    {
+      "n": "/01",
+      "h": "I stay until it works.",
+      "p": "Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway."
+    },
+    {
+      "n": "/02",
+      "h": "Details are the work.",
+      "p": "Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off."
+    },
+    {
+      "n": "/03",
+      "h": "Yours to keep.",
+      "p": "When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move."
+    }
   ],
   "pricingSection": {
     "label": "04 · Pricing",
@@ -73,7 +133,14 @@
       "amount": "€600 – 1,200",
       "name": "Small",
       "desc": "One thing, done well.",
-      "feats": ["Single landing page or minor redesign", "Simple brand mark or wordmark refresh", "Up to 600 words of copy I write with you", "Basic SEO setup (title, meta, sitemap)", "Mobile-first, hand-coded HTML / CSS", "One round of revisions"],
+      "feats": [
+        "Single landing page or minor redesign",
+        "Simple brand mark or wordmark refresh",
+        "Up to 600 words of copy I write with you",
+        "Basic SEO setup (title, meta, sitemap)",
+        "Mobile-first, hand-coded HTML / CSS",
+        "One round of revisions"
+      ],
       "ideal": "A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks."
     },
     {
@@ -82,7 +149,15 @@
       "amount": "€1,200 – 2,000",
       "name": "Mid",
       "desc": "A full site with a real brand.",
-      "feats": ["Full multi-page website (4–8 pages)", "Brand identity: wordmark, palette, type", "Copywriting across the site (~2,000 words)", "On-page SEO, schema, sitemap", "Contact form, analytics, social meta", "Two rounds of revisions · 2–4 week turnaround", "First 30 days of Standard retainer included"],
+      "feats": [
+        "Full multi-page website (4–8 pages)",
+        "Brand identity: wordmark, palette, type",
+        "Copywriting across the site (~2,000 words)",
+        "On-page SEO, schema, sitemap",
+        "Contact form, analytics, social meta",
+        "Two rounds of revisions · 2–4 week turnaround",
+        "First 30 days of Standard retainer included"
+      ],
       "ideal": "Small businesses without a site, or whose current one is hurting them. Most of my projects land here."
     },
     {
@@ -91,7 +166,15 @@
       "amount": "€3,500 – 6,000",
       "name": "Large",
       "desc": "Real shops or custom builds.",
-      "feats": ["WooCommerce or Shopify e-commerce builds", "Custom WordPress child theme", "Product database setup & import", "Payments (IDEAL, Bancontact, card) + shipping", "Search, filters, custom mobile UX", "Three revision rounds · 6–8 week turnaround", "First 30 days of Standard retainer included"],
+      "feats": [
+        "WooCommerce or Shopify e-commerce builds",
+        "Custom WordPress child theme",
+        "Product database setup & import",
+        "Payments (IDEAL, Bancontact, card) + shipping",
+        "Search, filters, custom mobile UX",
+        "Three revision rounds · 6–8 week turnaround",
+        "First 30 days of Standard retainer included"
+      ],
       "ideal": "Shops with real inventory or custom flows that an off-the-shelf template can't handle. >2,000 SKUs quoted bespoke. VOEP was a Large."
     }
   ],
@@ -102,7 +185,14 @@
       "amount": "€50 / month",
       "name": "Light",
       "desc": "Kept up to date and safe.",
-      "feats": ["Uptime monitoring", "Weekly automated backups", "Security patches & plugin updates", "1 hour of edits per month, rolled forward up to 2 months", "Email support, 48h reply", "Annual prepay · 12 months for the price of 11"],
+      "feats": [
+        "Uptime monitoring",
+        "Weekly automated backups",
+        "Security patches & plugin updates",
+        "1 hour of edits per month, rolled forward up to 2 months",
+        "Email support, 48h reply",
+        "Annual prepay · 12 months for the price of 11"
+      ],
       "ideal": "Finished sites that just need to stay alive and up to date."
     },
     {
@@ -111,7 +201,14 @@
       "amount": "€150 / month",
       "name": "Standard",
       "desc": "Light plus active edits.",
-      "feats": ["Everything in Light", "3 hours of edits per month", "Copy tweaks & small layout changes", "Monthly performance report", "Same-week edits (Mon–Fri)", "Annual prepay · 12 months for the price of 11"],
+      "feats": [
+        "Everything in Light",
+        "3 hours of edits per month",
+        "Copy tweaks & small layout changes",
+        "Monthly performance report",
+        "Same-week edits (Mon–Fri)",
+        "Annual prepay · 12 months for the price of 11"
+      ],
       "ideal": "Sites that change a few times a month: pricing, menu, content updates."
     },
     {
@@ -120,7 +217,14 @@
       "amount": "€450 / month",
       "name": "Active",
       "desc": "I'm basically on your team.",
-      "feats": ["Everything in Standard", "8 hours of edits per month", "Priority response (next business day)", "Phone / WhatsApp support (Mon–Fri 9–17, urgent only)", "Quarterly strategy call", "Annual prepay · 12 months for the price of 11"],
+      "feats": [
+        "Everything in Standard",
+        "8 hours of edits per month",
+        "Priority response (next business day)",
+        "Phone / WhatsApp support (Mon–Fri 9–17, urgent only)",
+        "Quarterly strategy call",
+        "Annual prepay · 12 months for the price of 11"
+      ],
       "ideal": "Growing shops and active marketing: new pages, campaigns, and ongoing work."
     }
   ],
@@ -139,10 +243,22 @@
     "noteTail": "· I read every message"
   },
   "spec": [
-    { "label": "// Studio est.",   "value": "2026" },
-    { "label": "// Reply window",  "value": "< 24h" },
-    { "label": "// Location",      "value": "Tilburg, NL" },
-    { "label": "// Build",         "value": "Hand-coded" }
+    {
+      "label": "// Studio est.",
+      "value": "2026"
+    },
+    {
+      "label": "// Reply window",
+      "value": "< 24h"
+    },
+    {
+      "label": "// Location",
+      "value": "Tilburg, NL"
+    },
+    {
+      "label": "// Build",
+      "value": "Hand-coded"
+    }
   ],
   "footer": {
     "studioLine": "Studio · Tilburg, NL · Est. 2026",
