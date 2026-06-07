@@ -4169,16 +4169,17 @@ function ProjectCard({
   }), /*#__PURE__*/React.createElement("span", {
     className: "dot"
   }), /*#__PURE__*/React.createElement("span", {
-    className: "url"
-  }, "vintageoutboardengineparts.com \u2197")), /*#__PURE__*/React.createElement("picture", null, /*#__PURE__*/React.createElement("source", {
+    className: "url",
+    "data-cms-field": fieldPath("url")
+  }, `${project.url || (project.cta && project.cta.href || "").replace(/^https?:\/\//, "").replace(/\/$/, "")} \u2197`)), /*#__PURE__*/React.createElement("picture", null, /*#__PURE__*/React.createElement("source", {
     media: "(max-width: 768px)",
     srcSet: project.shot.replace(".webp", "-mobile.webp")
   }), /*#__PURE__*/React.createElement("img", {
     className: "browser-shot",
     src: project.shot,
     alt: `${project.title} homepage screenshot`,
-    width: "720",
-    height: "646",
+    width: project.screenshotWidth || 720,
+    height: project.screenshotHeight || 646,
     loading: "lazy",
     decoding: "async",
     "data-cms-field": fieldPath("shot")

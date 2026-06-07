@@ -3207,21 +3207,51 @@ const PAGE_FALLBACK = {
   ],
   workSection: {
     label:   "02 \xB7 Selected work",
-    h1Line1: "One project, ",
-    h1Line2: "worth showing."
+    h1Line1: "Selected",
+    h1Line2: "work."
   },
-  work: {
-    tag:      "Case 001 \xB7 Vintage Outboard Parts",
-    title:    "VOEP",
-    sub:      "Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.",
-    cells: [
-      { label: "// Built in",   value: "~60 hours" },
-      { label: "// First sale", value: "< 7 days" },
-      { label: "// Products",   value: "4,200+ SKUs" },
-      { label: "// Stack",      value: "WP \xB7 Woo \xB7 Flat" }
-    ],
-    ctaLabel: "Read the case →"
-  },
+  work: [
+    {
+      tag:      "Case 001 \xB7 Personal travel blog",
+      title:    "Szabina",
+      sub:      "Szabina travels and writes about it. After a trip she puts up a short post: a title, a paragraph or two, and the photos she took. I built her a static, hand-coded site with a small admin she runs herself.",
+      cells: [
+        { label: "// Cadence", value: "Per trip" },
+        { label: "// Editor",  value: "Self-served" },
+        { label: "// Stack",   value: "Static \xB7 Hand-coded" },
+        { label: "// Hosting", value: "GitHub Pages" }
+      ],
+      ctaLabel: "Visit the site →",
+      ctaHref:  "https://noxtastudio.github.io/szabina/",
+      url:      "noxtastudio.github.io/szabina",
+      href:     "https://noxtastudio.github.io/szabina/",
+      screenshot:       "szabina-screenshot.webp",
+      screenshotMobile: "szabina-screenshot-mobile.webp",
+      screenshotWidth:  1400,
+      screenshotHeight: 1165,
+      alt: "Szabina — editorial photo journal homepage"
+    },
+    {
+      tag:      "Case 002 \xB7 Vintage Outboard Parts",
+      title:    "VOEP",
+      sub:      "Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.",
+      cells: [
+        { label: "// Built in",   value: "~60 hours" },
+        { label: "// First sale", value: "< 7 days" },
+        { label: "// Products",   value: "4,200+ SKUs" },
+        { label: "// Stack",      value: "WP \xB7 Woo \xB7 Flat" }
+      ],
+      ctaLabel: "Visit the site →",
+      ctaHref:  "https://vintageoutboardengineparts.com/",
+      url:      "vintageoutboardengineparts.com",
+      href:     "https://vintageoutboardengineparts.com/",
+      screenshot:       "voep-screenshot.webp",
+      screenshotMobile: "voep-screenshot-mobile.webp",
+      screenshotWidth:  720,
+      screenshotHeight: 646,
+      alt: "Vintage Outboard Parts — homepage screenshot"
+    }
+  ],
   strip: { text: "One person \xB7 One studio \xB7 No handoffs" },
   believeSection: {
     label:   "03 \xB7 How I work",
@@ -3299,7 +3329,7 @@ function getPage() {
     servicesSection: { ...PAGE_FALLBACK.servicesSection, ...(p.servicesSection || {}) },
     services:        Array.isArray(p.services) && p.services.length ? p.services : PAGE_FALLBACK.services,
     workSection:     { ...PAGE_FALLBACK.workSection,     ...(p.workSection     || {}) },
-    work:            { ...PAGE_FALLBACK.work, ...(p.work || {}), cells: (Array.isArray(p.work && p.work.cells) && p.work.cells.length) ? p.work.cells : PAGE_FALLBACK.work.cells },
+    work:            Array.isArray(p.work) && p.work.length ? p.work : PAGE_FALLBACK.work,
     strip:           { ...PAGE_FALLBACK.strip,           ...(p.strip           || {}) },
     believeSection:  { ...PAGE_FALLBACK.believeSection,  ...(p.believeSection  || {}) },
     believe:         Array.isArray(p.believe)  && p.believe.length  ? p.believe  : PAGE_FALLBACK.believe,
@@ -3558,13 +3588,13 @@ function Services() {
     }, "\u2192"));
   }))));
 }
-function VOEPMock() {
+function WorkBrowser({ work }) {
   return /*#__PURE__*/React.createElement("a", {
     className: "browser",
-    href: "https://vintageoutboardengineparts.com/",
+    href: work.href,
     target: "_blank",
     rel: "noreferrer noopener",
-    "aria-label": "Open the VOEP live site in a new tab"
+    "aria-label": `Open ${work.title} in a new tab`
   }, /*#__PURE__*/React.createElement("div", {
     className: "browser-bar"
   }, /*#__PURE__*/React.createElement("span", {
@@ -3575,23 +3605,63 @@ function VOEPMock() {
     className: "dot"
   }), /*#__PURE__*/React.createElement("span", {
     className: "url"
-  }, "vintageoutboardengineparts.com \u2197")), /*#__PURE__*/React.createElement("picture", null, /*#__PURE__*/React.createElement("source", {
+  }, `${work.url} \u2197`)), /*#__PURE__*/React.createElement("picture", null, /*#__PURE__*/React.createElement("source", {
     media: "(max-width: 768px)",
-    srcSet: "voep-screenshot-mobile.webp"
+    srcSet: work.screenshotMobile
   }), /*#__PURE__*/React.createElement("img", {
     className: "browser-shot",
-    src: "voep-screenshot.webp",
-    alt: "Vintage Outboard Parts \u2014 homepage screenshot",
-    width: "720",
-    height: "646",
+    src: work.screenshot,
+    alt: work.alt,
+    width: work.screenshotWidth,
+    height: work.screenshotHeight,
     loading: "lazy",
     decoding: "async"
   })));
 }
+function WorkCard({ work, index }) {
+  const root = `home.work.${index}`;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "work-card",
+    onMouseMove: onSpotlight
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "work-info"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "work-tag",
+    "data-cms-field": `${root}.tag`
+  }, work.tag), /*#__PURE__*/React.createElement("h3", {
+    className: "work-title",
+    "data-cms-field": `${root}.title`
+  }, work.title), /*#__PURE__*/React.createElement("p", {
+    className: "work-sub",
+    "data-cms-multiline": "true",
+    "data-cms-field": `${root}.sub`
+  }, work.sub), /*#__PURE__*/React.createElement("div", {
+    className: "work-meta"
+  }, (work.cells || []).map((cell, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "cell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "k",
+    "data-cms-field": `${root}.cells.${i}.label`
+  }, cell.label), /*#__PURE__*/React.createElement("div", {
+    className: "v",
+    "data-cms-field": `${root}.cells.${i}.value`
+  }, cell.value)))), /*#__PURE__*/React.createElement("div", {
+    className: "work-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-ghost",
+    href: work.ctaHref || "#",
+    target: (work.ctaHref || "").startsWith("http") ? "_blank" : undefined,
+    rel: (work.ctaHref || "").startsWith("http") ? "noreferrer noopener" : undefined,
+    "data-cms-field": `${root}.ctaLabel`
+  }, work.ctaLabel))), /*#__PURE__*/React.createElement("div", {
+    className: "work-vis"
+  }, /*#__PURE__*/React.createElement(WorkBrowser, { work: work })));
+}
 function Work() {
   const PAGE = getPage();
   const WS = PAGE.workSection;
-  const W = PAGE.work;
+  const WORKS = PAGE.work;
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "work"
@@ -3610,41 +3680,11 @@ function Work() {
   }, WS.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
     className: "grad",
     "data-cms-field": "home.workSection.h1Line2"
-  }, WS.h1Line2)), /*#__PURE__*/React.createElement("div", {
-    className: "work-card",
-    onMouseMove: onSpotlight
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "work-info"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "work-tag",
-    "data-cms-field": "home.work.tag"
-  }, W.tag), /*#__PURE__*/React.createElement("h3", {
-    className: "work-title",
-    "data-cms-field": "home.work.title"
-  }, W.title), /*#__PURE__*/React.createElement("p", {
-    className: "work-sub",
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.work.sub"
-  }, W.sub), /*#__PURE__*/React.createElement("div", {
-    className: "work-meta"
-  }, W.cells.map((cell, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "k",
-    "data-cms-field": `home.work.cells.${i}.label`
-  }, cell.label), /*#__PURE__*/React.createElement("div", {
-    className: "v",
-    "data-cms-field": `home.work.cells.${i}.value`
-  }, cell.value)))), /*#__PURE__*/React.createElement("div", {
-    className: "work-actions"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-ghost",
-    href: "#case-voep",
-    "data-cms-field": "home.work.ctaLabel"
-  }, W.ctaLabel))), /*#__PURE__*/React.createElement("div", {
-    className: "work-vis"
-  }, /*#__PURE__*/React.createElement(VOEPMock, null)))));
+  }, WS.h1Line2)), WORKS.map((w, i) => /*#__PURE__*/React.createElement(WorkCard, {
+    key: w.title || i,
+    work: w,
+    index: i
+  }))));
 }
 function Marquee({
   items

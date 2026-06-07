@@ -3,41 +3,34 @@
     {
       "n": "Case 001",
       "status": "Live",
+      "title": "Szabina",
+      "subtitle": "Her travels, in short posts.",
+      "body": "Szabina travels and writes about it. After a trip she puts up a short post on her site: a title, a paragraph or two about the place, and the photos she took there. The site is static, hand-coded HTML. I added a small admin panel so she doesn't have to email me every time she wants to put up a new story. Hosted on GitHub Pages, which costs almost nothing to run.",
+      "tags": ["Travel blog", "Static HTML", "Hand-coded", "Self-edited"],
+      "cta": {
+        "label": "Visit the site →",
+        "href": "https://noxtastudio.github.io/szabina/"
+      },
+      "url": "noxtastudio.github.io/szabina",
+      "shot": "szabina-screenshot.webp",
+      "screenshotWidth": 1400,
+      "screenshotHeight": 1165
+    },
+    {
+      "n": "Case 002",
+      "status": "Live",
       "title": "VOEP",
       "subtitle": "Vintage outboard engine parts, online.",
       "body": "A 4,200-SKU WooCommerce build from zero. Custom child theme, tuned SKU search, IDEAL + Bancontact checkout, and a Mercedes-on-rails order pipeline. Built in roughly 60 hours of focused work. First sale within a week.",
       "tags": ["WooCommerce", "WordPress", "IDEAL", "Bancontact"],
       "cta": {
-        "label": "Read the full case →",
+        "label": "Visit the site →",
         "href": "https://vintageoutboardengineparts.com/"
       },
-      "shot": "voep-screenshot.webp"
-    },
-    {
-      "n": "Case 002",
-      "status": "Coming Q3 2026",
-      "title": "Brand + landing",
-      "subtitle": "Hospitality client, full identity.",
-      "body": "Wordmark, palette, type system and a one-page launch site for a Tilburg-area hospitality client. Drops here when it ships.",
-      "tags": ["Brand", "Landing", "Type"],
-      "cta": {
-        "label": "Start a project →",
-        "href": "/contact"
-      },
-      "shot": null
-    },
-    {
-      "n": "Case 003",
-      "status": "Coming Q3 2026",
-      "title": "Custom WooCommerce",
-      "subtitle": "Specialist e-commerce.",
-      "body": "Custom Woo build for a specialist retailer. Shipping here in Q3 2026.",
-      "tags": ["WooCommerce", "Custom theme", "Payments"],
-      "cta": {
-        "label": "Start a project →",
-        "href": "/contact"
-      },
-      "shot": null
+      "url": "vintageoutboardengineparts.com",
+      "shot": "voep-screenshot.webp",
+      "screenshotWidth": 720,
+      "screenshotHeight": 646
     }
   ]
 }

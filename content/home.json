@@ -66,33 +66,51 @@
   ],
   "workSection": {
     "label": "02 · Selected work",
-    "h1Line1": "One project, ",
-    "h1Line2": "worth showing."
+    "h1Line1": "Selected",
+    "h1Line2": "work."
   },
-  "work": {
-    "tag": "Case 001 · Vintage Outboard Parts",
-    "title": "VOEP",
-    "sub": "Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.",
-    "cells": [
-      {
-        "label": "// Built in",
-        "value": "~60 hours"
-      },
-      {
-        "label": "// First sale",
-        "value": "< 7 days"
-      },
-      {
-        "label": "// Products",
-        "value": "4,200+ SKUs"
-      },
-      {
-        "label": "// Stack",
-        "value": "WP · Woo · Flat"
-      }
-    ],
-    "ctaLabel": "Read the case →"
-  },
+  "work": [
+    {
+      "tag": "Case 001 · Personal travel blog",
+      "title": "Szabina",
+      "sub": "Szabina travels and writes about it. After a trip she puts up a short post: a title, a paragraph or two, and the photos she took. I built her a static, hand-coded site with a small admin she runs herself.",
+      "cells": [
+        { "label": "// Cadence", "value": "Per trip" },
+        { "label": "// Editor", "value": "Self-served" },
+        { "label": "// Stack", "value": "Static · Hand-coded" },
+        { "label": "// Hosting", "value": "GitHub Pages" }
+      ],
+      "ctaLabel": "Visit the site →",
+      "ctaHref": "https://noxtastudio.github.io/szabina/",
+      "url": "noxtastudio.github.io/szabina",
+      "href": "https://noxtastudio.github.io/szabina/",
+      "screenshot": "szabina-screenshot.webp",
+      "screenshotMobile": "szabina-screenshot-mobile.webp",
+      "screenshotWidth": 1400,
+      "screenshotHeight": 1165,
+      "alt": "Szabina — editorial photo journal homepage"
+    },
+    {
+      "tag": "Case 002 · Vintage Outboard Parts",
+      "title": "VOEP",
+      "sub": "Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.",
+      "cells": [
+        { "label": "// Built in", "value": "~60 hours" },
+        { "label": "// First sale", "value": "< 7 days" },
+        { "label": "// Products", "value": "4,200+ SKUs" },
+        { "label": "// Stack", "value": "WP · Woo · Flat" }
+      ],
+      "ctaLabel": "Visit the site →",
+      "ctaHref": "https://vintageoutboardengineparts.com/",
+      "url": "vintageoutboardengineparts.com",
+      "href": "https://vintageoutboardengineparts.com/",
+      "screenshot": "voep-screenshot.webp",
+      "screenshotMobile": "voep-screenshot-mobile.webp",
+      "screenshotWidth": 720,
+      "screenshotHeight": 646,
+      "alt": "Vintage Outboard Parts — homepage screenshot"
+    }
+  ],
   "strip": {
     "text": "One person · One studio · No handoffs"
   },
