@@ -5,7 +5,7 @@
     <title>Noxta Studio · Business card</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Saira:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght;600;700&family=Archivo:ital,wdth,wght,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght;500&display=swap" rel="stylesheet" />
     <style>
       /* ── Print sizing: 91×61mm (85×55mm trim + 3mm bleed each side) ── */
       @page {
@@ -14,22 +14,22 @@
       }
 
       :root {
-        --bg: #0a0a0a;
-        --ink: #f5f6f7;
-        --ink-soft: #cfcccb;
-        --mute: #8a8786;
+        --bg: #0a0908;
+        --ink: #f2ede8;
+        --ink-soft: #a39c93;
+        --mute: #6b645c;
         --orange-light: #ff7a3d;
         --orange: #ff4d15;
         --orange-deep: #d63a0d;
-        --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
+        --accent: linear-gradient(100deg, #ffb38a 0%, #ff7a3d 32%, #ff4d15 68%, #d63a0d 100%);
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
 
       html, body {
-        background: #0a0a0a;
+        background: #0a0908;
         color: var(--ink);
-        font-family: "Saira", system-ui, sans-serif;
+        font-family: "Archivo", sans-serif;
         -webkit-font-smoothing: antialiased;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -69,8 +69,8 @@
       }
 
       .logo {
-        font-family: "Orbitron", sans-serif;
-        font-weight: 900;
+        font-family: "Chakra Petch", "Archivo", sans-serif;
+        font-weight: 700;
         font-size: 6mm;
         letter-spacing: -0.01em;
         line-height: 1;
@@ -89,8 +89,8 @@
 
       .name-block { margin-top: 1mm; }
       .name {
-        font-family: "Orbitron", sans-serif;
-        font-weight: 800;
+        font-family: "Chakra Petch", "Archivo", sans-serif;
+        font-weight: 700;
         font-size: 4.2mm;
         line-height: 1;
         letter-spacing: -0.01em;
@@ -100,7 +100,7 @@
         white-space: nowrap;
       }
       .role {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 1.7mm;
         letter-spacing: 0.18em;
         text-transform: uppercase;
@@ -116,7 +116,7 @@
         display: flex;
         align-items: center;
         gap: 3mm;
-        font-family: "Saira", sans-serif;
+        font-family: "Archivo", sans-serif;
         font-weight: 500;
         font-size: 2.3mm;
         color: var(--ink);
@@ -131,7 +131,7 @@
       }
 
       .footer {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 1.5mm;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -161,7 +161,7 @@
       /* Corner registration marks: red + signs (front + back) */
       .corner {
         position: absolute;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 2mm;
         color: var(--orange);
         line-height: 1;
@@ -186,8 +186,8 @@
         position: absolute;
         top: 6mm;
         left: 8mm;
-        font-family: "Orbitron", sans-serif;
-        font-weight: 900;
+        font-family: "Chakra Petch", "Archivo", sans-serif;
+        font-weight: 700;
         font-size: 5mm;
         letter-spacing: -0.01em;
         line-height: 1;
@@ -205,8 +205,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-family: "Orbitron", sans-serif;
-        font-weight: 900;
+        font-family: "Chakra Petch", "Archivo", sans-serif;
+        font-weight: 700;
         font-size: 26mm;
         line-height: 0.82;
         letter-spacing: -0.04em;
@@ -242,7 +242,7 @@
 
       .back-url {
         margin-top: 3mm;
-        font-family: "Orbitron", sans-serif;
+        font-family: "Chakra Petch", "Archivo", sans-serif;
         font-weight: 700;
         font-size: 2.6mm;
         letter-spacing: 0.04em;
@@ -256,7 +256,7 @@
 
       .back-tag {
         margin-top: 1.6mm;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 1.6mm;
         letter-spacing: 0.22em;
         text-transform: uppercase;
@@ -275,7 +275,7 @@
           gap: 14mm;
           padding: 16mm 8mm;
           flex-wrap: wrap;
-          background: #08090f;
+          background: #0a0908;
         }
         .card {
           box-shadow:
@@ -295,7 +295,7 @@
 
       <div class="front-info">
         <div>
-          <div class="logo">No<span class="x">x</span>ta</div>
+          <div class="logo">NO<span class="x">X</span>TA</div>
           <div class="logo-rule"></div>
           <div class="name-block">
             <div class="name">Adrian Tajti</div>
@@ -343,7 +343,7 @@
       <span class="corner bl">+</span>
       <span class="corner br">+</span>
 
-      <div class="back-logo">No<span class="x">x</span>ta</div>
+      <div class="back-logo">NO<span class="x">X</span>TA</div>
 
       <div class="back-wordmark" aria-hidden="true">NOXTA</div>
 

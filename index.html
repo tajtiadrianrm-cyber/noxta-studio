@@ -1,4353 +1,755 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Noxta Studio · Adrian Tajti, freelance web designer in Tilburg</title>
-    <meta name="description" content="Freelance web designer in Tilburg. One person, full stack — design, copy, code, and payments handled in one head." />
-    <link rel="canonical" href="https://noxta.studio/" />
-    <link rel="alternate" hreflang="en" href="https://noxta.studio/" />
-    <link rel="alternate" hreflang="nl" href="https://noxta.studio/website-laten-maken-tilburg" />
-    <link rel="alternate" hreflang="x-default" href="https://noxta.studio/" />
-
-    <!-- Favicons / app icons -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
-    <link rel="shortcut icon" href="assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta name="theme-color" content="#ff4d15" />
-
-    <!-- Open Graph / social previews -->
-    <meta property="og:title" content="Noxta Studio · Built by hand, kept by hand." />
-    <meta property="og:description" content="Freelance web designer in Tilburg. One person, full stack — design, copy, code, and payments handled in one head." />
-    <meta property="og:image" content="https://noxta.studio/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://noxta.studio/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Noxta Studio" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Noxta Studio · Built by hand, kept by hand." />
-    <meta name="twitter:description" content="Freelance web designer in Tilburg. One person, full stack." />
-    <meta name="twitter:image" content="https://noxta.studio/og-image.png" />
-
-    <!-- LocalBusiness schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Noxta Studio",
-      "url": "https://noxta.studio",
-      "description": "Freelance web designer in Tilburg. One person, full stack — design, copy, code, and payments handled in one head.",
-      "image": "https://noxta.studio/og-image.png",
-      "email": "adrian@noxta.studio",
-      "telephone": "+31617657327",
-      "founder": { "@type": "Person", "name": "Adrian Tajti" },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Tilburg",
-        "addressRegion": "Noord-Brabant",
-        "addressCountry": "NL"
-      },
-      "areaServed": [
-        { "@type": "City", "name": "Tilburg" },
-        { "@type": "City", "name": "Eindhoven" },
-        { "@type": "City", "name": "Breda" }
-      ],
-      "priceRange": "€€",
-      "knowsLanguage": ["en", "nl", "hu"]
-    }
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="script" href="assets/react.production.min.js" />
-    <link rel="preload" as="script" href="assets/react-dom.production.min.js" />
-    <link rel="preload" as="image" href="assets/portrait-hero.webp" imagesrcset="assets/portrait-hero-mobile.webp 720w, assets/portrait-hero.webp 1000w" imagesizes="(max-width: 768px) 90vw, 50vw" fetchpriority="high" />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
-    <style>
-/* =========================================================
-   Noxta Studio v3 — Home
-   Squared/tech display · sharp corners · gradient accents
-   ========================================================= */
-
-:root {
-  /* palette — Obsidian Kinetic (dark + vibrant orange) */
-  --bg: #0a0a0a;
-  --bg-soft: #121414;
-  --bg-tint: #1a1c1c;
-  --ink: #f5f6f7;
-  --ink-soft: #cfcccb;
-  --mute: #8a8786;
-  --faint: #3a3838;
-  --hairline: rgba(255, 255, 255, 0.08);
-  --hairline-soft: rgba(255, 255, 255, 0.04);
-
-  /* accents — orange only (purple/cyan retired) */
-  --cyan: #ff7a3d;
-  --violet: #ff4d15;
-  --pink: #d63a0d;
-
-  /* derived accent (changeable via Tweaks) */
-  --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
-  --accent-solid: #ff4d15;
-  --accent-glow: rgba(255, 77, 21, 0.5);
-
-  /* type — Orbitron (display, futuristic) + Manrope (body) */
-  --f-display: "Orbitron", system-ui, sans-serif;
-  --f-body: "Manrope", system-ui, -apple-system, sans-serif;
-  --f-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
-
-  /* shape */
-  --notch: 10px;
-  --notch-lg: 18px;
-
-  /* layout */
-  --pad-x: clamp(20px, 4vw, 64px);
-  --max-w: 1440px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-html,
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--f-body);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: clip;
-}
-
-/* ──────────────── Focus + reduced motion (a11y) ──────────────── */
-:focus { outline: none; }
-:focus-visible {
-  outline: 2px solid var(--accent-solid);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-a:focus-visible,
-button:focus-visible,
-.btn:focus-visible {
-  outline: 2px solid var(--accent-solid);
-  outline-offset: 4px;
-}
-
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.skip-link:focus {
-  position: fixed;
-  left: 16px;
-  top: 16px;
-  width: auto;
-  height: auto;
-  padding: 12px 18px;
-  background: var(--accent-solid);
-  color: var(--bg);
-  font-family: var(--f-body);
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 4px;
-  z-index: 9999;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ──────────────── Entrance animations (CSS-only stagger) ──────────────── */
-@keyframes nx-rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes nx-fade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes nx-reveal {
-  from { opacity: 0; transform: translateY(28px); filter: blur(10px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
-}
-@keyframes nx-zoom-in {
-  from { opacity: 0; transform: scale(1.06); filter: blur(6px); }
-  to   { opacity: 1; transform: scale(1);    filter: blur(0); }
-}
-
-/* Hero — cinematic entrance, total ~0.8s (halved) */
-.hero-text > * {
-  animation: nx-reveal 500ms cubic-bezier(.2,.7,.2,1) both;
-}
-.hero-text > *:nth-child(1) { animation-delay: 75ms; }
-.hero-text > *:nth-child(2) { animation-delay: 250ms; }
-.hero-text > *:nth-child(3) { animation-delay: 350ms; }
-.hero-text > *:nth-child(4) { animation-delay: 475ms; }
-.hero-text > *:nth-child(5) { animation-delay: 625ms; }
-.hero-portrait {
-  animation: nx-zoom-in 800ms cubic-bezier(.2,.7,.2,1) both;
-  animation-delay: 100ms;
-}
-.hero-status-pill { animation: nx-fade 450ms ease-out both; animation-delay: 700ms; }
-.hero-top-meta    { animation: nx-fade 450ms ease-out both; animation-delay: 750ms; }
-.hero-tagbar      { animation: nx-fade 450ms ease-out both; animation-delay: 850ms; }
-
-/* Below-the-fold — start hidden, animate when parent section enters viewport */
-.section .section-label,
-.section .section-h,
-.section .section-sub,
-.service,
-.work-card,
-.pricing-toggle,
-.believe-cell,
-.price {
-  opacity: 0;
-  transform: translateY(28px);
-  filter: blur(8px);
-  transition:
-    opacity 800ms cubic-bezier(.2,.7,.2,1),
-    transform 320ms cubic-bezier(.2,.7,.2,1),
-    filter 800ms cubic-bezier(.2,.7,.2,1);
-}
-
-.nx-in-view .section-label,
-.nx-in-view .section-h,
-.nx-in-view .section-sub,
-.nx-in-view .service,
-.nx-in-view .work-card,
-.nx-in-view .pricing-toggle,
-.nx-in-view .believe-cell,
-.nx-in-view .price {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-/* Stagger within each section */
-.nx-in-view .section-h   { transition-delay: 100ms; }
-.nx-in-view .section-sub { transition-delay: 200ms; }
-.nx-in-view .pricing-toggle { transition-delay: 220ms; }
-
-.nx-in-view .service:nth-child(1) { transition-delay: 240ms; }
-.nx-in-view .service:nth-child(2) { transition-delay: 340ms; }
-.nx-in-view .service:nth-child(3) { transition-delay: 440ms; }
-.nx-in-view .service:nth-child(4) { transition-delay: 540ms; }
-
-.nx-in-view .believe-cell:nth-child(1) { transition-delay: 240ms; }
-.nx-in-view .believe-cell:nth-child(2) { transition-delay: 360ms; }
-.nx-in-view .believe-cell:nth-child(3) { transition-delay: 480ms; }
-
-.nx-in-view .price:nth-child(1) { transition-delay: 320ms; }
-.nx-in-view .price:nth-child(2) { transition-delay: 440ms; }
-.nx-in-view .price:nth-child(3) { transition-delay: 560ms; }
-
-.nx-in-view .work-card { transition-delay: 240ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  .section .section-label,
-  .section .section-h,
-  .section .section-sub,
-  .service,
-  .work-card,
-  .pricing-toggle,
-  .believe-cell,
-  .price {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-  }
-}
-
-/* Subtle ambient noise grain */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 1 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 0.5;
-  mix-blend-mode: screen;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-img {
-  display: block;
-  max-width: 100%;
-}
-
-/* ──────────────── Reusable shapes ──────────────── */
-
-/* notch-cut corners (Portilo-esque tech edge) — replaces rounding */
-.notch {
-  clip-path: polygon(
-    var(--notch) 0,
-    100% 0,
-    100% calc(100% - var(--notch)),
-    calc(100% - var(--notch)) 100%,
-    0 100%,
-    0 var(--notch)
-  );
-}
-
-.notch-lg {
-  clip-path: polygon(
-    var(--notch-lg) 0,
-    100% 0,
-    100% calc(100% - var(--notch-lg)),
-    calc(100% - var(--notch-lg)) 100%,
-    0 100%,
-    0 var(--notch-lg)
-  );
-}
-
-/* Panel = sharp dark surface with hairline border via box-shadow inset
-   (border-radius is 0; using inset shadow avoids visible corner doubling with clip-path) */
-.panel {
-  background: var(--bg-soft);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-}
-
-.hair-top {
-  border-top: 1px solid var(--hairline);
-}
-.hair-bottom {
-  border-bottom: 1px solid var(--hairline);
-}
-
-/* gradient text */
-.grad {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* mono label */
-.label {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.label .dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--cyan);
-  margin-right: 8px;
-  vertical-align: 2px;
-  box-shadow: 0 0 8px var(--cyan);
-}
-
-/* ──────────────── Buttons ──────────────── */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  padding: 16px 24px;
-  border: 0;
-  cursor: pointer;
-  position: relative;
-  transition: transform 120ms ease, filter 120ms ease;
-}
-.btn:hover {
-  transform: translateY(-1px);
-}
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn-primary {
-  color: #08091a;
-  background: var(--accent);
-  clip-path: polygon(
-    12px 0,
-    100% 0,
-    100% calc(100% - 12px),
-    calc(100% - 12px) 100%,
-    0 100%,
-    0 12px
-  );
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 20px 40px -20px var(--accent-glow);
-}
-.btn-primary:hover {
-  filter: brightness(1.08);
-}
-
-.btn-ghost {
-  color: var(--ink);
-  background: transparent;
-  position: relative;
-  clip-path: polygon(
-    12px 0,
-    100% 0,
-    100% calc(100% - 12px),
-    calc(100% - 12px) 100%,
-    0 100%,
-    0 12px
-  );
-  transition: transform 120ms ease, filter 120ms ease, color 180ms;
-}
-.btn-ghost::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
-  z-index: -1;
-  clip-path: inherit;
-  transition: background 180ms, box-shadow 180ms;
-}
-.btn-ghost:hover {
-  color: var(--accent-solid);
-}
-.btn-ghost:hover::before {
-  background: rgba(255, 77, 21, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
-}
-
-/* ──────────────── Layout container ──────────────── */
-
-.container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding-left: var(--pad-x);
-  padding-right: var(--pad-x);
-  position: relative;
-  z-index: 2;
-}
-
-section {
-  position: relative;
-  z-index: 2;
-}
-
-/* ──────────────── NAV ──────────────── */
-
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(12px) saturate(120%);
-  background: rgba(5, 6, 14, 0.65);
-  border-bottom: 1px solid var(--hairline);
-}
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-}
-.nav-logo {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 4px;
-}
-.nav-logo .x {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-style: italic;
-  padding: 0 1px;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.nav-links a {
-  padding: 10px 16px;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  color: var(--ink-soft);
-  transition: color 150ms;
-}
-.nav-links a:hover {
-  color: var(--ink);
-}
-.nav-links a[aria-current="page"] {
-  color: var(--ink);
-}
-.nav-cta[aria-current="page"] {
-  background: rgba(255, 77, 21, 0.20);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.65);
-}
-.nav-cta {
-  margin-left: 8px;
-  padding: 12px 18px !important;
-  background: rgba(255, 77, 21, 0.10);
-  color: var(--ink) !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.35);
-  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  transition: background 180ms, box-shadow 180ms;
-}
-.nav-cta:hover {
-  background: rgba(255, 77, 21, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
-  color: var(--ink) !important;
-}
-
-/* ──────────────── HERO (Portilo split layout: text · big portrait · meta) ──────────────── */
-
-.hero {
-  position: relative;
-  min-height: calc(100vh - 72px);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 35% 40% at 75% 30%, rgba(255, 77, 21, 0.14), transparent 70%),
-    radial-gradient(ellipse 25% 30% at 18% 20%, rgba(255, 122, 61, 0.08), transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-top {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px var(--pad-x) 0;
-}
-.hero-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 16px;
-  background: rgba(255, 77, 21, 0.10);
-  color: var(--cyan);
-  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.hero-status-pill .pulse {
-  width: 6px;
-  height: 6px;
-  background: var(--cyan);
-  box-shadow: 0 0 8px var(--cyan);
-  position: relative;
-  flex-shrink: 0;
-}
-.hero-status-pill .pulse::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border: 1px solid var(--cyan);
-  animation: pulse-ring 1.8s infinite ease-out;
-}
-@keyframes pulse-ring {
-  0% { transform: scale(0.7); opacity: 1; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-.hero-top-meta {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-
-/* the body: 2-column grid — text + big portrait */
-.hero-body {
-  flex: 1;
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 0.95fr 1.6fr;
-  gap: 32px;
-  padding: 32px var(--pad-x) 0;
-  align-items: stretch;
-  min-height: 720px;
-}
-.hero-body::before,
-.hero-body::after {
-  content: "+";
-  position: absolute;
-  font-family: var(--f-mono);
-  font-size: 14px;
-  color: var(--accent-solid);
-  line-height: 1;
-  z-index: 4;
-}
-.hero-body::before { top: 24px; left: calc(var(--pad-x) - 10px); }
-.hero-body::after  { bottom: 24px; right: calc(var(--pad-x) - 10px); }
-@media (max-width: 960px) {
-  .hero-body {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding-top: 24px;
-  }
-}
-
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding-top: 110px;
-  max-width: 560px;
-  z-index: 3;
-  position: relative;
-}
-.hero-name {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(44px, 5.6vw, 92px);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-.hero-name .grad {
-  display: inline-block;
-}
-.hero-name .dot {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero-role-line {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.hero-role-line .dash {
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-  display: block;
-  flex-shrink: 0;
-}
-.hero-rule {
-  border: 0;
-  height: 1px;
-  background: var(--hairline);
-  margin: 8px 0 4px;
-}
-.hero-bio {
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--ink-soft);
-  max-width: 38ch;
-  text-wrap: pretty;
-}
-.hero-bio strong {
-  color: var(--ink);
-  font-weight: 600;
-}
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-
-.hero-specs {
-  margin-top: 32px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--hairline);
-  box-shadow: 0 0 0 1px var(--hairline);
-  max-width: 480px;
-}
-@media (max-width: 760px) {
-  .hero-specs { grid-template-columns: 1fr; }
-}
-.hero-spec {
-  background: var(--bg);
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.hero-spec .k {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.hero-spec .v {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  text-transform: uppercase;
-}
-.hero-spec .v .accent { color: var(--accent-solid); }
-
-/* center: the big portrait, fills the right column with a strong vertical presence */
-.hero-portrait {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: visible;
-}
-.hero-portrait img {
-  display: block;
-  width: 100%;
-  height: clamp(560px, 78vh, 880px);
-  object-fit: cover;
-  object-position: center 22%;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
-  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
-}
-/* subtle glow behind the head (upper portion), not under the clothes */
-.hero-portrait::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 8%;
-  width: 55%;
-  height: 40%;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, var(--accent-glow), transparent 70%);
-  filter: blur(60px);
-  opacity: 0.5;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* right: aside info stack */
-.hero-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding-top: 24px;
-  z-index: 3;
-  position: relative;
-}
-.hero-badge {
-  background: var(--bg-soft);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  padding: 16px 20px;
-  min-width: 200px;
-  text-align: right;
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-}
-.hero-badge .k {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-bottom: 8px;
-}
-.hero-badge .v {
-  font-family: var(--f-display);
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: -0.005em;
-  color: var(--ink);
-  line-height: 1;
-}
-.hero-badge .s {
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 8px;
-}
-.hero-badge.accent {
-  background: linear-gradient(140deg, rgba(255, 122, 61, 0.12), rgba(255, 77, 21, 0.12) 50%, rgba(214, 58, 13, 0.10));
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.35);
-}
-.hero-badge.accent .v {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* tagline strip below */
-.hero-tagbar {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  padding: 22px var(--pad-x);
-  font-family: var(--f-display);
-  font-weight: 600;
-  font-size: clamp(11px, 1.1vw, 14px);
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  background: rgba(5, 6, 14, 0.5);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.hero-tagbar .dash {
-  color: var(--mute);
-  margin: 0 12px;
-}
-
-/* hero info bar across the bottom */
-.hero-stat-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-  z-index: 3;
-  background: rgba(5, 6, 14, 0.6);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--hairline);
-}
-.hero-stat {
-  padding: 16px var(--pad-x);
-  border-right: 1px solid var(--hairline);
-}
-.hero-stat:last-child { border-right: 0; }
-.hero-stat .k {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.hero-stat .v {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  margin-top: 6px;
-}
-@media (max-width: 760px) {
-  .hero-stat-bar { grid-template-columns: repeat(2, 1fr); }
-  .hero-aside { align-items: flex-start; }
-  .hero-portrait { min-height: 360px; }
-  .hero-portrait img { max-width: 100%; }
-  .hero-top-meta { display: none; }
-}
-
-/* ──────────────── Spec bar divider ──────────────── */
-
-.spec-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  background: rgba(0, 0, 0, 0.45);
-  position: relative;
-  z-index: 4;
-}
-.spec-bar .cell {
-  padding: 22px var(--pad-x);
-  border-right: 1px solid var(--hairline);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.spec-bar .cell:last-child { border-right: 0; }
-.spec-bar .k {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.spec-bar .v {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  text-transform: uppercase;
-}
-.spec-bar .v .accent { color: var(--accent-solid); }
-
-@media (max-width: 760px) {
-  .spec-bar { grid-template-columns: repeat(2, 1fr); }
-  .spec-bar .cell:nth-child(2) { border-right: 0; }
-  .spec-bar .cell:nth-child(1),
-  .spec-bar .cell:nth-child(2) { border-bottom: 1px solid var(--hairline); }
-}
-
-/* ──────────────── Marquee divider ──────────────── */
-
-.marquee {
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  padding: 22px 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 4;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  align-items: center;
-  gap: 48px;
-  padding-left: 24px;
-  animation: marquee-scroll 60s linear infinite;
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: clamp(14px, 1.3vw, 18px);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  white-space: nowrap;
-}
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 48px;
-}
-.marquee-item::after {
-  content: "✺";
-  color: var(--accent-solid);
-  font-family: var(--f-mono);
-  font-size: 0.85em;
-}
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
-
-/* ──────────────── Static strip divider ──────────────── */
-
-.strip {
-  position: relative;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  padding: 26px var(--pad-x);
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  z-index: 4;
-}
-.strip-mark {
-  color: var(--accent-solid);
-  font-family: var(--f-mono);
-  font-size: 0.9em;
-  line-height: 1;
-}
-.strip-text {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: clamp(14px, 1.4vw, 20px);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  text-align: center;
-}
-
-/* ──────────────── Section atmosphere (corner glows) ──────────────── */
-
-#about {
-  background: radial-gradient(
-    ellipse 90% 90% at 100% 0%,
-    rgba(255, 77, 21, 0.10) 0%,
-    rgba(255, 77, 21, 0.04) 25%,
-    rgba(255, 77, 21, 0.015) 55%,
-    transparent 100%
-  );
-}
-
-#services {
-  background: radial-gradient(
-    ellipse 90% 95% at 0% 100%,
-    rgba(255, 77, 21, 0.09) 0%,
-    rgba(255, 77, 21, 0.035) 25%,
-    rgba(255, 77, 21, 0.012) 55%,
-    transparent 100%
-  );
-}
-
-#believe {
-  background: radial-gradient(
-    ellipse 90% 90% at 100% 0%,
-    rgba(255, 77, 21, 0.10) 0%,
-    rgba(255, 77, 21, 0.04) 25%,
-    rgba(255, 77, 21, 0.015) 55%,
-    transparent 100%
-  );
-}
-
-#pricing {
-  background: radial-gradient(
-    ellipse 95% 90% at 0% 100%,
-    rgba(255, 77, 21, 0.07) 0%,
-    rgba(255, 77, 21, 0.03) 30%,
-    rgba(255, 77, 21, 0.01) 60%,
-    transparent 100%
-  );
-}
-
-.footer {
-  background: radial-gradient(
-    ellipse 100% 80% at 50% 0%,
-    rgba(255, 77, 21, 0.08) 0%,
-    rgba(255, 77, 21, 0.03) 35%,
-    rgba(255, 77, 21, 0.01) 65%,
-    transparent 100%
-  );
-}
-
-/* ──────────────── Scroll cue ──────────────── */
-
-.scroll-cue {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent-solid);
-  z-index: 4;
-  text-decoration: none;
-  animation: scroll-bob 2s ease-in-out infinite;
-}
-.scroll-cue:hover { color: var(--ink); }
-.scroll-cue .scroll-arrow {
-  width: 24px;
-  height: 22px;
-  position: relative;
-}
-.scroll-cue .scroll-arrow::before,
-.scroll-cue .scroll-arrow::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  left: 50%;
-  border-right: 1.6px solid currentColor;
-  border-bottom: 1.6px solid currentColor;
-  transform: translateX(-50%) rotate(45deg);
-}
-.scroll-cue .scroll-arrow::before { top: -4px; opacity: 0.5; }
-.scroll-cue .scroll-arrow::after  { top: 4px; }
-@keyframes scroll-bob {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 6px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .scroll-cue { animation: none; }
-}
-
-/* ──────────────── Section header ──────────────── */
-
-.section {
-  padding-top: clamp(80px, 12vh, 160px);
-  padding-bottom: clamp(80px, 12vh, 160px);
-}
-/* Content-heavy sections expand to fill the viewport when they would otherwise be shorter */
-#services,
-#work,
-#believe,
-#pricing {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-@media (max-width: 760px) {
-  #services,
-  #work,
-  #believe,
-  #pricing {
-    min-height: auto;
-  }
-}
-.section-label {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 22px;
-}
-.section-label .bar {
-  width: 36px;
-  height: 1px;
-  background: var(--accent);
-}
-.section-label span {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.section-h {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(40px, 6vw, 92px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  max-width: 18ch;
-}
-.section-sub {
-  font-size: 18px;
-  line-height: 1.55;
-  color: var(--ink-soft);
-  margin-top: 18px;
-  max-width: 54ch;
-  text-wrap: pretty;
-}
-
-/* ──────────────── WHAT I DO (services list) ──────────────── */
-
-.services {
-  margin-top: 56px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  position: relative;
-}
-.services::before,
-.services::after {
-  content: "+";
-  position: absolute;
-  top: -8px;
-  font-family: var(--f-mono);
-  font-size: 14px;
-  color: var(--accent-solid);
-  line-height: 1;
-}
-.services::before { left: -10px; }
-.services::after  { right: -10px; }
-.service {
-  position: relative;
-  display: grid;
-  grid-template-columns: 60px minmax(300px, 1.6fr) minmax(220px, 1.3fr) minmax(160px, 0.9fr) 40px;
-  gap: 40px;
-  align-items: center;
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  cursor: pointer;
-  transition: padding 220ms ease, background 220ms ease;
-  overflow: hidden;
-}
-.service:hover {
-  padding-left: 16px;
-  background: rgba(255, 77, 21, 0.025);
-}
-.service::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 0;
-  background: var(--accent);
-  transition: height 220ms ease;
-  z-index: 2;
-}
-.service:hover::before {
-  height: 60%;
-}
-.service-bg {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(90px, 11vw, 150px);
-  line-height: 0.8;
-  letter-spacing: 0;
-  color: rgba(255, 77, 21, 0.11);
-  pointer-events: none;
-  z-index: 0;
-  transition:
-    color 380ms cubic-bezier(.2,.7,.2,1),
-    transform 420ms cubic-bezier(.2,.7,.2,1),
-    filter 380ms cubic-bezier(.2,.7,.2,1);
-}
-.service-bg span {
-  display: inline-block;
-  width: 0.78em;
-  text-align: center;
-}
-.service:hover .service-bg {
-  color: rgba(255, 77, 21, 0.38);
-  transform: translateY(-50%) translateX(-12px);
-  filter: drop-shadow(0 0 60px rgba(255, 77, 21, 0.28));
-}
-.service > *:not(.service-bg) { position: relative; z-index: 1; }
-.service .num {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--mute);
-}
-.service .title {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(26px, 3.2vw, 48px);
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  transition: color 200ms;
-}
-.service:hover .title {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.service .tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.service .tags span {
-  padding: 5px 10px;
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-}
-.service .desc {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.5;
-  max-width: 36ch;
-}
-.service .arr {
-  font-family: var(--f-display);
-  color: var(--mute);
-  transition: color 200ms, transform 200ms;
-}
-.service:hover .arr {
-  color: var(--ink);
-  transform: translateX(6px);
-}
-
-/* ──────────────── FEATURED WORK (VOEP) ──────────────── */
-
-.work-card {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 0;
-  background: var(--bg-soft);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  overflow: hidden;
-  margin-top: 56px;
-}
-.work-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      ellipse 110% 90% at 80% 50%,
-      rgba(255, 122, 61, 0.18) 0%,
-      rgba(255, 122, 61, 0.08) 25%,
-      rgba(255, 122, 61, 0.025) 55%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse 90% 80% at 20% 100%,
-      rgba(214, 58, 13, 0.13) 0%,
-      rgba(214, 58, 13, 0.045) 30%,
-      transparent 100%
-    );
-  pointer-events: none;
-  z-index: 0;
-}
-.work-card > * { position: relative; z-index: 1; }
-@media (max-width: 960px) {
-  .work-card { grid-template-columns: 1fr; }
-}
-.work-info {
-  padding: 48px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.work-tag {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.work-title {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(48px, 6vw, 100px);
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-.work-sub {
-  font-size: 18px;
-  color: var(--ink-soft);
-  line-height: 1.5;
-}
-.work-meta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--hairline);
-  margin-top: auto;
-}
-.work-meta .cell {
-  background: var(--bg-soft);
-  padding: 16px;
-}
-.work-meta .k {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.work-meta .v {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--ink);
-  margin-top: 6px;
-}
-.work-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.work-vis {
-  position: relative;
-  min-height: 480px;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 48px;
-  overflow: hidden;
-}
-
-/* VOEP browser-window frame around the real site screenshot */
-.browser {
-  display: block;
-  position: relative;
-  width: 100%;
-  max-width: 620px;
-  background: #0a0e1a;
-  color: inherit;
-  text-decoration: none;
-  overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 80px -20px rgba(0, 0, 0, 0.7);
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-  transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms;
-}
-.browser:hover {
-  transform: translateY(-4px);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.45),
-              0 40px 90px -20px rgba(0, 0, 0, 0.85),
-              0 20px 60px -20px rgba(255, 77, 21, 0.20);
-}
-.browser-shot {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.browser-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  font-family: var(--f-mono);
-  font-size: 10px;
-  color: var(--mute);
-}
-.browser-bar .dot {
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%; /* lights only — fine */
-}
-.browser-bar .url {
-  margin-left: 12px;
-  padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.04);
-  font-size: 10px;
-  letter-spacing: 0.05em;
-}
-.browser-body {
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.voep-mast {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.voep-logo {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.voep-logo .ring {
-  width: 16px;
-  height: 16px;
-  border: 1.5px solid var(--ink);
-  border-radius: 50%;
-  position: relative;
-}
-.voep-logo .ring::after {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  background: var(--ink);
-  border-radius: 50%;
-}
-.voep-nav {
-  display: flex;
-  gap: 10px;
-  font-family: var(--f-mono);
-  font-size: 8px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.voep-h {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: 28px;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-}
-.voep-h em {
-  font-style: normal;
-  background: linear-gradient(90deg, #ff7a3d, #ffaa55);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.voep-yrs {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
-  margin-top: 4px;
-}
-.voep-yr {
-  font-family: var(--f-mono);
-  font-size: 8px;
-  color: var(--mute);
-  padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-}
-.voep-yr .y {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 11px;
-  color: #ff7a3d;
-}
-.voep-line {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 10px 0;
-}
-.voep-quote {
-  font-family: "Georgia", serif;
-  font-style: italic;
-  font-size: 9px;
-  line-height: 1.5;
-  color: var(--ink-soft);
-  padding: 8px 12px;
-  border-left: 2px solid var(--mute);
-}
-
-/* ──────────────── BELIEVE strip ──────────────── */
-
-.believe {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 56px;
-  position: relative;
-}
-.believe::before,
-.believe::after {
-  content: "+";
-  position: absolute;
-  font-family: var(--f-mono);
-  font-size: 14px;
-  color: var(--accent-solid);
-  line-height: 1;
-}
-.believe::before { top: -10px; left: -10px; }
-.believe::after  { bottom: -10px; right: -10px; }
-@media (max-width: 800px) {
-  .believe { grid-template-columns: 1fr; gap: 16px; }
-}
-.believe-cell {
-  --mx: 50%;
-  --my: 50%;
-  background: var(--bg-soft);
-  padding: 44px 32px 40px;
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  position: relative;
-  overflow: hidden;
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  transition:
-    transform 320ms cubic-bezier(.2,.7,.2,1),
-    box-shadow 320ms cubic-bezier(.2,.7,.2,1),
-    background-color 320ms;
-  cursor: default;
-}
-/* Cursor-following spotlight — applied to all interactive cards */
-.believe-cell::after,
-.service::after,
-.work-card::after,
-.price::after,
-.careplus::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    320px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(255, 77, 21, 0.22),
-    rgba(255, 77, 21, 0) 70%
-  );
-  opacity: 0;
-  transition: opacity 280ms cubic-bezier(.2,.7,.2,1);
-  z-index: 2;
-  mix-blend-mode: screen;
-}
-.believe-cell:hover::after,
-.service:hover::after,
-.work-card:hover::after,
-.price:hover::after,
-.careplus:hover::after { opacity: 1; }
-.service, .work-card, .price, .careplus { --mx: 50%; --my: 50%; }
-.believe-cell:hover {
-  transform: translateY(-6px) scale(1.02);
-  background-color: rgba(255, 77, 21, 0.04);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 77, 21, 0.40),
-    0 24px 50px -20px rgba(0, 0, 0, 0.7),
-    0 0 80px -30px rgba(255, 77, 21, 0.45);
-}
-.believe-cell:hover .believe-bg {
-  color: rgba(255, 77, 21, 0.38);
-  transform: translateX(-8px);
-  filter: drop-shadow(0 0 60px rgba(255, 77, 21, 0.28));
-}
-.believe-bg {
-  transition:
-    color 380ms cubic-bezier(.2,.7,.2,1),
-    transform 420ms cubic-bezier(.2,.7,.2,1),
-    filter 380ms cubic-bezier(.2,.7,.2,1);
-}
-.believe-bg {
-  position: absolute;
-  right: 16px;
-  bottom: -10px;
-  display: flex;
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(120px, 13vw, 200px);
-  line-height: 0.8;
-  letter-spacing: 0;
-  color: rgba(255, 77, 21, 0.11);
-  pointer-events: none;
-  z-index: 0;
-}
-.believe-bg span {
-  display: inline-block;
-  width: 0.78em;
-  text-align: center;
-}
-.believe-cell > *:not(.believe-bg) { position: relative; z-index: 1; }
-.believe-cell .n {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: var(--accent-solid);
-  margin-bottom: 18px;
-}
-.believe-cell h3 {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(28px, 2.8vw, 42px);
-  line-height: 0.95;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-  letter-spacing: 0.01em;
-  text-wrap: balance;
-}
-.believe-cell p {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-
-/* ──────────────── PRICING ──────────────── */
-
-.pricing-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.pricing-toggle {
-  display: inline-flex;
-  background: var(--bg-soft);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  padding: 4px;
-  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-}
-.pricing-toggle button {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 12px 22px;
-  background: transparent;
-  border: 0;
-  color: var(--mute);
-  cursor: pointer;
-  position: relative;
-  transition: color 180ms;
-}
-.pricing-toggle button.active {
-  color: #08091a;
-  background: var(--accent);
-  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-}
-.pricing-toggle button:not(.active):hover {
-  color: var(--ink);
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.12fr 1fr;
-  gap: 16px;
-  margin-top: 48px;
-  align-items: stretch;
-  position: relative;
-}
-.pricing-grid::before,
-.pricing-grid::after {
-  content: "+";
-  position: absolute;
-  font-family: var(--f-mono);
-  font-size: 14px;
-  color: var(--accent-solid);
-  line-height: 1;
-}
-.pricing-grid::before { top: -14px; left: -10px; }
-.pricing-grid::after  { bottom: -14px; right: -10px; }
-@media (max-width: 900px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-}
-.price {
-  position: relative;
-  background: var(--bg-soft);
-  padding: 36px 28px 32px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-  transition:
-    transform 320ms cubic-bezier(.2,.7,.2,1),
-    box-shadow 320ms cubic-bezier(.2,.7,.2,1),
-    background-color 320ms;
-}
-.price > * { position: relative; z-index: 1; }
-.price {
-  will-change: transform;
-  transform-style: preserve-3d;
-}
-.price > * { transform-style: preserve-3d; }
-.price-flag { transform: translateZ(50px); }
-.price-name { transform: translateZ(40px); }
-.price-head { transform: translateZ(20px); }
-.price-desc,
-.price-feat-label,
-.price-list { transform: translateZ(15px); }
-.price-foot { transform: translateZ(8px); }
-.price:hover {
-  background-color: rgba(255, 77, 21, 0.04);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 77, 21, 0.40),
-    0 30px 60px -20px rgba(0, 0, 0, 0.7),
-    0 0 90px -30px rgba(255, 77, 21, 0.50);
-}
-.price:hover .price-name {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.price.featured:hover {
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 77, 21, 0.65),
-    0 40px 80px -20px rgba(0, 0, 0, 0.8),
-    0 0 110px -30px rgba(255, 77, 21, 0.55);
-}
-.pricing-grid { perspective: 1000px; }
-.price-name { transition: color 320ms; }
-.price-list li::before { transition: transform 240ms cubic-bezier(.2,.7,.2,1); }
-.price:hover .price-list li::before { transform: translateX(2px) scale(1.15); }
-.price.featured {
-  background: linear-gradient(180deg, rgba(255, 77, 21, 0.14) 0%, rgba(255, 122, 61, 0.06) 50%, rgba(214, 58, 13, 0.08) 100%), var(--bg-soft);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.45),
-              0 30px 60px -20px rgba(255, 77, 21, 0.18);
-  z-index: 2;
-}
-.price-flag {
-  position: absolute;
-  top: -1px;
-  left: 16px;
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #08091a;
-  background: var(--accent);
-  padding: 6px 12px;
-  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 6px 100%);
-}
-.price-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mute);
-  border-bottom: 1px solid var(--hairline);
-  padding-bottom: 14px;
-  margin-bottom: 22px;
-  margin-top: 6px;
-}
-.price-head .amt {
-  color: var(--ink);
-  font-family: var(--f-display);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  font-size: 11px;
-}
-.price-name {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(36px, 3.5vw, 48px);
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
-}
-.price-desc {
-  font-style: normal;
-  color: var(--ink-soft);
-  font-size: 14px;
-  margin-bottom: 24px;
-}
-.price-feat-label {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-bottom: 14px;
-}
-.price-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--ink-soft);
-  flex: 1;
-}
-.price-list li {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  line-height: 1.45;
-}
-.price-list li::before {
-  content: "+";
-  color: var(--cyan);
-  font-family: var(--f-display);
-  font-weight: 700;
-  flex-shrink: 0;
-  width: 14px;
-  text-align: center;
-}
-.price.featured .price-list li::before {
-  color: var(--violet);
-}
-.price-foot {
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid var(--hairline);
-  font-size: 13px;
-  color: var(--mute);
-  line-height: 1.5;
-}
-.price-foot .ideal {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mute);
-  display: block;
-  margin-bottom: 8px;
-}
-
-/* ──────────────── CARE+ ADD-ON ROW (monthly tab only) ──────────────── */
-
-.careplus {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  margin-top: 32px;
-  background: linear-gradient(140deg, rgba(255, 122, 61, 0.06), rgba(255, 77, 21, 0.04) 60%, rgba(214, 58, 13, 0.03));
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.22);
-  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-  padding: 32px 36px;
-  display: grid;
-  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.6fr);
-  gap: 36px 48px;
-  align-items: start;
-  opacity: 0;
-  transform: translateY(20px);
-  filter: blur(6px);
-  animation: nx-reveal 600ms cubic-bezier(.2,.7,.2,1) 120ms forwards;
-  transition: transform 320ms cubic-bezier(.2,.7,.2,1), box-shadow 320ms;
-}
-.careplus:hover {
-  transform: translateY(-4px);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.40);
-}
-@media (max-width: 760px) {
-  .careplus {
-    grid-template-columns: 1fr;
-    padding: 24px 22px;
-    gap: 24px;
-  }
-}
-.careplus-head {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.careplus-tag {
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent-solid);
-}
-.careplus-name {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(26px, 2.6vw, 34px);
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  line-height: 1.05;
-}
-.careplus-prices {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 4px;
-}
-.careplus-amt {
-  font-family: var(--f-display);
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: 0.01em;
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.careplus-setup {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.careplus-setup-k {
-  color: var(--mute);
-  margin-right: 4px;
-}
-.careplus-body {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.careplus-desc {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink-soft);
-  max-width: 60ch;
-  text-wrap: pretty;
-}
-.careplus-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 24px;
-}
-@media (max-width: 760px) {
-  .careplus-list { grid-template-columns: 1fr; }
-}
-.careplus-list li {
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: var(--ink-soft);
-  padding-left: 18px;
-  position: relative;
-}
-.careplus-list li::before {
-  content: "+";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent-solid);
-  font-family: var(--f-mono);
-  font-weight: 700;
-}
-.careplus-foot {
-  grid-column: 1 / -1;
-  border-top: 1px solid rgba(255, 77, 21, 0.15);
-  padding-top: 18px;
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-  line-height: 1.6;
-  letter-spacing: 0.05em;
-  color: var(--mute);
-  text-wrap: pretty;
-}
-
-/* ──────────────── CTA (Portilo-style with portrait + wordmark behind) ──────────────── */
-
-.cta {
-  position: relative;
-  padding: 0;
-  margin-top: 0;
-  overflow: hidden;
-  background: var(--bg-soft);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-}
-.cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 100% at 50% 100%,
-    rgba(255, 77, 21, 0.14),
-    transparent 80%
-  );
-  pointer-events: none;
-}
-.cta-inner {
-  position: relative;
-  padding: 64px var(--pad-x) 48px;
-  min-height: 820px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-.cta-top {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 24px;
-  align-items: start;
-  z-index: 3;
-  position: relative;
-}
-.cta-top .mark {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  line-height: 1.55;
-}
-.cta-top .mark .sub { color: var(--mute); }
-.cta-top .mark.tr { text-align: right; }
-
-.cta-stage {
-  flex: 1;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 16px;
-  min-height: 560px;
-}
-.cta-h {
-  position: relative;
-  z-index: 4;
-  text-align: center;
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(64px, 10vw, 160px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  white-space: nowrap;
-}
-.cta-h .grad { display: inline-block; }
-
-.cta-wordmark {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  pointer-events: none;
-  padding-top: 80px;
-}
-.cta-wordmark .glyph {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(180px, 36vw, 600px);
-  line-height: 0.82;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  opacity: 0.55;
-  white-space: nowrap;
-}
-
-.cta-photo-wrap {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  width: 100%;
-  margin-top: auto;
-}
-.cta-photo {
-  display: block;
-  width: 100%;
-  max-width: 720px;
-  height: clamp(500px, 70vh, 800px);
-  object-fit: cover;
-  object-position: center 25%;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
-  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
-}
-
-.cta-bottom {
-  position: relative;
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-top: 14px;
-  text-align: center;
-}
-.cta-bottom .lede {
-  color: var(--ink-soft);
-  font-size: 15px;
-  line-height: 1.55;
-  max-width: 52ch;
-}
-.cta-bottom .ctas {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.cta-bottom .note {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-top: 6px;
-}
-.cta-bottom .note strong {
-  color: var(--ink);
-  font-family: var(--f-display);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-.cta-bottom .note .note-link {
-  transition: color 180ms;
-}
-.cta-bottom .note .note-link:hover strong {
-  color: var(--accent-solid);
-}
-
-@media (max-width: 760px) {
-  .cta-inner { padding: 48px 24px 32px; min-height: auto; }
-  .cta-top { grid-template-columns: 1fr; }
-  .cta-top .mark.tr { text-align: left; }
-}
-
-/* ──────────────── WORDMARK + FOOTER ──────────────── */
-
-.wordmark {
-  padding: 120px var(--pad-x) 40px;
-  text-align: center;
-  position: relative;
-}
-.wordmark .glyph {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(140px, 28vw, 460px);
-  line-height: 0.85;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  opacity: 0.95;
-  position: relative;
-  display: inline-block;
-}
-.wordmark .glyph::after {
-  content: "";
-  position: absolute;
-  inset: -20% -10%;
-  background: var(--accent);
-  filter: blur(80px);
-  opacity: 0.15;
-  z-index: -1;
-}
-
-.footer {
-  border-top: 1px solid var(--hairline);
-  padding-top: 60px;
-  padding-bottom: 40px;
-  position: relative;
-}
-.foot-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 0.9fr 0.9fr 0.9fr;
-  gap: 0;
-  margin-bottom: 60px;
-  position: relative;
-}
-.foot-col {
-  padding: 4px 32px 4px 0;
-  position: relative;
-}
-.foot-col + .foot-col {
-  border-left: 1px solid var(--hairline);
-  padding-left: 32px;
-}
-@media (max-width: 800px) {
-  .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .foot-col, .foot-col + .foot-col { padding: 0; border-left: 0; }
-}
-.foot-col h4 {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent-solid);
-  margin-bottom: 18px;
-  font-weight: 400;
-}
-.foot-col a, .foot-col p {
-  display: block;
-  font-size: 14px;
-  color: var(--ink-soft);
-  margin-bottom: 10px;
-  transition: color 150ms;
-}
-.foot-col a {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  margin-bottom: 2px;
-}
-.foot-col a:hover { color: var(--ink); }
-.foot-brand .lg {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: 32px;
-  letter-spacing: -0.01em;
-  margin-bottom: 14px;
-}
-.foot-brand .lg .x {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-style: italic;
-}
-.foot-brand p {
-  max-width: 32ch;
-  font-size: 13px;
-  color: var(--mute);
-  line-height: 1.5;
-}
-
-.foot-base {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--hairline);
-  padding-top: 24px;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--mute);
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.foot-base .dots {
-  display: flex;
-  gap: 16px;
-}
-.foot-base .dots span {
-  position: relative;
-  padding-left: 14px;
-}
-.foot-base .dots span::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5px;
-  height: 5px;
-  background: var(--cyan);
-}
-
-/* ──────────────── responsive ──────────────── */
-
-@media (max-width: 760px) {
-  /* ── Nav ── */
-  .nav-links a:not(.nav-cta) { padding: 8px 10px; font-size: 11px; }
-  .nav-cta { padding: 10px 14px !important; font-size: 11px; }
-  .nav-inner { gap: 8px; }
-
-  /* ── Hero ── */
-  .hero { min-height: calc(100dvh - 72px); padding: 16px 0 0; }
-  .hero-top { padding: 16px var(--pad-x); }
-  .hero-top-meta { display: none; }
-  .hero-body { padding: 16px var(--pad-x) 0; min-height: auto; gap: 16px; }
-  .hero-text { padding-top: 16px; max-width: 100%; gap: 12px; }
-  .hero-name { font-size: clamp(40px, 11vw, 60px); }
-  .hero-bio { font-size: 14px; max-width: 100%; }
-  .hero-actions { gap: 10px; }
-  .hero-portrait img {
-    height: clamp(380px, 58vh, 540px);
-    max-width: 100%;
-    object-position: center 12%;
-    -webkit-mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
-    mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
-  }
-
-  /* ── Sections (general) ── */
-  .section { padding-top: 56px; padding-bottom: 56px; }
-  .section-h { font-size: clamp(32px, 9vw, 52px); }
-  .section-sub { font-size: 15px; }
-
-  /* ── Hide decorative corner marks (often overflow on small screens) ── */
-  .services::before, .services::after,
-  .believe::before, .believe::after,
-  .pricing-grid::before, .pricing-grid::after,
-  .hero-body::before, .hero-body::after { display: none; }
-
-  /* ── Services ── */
-  .service { grid-template-columns: 50px 1fr; padding: 18px 0; gap: 16px; }
-  .service .tags, .service .desc, .service .arr { display: none; }
-  .service .title { font-size: clamp(24px, 7vw, 36px); }
-  .service-bg { right: 0; font-size: clamp(72px, 22vw, 110px); }
-
-  /* ── Work ── */
-  .work-info, .work-vis { padding: 32px 24px; }
-  .work-vis { min-height: auto; padding: 24px; }
-  .work-title { font-size: clamp(44px, 12vw, 64px); }
-
-  /* ── Marquee + static strip ── */
-  .marquee { padding: 16px 0; }
-  .marquee-track { font-size: 12px; gap: 32px; padding-left: 16px; }
-  .marquee-item { gap: 32px; }
-  .strip { padding: 20px var(--pad-x); gap: 14px; }
-  .strip-text { font-size: 13px; letter-spacing: 0.14em; }
-
-  /* ── Believe ── */
-  .believe { gap: 14px; }
-  .believe-cell { padding: 32px 24px 28px; }
-  .believe-bg { font-size: clamp(90px, 26vw, 150px); }
-
-  /* ── Pricing ── */
-  .pricing-head { gap: 24px; }
-  .price { padding: 30px 24px 28px; }
-  .price-name { font-size: 38px; }
-  .pricing-toggle button { padding: 10px 16px; font-size: 11px; letter-spacing: 0.1em; }
-
-  /* ── CTA ── */
-  .cta-inner { padding: 48px 24px 36px; min-height: auto; }
-  .cta-h { font-size: clamp(48px, 14vw, 80px); }
-  .cta-photo {
-    height: clamp(380px, 58vh, 560px);
-    max-width: 100%;
-    object-position: center 12%;
-    -webkit-mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
-    mask-image: radial-gradient(ellipse 110% 90% at center 40%, #000 70%, transparent 100%);
-  }
-  .cta-wordmark { padding-top: 60px; }
-  .cta-wordmark .glyph { font-size: clamp(140px, 42vw, 320px); }
-  .cta-top .mark { font-size: 10px; letter-spacing: 0.18em; }
-
-  /* ── Spec bar ── */
-  .spec-bar { grid-template-columns: repeat(2, 1fr); }
-  .spec-bar .cell { padding: 18px var(--pad-x); }
-  .spec-bar .cell:nth-child(2) { border-right: 0; }
-  .spec-bar .cell:nth-child(1),
-  .spec-bar .cell:nth-child(2) { border-bottom: 1px solid var(--hairline); }
-  .spec-bar .v { font-size: 16px; }
-
-  /* ── Wordmark ── */
-  .wordmark { padding: 80px var(--pad-x) 30px; }
-  .wordmark .glyph { font-size: clamp(80px, 32vw, 200px); }
-
-  /* ── Footer ── */
-  .footer { padding-top: 40px; padding-bottom: 28px; }
-  .foot-grid { grid-template-columns: 1fr; gap: 0; margin-bottom: 32px; }
-  .foot-col { padding: 24px 0; border-left: 0 !important; }
-  .foot-col + .foot-col {
-    padding-left: 0;
-    border-left: 0;
-    border-top: 1px solid var(--hairline);
-  }
-  .foot-col:first-child { padding-top: 0; }
-  .foot-brand .lg { font-size: 26px; margin-bottom: 10px; }
-  .foot-brand p { font-size: 13px; max-width: 100%; }
-  .foot-col h4 { margin-bottom: 14px; }
-  .foot-col a, .foot-col p { font-size: 14px; margin-bottom: 8px; }
-  .foot-base { gap: 14px; flex-direction: column; align-items: flex-start; padding-top: 20px; }
-  .foot-base .dots { flex-wrap: wrap; row-gap: 8px; }
-
-  /* ── Scroll cue: hide on home (face already signals scrolling), keep on portfolio/contact ── */
-  .scroll-cue { display: none; }
-}
-
-    </style>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <div id="root"></div>
-    <script>
-      (function () {
-        var t = new URLSearchParams(location.search).get("t");
-        if (!t) return;
-        var tokenize = function (el) {
-          if (!el || el.tagName !== "IMG") return;
-          var src = el.getAttribute("src");
-          if (!src || src.indexOf("?") !== -1 || /^https?:/.test(src) || /^data:/.test(src)) return;
-          el.src = src + "?t=" + t;
-        };
-        new MutationObserver(function (muts) {
-          for (var i = 0; i < muts.length; i++) {
-            var nodes = muts[i].addedNodes;
-            for (var j = 0; j < nodes.length; j++) {
-              var n = nodes[j];
-              if (n.nodeType !== 1) continue;
-              if (n.tagName === "IMG") tokenize(n);
-              if (n.querySelectorAll) n.querySelectorAll("img").forEach(tokenize);
-            }
-          }
-        }).observe(document.documentElement, { childList: true, subtree: true });
-      })();
-    </script>
-    <script src="assets/react.production.min.js"></script>
-    <script src="assets/react-dom.production.min.js"></script>
-    <script>
-// tweaks-panel.jsx
-// Reusable Tweaks shell + form-control helpers.
-//
-// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
-// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
-// individual prototypes don't re-roll it. Ships a consistent set of controls so you
-// don't hand-draw <input type="range">, segmented radios, steppers, etc.
-//
-// Usage (in an HTML file that loads React + Babel):
-//
-//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-//     "primaryColor": "#D97757",
-//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
-//     "fontSize": 16,
-//     "density": "regular",
-//     "dark": false
-//   }/*EDITMODE-END*/;
-//
-//   function App() {
-//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-//     return (
-//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
-//         Hello
-//         <TweaksPanel>
-//           <TweakSection label="Typography" />
-//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
-//                        onChange={(v) => setTweak('fontSize', v)} />
-//           <TweakRadio  label="Density" value={t.density}
-//                        options={['compact', 'regular', 'comfy']}
-//                        onChange={(v) => setTweak('density', v)} />
-//           <TweakSection label="Theme" />
-//           <TweakColor  label="Primary" value={t.primaryColor}
-//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
-//                        onChange={(v) => setTweak('primaryColor', v)} />
-//           <TweakColor  label="Palette" value={t.palette}
-//                        options={[['#D97757', '#29261b', '#f6f4ef'],
-//                                  ['#475569', '#0f172a', '#f1f5f9']]}
-//                        onChange={(v) => setTweak('palette', v)} />
-//           <TweakToggle label="Dark mode" value={t.dark}
-//                        onChange={(v) => setTweak('dark', v)} />
-//         </TweaksPanel>
-//       </div>
-//     );
-//   }
-//
-// ─────────────────────────────────────────────────────────────────────────────
-
-const __TWEAKS_STYLE = `
-  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
-    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
-    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
-    background:rgba(250,249,247,.78);color:#29261b;
-    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
-    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
-    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
-    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
-  .twk-hd{display:flex;align-items:center;justify-content:space-between;
-    padding:10px 8px 10px 14px;cursor:move;user-select:none}
-  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
-  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
-    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
-  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
-  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
-    overflow-y:auto;overflow-x:hidden;min-height:0;
-    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
-  .twk-body::-webkit-scrollbar{width:8px}
-  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
-  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
-    border:2px solid transparent;background-clip:content-box}
-  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
-    border:2px solid transparent;background-clip:content-box}
-  .twk-row{display:flex;flex-direction:column;gap:5px}
-  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
-  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
-    color:rgba(41,38,27,.72)}
-  .twk-lbl>span:first-child{font-weight:500}
-  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
-
-  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-    color:rgba(41,38,27,.45);padding:10px 0 0}
-  .twk-sect:first-child{padding-top:0}
-
-  .twk-field{appearance:none;box-sizing:border-box;width:100%;min-width:0;height:26px;padding:0 8px;
-    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
-    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
-  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
-  select.twk-field{padding-right:22px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
-    background-repeat:no-repeat;background-position:right 8px center}
-
-  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
-    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
-  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
-    width:14px;height:14px;border-radius:50%;background:#fff;
-    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
-  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
-    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
-
-  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
-    background:rgba(0,0,0,.06);user-select:none}
-  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
-    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
-    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
-  .twk-seg.dragging .twk-seg-thumb{transition:none}
-  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
-    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
-    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
-    overflow-wrap:anywhere}
-
-  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
-    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
-  .twk-toggle[data-on="1"]{background:#34c759}
-  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
-    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
-  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
-
-  .twk-num{display:flex;align-items:center;box-sizing:border-box;min-width:0;height:26px;padding:0 0 0 8px;
-    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
-  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
-    user-select:none;padding-right:8px}
-  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
-    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
-    outline:none;color:inherit;-moz-appearance:textfield}
-  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
-    -webkit-appearance:none;margin:0}
-  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
-
-  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
-    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
-  .twk-btn:hover{background:rgba(0,0,0,.88)}
-  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
-  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
-
-  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
-    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
-    background:transparent;flex-shrink:0}
-  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
-  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
-  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
-
-  .twk-chips{display:flex;gap:6px}
-  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
-    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
-    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
-    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
-  .twk-chip:hover{transform:translateY(-1px);
-    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
-  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
-    0 2px 6px rgba(0,0,0,.15)}
-  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
-    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
-  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
-  .twk-chip>span>i:first-child{box-shadow:none}
-  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
-    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
-`;
-
-// ── useTweaks ───────────────────────────────────────────────────────────────
-// Single source of truth for tweak values. setTweak persists via the host
-// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
-function useTweaks(defaults) {
-  const [values, setValues] = React.useState(defaults);
-  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
-  // useState-style call doesn't write a "[object Object]" key into the persisted
-  // JSON block.
-  const setTweak = React.useCallback((keyOrEdits, val) => {
-    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null ? keyOrEdits : {
-      [keyOrEdits]: val
-    };
-    setValues(prev => ({
-      ...prev,
-      ...edits
-    }));
-    window.parent.postMessage({
-      type: '__edit_mode_set_keys',
-      edits
-    }, '*');
-    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
-    // can react — the parent message only reaches the host, not peers.
-    window.dispatchEvent(new CustomEvent('tweakchange', {
-      detail: edits
-    }));
-  }, []);
-  return [values, setTweak];
-}
-
-// ── TweaksPanel ─────────────────────────────────────────────────────────────
-// Floating shell. Registers the protocol listener BEFORE announcing
-// availability — if the announce ran first, the host's activate could land
-// before our handler exists and the toolbar toggle would silently no-op.
-// The close button posts __edit_mode_dismissed so the host's toolbar toggle
-// flips off in lockstep; the host echoes __deactivate_edit_mode back which
-// is what actually hides the panel.
-function TweaksPanel({
-  title = 'Tweaks',
-  children
-}) {
-  const [open, setOpen] = React.useState(false);
-  const dragRef = React.useRef(null);
-  const offsetRef = React.useRef({
-    x: 16,
-    y: 16
-  });
-  const PAD = 16;
-  const clampToViewport = React.useCallback(() => {
-    const panel = dragRef.current;
-    if (!panel) return;
-    const w = panel.offsetWidth,
-      h = panel.offsetHeight;
-    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
-    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
-    offsetRef.current = {
-      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
-      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y))
-    };
-    panel.style.right = offsetRef.current.x + 'px';
-    panel.style.bottom = offsetRef.current.y + 'px';
-  }, []);
-  React.useEffect(() => {
-    if (!open) return;
-    clampToViewport();
-    if (typeof ResizeObserver === 'undefined') {
-      window.addEventListener('resize', clampToViewport);
-      return () => window.removeEventListener('resize', clampToViewport);
-    }
-    const ro = new ResizeObserver(clampToViewport);
-    ro.observe(document.documentElement);
-    return () => ro.disconnect();
-  }, [open, clampToViewport]);
-  React.useEffect(() => {
-    const onMsg = e => {
-      const t = e?.data?.type;
-      if (t === '__activate_edit_mode') setOpen(true);else if (t === '__deactivate_edit_mode') setOpen(false);
-    };
-    window.addEventListener('message', onMsg);
-    window.parent.postMessage({
-      type: '__edit_mode_available'
-    }, '*');
-    return () => window.removeEventListener('message', onMsg);
-  }, []);
-  const dismiss = () => {
-    setOpen(false);
-    window.parent.postMessage({
-      type: '__edit_mode_dismissed'
-    }, '*');
-  };
-  const onDragStart = e => {
-    const panel = dragRef.current;
-    if (!panel) return;
-    const r = panel.getBoundingClientRect();
-    const sx = e.clientX,
-      sy = e.clientY;
-    const startRight = window.innerWidth - r.right;
-    const startBottom = window.innerHeight - r.bottom;
-    const move = ev => {
-      offsetRef.current = {
-        x: startRight - (ev.clientX - sx),
-        y: startBottom - (ev.clientY - sy)
-      };
-      clampToViewport();
-    };
-    const up = () => {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('mouseup', up);
-    };
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mouseup', up);
-  };
-  if (!open) return null;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, __TWEAKS_STYLE), /*#__PURE__*/React.createElement("div", {
-    ref: dragRef,
-    className: "twk-panel",
-    "data-omelette-chrome": "",
-    style: {
-      right: offsetRef.current.x,
-      bottom: offsetRef.current.y
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "twk-hd",
-    onMouseDown: onDragStart
-  }, /*#__PURE__*/React.createElement("b", null, title), /*#__PURE__*/React.createElement("button", {
-    className: "twk-x",
-    "aria-label": "Close tweaks",
-    onMouseDown: e => e.stopPropagation(),
-    onClick: dismiss
-  }, "\u2715")), /*#__PURE__*/React.createElement("div", {
-    className: "twk-body"
-  }, children)));
-}
-
-// ── Layout helpers ──────────────────────────────────────────────────────────
-
-function TweakSection({
-  label,
-  children
-}) {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: "twk-sect"
-  }, label), children);
-}
-function TweakRow({
-  label,
-  value,
-  children,
-  inline = false
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    className: inline ? 'twk-row twk-row-h' : 'twk-row'
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "twk-lbl"
-  }, /*#__PURE__*/React.createElement("span", null, label), value != null && /*#__PURE__*/React.createElement("span", {
-    className: "twk-val"
-  }, value)), children);
-}
-
-// ── Controls ────────────────────────────────────────────────────────────────
-
-function TweakSlider({
-  label,
-  value,
-  min = 0,
-  max = 100,
-  step = 1,
-  unit = '',
-  onChange
-}) {
-  return /*#__PURE__*/React.createElement(TweakRow, {
-    label: label,
-    value: `${value}${unit}`
-  }, /*#__PURE__*/React.createElement("input", {
-    type: "range",
-    className: "twk-slider",
-    min: min,
-    max: max,
-    step: step,
-    value: value,
-    onChange: e => onChange(Number(e.target.value))
-  }));
-}
-function TweakToggle({
-  label,
-  value,
-  onChange
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    className: "twk-row twk-row-h"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "twk-lbl"
-  }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "twk-toggle",
-    "data-on": value ? '1' : '0',
-    role: "switch",
-    "aria-checked": !!value,
-    onClick: () => onChange(!value)
-  }, /*#__PURE__*/React.createElement("i", null)));
-}
-function TweakRadio({
-  label,
-  value,
-  options,
-  onChange
-}) {
-  const trackRef = React.useRef(null);
-  const [dragging, setDragging] = React.useState(false);
-  // The active value is read by pointer-move handlers attached for the lifetime
-  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
-  const valueRef = React.useRef(value);
-  valueRef.current = value;
-
-  // Segments wrap mid-word once per-segment width runs out. The track is
-  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
-  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
-  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
-  // back to a dropdown rather than wrap.
-  const labelLen = o => String(typeof o === 'object' ? o.label : o).length;
-  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
-  const fitsAsSegments = maxLen <= ({
-    2: 16,
-    3: 10
-  }[options.length] ?? 0);
-  if (!fitsAsSegments) {
-    // <select> emits strings — map back to the original option value so the
-    // fallback stays type-preserving (numbers, booleans) like the segment path.
-    const resolve = s => {
-      const m = options.find(o => String(typeof o === 'object' ? o.value : o) === s);
-      return m === undefined ? s : typeof m === 'object' ? m.value : m;
-    };
-    return /*#__PURE__*/React.createElement(TweakSelect, {
-      label: label,
-      value: value,
-      options: options,
-      onChange: s => onChange(resolve(s))
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noxta Studio — Adrian Tajti, freelance web designer in Tilburg</title>
+<meta name="description" content="One-person web design studio in Tilburg. Design, copy, code, payments — handled by one head. I stay until it works.">
+<link rel="canonical" href="https://noxta.studio/">
+<!-- Favicons / app icons -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<!-- Open Graph / social -->
+<meta property="og:title" content="Noxta Studio · Built by hand, kept by hand.">
+<meta property="og:description" content="Freelance web designer in Tilburg. One person, full stack — design, copy, code, and payments handled in one head.">
+<meta property="og:image" content="https://noxta.studio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://noxta.studio/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Noxta Studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Noxta Studio · Built by hand, kept by hand.">
+<meta name="twitter:description" content="Freelance web designer in Tilburg. One person, full stack.">
+<meta name="twitter:image" content="https://noxta.studio/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@1,6..72,200..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/noxta.css">
+<style>
+/* ---------- preloader ---------- */
+.loader{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:flex-end;justify-content:space-between;padding:4vw;overflow:hidden}
+.loader .lwm,.loader .lnum{position:relative;z-index:2}
+.loader .lbar{z-index:2}
+.loader .lwm{font-family:var(--font-d);font-variation-settings:"wdth" 125;font-weight:900;font-size:clamp(2rem,5vw,4rem);letter-spacing:-.02em;line-height:1}
+.loader .lwm .x{color:var(--ember)}
+.loader .lnum{font-family:var(--font-d);font-variation-settings:"wdth" 75;font-weight:200;font-size:clamp(5rem,16vw,13rem);line-height:.8;color:var(--ink);font-feature-settings:"tnum"}
+.loader .lbar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--grad);transform-origin:0 50%;transform:scaleX(0)}
+
+
+/* ---------- section ghost numbers (per-section placement) ---------- */
+/* 01 — vertical, hugging the right edge */
+#services .sec-ghost{writing-mode:vertical-rl;top:-9vh;right:1vw;font-size:clamp(10rem,15.5vw,19.5rem)}
+/* 02 — oversized, behind the headline, bleeding off the left */
+#work .sec-ghost{left:-3vw;right:auto;top:-12vh;font-size:clamp(13rem,21vw,24rem);-webkit-text-stroke:1px rgba(255,122,61,.18)}
+/* 03 — monumental, centered behind the principle rows */
+#how .sec-ghost{left:0;right:0;top:34%;text-align:center;font-size:clamp(16rem,30vw,34rem);-webkit-text-stroke:1px rgba(255,122,61,.13)}
+/* 04 — low right, half-buried under the pricing cards */
+#pricing .sec-ghost{right:3vw;top:30vh;font-size:clamp(12rem,19vw,22rem);-webkit-text-stroke:1px rgba(255,122,61,.19)}
+
+/* ---------- hero: cinematic full-bleed ---------- */
+.hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:7rem 7vw 6rem;z-index:2}
+.hero-visual{position:absolute;top:0;right:0;bottom:0;width:64vw;z-index:0;pointer-events:none;user-select:none}
+/* warm key-glow behind the left of the face — gives the cut-out depth */
+.hero-visual::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(40% 52% at 53% 45%,rgba(255,125,55,.22) 0%,rgba(200,80,30,.1) 42%,rgba(120,45,16,.03) 70%,transparent 85%)}
+.hero-visual .wrap{position:absolute;inset:0;z-index:1}
+.hero-visual img{position:absolute;right:-9vw;bottom:0;height:94%;width:auto;max-width:none;
+  filter:contrast(1.1) brightness(.9) saturate(.85);will-change:transform}
+.hero-left{position:relative;z-index:2;max-width:46rem}
+.hero-avail{display:flex;align-items:center;gap:.7rem;font-family:var(--font-m);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);margin-bottom:3.5vh}
+.hero-avail .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--glow);animation:pulse 2.2s infinite}
+.hero-name{font-family:var(--font-d);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:.96;font-size:clamp(3.6rem,7.6vw,8.2rem);user-select:none}
+.hero-name .row{display:block;overflow:hidden;will-change:transform}
+.hero-name .ch{display:inline-block;will-change:transform}
+.hero-role{display:flex;align-items:center;gap:1rem;margin-top:3.2vh;font-family:var(--font-m);font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+.hero-role::before{content:"";width:38px;height:2px;background:var(--ember)}
+.hero-rule{border:0;height:1px;background:var(--line);margin:4vh 0 3.4vh;width:min(26rem,72%);margin-left:0}
+.hero-bio{color:var(--ink-2);font-size:clamp(1rem,1.25vw,1.2rem);line-height:1.75;max-width:38ch}
+.hero-ctas{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:5vh}
+.hero .plus{position:absolute;font-family:var(--font-m);color:var(--ember);font-size:1rem;z-index:3}
+.hero .plus.tl{top:6rem;left:2.4rem}
+.hero .plus.br{bottom:2.2rem;right:2.4rem}
+.scroll-cue{position:absolute;left:50%;bottom:2rem;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  font-family:var(--font-m);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ember-2)}
+.scroll-cue svg{width:22px;height:22px;stroke:var(--ember);fill:none;stroke-width:2;animation:cue 1.6s var(--ease) infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(7px);opacity:.45}}
+/* stacked hero: whole portrait, centered — darkened backdrop blends into the page */
+@media (max-width:1080px){
+  header.hero{flex-direction:column;justify-content:flex-start;gap:1.4rem;padding:6.5rem 6vw 4rem}
+  .hero-visual{position:relative;inset:auto;width:100%;height:auto;margin:0;order:-1;opacity:1;display:flex;justify-content:center}
+  .hero-visual .wrap{position:relative;inset:auto;width:auto;height:auto;-webkit-mask-image:none;mask-image:none}
+  .hero-visual img{position:relative;right:auto;bottom:auto;display:block;width:auto;height:auto;max-height:50vh;max-width:100%;object-fit:contain;
+    -webkit-mask-image:linear-gradient(180deg,#000 84%,transparent 100%);mask-image:linear-gradient(180deg,#000 84%,transparent 100%)}
+  .hero-left{max-width:none}
+  .hero-bio{max-width:62ch}
+  .scroll-cue{display:none}
+  .hero .plus{display:none}
+}
+@media (max-width:700px){
+  .hero-visual img{max-height:40vh}
+}
+
+/* ---------- mesh atmosphere (anchored to each section's ghost) ---------- */
+#services::before,#work::before,#how::before,#pricing::before,.cta::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(var(--mesh-size,52% 64%) at var(--mesh-x,50%) var(--mesh-y,50%),#000 0,transparent 72%);
+  mask-image:radial-gradient(var(--mesh-size,52% 64%) at var(--mesh-x,50%) var(--mesh-y,50%),#000 0,transparent 72%)}
+#services{--mesh-x:94%;--mesh-y:14%;--mesh-size:46% 52%}
+#work{--mesh-x:6%;--mesh-y:5%;--mesh-size:48% 42%}
+#how{--mesh-x:50%;--mesh-y:48%;--mesh-size:64% 70%}
+#pricing{--mesh-x:90%;--mesh-y:32%;--mesh-size:46% 56%}
+.cta{--mesh-x:86%;--mesh-y:88%;--mesh-size:52% 60%}
+@media (max-width:900px){#services::before,#work::before,#how::before,#pricing::before,.cta::before{display:none}}
+
+/* ---------- intro: readout ---------- */
+.intro{border-top:1px solid var(--line);position:relative}
+.intro::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(85% 95% at 74% 38%,#000 0,transparent 72%);
+  mask-image:radial-gradient(85% 95% at 74% 38%,#000 0,transparent 72%)}
+.intro-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:5vw;align-items:start}
+.intro h2{font-size:clamp(2.8rem,6.4vw,5.6rem)}
+.intro-right{position:relative}
+.intro-ghost{position:absolute;top:-12%;right:55%;z-index:0;font-family:var(--font-d);font-weight:700;
+  font-size:clamp(12rem,22vw,24rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,122,61,.26);user-select:none;pointer-events:none}
+.readout{position:relative;z-index:1;max-width:34rem;margin-left:auto;border:1px solid var(--line-2);background:linear-gradient(180deg,rgba(24,22,20,.92),rgba(17,16,16,.96));
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%);padding:1.6rem 1.7rem 1.8rem}
+.readout::before,.readout::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none;z-index:2}
+.readout::before{top:.65rem;left:.65rem;border-top:1px solid var(--ember);border-left:1px solid var(--ember)}
+.readout::after{bottom:.65rem;right:1.4rem;border-bottom:1px solid var(--ember);border-right:1px solid var(--ember)}
+.ro-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-m);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember-2);padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.ro-head .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px var(--glow);animation:pulse 2.2s infinite}
+.ro-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--line)}
+.ro-row .k{font-family:var(--font-m);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.ro-row .v{font-family:var(--font-d);font-weight:600;font-size:1.02rem;letter-spacing:.04em;text-transform:uppercase;text-align:right}
+.ro-row .v b{color:var(--ember-2);font-weight:600}
+.ro-radar{display:flex;align-items:center;gap:1.4rem;padding-top:1.4rem}
+.ro-radar svg{width:104px;height:104px;flex:none}
+.ro-radar circle.ring{fill:none;stroke:var(--line-2);stroke-width:1}
+.ro-radar line.cross{stroke:var(--line);stroke-width:1}
+.ro-radar .sweep{stroke:var(--ember);stroke-width:1.5;opacity:.8;transform-origin:52px 52px;animation:sweep 4.5s linear infinite}
+.ro-radar .blip{fill:var(--ember);animation:pulse 2.2s infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.ro-loc .city{font-family:var(--font-d);font-weight:600;font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase}
+.ro-loc .sub{font-family:var(--font-m);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:.45rem}
+@media (max-width:900px){
+  .intro-grid{grid-template-columns:1fr}
+  .intro-ghost{display:none}
+  .intro::before{-webkit-mask-image:radial-gradient(120% 70% at 50% 20%,#000 0,transparent 75%);mask-image:radial-gradient(120% 70% at 50% 20%,#000 0,transparent 75%)}
+}
+
+/* ---------- services stack ---------- */
+.svc-stack{display:flex;flex-direction:column;gap:0}
+.svc-card{position:sticky;top:14vh;background:var(--bg-2);border:1px solid var(--line);clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%);padding:clamp(1.6rem,3.4vw,3.2rem);display:grid;grid-template-columns:auto 1fr auto;gap:3vw;align-items:center;margin-bottom:1.2rem;overflow:hidden}
+.svc-card::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,77,21,.09),transparent 45%);opacity:0;transition:opacity .4s;pointer-events:none}
+.svc-card:hover::before{opacity:1}
+.svc-card .n{font-family:var(--font-m);font-size:.8rem;color:var(--ember-2)}
+.svc-card h3{font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(1.9rem,4.8vw,4rem);letter-spacing:.01em;line-height:.98}
+.svc-dim{position:absolute;inset:0;background:#0a0908;opacity:0;pointer-events:none;z-index:3}
+.svc-card .desc{color:var(--ink-2);line-height:1.65;max-width:36ch;margin-top:.9rem;font-size:clamp(.95rem,1.1vw,1.05rem)}
+.svc-tags{display:flex;flex-direction:column;gap:.5rem;align-items:flex-end}
+.svc-tags span{font-family:var(--font-m);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);padding:.46rem .9rem;white-space:nowrap}
+@media (max-width:900px){.svc-card{grid-template-columns:1fr;gap:1.1rem}.svc-tags{flex-direction:row;flex-wrap:wrap;align-items:flex-start}}
+
+
+/* ---------- work: client quote ---------- */
+.work-quote{position:absolute;right:0;top:.5rem;z-index:1;max-width:30rem;padding-left:1.6rem;border-left:2px solid var(--ember)}
+.work-quote::before{content:"";position:absolute;top:-2px;left:-2px;width:12px;height:12px;border-top:1px solid var(--ember);border-left:1px solid var(--ember)}
+.wq-label{font-family:var(--font-m);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember-2);margin-bottom:1.1rem}
+.wq-stars{color:var(--ember);font-size:.85rem;letter-spacing:.25em;margin-bottom:1rem}
+.wq-text{font-family:var(--font-s);font-style:italic;font-weight:300;font-size:clamp(1.15rem,1.5vw,1.5rem);line-height:1.55;color:var(--ink)}
+.wq-who{margin-top:1.3rem;font-family:var(--font-d);font-weight:600;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+.wq-who span{font-family:var(--font-m);font-weight:400;font-size:.64rem;letter-spacing:.14em;color:var(--ink-3);margin-left:.6rem}
+.work-quotes{position:absolute;right:0;top:.5rem;z-index:1;display:flex;flex-direction:column;gap:2.2rem;max-width:30rem}
+.work-quotes .work-quote{position:static;max-width:none}
+@media (max-width:1100px){.work-quotes{position:static;margin-top:2.6rem;max-width:40rem}}
+
+/* ---------- work: horizontal-scroll choreography ---------- */
+#work.work-h{height:100svh;padding:0;overflow:hidden}
+.work-h-pin{height:100%}
+.work-h-track{display:flex;height:100%;width:max-content;will-change:transform}
+.hpanel{flex:none;width:100vw;height:100%;display:flex;flex-direction:column;justify-content:center;padding:7rem 4vw 5rem;position:relative}
+.hpanel-intro .sec-head{margin-bottom:0;max-width:none}
+.hpanel .work-case{padding:0}
+.hpanel-cue{position:absolute;left:4vw;bottom:3.2rem;display:flex;align-items:center;gap:.85rem;font-family:var(--font-m);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ember-2)}
+.hpanel-cue svg{width:30px;height:18px;stroke:var(--ember);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:cueX 1.6s var(--ease) infinite}
+@keyframes cueX{0%,100%{transform:translateX(0);opacity:.5}50%{transform:translateX(7px);opacity:1}}
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  #work.work-h{height:auto;overflow:visible;padding:14vh 4vw}
+  .work-h-pin{height:auto}
+  .work-h-track{flex-direction:column;width:100%;transform:none!important;will-change:auto}
+  .hpanel{width:100%;height:auto;min-height:0;padding:0;display:block}
+  .hpanel-intro{margin-bottom:9vh}
+  .hpanel-intro .sec-head{margin-bottom:0}
+  .hpanel + .hpanel{margin-top:9vh}
+  .hpanel-cue{display:none}
+}
+/* lite-mode (low-power / throttled GPU): section 02 falls back to vertical — same cards */
+html.lite #work.work-h{height:auto;overflow:visible;padding:14vh 4vw}
+html.lite .work-h-pin{height:auto}
+html.lite .work-h-track{flex-direction:column;width:100%;transform:none!important;will-change:auto}
+html.lite .hpanel{width:100%;height:auto;min-height:0;padding:0;display:block}
+html.lite .hpanel-intro{margin-bottom:9vh}
+html.lite .hpanel + .hpanel{margin-top:9vh}
+html.lite .hpanel-cue{display:none}
+html.lite .work-quotes{position:static;margin-top:2.6rem;max-width:40rem}
+
+/* ---------- marquee ---------- */
+.marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.2rem 0;overflow:hidden;background:var(--bg-2)}
+.marquee .track{display:flex;gap:4rem;width:max-content;will-change:transform}
+.marquee .item{display:flex;align-items:center;gap:4rem;font-weight:900;font-variation-settings:"wdth" 122;text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.8rem);letter-spacing:-.02em;white-space:nowrap}
+.marquee .item em{font-family:var(--font-s);font-style:italic;font-weight:300;color:var(--ember-2)}
+.marquee .item .sep{width:10px;height:10px;background:var(--ember);border-radius:50%;flex:none}
+
+/* ---------- believe ---------- */
+.believe-row{padding:3.4rem 0;display:grid;grid-template-columns:auto 1fr 1.1fr;gap:3vw;align-items:start;position:relative;transition:padding-left .45s var(--ease)}
+
+.believe-row::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;background:var(--grad);transform:scaleY(0);transform-origin:0 0;transition:transform .5s var(--ease)}
+.believe-row:hover{padding-left:1.6rem}
+.believe-row:hover::before{transform:scaleY(1)}
+.believe-row .n{font-family:var(--font-m);color:var(--ember-2);font-size:.8rem;padding-top:.5rem}
+.believe-row h3{font-weight:900;font-variation-settings:"wdth" 118;text-transform:uppercase;font-size:clamp(1.7rem,3.6vw,3rem);letter-spacing:-.02em;line-height:1}
+.believe-row p{color:var(--ink-2);line-height:1.7;max-width:52ch}
+@media (max-width:900px){.believe-row{grid-template-columns:auto 1fr}.believe-row p{grid-column:2}}
+
+/* ---------- pricing ---------- */
+.ptabs{position:relative;z-index:1;display:inline-flex;border:1px solid var(--line-2);padding:.3rem;gap:.3rem;margin-bottom:5vh;background:var(--bg-2);clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%)}
+.ptab{font-family:var(--font-d);font-weight:600;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);background:transparent;border:0;padding:.75rem 1.4rem;cursor:none;transition:color .3s,background .3s}
+@media (hover:none),(max-width:900px){.ptab{cursor:pointer}}
+.ptab.is-active{background:var(--grad);color:#0a0908;font-weight:500}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;align-items:stretch}
+.pcard{position:relative;background:var(--bg-2);border:1px solid var(--line);border-radius:18px;padding:2.2rem 1.9rem;display:flex;flex-direction:column;gap:1.4rem;overflow:hidden;transition:transform .45s var(--ease-out),border-color .45s}
+.pcard:hover{transform:translateY(-8px);border-color:rgba(255,122,61,.4)}
+.pcard.is-reco{border-color:rgba(255,77,21,.55);background:linear-gradient(180deg,rgba(255,77,21,.07),rgba(17,16,16,1) 40%)}
+.pcard .flag{position:absolute;top:1.3rem;right:1.3rem;font-family:var(--font-m);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#0a0908;background:var(--grad);border-radius:99px;padding:.4rem .8rem;font-weight:500}
+.pcard .amount{font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(1.7rem,2.4vw,2.3rem);letter-spacing:-.02em}
+.pcard .pname{font-weight:900;font-variation-settings:"wdth" 122;text-transform:uppercase;font-size:1.1rem;letter-spacing:.02em}
+.pcard .pdesc{font-family:var(--font-s);font-style:italic;font-weight:300;color:var(--ember-3);font-size:1.15rem}
+.pcard ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;border-top:1px solid var(--line);padding-top:1.4rem;flex:1}
+.pcard li{color:var(--ink-2);font-size:.92rem;line-height:1.5;padding-left:1.3rem;position:relative}
+.pcard li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:1.5px;background:var(--ember)}
+.pcard .ideal{font-size:.85rem;color:var(--ink-3);line-height:1.6;border-top:1px solid var(--line);padding-top:1.2rem}
+@media (max-width:1000px){.pgrid{grid-template-columns:1fr}}
+
+.careplus{margin-top:1.2rem;border:1px dashed rgba(255,122,61,.4);border-radius:18px;padding:2.4rem;display:grid;grid-template-columns:1.2fr .8fr;gap:3vw;background:rgba(255,77,21,.03)}
+.careplus h3{font-weight:900;font-variation-settings:"wdth" 120;text-transform:uppercase;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.02em;margin:.8rem 0 .4rem}
+.careplus .amt{font-weight:900;font-size:1.3rem}
+.careplus .amt small{font-family:var(--font-m);font-size:.7rem;color:var(--ink-3);font-weight:400;margin-left:.7rem}
+.careplus p{color:var(--ink-2);line-height:1.7;margin-top:1rem;max-width:56ch}
+.careplus ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.careplus li{color:var(--ink-2);font-size:.92rem;line-height:1.5;padding-left:1.3rem;position:relative}
+.careplus li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:1.5px;background:var(--ember)}
+.careplus .foot{font-family:var(--font-m);font-size:.66rem;letter-spacing:.1em;color:var(--ink-3);margin-top:1.4rem;text-transform:uppercase}
+@media (max-width:900px){.careplus{grid-template-columns:1fr}}
+
+/* ---------- CTA ---------- */
+.cta{position:relative;min-height:92svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.cta-meta{display:flex;justify-content:space-between;margin-bottom:7vh;gap:2rem;flex-wrap:wrap}
+.cta-meta .blk{display:flex;flex-direction:column;gap:.4rem}
+.cta h2{font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:clamp(4rem,15vw,14rem);line-height:.85;letter-spacing:-.035em}
+.cta .lede{max-width:52ch;color:var(--ink-2);font-size:clamp(1rem,1.3vw,1.2rem);line-height:1.7;margin:4vh 0 5vh}
+.cta-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.cta .wa{font-family:var(--font-m);font-size:.74rem;letter-spacing:.1em;color:var(--ink-3)}
+.cta .wa b{color:var(--ink);font-weight:500}
+.cta-ghost-word{position:absolute;bottom:-2vw;right:-2vw;font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(8rem,26vw,26rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,122,61,.17);pointer-events:none;user-select:none;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<canvas id="embers"></canvas>
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+
+<!-- ============ PRELOADER ============ -->
+<div class="loader" id="loader">
+  <div class="lwm">NO<span class="x">X</span>TA<br>STUDIO</div>
+  <div class="lnum" id="loaderNum">000</div>
+  <div class="lbar" id="loaderBar"></div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a class="wm" href="/">NO<span class="x">X</span>TA</a>
+  <div class="nav-right">
+    <span class="clock" id="clock">TILBURG — 00:00:00</span>
+    <a class="nav-link" href="/portfolio" data-hover>Portfolio</a>
+    <a class="nav-cta" href="/contact" data-hover>Start a project</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <span class="plus tl">+</span>
+  <span class="plus br">+</span>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="wrap">
+      <img id="heroImg" src="assets/portrait-hero.webp" alt="" fetchpriority="high">
+    </div>
+  </div>
+
+  <div class="hero-left">
+    <div class="hero-avail" data-reveal><span class="dot"></span>Available · Q3 2026 · 2 slots</div>
+    <h1 class="hero-name" aria-label="Adrian Tajti">
+      <span class="row"><span class="word" data-split>ADRIAN</span></span>
+      <span class="row"><span class="word grad-text" data-split>TAJTI.</span></span>
+    </h1>
+    <div class="hero-role" data-reveal>Freelance Web Designer, Tilburg</div>
+    <hr class="hero-rule" data-reveal>
+    <p class="hero-bio" data-reveal>I'm a freelance web designer in Tilburg. There's no agency behind Noxta, just me. I do the design, write the copy, and write the code. After launch I stick around to fix things and add new ones as you need them. You email me, I email you back.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="/contact" data-hover data-magnetic><span class="fill"></span><span>Start a project →</span></a>
+      <a class="btn btn-ghost" href="#pricing" data-hover data-magnetic><span class="fill"></span><span>Pricing ↓</span></a>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll
+    <svg viewBox="0 0 24 24"><path d="M4 7l8 7 8-7M4 13l8 7 8-7"/></svg>
+  </div>
+</header>
+
+<!-- ============ INTRO 00 ============ -->
+<section class="section intro" id="about">
+  <div class="intro-grid">
+    <div>
+      <div class="sec-label mono" data-reveal>00 · Who I am</div>
+      <h2 class="sec-title" style="margin-top:1.4rem">
+        <span class="line-mask"><span>Just me.</span></span>
+        <span class="line-mask"><span><span class="grad-text">No agency</span></span></span>
+        <span class="line-mask"><span>in the back.</span></span>
+      </h2>
+      <p class="sec-sub" style="margin-top:2.2rem" data-reveal>I work alone on purpose. Keeping the whole project in one head means nothing gets dropped between specialists who don't know your business as well as you do. The trade-off is capacity: I usually have two clients at a time, which is why slots are worth booking early.</p>
+    </div>
+    <div class="intro-right">
+      <div class="intro-ghost" data-parallax="0.12" aria-hidden="true">00</div>
+      <aside class="readout" data-reveal aria-label="Studio facts">
+        <div class="ro-head"><span>// Studio readout</span><span class="dot"></span></div>
+        <div class="ro-row"><span class="k">Est.</span><span class="v"><span data-count="2026" data-start="1970">1970</span></span></div>
+        <div class="ro-row"><span class="k">Reply window</span><span class="v">&lt; <b><span data-count="24">0</span>h</b></span></div>
+        <div class="ro-row"><span class="k">Capacity</span><span class="v"><b><span data-count="2" data-pad="2">00</span></b> clients at a time</span></div>
+        <div class="ro-row"><span class="k">Build</span><span class="v">Hand-coded · No template</span></div>
+        <div class="ro-radar">
+          <svg viewBox="0 0 104 104" aria-hidden="true">
+            <circle class="ring" cx="52" cy="52" r="14"/>
+            <circle class="ring" cx="52" cy="52" r="30"/>
+            <circle class="ring" cx="52" cy="52" r="46"/>
+            <line class="cross" x1="52" y1="2" x2="52" y2="102"/>
+            <line class="cross" x1="2" y1="52" x2="102" y2="52"/>
+            <line class="sweep" x1="52" y1="52" x2="52" y2="8"/>
+            <circle class="blip" cx="63" cy="41" r="3.5"/>
+          </svg>
+          <div class="ro-loc">
+            <div class="city">Tilburg, NL</div>
+            <div class="sub">51.56°N · 5.09°E // On the map</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES 01 ============ -->
+<section class="section" id="services">
+  <div class="sec-head">
+    <div class="sec-ghost" aria-hidden="true" data-parallax="0.1">01</div>
+    <div class="sec-label mono" data-reveal>01 · What I do</div>
+    <h2 class="sec-title">
+      <span class="line-mask"><span>Four jobs.</span></span>
+      <span class="line-mask"><span><span class="grad-text">One head.</span></span></span>
+    </h2>
+    <p class="sec-sub" data-reveal>I handle the design, the copy, the code, and the payments myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me.</p>
+  </div>
+
+  <div class="svc-stack">
+    <div class="svc-card" data-spotlight>
+      <span class="n">/01</span>
+      <div><h3>Websites</h3><p class="desc">Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch.</p></div>
+      <div class="svc-tags"><span>Multi-page</span><span>Hand-coded</span><span>Mobile-first</span></div>
+    <div class="svc-dim"></div>
+    </div>
+    <div class="svc-card" data-spotlight>
+      <span class="n">/02</span>
+      <div><h3>E-commerce</h3><p class="desc">Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built.</p></div>
+      <div class="svc-tags"><span>WooCommerce</span><span>Shopify</span><span>IDEAL / Bancontact</span></div>
+    <div class="svc-dim"></div>
+    </div>
+    <div class="svc-card" data-spotlight>
+      <span class="n">/03</span>
+      <div><h3>Brand</h3><p class="desc">Wordmark, palette, and type system. Enough so the site looks like a brand, not a template.</p></div>
+      <div class="svc-tags"><span>Wordmark</span><span>Palette</span><span>Type system</span></div>
+    <div class="svc-dim"></div>
+    </div>
+    <div class="svc-card" data-spotlight>
+      <span class="n">/04</span>
+      <div><h3>Maintenance</h3><p class="desc">I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for.</p></div>
+      <div class="svc-tags"><span>Retainer</span><span>On call</span><span>Same-week edits</span></div>
+    <div class="svc-dim"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK 02 — horizontal scroll (intro → Szabina → VOEP) ============ -->
+<section class="work-h" id="work" aria-label="Selected work">
+  <div class="work-h-pin">
+    <div class="work-h-track" id="workTrack">
+
+      <!-- Panel A — section intro -->
+      <div class="hpanel hpanel-intro">
+        <div class="sec-head">
+          <div class="sec-ghost" aria-hidden="true" data-parallax="0.1">02</div>
+          <div class="sec-label mono" data-reveal>02 · Selected work</div>
+          <h2 class="sec-title">
+            <span class="line-mask"><span>Selected</span></span>
+            <span class="line-mask"><span><span class="grad-text">work.</span></span></span>
+          </h2>
+          <div class="work-quotes">
+            <aside class="work-quote" data-reveal>
+              <div class="wq-label">// From the client</div>
+              <div class="wq-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote class="wq-text">"As a hobby photographer, I wanted a website which shows my photos and tells my stories. I was out of ideas, Adrian gave me plenty for the start. After choosing the final direction he could basically build anything I was asking for, personalized for me. The communication was super fast, easy-going and professional. He traced and fine-tuned every request, giving me no worries, but an enjoyable time."</blockquote>
+              <div class="wq-who">Szabina <span>Case 001 · Travel blog</span></div>
+            </aside>
+            <!-- Alex/VOEP testimonial — hidden until the real quote is in (remove `hidden` to ship) -->
+            <aside class="work-quote" data-reveal hidden>
+              <div class="wq-label">// From the client</div>
+              <blockquote class="wq-text">"[ PASTE ALEX'S REAL QUOTE HERE — DO NOT SHIP THIS PLACEHOLDER ]"</blockquote>
+              <div class="wq-who">Alex <span>Case 002 · Vintage Outboard Parts</span></div>
+            </aside>
+          </div>
+        </div>
+        <div class="hpanel-cue" aria-hidden="true">
+          <span>Scroll</span>
+          <svg viewBox="0 0 30 18"><path d="M2 9h25M21 3l6 6-6 6"/></svg>
+        </div>
+      </div>
+
+      <!-- Panel B — Szabina -->
+      <div class="hpanel">
+        <article class="work-case">
+          <div class="work-info">
+            <div class="mono tag" data-reveal>Case 001 · Personal travel blog</div>
+            <h3 data-split-words>Szabina</h3>
+            <p data-reveal>Szabina travels and writes about it. After a trip she puts up a short post: a title, a paragraph or two, and the photos she took. I built her a static, hand-coded site with a small admin she runs herself.</p>
+            <div class="work-cells" data-reveal>
+              <div class="cell"><span class="mono">// Cadence</span><span class="v">Per trip</span></div>
+              <div class="cell"><span class="mono">// Editor</span><span class="v">Self-served</span></div>
+              <div class="cell"><span class="mono">// Stack</span><span class="v">Static · Hand-coded</span></div>
+              <div class="cell"><span class="mono">// Hosting</span><span class="v">GitHub Pages</span></div>
+            </div>
+            <a class="btn btn-ghost" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener" data-hover data-magnetic><span class="fill"></span><span>Visit the site →</span></a>
+          </div>
+          <a class="work-shot" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener" data-hover-view>
+            <div class="frame-top"><i></i><i></i><i></i><span class="url">noxtastudio.github.io/szabina</span></div>
+            <div class="shot-fallback"><span>Szabina</span></div>
+            <img src="szabina-screenshot.webp" alt="Szabina — editorial photo journal homepage" loading="lazy" data-shot onerror="this.remove()">
+          </a>
+        </article>
+      </div>
+
+      <!-- Panel C — VOEP -->
+      <div class="hpanel">
+        <article class="work-case flip">
+          <div class="work-info">
+            <div class="mono tag" data-reveal>Case 002 · Vintage Outboard Parts</div>
+            <h3 data-split-words>VOEP</h3>
+            <p data-reveal>Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.</p>
+            <div class="work-cells" data-reveal>
+              <div class="cell"><span class="mono">// Built in</span><span class="v">~60 hours</span></div>
+              <div class="cell"><span class="mono">// First sale</span><span class="v">&lt; 7 days</span></div>
+              <div class="cell"><span class="mono">// Products</span><span class="v">4,200+ SKUs</span></div>
+              <div class="cell"><span class="mono">// Stack</span><span class="v">WP · Woo · Flat</span></div>
+            </div>
+            <a class="btn btn-ghost" href="https://vintageoutboardengineparts.com/" target="_blank" rel="noopener" data-hover data-magnetic><span class="fill"></span><span>Visit the site →</span></a>
+          </div>
+          <a class="work-shot" href="https://vintageoutboardengineparts.com/" target="_blank" rel="noopener" data-hover-view>
+            <div class="frame-top"><i></i><i></i><i></i><span class="url">vintageoutboardengineparts.com</span></div>
+            <div class="shot-fallback"><span>VOEP</span></div>
+            <img src="voep-screenshot.webp" alt="Vintage Outboard Parts — homepage screenshot" loading="lazy" data-shot onerror="this.remove()">
+          </a>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ BELIEVE 03 ============ -->
+<section class="section" id="how">
+  <div class="sec-ghost" aria-hidden="true" data-parallax="0.06">03</div>
+  <div class="sec-head">
+    <div class="sec-label mono" data-reveal>03 · How I work</div>
+    <h2 class="sec-title">
+      <span class="line-mask"><span>How this</span></span>
+      <span class="line-mask"><span><span class="grad-text">usually goes.</span></span></span>
+    </h2>
+  </div>
+
+  <div class="believe-row" data-reveal>
+    <span class="n">/01</span>
+    <h3>I stay until it works.</h3>
+    <p>Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway.</p>
+  </div>
+  <div class="believe-row" data-reveal>
+    <span class="n">/02</span>
+    <h3>Details are the work.</h3>
+    <p>Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off.</p>
+  </div>
+  <div class="believe-row" data-reveal>
+    <span class="n">/03</span>
+    <h3>Yours to keep.</h3>
+    <p>When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move.</p>
+  </div>
+</section>
+
+<!-- ============ MARQUEE 2 ============ -->
+<div class="marquee" id="marquee2">
+  <div class="track" id="marqueeTrack2"></div>
+</div>
+
+<!-- ============ PRICING 04 ============ -->
+<section class="section" id="pricing">
+  <div class="sec-ghost" aria-hidden="true" data-parallax="0.08">04</div>
+  <div class="sec-head">
+    <div class="sec-label mono" data-reveal>04 · Pricing</div>
+    <h2 class="sec-title">
+      <span class="line-mask"><span>What it</span></span>
+      <span class="line-mask"><span><span class="grad-text">costs.</span></span></span>
+    </h2>
+    <p class="sec-sub" data-reveal>Honest ranges below. I quote you a fixed number after a 30-minute call, and that number doesn't move unless the scope does.</p>
+  </div>
+
+  <div class="ptabs" role="tablist" aria-label="Pricing type" data-reveal>
+    <button class="ptab is-active" id="tab-onetime" role="tab" aria-selected="true" aria-controls="pgrid" data-tab="onetime" data-hover>One-time project</button>
+    <button class="ptab" id="tab-monthly" role="tab" aria-selected="false" aria-controls="pgrid" data-tab="monthly" data-hover>Monthly retainer</button>
+  </div>
+
+  <div class="pgrid" id="pgrid" role="tabpanel" aria-labelledby="tab-onetime"></div>
+
+  <div class="careplus" id="careplus" data-reveal>
+    <div>
+      <span class="mono">// Add-on · Standard &amp; Active plans</span>
+      <h3>Care+ FAQ assistant</h3>
+      <div class="amt">+ €89 / month <small>€750 one-time setup</small></div>
+      <p>A small chat box on your site for the questions you already get by email ten times a week. Opening hours, prices, parking, do you take walk-ins. The answers come from a FAQ I write with you. When someone's ready to book, it sends them to your calendar. When it doesn't know the answer, it says so instead of guessing.</p>
+      <div class="foot">Standard and Active retainers only · Limited availability for now · Ask if you'd like a spot</div>
+    </div>
+    <ul>
+      <li>Lives in the bottom corner of your site, in your colours</li>
+      <li>Answers come from a FAQ I write with you</li>
+      <li>Books straight into your calendar</li>
+      <li>I read every month's transcripts and tune it so it doesn't start making things up</li>
+      <li>API and hosting costs come out of the €89, not your card</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CTA 05 ============ -->
+<section class="section cta" id="contact">
+  <div class="cta-meta">
+    <div class="blk" data-reveal><span class="mono">05 · Get in touch</span><span class="v" style="font-weight:700">Two slots open · Q3 2026</span></div>
+    <div class="blk" data-reveal style="text-align:right"><span class="mono">Usual reply</span><span class="v" style="font-weight:700">Within 24 hours</span></div>
+  </div>
+  <h2><span class="line-mask"><span>Let's <span class="grad-text">talk.</span></span></span></h2>
+  <p class="lede" data-reveal>Send me what you're working on and I'll come back within a day. If I can help, I'll quote you. If I can't, I'll tell you, and usually I know someone who can.</p>
+  <div class="cta-actions" data-reveal>
+    <a class="btn btn-primary" href="/contact" data-hover data-magnetic><span class="fill"></span><span>Start a project →</span></a>
+    <a class="btn btn-ghost" href="mailto:adrian@noxta.studio" data-hover data-magnetic><span class="fill"></span><span>Mail</span></a>
+    <span class="wa">Or WhatsApp <a href="https://wa.me/31617657327" target="_blank" rel="noopener" data-hover style="color:inherit;text-decoration:none"><b>+31 6 17 657 327</b></a> · I read every message</span>
+  </div>
+  <div class="cta-ghost-word">NOXTA</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="wm">NO<span class="x">X</span>TA STUDIO</div>
+      <p>Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.</p>
+    </div>
+    <div class="fl">
+      <span class="mono">// Pages</span>
+      <a href="/portfolio" data-hover>Portfolio</a>
+      <a href="/contact" data-hover>Contact</a>
+      <a href="/website-laten-maken-tilburg" data-hover>Website laten maken — Tilburg</a>
+    </div>
+    <div class="fl">
+      <span class="mono">// Studio</span>
+      <a href="mailto:adrian@noxta.studio" data-hover>adrian@noxta.studio</a>
+      <a href="https://wa.me/31617657327" data-hover>WhatsApp</a>
+      <a href="/privacy" data-hover>Privacy</a>
+      <a href="/terms" data-hover>Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="mono">Studio · Tilburg, NL · Est. 2026</span>
+    <span class="mono">© 2026 Noxta Studio — Hand-coded, no template</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/noxta.js"></script>
+<script>
+if(window.gsapReady){
+
+  /* ============ MARQUEES ============ */
+  /* text scrolls left; direction flips when you scroll back up (timeScale = self.direction) */
+  function buildMarquee(bandSel, trackId, item){
+    const track = document.getElementById(trackId);
+    if(!track) return;
+    track.innerHTML = item.repeat(6);
+    if(reduced) return;
+    const half = track.scrollWidth / 2;
+    const tween = gsap.to(track, {x: -half, duration: 26, ease: "none", repeat: -1});
+    ScrollTrigger.create({
+      trigger: bandSel, start: "top bottom", end: "bottom top",
+      onUpdate: self => gsap.to(tween, {timeScale: self.direction, duration: .3})
     });
   }
-  const opts = options.map(o => typeof o === 'object' ? o : {
-    value: o,
-    label: o
-  });
-  const idx = Math.max(0, opts.findIndex(o => o.value === value));
-  const n = opts.length;
-  const segAt = clientX => {
-    const r = trackRef.current.getBoundingClientRect();
-    const inner = r.width - 4;
-    const i = Math.floor((clientX - r.left - 2) / inner * n);
-    return opts[Math.max(0, Math.min(n - 1, i))].value;
-  };
-  const onPointerDown = e => {
-    setDragging(true);
-    const v0 = segAt(e.clientX);
-    if (v0 !== valueRef.current) onChange(v0);
-    const move = ev => {
-      if (!trackRef.current) return;
-      const v = segAt(ev.clientX);
-      if (v !== valueRef.current) onChange(v);
-    };
-    const up = () => {
-      setDragging(false);
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-    };
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-  };
-  return /*#__PURE__*/React.createElement(TweakRow, {
-    label: label
-  }, /*#__PURE__*/React.createElement("div", {
-    ref: trackRef,
-    role: "radiogroup",
-    onPointerDown: onPointerDown,
-    className: dragging ? 'twk-seg dragging' : 'twk-seg'
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "twk-seg-thumb",
-    style: {
-      left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
-      width: `calc((100% - 4px) / ${n})`
-    }
-  }), opts.map(o => /*#__PURE__*/React.createElement("button", {
-    key: o.value,
-    type: "button",
-    role: "radio",
-    "aria-checked": o.value === value
-  }, o.label))));
-}
-function TweakSelect({
-  label,
-  value,
-  options,
-  onChange
-}) {
-  return /*#__PURE__*/React.createElement(TweakRow, {
-    label: label
-  }, /*#__PURE__*/React.createElement("select", {
-    className: "twk-field",
-    value: value,
-    onChange: e => onChange(e.target.value)
-  }, options.map(o => {
-    const v = typeof o === 'object' ? o.value : o;
-    const l = typeof o === 'object' ? o.label : o;
-    return /*#__PURE__*/React.createElement("option", {
-      key: v,
-      value: v
-    }, l);
-  })));
-}
-function TweakText({
-  label,
-  value,
-  placeholder,
-  onChange
-}) {
-  return /*#__PURE__*/React.createElement(TweakRow, {
-    label: label
-  }, /*#__PURE__*/React.createElement("input", {
-    className: "twk-field",
-    type: "text",
-    value: value,
-    placeholder: placeholder,
-    onChange: e => onChange(e.target.value)
-  }));
-}
-function TweakNumber({
-  label,
-  value,
-  min,
-  max,
-  step = 1,
-  unit = '',
-  onChange
-}) {
-  const clamp = n => {
-    if (min != null && n < min) return min;
-    if (max != null && n > max) return max;
-    return n;
-  };
-  const startRef = React.useRef({
-    x: 0,
-    val: 0
-  });
-  const onScrubStart = e => {
-    e.preventDefault();
-    startRef.current = {
-      x: e.clientX,
-      val: value
-    };
-    const decimals = (String(step).split('.')[1] || '').length;
-    const move = ev => {
-      const dx = ev.clientX - startRef.current.x;
-      const raw = startRef.current.val + dx * step;
-      const snapped = Math.round(raw / step) * step;
-      onChange(clamp(Number(snapped.toFixed(decimals))));
-    };
-    const up = () => {
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-    };
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    className: "twk-num"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "twk-num-lbl",
-    onPointerDown: onScrubStart
-  }, label), /*#__PURE__*/React.createElement("input", {
-    type: "number",
-    value: value,
-    min: min,
-    max: max,
-    step: step,
-    onChange: e => onChange(clamp(Number(e.target.value)))
-  }), unit && /*#__PURE__*/React.createElement("span", {
-    className: "twk-num-unit"
-  }, unit));
-}
+  buildMarquee("#marquee2", "marqueeTrack2",
+    `<div class="item"><span>Hand-coded</span><span class="sep"></span><em>Built to last</em><span class="sep"></span><span>No templates</span><span class="sep"></span></div>`);
 
-// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
-// read on both #111 and #fafafa without per-option configuration. Hex input
-// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
-function __twkIsLight(hex) {
-  const h = String(hex).replace('#', '');
-  const x = h.length === 3 ? h.replace(/./g, c => c + c) : h.padEnd(6, '0');
-  const n = parseInt(x.slice(0, 6), 16);
-  if (Number.isNaN(n)) return true;
-  const r = n >> 16 & 255,
-    g = n >> 8 & 255,
-    b = n & 255;
-  return r * 299 + g * 587 + b * 114 > 148000;
-}
-const __TwkCheck = ({
-  light
-}) => /*#__PURE__*/React.createElement("svg", {
-  viewBox: "0 0 14 14",
-  "aria-hidden": "true"
-}, /*#__PURE__*/React.createElement("path", {
-  d: "M3 7.2 5.8 10 11 4.2",
-  fill: "none",
-  strokeWidth: "2.2",
-  strokeLinecap: "round",
-  strokeLinejoin: "round",
-  stroke: light ? 'rgba(0,0,0,.78)' : '#fff'
-}));
-
-// TweakColor — curated color/palette picker. Each option is either a single
-// hex string or an array of 1-5 hex strings; the card adapts — a lone color
-// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
-// rest stacked in a sharp column on the right. onChange emits the
-// option in the shape it was passed (string stays string, array stays array).
-// Without options it falls back to the native color input for back-compat.
-function TweakColor({
-  label,
-  value,
-  options,
-  onChange
-}) {
-  if (!options || !options.length) {
-    return /*#__PURE__*/React.createElement("div", {
-      className: "twk-row twk-row-h"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "twk-lbl"
-    }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("input", {
-      type: "color",
-      className: "twk-swatch",
-      value: value,
-      onChange: e => onChange(e.target.value)
-    }));
-  }
-  // Native <input type=color> emits lowercase hex per the HTML spec, so
-  // compare case-insensitively. String() guards JSON.stringify(undefined),
-  // which returns the primitive undefined (no .toLowerCase).
-  const key = o => String(JSON.stringify(o)).toLowerCase();
-  const cur = key(value);
-  return /*#__PURE__*/React.createElement(TweakRow, {
-    label: label
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "twk-chips",
-    role: "radiogroup"
-  }, options.map((o, i) => {
-    const colors = Array.isArray(o) ? o : [o];
-    const [hero, ...rest] = colors;
-    const sup = rest.slice(0, 4);
-    const on = key(o) === cur;
-    return /*#__PURE__*/React.createElement("button", {
-      key: i,
-      type: "button",
-      className: "twk-chip",
-      role: "radio",
-      "aria-checked": on,
-      "data-on": on ? '1' : '0',
-      "aria-label": colors.join(', '),
-      title: colors.join(' · '),
-      style: {
-        background: hero
-      },
-      onClick: () => onChange(o)
-    }, sup.length > 0 && /*#__PURE__*/React.createElement("span", null, sup.map((c, j) => /*#__PURE__*/React.createElement("i", {
-      key: j,
-      style: {
-        background: c
-      }
-    }))), on && /*#__PURE__*/React.createElement(__TwkCheck, {
-      light: __twkIsLight(hero)
-    }));
-  })));
-}
-function TweakButton({
-  label,
-  onClick,
-  secondary = false
-}) {
-  return /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: secondary ? 'twk-btn secondary' : 'twk-btn',
-    onClick: onClick
-  }, label);
-}
-Object.assign(window, {
-  useTweaks,
-  TweaksPanel,
-  TweakSection,
-  TweakRow,
-  TweakSlider,
-  TweakToggle,
-  TweakRadio,
-  TweakSelect,
-  TweakText,
-  TweakNumber,
-  TweakColor,
-  TweakButton
-});
-</script>
-    <script>
-/* Noxta v3 — Home app */
-
-const {
-  useState,
-  useEffect,
-  useMemo
-} = React;
-
-/* ============ TWEAK DEFAULTS ============ */
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "gradient",
-  "backdropIntensity": 65
-} /*EDITMODE-END*/;
-
-/* accent → CSS variables (Obsidian Kinetic — orange family) */
-const ACCENTS = {
-  ember: {
-    grad: "linear-gradient(100deg, #ffb38a 0%, #ff8a4d 50%, #ff5c1f 100%)",
-    solid: "#ff7a3d",
-    glow: "rgba(255, 122, 61, 0.5)"
-  },
-  blaze: {
-    grad: "linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%)",
-    solid: "#ff4d15",
-    glow: "rgba(255, 77, 21, 0.5)"
-  },
-  rust: {
-    grad: "linear-gradient(100deg, #ff5c1f 0%, #d63a0d 50%, #8a1f00 100%)",
-    solid: "#d63a0d",
-    glow: "rgba(214, 58, 13, 0.5)"
-  },
-  gradient: {
-    grad: "linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%)",
-    solid: "#ff4d15",
-    glow: "rgba(255, 77, 21, 0.5)"
-  }
-};
-
-/* ============ DATA ============ */
-
-const NAV = [{
-  label: "Portfolio",
-  href: "/portfolio"
-}];
-
-/* cursor-tracking spotlight handler — sets --mx / --my on the element */
-const onSpotlight = e => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-};
-const PAGE_FALLBACK = {
-  hero: {
-    statusPill: "Available \xB7 Q3 2026 \xB7 2 slots",
-    topMeta:    "Hero \xB7 01 — Noxta Studio \xB7 2026",
-    nameLine1:  "Adrian",
-    nameLine2:  "Tajti",
-    role:       "Freelance Web Designer, Tilburg",
-    bio:        "I'm a freelance web designer in Tilburg. There's no agency behind Noxta, just me. I do the design, write the copy, and write the code. After launch I stick around to fix things and add new ones as you need them. You email me, I email you back.",
-    primaryLabel:   "Start a project →",
-    secondaryLabel: "See the work"
-  },
-  intro: {
-    label:        "00 \xB7 Who I am",
-    h1Line1:      "Just me.",
-    h1Line2Grad:  "No agency",
-    h1Line2Tail:  " in the back.",
-    sub:          "I work alone on purpose. Keeping the whole project in one head means nothing gets dropped between specialists who don't know your business as well as you do. The trade-off is capacity: I usually have two clients at a time, which is why slots are worth booking early."
-  },
-  servicesSection: {
-    label:   "01 \xB7 What I do",
-    h1Line1: "Four jobs.",
-    h1Line2: "One head.",
-    sub:     "I handle the design, the copy, the code, and the payments myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me."
-  },
-  services: [
-    { n: "/01", title: "Websites",    tags: ["WordPress", "Hand-coded", "Mobile-first"],     desc: "Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch." },
-    { n: "/02", title: "E-commerce",  tags: ["WooCommerce", "Shopify", "IDEAL / Bancontact"], desc: "Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built." },
-    { n: "/03", title: "Brand",       tags: ["Wordmark", "Palette", "Type system"],          desc: "Wordmark, palette, and type system. Enough so the site looks like a brand, not a template." },
-    { n: "/04", title: "Maintenance", tags: ["Retainer", "On call", "Same-week edits"],      desc: "I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for." }
-  ],
-  workSection: {
-    label:   "02 \xB7 Selected work",
-    h1Line1: "Selected",
-    h1Line2: "work."
-  },
-  work: [
-    {
-      tag:      "Case 001 \xB7 Personal travel blog",
-      title:    "Szabina",
-      sub:      "Szabina travels and writes about it. After a trip she puts up a short post: a title, a paragraph or two, and the photos she took. I built her a static, hand-coded site with a small admin she runs herself.",
-      cells: [
-        { label: "// Cadence", value: "Per trip" },
-        { label: "// Editor",  value: "Self-served" },
-        { label: "// Stack",   value: "Static \xB7 Hand-coded" },
-        { label: "// Hosting", value: "GitHub Pages" }
-      ],
-      ctaLabel: "Visit the site →",
-      ctaHref:  "https://noxtastudio.github.io/szabina/",
-      url:      "noxtastudio.github.io/szabina",
-      href:     "https://noxtastudio.github.io/szabina/",
-      screenshot:       "szabina-screenshot.webp",
-      screenshotMobile: "szabina-screenshot-mobile.webp",
-      screenshotWidth:  1400,
-      screenshotHeight: 1165,
-      alt: "Szabina — editorial photo journal homepage"
-    },
-    {
-      tag:      "Case 002 \xB7 Vintage Outboard Parts",
-      title:    "VOEP",
-      sub:      "Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.",
-      cells: [
-        { label: "// Built in",   value: "~60 hours" },
-        { label: "// First sale", value: "< 7 days" },
-        { label: "// Products",   value: "4,200+ SKUs" },
-        { label: "// Stack",      value: "WP \xB7 Woo \xB7 Flat" }
-      ],
-      ctaLabel: "Visit the site →",
-      ctaHref:  "https://vintageoutboardengineparts.com/",
-      url:      "vintageoutboardengineparts.com",
-      href:     "https://vintageoutboardengineparts.com/",
-      screenshot:       "voep-screenshot.webp",
-      screenshotMobile: "voep-screenshot-mobile.webp",
-      screenshotWidth:  720,
-      screenshotHeight: 646,
-      alt: "Vintage Outboard Parts — homepage screenshot"
-    }
-  ],
-  strip: { text: "One person \xB7 One studio \xB7 No handoffs" },
-  believeSection: {
-    label:   "03 \xB7 How I work",
-    h1Line1: "How this ",
-    h1Line2: "usually goes."
-  },
-  believe: [
-    { n: "/01", h: "I stay until it works.", p: "Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway." },
-    { n: "/02", h: "Details are the work.",  p: "Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off." },
-    { n: "/03", h: "Yours to keep.",         p: "When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move." }
-  ],
-  pricingSection: {
-    label:      "04 \xB7 Pricing",
-    h1Line1:    "What it ",
-    h1Line2:    "costs.",
-    sub:        "Honest ranges below. I quote you a fixed number after a 30-minute call, and that number doesn't move unless the scope does.",
-    tabOnetime: "One-time project",
-    tabMonthly: "Monthly retainer"
-  },
-  pricingOnetime: [
-    { flag: "",            tier: "Tier \xB7 I",   amount: "€600 – 1,200",  name: "Small", desc: "One thing, done well.",          feats: ["Single landing page or minor redesign", "Simple brand mark or wordmark refresh", "Up to 600 words of copy I write with you", "Basic SEO setup (title, meta, sitemap)", "Mobile-first, hand-coded HTML / CSS", "One round of revisions"], ideal: "A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks." },
-    { flag: "Recommended", tier: "Tier \xB7 II",  amount: "€1,200 – 2,000", name: "Mid",   desc: "A full site with a real brand.", feats: ["Full multi-page website (4–8 pages)", "Brand identity: wordmark, palette, type", "Copywriting across the site (~2,000 words)", "On-page SEO, schema, sitemap", "Contact form, analytics, social meta", "Two rounds of revisions \xB7 2–4 week turnaround", "First 30 days of Standard retainer included"], ideal: "Small businesses without a site, or whose current one is hurting them. Most of my projects land here." },
-    { flag: "",            tier: "Tier \xB7 III", amount: "€3,500 – 6,000", name: "Large", desc: "Real shops or custom builds.",   feats: ["WooCommerce or Shopify e-commerce builds", "Custom WordPress child theme", "Product database setup & import", "Payments (IDEAL, Bancontact, card) + shipping", "Search, filters, custom mobile UX", "Three revision rounds \xB7 6–8 week turnaround", "First 30 days of Standard retainer included"], ideal: "Shops with real inventory or custom flows that an off-the-shelf template can't handle. >2,000 SKUs quoted bespoke. VOEP was a Large." }
-  ],
-  pricingMonthly: [
-    { flag: "",            tier: "Plan \xB7 I",   amount: "€50 / month",  name: "Light",    desc: "Kept up to date and safe.",  feats: ["Uptime monitoring", "Weekly automated backups", "Security patches & plugin updates", "1 hour of edits per month, rolled forward up to 2 months", "Email support, 48h reply", "Annual prepay \xB7 12 months for the price of 11"], ideal: "Finished sites that just need to stay alive and up to date." },
-    { flag: "Recommended", tier: "Plan \xB7 II",  amount: "€150 / month", name: "Standard", desc: "Light plus active edits.",   feats: ["Everything in Light", "3 hours of edits per month", "Copy tweaks & small layout changes", "Monthly performance report", "Same-week edits (Mon–Fri)", "Annual prepay \xB7 12 months for the price of 11"], ideal: "Sites that change a few times a month: pricing, menu, content updates." },
-    { flag: "",            tier: "Plan \xB7 III", amount: "€450 / month", name: "Active",   desc: "I'm basically on your team.", feats: ["Everything in Standard", "8 hours of edits per month", "Priority response (next business day)", "Phone / WhatsApp support (Mon–Fri 9–17, urgent only)", "Quarterly strategy call", "Annual prepay \xB7 12 months for the price of 11"], ideal: "Growing shops and active marketing: new pages, campaigns, and ongoing work." }
-  ],
-  careplus: {
-    tag:      "// Add-on \xB7 Standard & Active plans",
-    name:     "Care+ FAQ assistant",
-    amount:   "+ €89 / month",
-    setup:    "€750 one-time",
-    desc:     "A small chat box on your site for the questions you already get by email ten times a week. Opening hours, prices, parking, do you take walk-ins. The answers come from a FAQ I write with you. When someone's ready to book, it sends them to your calendar. When it doesn't know the answer, it says so instead of guessing.",
-    feats: [
-      "Lives in the bottom corner of your site, in your colours",
-      "Answers come from a FAQ I write with you",
-      "Books straight into your calendar",
-      "I read every month's transcripts and tune it so it doesn't start making things up",
-      "API and hosting costs come out of the €89, not your card"
+  /* ============ PRICING DATA + TABS ============ */
+  const PRICING = {
+    onetime: [
+      {flag:"",tier:"Tier · I",amount:"€600 – 1,200",name:"Small",desc:"One thing, done well.",feats:["Single landing page or minor redesign","Simple brand mark or wordmark refresh","Up to 600 words of copy I write with you","Basic SEO setup (title, meta, sitemap)","Mobile-first, hand-coded HTML / CSS","One round of revisions"],ideal:"A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks."},
+      {flag:"Recommended",tier:"Tier · II",amount:"€1,200 – 2,000",name:"Mid",desc:"A full site with a real brand.",feats:["Full multi-page website (4–8 pages)","Brand identity: wordmark, palette, type","Copywriting across the site (~2,000 words)","On-page SEO, schema, sitemap","Contact form, analytics, social meta","Two rounds of revisions · 2–4 week turnaround","First 30 days of Standard retainer included"],ideal:"Small businesses without a site, or whose current one is hurting them. Most of my projects land here."},
+      {flag:"",tier:"Tier · III",amount:"€3,500 – 6,000",name:"Large",desc:"Real shops or custom builds.",feats:["WooCommerce or Shopify e-commerce builds","Custom WordPress child theme","Product database setup & import","Payments (IDEAL, Bancontact, card) + shipping","Search, filters, custom mobile UX","Three revision rounds · 6–8 week turnaround","First 30 days of Standard retainer included"],ideal:"Shops with real inventory or custom flows that an off-the-shelf template can't handle. >2,000 SKUs quoted bespoke. VOEP was a Large."}
     ],
-    footnote: "Standard and Active retainers only. Limited availability for now. Ask if you'd like a spot."
-  },
-  cta: {
-    labelTL:        "05 \xB7 Get in touch",
-    subTL:          "Two slots open \xB7 Q3 2026",
-    labelTR:        "Usual reply",
-    subTR:          "Within 24 hours",
-    h1Line1:        "Let's ",
-    h1Line2:        "talk.",
-    lede:           "Send me what you're working on and I'll come back within a day. If I can help, I'll quote you. If I can't, I'll tell you, and usually I know someone who can.",
-    primaryLabel:   "Start a project →",
-    secondaryLabel: "Mail",
-    noteText:       "Or WhatsApp",
-    notePhone:      "+31 6 17 657 327",
-    noteTail:       "\xB7 I read every message"
-  },
-  spec: [
-    { label: "// Studio est.",  value: "2026" },
-    { label: "// Reply window", value: "< 24h" },
-    { label: "// Location",     value: "Tilburg, NL" },
-    { label: "// Build",        value: "Hand-coded" }
-  ],
-  footer: {
-    studioLine: "Studio \xB7 Tilburg, NL \xB7 Est. 2026",
-    bio:        "Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing."
+    monthly: [
+      {flag:"",tier:"Plan · I",amount:"€50 / month",name:"Light",desc:"Kept up to date and safe.",feats:["Uptime monitoring","Weekly automated backups","Security patches & plugin updates","1 hour of edits per month, rolled forward up to 2 months","Email support, 48h reply","Annual prepay · 12 months for the price of 11"],ideal:"Finished sites that just need to stay alive and up to date."},
+      {flag:"Recommended",tier:"Plan · II",amount:"€150 / month",name:"Standard",desc:"Light plus active edits.",feats:["Everything in Light","3 hours of edits per month","Copy tweaks & small layout changes","Monthly performance report","Same-week edits (Mon–Fri)","Annual prepay · 12 months for the price of 11"],ideal:"Sites that change a few times a month: pricing, menu, content updates."},
+      {flag:"",tier:"Plan · III",amount:"€450 / month",name:"Active",desc:"I'm basically on your team.",feats:["Everything in Standard","8 hours of edits per month","Priority response (next business day)","Phone / WhatsApp support (Mon–Fri 9–17, urgent only)","Quarterly strategy call","Annual prepay · 12 months for the price of 11"],ideal:"Growing shops and active marketing: new pages, campaigns, and ongoing work."}
+    ]
+  };
+  const pgrid = document.getElementById("pgrid");
+  function renderPricing(key){
+    pgrid.innerHTML = PRICING[key].map(p => `
+      <div class="pcard ${p.flag ? "is-reco" : ""}">
+        ${p.flag ? `<span class="flag">${p.flag}</span>` : ""}
+        <span class="mono">${p.tier}</span>
+        <div><div class="amount">${p.amount}</div><div class="pname grad-text">${p.name}</div></div>
+        <div class="pdesc">${p.desc}</div>
+        <ul>${p.feats.map(f => `<li>${f}</li>`).join("")}</ul>
+        <div class="ideal">${p.ideal}</div>
+      </div>`).join("");
+    if(!reduced) gsap.fromTo(".pcard",{y:36,opacity:0},{y:0,opacity:1,duration:.7,stagger:.08,ease:"power3.out"});
   }
-};
-function getPage() {
-  const p = (typeof window !== "undefined" && window.__PAGE__) ? window.__PAGE__ : {};
-  return {
-    hero:            { ...PAGE_FALLBACK.hero,            ...(p.hero            || {}) },
-    intro:           { ...PAGE_FALLBACK.intro,           ...(p.intro           || {}) },
-    servicesSection: { ...PAGE_FALLBACK.servicesSection, ...(p.servicesSection || {}) },
-    services:        Array.isArray(p.services) && p.services.length ? p.services : PAGE_FALLBACK.services,
-    workSection:     { ...PAGE_FALLBACK.workSection,     ...(p.workSection     || {}) },
-    work:            Array.isArray(p.work) && p.work.length ? p.work : PAGE_FALLBACK.work,
-    strip:           { ...PAGE_FALLBACK.strip,           ...(p.strip           || {}) },
-    believeSection:  { ...PAGE_FALLBACK.believeSection,  ...(p.believeSection  || {}) },
-    believe:         Array.isArray(p.believe)  && p.believe.length  ? p.believe  : PAGE_FALLBACK.believe,
-    pricingSection:  { ...PAGE_FALLBACK.pricingSection,  ...(p.pricingSection  || {}) },
-    pricingOnetime:  Array.isArray(p.pricingOnetime) && p.pricingOnetime.length ? p.pricingOnetime : PAGE_FALLBACK.pricingOnetime,
-    pricingMonthly:  Array.isArray(p.pricingMonthly) && p.pricingMonthly.length ? p.pricingMonthly : PAGE_FALLBACK.pricingMonthly,
-    careplus:        { ...PAGE_FALLBACK.careplus,        ...(p.careplus        || {}), feats: (Array.isArray(p.careplus && p.careplus.feats) && p.careplus.feats.length) ? p.careplus.feats : PAGE_FALLBACK.careplus.feats },
-    cta:             { ...PAGE_FALLBACK.cta,             ...(p.cta             || {}) },
-    spec:            Array.isArray(p.spec)     && p.spec.length     ? p.spec     : PAGE_FALLBACK.spec,
-    footer:          { ...PAGE_FALLBACK.footer,          ...(p.footer          || {}) }
-  };
-}
-const SERVICES = PAGE_FALLBACK.services;
-const BELIEVE = [{
-  n: "/01",
-  h: "I stay until it works.",
-  p: "Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway."
-}, {
-  n: "/02",
-  h: "Details are the work.",
-  p: "Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off."
-}, {
-  n: "/03",
-  h: "Yours to keep.",
-  p: "When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move."
-}];
-const PRICING_ONETIME = [{
-  flag: null,
-  tier: "Tier · I",
-  amount: "€600 – 1,200",
-  name: "Small",
-  desc: "One thing, done well.",
-  feats: ["Single landing page or minor redesign", "Simple brand mark or wordmark refresh", "Up to 600 words of copy I write with you", "Basic SEO setup (title, meta, sitemap)", "Mobile-first, hand-coded HTML / CSS", "One round of revisions"],
-  ideal: "A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks."
-}, {
-  flag: "Recommended",
-  tier: "Tier · II",
-  amount: "€1,200 – 2,000",
-  name: "Mid",
-  desc: "A full site with a real brand.",
-  feats: ["Full multi-page website (4–8 pages)", "Brand identity: wordmark, palette, type", "Copywriting across the site (~2,000 words)", "On-page SEO, schema, sitemap", "Contact form, analytics, social meta", "Two rounds of revisions · 2–4 week turnaround", "First 30 days of Standard retainer included"],
-  ideal: "Small businesses without a site, or whose current one is hurting them. Most of my projects land here."
-}, {
-  flag: null,
-  tier: "Tier · III",
-  amount: "€3,500 – 6,000",
-  name: "Large",
-  desc: "Real shops or custom builds.",
-  feats: ["WooCommerce or Shopify e-commerce builds", "Custom WordPress child theme", "Product database setup & import", "Payments (IDEAL, Bancontact, card) + shipping", "Search, filters, custom mobile UX", "Three revision rounds · 6–8 week turnaround", "First 30 days of Standard retainer included"],
-  ideal: "Shops with real inventory or custom flows that an off-the-shelf template can't handle. >2,000 SKUs quoted bespoke. VOEP was a Large."
-}];
-const PRICING_MONTHLY = [{
-  flag: null,
-  tier: "Plan · I",
-  amount: "€50 / month",
-  name: "Light",
-  desc: "Kept up to date and safe.",
-  feats: ["Uptime monitoring", "Weekly automated backups", "Security patches & plugin updates", "1 hour of edits per month, rolled forward up to 2 months", "Email support, 48h reply", "Annual prepay · 12 months for the price of 11"],
-  ideal: "Finished sites that just need to stay alive and up to date."
-}, {
-  flag: "Recommended",
-  tier: "Plan · II",
-  amount: "€150 / month",
-  name: "Standard",
-  desc: "Light plus active edits.",
-  feats: ["Everything in Light", "3 hours of edits per month", "Copy tweaks & small layout changes", "Monthly performance report", "Same-week edits (Mon–Fri)", "Annual prepay · 12 months for the price of 11"],
-  ideal: "Sites that change a few times a month: pricing, menu, content updates."
-}, {
-  flag: null,
-  tier: "Plan · III",
-  amount: "€450 / month",
-  name: "Active",
-  desc: "I'm basically on your team.",
-  feats: ["Everything in Standard", "8 hours of edits per month", "Priority response (next business day)", "Phone / WhatsApp support (Mon–Fri 9–17, urgent only)", "Quarterly strategy call", "Annual prepay · 12 months for the price of 11"],
-  ideal: "Growing shops and active marketing: new pages, campaigns, and ongoing work."
-}];
-
-/* ============ COMPONENTS ============ */
-
-function Nav() {
-  return /*#__PURE__*/React.createElement("header", {
-    className: "nav"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container nav-inner"
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "#top",
-    className: "nav-logo",
-    "aria-label": "Noxta"
-  }, "No", /*#__PURE__*/React.createElement("span", {
-    className: "x"
-  }, "x"), "ta"), /*#__PURE__*/React.createElement("nav", {
-    className: "nav-links"
-  }, NAV.map(n => /*#__PURE__*/React.createElement("a", {
-    key: n.label,
-    href: n.href
-  }, n.label)), /*#__PURE__*/React.createElement("a", {
-    className: "nav-cta",
-    href: "/contact"
-  }, "Contact \u2192"))));
-}
-function Hero() {
-  const H = getPage().hero;
-  return /*#__PURE__*/React.createElement("section", {
-    className: "hero",
-    id: "top"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "hero-body"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "hero-text"
-  }, /*#__PURE__*/React.createElement("h1", {
-    className: "hero-name"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.hero.nameLine1"
-  }, H.nameLine1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "grad"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.hero.nameLine2"
-  }, H.nameLine2), /*#__PURE__*/React.createElement("span", {
-    className: "dot"
-  }, "."))), /*#__PURE__*/React.createElement("div", {
-    className: "hero-role-line"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "dash"
-  }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.hero.role"
-  }, H.role)), /*#__PURE__*/React.createElement("hr", {
-    className: "hero-rule"
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "hero-bio",
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.hero.bio"
-  }, H.bio), /*#__PURE__*/React.createElement("div", {
-    className: "hero-actions"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-primary",
-    href: "/contact",
-    "data-cms-field": "home.hero.primaryLabel"
-  }, H.primaryLabel), /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-ghost",
-    href: "#work",
-    "data-cms-field": "home.hero.secondaryLabel"
-  }, H.secondaryLabel))), /*#__PURE__*/React.createElement("div", {
-    className: "hero-portrait"
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "assets/portrait-hero.webp",
-    srcSet: "assets/portrait-hero-mobile.webp 720w, assets/portrait-hero.webp 1000w",
-    sizes: "(max-width: 768px) 90vw, 50vw",
-    alt: "Adrian Tajti, founder of Noxta Studio",
-    width: "1000",
-    height: "750",
-    loading: "eager",
-    fetchpriority: "high",
-    decoding: "async"
-  }))), /*#__PURE__*/React.createElement("a", {
-    className: "scroll-cue",
-    href: "#about",
-    "aria-label": "Scroll to content"
-  }, /*#__PURE__*/React.createElement("span", null, "Scroll"), /*#__PURE__*/React.createElement("span", {
-    className: "scroll-arrow",
-    "aria-hidden": "true"
-  })));
-}
-function Intro() {
-  const I = getPage().intro;
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section",
-    id: "about",
-    style: {
-      paddingTop: 100,
-      paddingBottom: 60
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "section-label"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "bar"
-  }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.intro.label"
-  }, I.label)), /*#__PURE__*/React.createElement("h2", {
-    className: "section-h",
-    style: {
-      maxWidth: "22ch"
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.intro.h1Line1"
-  }, I.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "grad",
-    "data-cms-field": "home.intro.h1Line2Grad"
-  }, I.h1Line2Grad), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.intro.h1Line2Tail"
-  }, I.h1Line2Tail)), /*#__PURE__*/React.createElement("p", {
-    className: "section-sub",
-    style: {
-      maxWidth: "60ch",
-      fontSize: 19
-    },
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.intro.sub"
-  }, I.sub)));
-}
-function Services() {
-  const PAGE = getPage();
-  const SECT = PAGE.servicesSection;
-  const SERVICES = PAGE.services;
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section",
-    id: "services"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "section-label"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "bar"
-  }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.servicesSection.label"
-  }, SECT.label)), /*#__PURE__*/React.createElement("h2", {
-    className: "section-h"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.servicesSection.h1Line1"
-  }, SECT.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.servicesSection.h1Line2"
-  }, SECT.h1Line2)), /*#__PURE__*/React.createElement("p", {
-    className: "section-sub",
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.servicesSection.sub"
-  }, SECT.sub), /*#__PURE__*/React.createElement("div", {
-    className: "services"
-  }, SERVICES.map((s, i) => {
-    const bg = String(i + 1).padStart(2, "0");
-    return /*#__PURE__*/React.createElement("div", {
-      key: s.title || i,
-      className: "service",
-      onMouseMove: onSpotlight
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "service-bg",
-      "aria-hidden": "true"
-    }, bg.split("").map((ch, j) => /*#__PURE__*/React.createElement("span", {
-      key: j
-    }, ch))), /*#__PURE__*/React.createElement("span", {
-      className: "num",
-      "data-cms-field": `home.services.${i}.n`
-    }, s.n), /*#__PURE__*/React.createElement("h3", {
-      className: "title",
-      "data-cms-field": `home.services.${i}.title`
-    }, s.title), /*#__PURE__*/React.createElement("p", {
-      className: "desc",
-      "data-cms-multiline": "true",
-      "data-cms-field": `home.services.${i}.desc`
-    }, s.desc), /*#__PURE__*/React.createElement("div", {
-      className: "tags"
-    }, (s.tags || []).map(t => /*#__PURE__*/React.createElement("span", {
-      key: t
-    }, t))), /*#__PURE__*/React.createElement("span", {
-      className: "arr"
-    }, "\u2192"));
-  }))));
-}
-function WorkBrowser({ work }) {
-  return /*#__PURE__*/React.createElement("a", {
-    className: "browser",
-    href: work.href,
-    target: "_blank",
-    rel: "noreferrer noopener",
-    "aria-label": `Open ${work.title} in a new tab`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "browser-bar"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "dot"
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "dot"
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "dot"
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "url"
-  }, `${work.url} \u2197`)), /*#__PURE__*/React.createElement("picture", null, /*#__PURE__*/React.createElement("source", {
-    media: "(max-width: 768px)",
-    srcSet: work.screenshotMobile
-  }), /*#__PURE__*/React.createElement("img", {
-    className: "browser-shot",
-    src: work.screenshot,
-    alt: work.alt,
-    width: work.screenshotWidth,
-    height: work.screenshotHeight,
-    loading: "lazy",
-    decoding: "async"
-  })));
-}
-function WorkCard({ work, index }) {
-  const root = `home.work.${index}`;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "work-card",
-    onMouseMove: onSpotlight
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "work-info"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "work-tag",
-    "data-cms-field": `${root}.tag`
-  }, work.tag), /*#__PURE__*/React.createElement("h3", {
-    className: "work-title",
-    "data-cms-field": `${root}.title`
-  }, work.title), /*#__PURE__*/React.createElement("p", {
-    className: "work-sub",
-    "data-cms-multiline": "true",
-    "data-cms-field": `${root}.sub`
-  }, work.sub), /*#__PURE__*/React.createElement("div", {
-    className: "work-meta"
-  }, (work.cells || []).map((cell, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "k",
-    "data-cms-field": `${root}.cells.${i}.label`
-  }, cell.label), /*#__PURE__*/React.createElement("div", {
-    className: "v",
-    "data-cms-field": `${root}.cells.${i}.value`
-  }, cell.value)))), /*#__PURE__*/React.createElement("div", {
-    className: "work-actions"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-ghost",
-    href: work.ctaHref || "#",
-    target: (work.ctaHref || "").startsWith("http") ? "_blank" : undefined,
-    rel: (work.ctaHref || "").startsWith("http") ? "noreferrer noopener" : undefined,
-    "data-cms-field": `${root}.ctaLabel`
-  }, work.ctaLabel))), /*#__PURE__*/React.createElement("div", {
-    className: "work-vis"
-  }, /*#__PURE__*/React.createElement(WorkBrowser, { work: work })));
-}
-function Work() {
-  const PAGE = getPage();
-  const WS = PAGE.workSection;
-  const WORKS = PAGE.work;
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section",
-    id: "work"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "section-label"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "bar"
-  }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.workSection.label"
-  }, WS.label)), /*#__PURE__*/React.createElement("h2", {
-    className: "section-h"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.workSection.h1Line1"
-  }, WS.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "grad",
-    "data-cms-field": "home.workSection.h1Line2"
-  }, WS.h1Line2)), WORKS.map((w, i) => /*#__PURE__*/React.createElement(WorkCard, {
-    key: w.title || i,
-    work: w,
-    index: i
-  }))));
-}
-function Marquee({
-  items
-}) {
-  const loop = [...items, ...items];
-  return /*#__PURE__*/React.createElement("div", {
-    className: "marquee",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "marquee-track"
-  }, loop.map((item, i) => /*#__PURE__*/React.createElement("span", {
-    className: "marquee-item",
-    key: i
-  }, item))));
-}
-function StaticStrip({
-  text
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    className: "strip",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "strip-mark"
-  }, "\u273A"), /*#__PURE__*/React.createElement("span", {
-    className: "strip-text",
-    "data-cms-field": "home.strip.text"
-  }, text), /*#__PURE__*/React.createElement("span", {
-    className: "strip-mark"
-  }, "\u273A"));
-}
-const MARQUEE_ITEMS = ["Adrian Tajti", "Noxta Studio", "Freelance web design", "Tilburg, Netherlands", "Available Q3 2026", "Two slots left", "Reply within 24h", "Est. 2026", "Hand-coded"];
-function Believe() {
-  const PAGE = getPage();
-  const BS = PAGE.believeSection;
-  const BELIEVE = PAGE.believe;
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section",
-    id: "believe"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "section-label"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "bar"
-  }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.believeSection.label"
-  }, BS.label)), /*#__PURE__*/React.createElement("h2", {
-    className: "section-h"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.believeSection.h1Line1"
-  }, BS.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.believeSection.h1Line2"
-  }, BS.h1Line2)), /*#__PURE__*/React.createElement("div", {
-    className: "believe"
-  }, BELIEVE.map((b, i) => {
-    const bg = String(i + 1).padStart(2, "0");
-    const onMove = e => {
-      const r = e.currentTarget.getBoundingClientRect();
-      e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-    };
-    return /*#__PURE__*/React.createElement("div", {
-      className: "believe-cell",
-      key: b.h || i,
-      onMouseMove: onMove
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "believe-bg",
-      "aria-hidden": "true"
-    }, bg.split("").map((ch, j) => /*#__PURE__*/React.createElement("span", {
-      key: j
-    }, ch))), /*#__PURE__*/React.createElement("div", {
-      className: "n",
-      "data-cms-field": `home.believe.${i}.n`
-    }, b.n), /*#__PURE__*/React.createElement("h3", {
-      "data-cms-field": `home.believe.${i}.h`
-    }, b.h), /*#__PURE__*/React.createElement("p", {
-      "data-cms-multiline": "true",
-      "data-cms-field": `home.believe.${i}.p`
-    }, b.p));
-  }))));
-}
-function PriceCard({
-  tier,
-  fieldRoot
-}) {
-  const ref = React.useRef(null);
-  const [style, setStyle] = React.useState({});
-  const disableTilt = React.useMemo(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(max-width: 760px)").matches || window.matchMedia("(pointer: coarse)").matches;
-  }, []);
-  const baseLift = tier.flag ? -18 : -10;
-  const onMove = e => {
-    if (!ref.current) return;
-    const r = ref.current.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-    // Spotlight (direct DOM, outside React's style reconciliation)
-    ref.current.style.setProperty("--mx", `${x}px`);
-    ref.current.style.setProperty("--my", `${y}px`);
-    if (disableTilt) return;
-    const rx = (y - r.height / 2) / (r.height / 2) * -8;
-    const ry = (x - r.width / 2) / (r.width / 2) * 8;
-    setStyle({
-      transform: `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${baseLift}px) scale3d(1.04, 1.04, 1.04)`,
-      transition: "transform 100ms ease-out"
-    });
-  };
-  const onLeave = () => {
-    if (disableTilt) return;
-    setStyle({
-      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)",
-      transition: "transform 420ms cubic-bezier(.2,.7,.2,1)"
-    });
-  };
-  return /*#__PURE__*/React.createElement("article", {
-    ref: ref,
-    className: "price" + (tier.flag ? " featured" : ""),
-    style: style,
-    onMouseMove: onMove,
-    onMouseLeave: onLeave
-  }, tier.flag && /*#__PURE__*/React.createElement("div", {
-    className: "price-flag",
-    "data-cms-field": `${fieldRoot}.flag`
-  }, tier.flag), /*#__PURE__*/React.createElement("div", {
-    className: "price-head"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": `${fieldRoot}.tier`
-  }, tier.tier), /*#__PURE__*/React.createElement("span", {
-    className: "amt",
-    "data-cms-field": `${fieldRoot}.amount`
-  }, tier.amount)), /*#__PURE__*/React.createElement("h3", {
-    className: "price-name",
-    "data-cms-field": `${fieldRoot}.name`
-  }, tier.name), /*#__PURE__*/React.createElement("p", {
-    className: "price-desc",
-    "data-cms-field": `${fieldRoot}.desc`
-  }, tier.desc), /*#__PURE__*/React.createElement("div", {
-    className: "price-feat-label"
-  }, "// What's included"), /*#__PURE__*/React.createElement("ul", {
-    className: "price-list"
-  }, (tier.feats || []).map((f, i) => /*#__PURE__*/React.createElement("li", {
-    key: i,
-    "data-cms-multiline": "true",
-    "data-cms-field": `${fieldRoot}.feats.${i}`
-  }, f))), /*#__PURE__*/React.createElement("div", {
-    className: "price-foot"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "ideal"
-  }, "// Ideal for"), /*#__PURE__*/React.createElement("span", {
-    "data-cms-multiline": "true",
-    "data-cms-field": `${fieldRoot}.ideal`
-  }, tier.ideal)));
-}
-function Pricing() {
-  const [mode, setMode] = useState("onetime"); // onetime | monthly
-  const PAGE = getPage();
-  const PS = PAGE.pricingSection;
-  const tiers = mode === "onetime" ? PAGE.pricingOnetime : PAGE.pricingMonthly;
-  const tierKey = mode === "onetime" ? "pricingOnetime" : "pricingMonthly";
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section",
-    id: "pricing"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pricing-head"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "section-label"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "bar"
-  }), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.pricingSection.label"
-  }, PS.label)), /*#__PURE__*/React.createElement("h2", {
-    className: "section-h"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.pricingSection.h1Line1"
-  }, PS.h1Line1), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.pricingSection.h1Line2"
-  }, PS.h1Line2)), /*#__PURE__*/React.createElement("p", {
-    className: "section-sub",
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.pricingSection.sub"
-  }, PS.sub)), /*#__PURE__*/React.createElement("div", {
-    className: "pricing-toggle",
-    role: "tablist",
-    "aria-label": "Pricing model"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: mode === "onetime" ? "active" : "",
-    onClick: () => setMode("onetime"),
-    role: "tab",
-    "aria-selected": mode === "onetime",
-    "aria-controls": "pricing-panel",
-    id: "tab-onetime",
-    "data-cms-field": "home.pricingSection.tabOnetime"
-  }, PS.tabOnetime), /*#__PURE__*/React.createElement("button", {
-    className: mode === "monthly" ? "active" : "",
-    onClick: () => setMode("monthly"),
-    role: "tab",
-    "aria-selected": mode === "monthly",
-    "aria-controls": "pricing-panel",
-    id: "tab-monthly",
-    "data-cms-field": "home.pricingSection.tabMonthly"
-  }, PS.tabMonthly))), /*#__PURE__*/React.createElement("div", {
-    className: "pricing-grid",
-    key: mode,
-    role: "tabpanel",
-    id: "pricing-panel",
-    "aria-labelledby": mode === "onetime" ? "tab-onetime" : "tab-monthly"
-  }, tiers.map((t, i) => /*#__PURE__*/React.createElement(PriceCard, {
-    key: i,
-    tier: t,
-    fieldRoot: `home.${tierKey}.${i}`
-  }))), /*#__PURE__*/React.createElement(CarePlus, {
-    data: PAGE.careplus
-  })));
-}
-function CarePlus({ data }) {
-  if (!data) return null;
-  return /*#__PURE__*/React.createElement("aside", {
-    className: "careplus",
-    onMouseMove: onSpotlight
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "careplus-head"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "careplus-tag",
-    "data-cms-field": "home.careplus.tag"
-  }, data.tag), /*#__PURE__*/React.createElement("h3", {
-    className: "careplus-name"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.careplus.name"
-  }, data.name)), /*#__PURE__*/React.createElement("div", {
-    className: "careplus-prices"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "careplus-amt",
-    "data-cms-field": "home.careplus.amount"
-  }, data.amount), /*#__PURE__*/React.createElement("span", {
-    className: "careplus-setup"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "careplus-setup-k"
-  }, "+ setup"), " ", /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.careplus.setup"
-  }, data.setup)))), /*#__PURE__*/React.createElement("div", {
-    className: "careplus-body"
-  }, /*#__PURE__*/React.createElement("p", {
-    className: "careplus-desc",
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.careplus.desc"
-  }, data.desc), /*#__PURE__*/React.createElement("ul", {
-    className: "careplus-list"
-  }, (data.feats || []).map((f, i) => /*#__PURE__*/React.createElement("li", {
-    key: i,
-    "data-cms-multiline": "true",
-    "data-cms-field": `home.careplus.feats.${i}`
-  }, f)))), /*#__PURE__*/React.createElement("p", {
-    className: "careplus-foot",
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.careplus.footnote"
-  }, data.footnote));
-}
-function CTA() {
-  const C = getPage().cta;
-  return /*#__PURE__*/React.createElement("section", {
-    id: "contact"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "cta"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "cta-inner"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "cta-top"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "mark"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.cta.labelTL"
-  }, C.labelTL), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "sub",
-    "data-cms-field": "home.cta.subTL"
-  }, C.subTL)), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
-    className: "mark tr"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.cta.labelTR"
-  }, C.labelTR), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    className: "sub",
-    "data-cms-field": "home.cta.subTR"
-  }, C.subTR))), /*#__PURE__*/React.createElement("div", {
-    className: "cta-stage"
-  }, /*#__PURE__*/React.createElement("h2", {
-    className: "cta-h"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.cta.h1Line1"
-  }, C.h1Line1), /*#__PURE__*/React.createElement("span", {
-    className: "grad",
-    "data-cms-field": "home.cta.h1Line2"
-  }, C.h1Line2)), /*#__PURE__*/React.createElement("div", {
-    className: "cta-wordmark",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "glyph"
-  }, "NOXTA")), /*#__PURE__*/React.createElement("div", {
-    className: "cta-photo-wrap"
-  }, /*#__PURE__*/React.createElement("img", {
-    className: "cta-photo",
-    src: "assets/portrait-cta.webp",
-    alt: "",
-    width: "1593",
-    height: "987",
-    loading: "lazy",
-    decoding: "async"
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "cta-bottom"
-  }, /*#__PURE__*/React.createElement("p", {
-    className: "lede",
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.cta.lede"
-  }, C.lede), /*#__PURE__*/React.createElement("div", {
-    className: "ctas"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-primary",
-    href: "/contact",
-    "data-cms-field": "home.cta.primaryLabel"
-  }, C.primaryLabel), /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-ghost",
-    href: "mailto:adrian@noxta.studio",
-    "data-cms-field": "home.cta.secondaryLabel"
-  }, C.secondaryLabel)), /*#__PURE__*/React.createElement("div", {
-    className: "note"
-  }, /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.cta.noteText"
-  }, C.noteText), " ", /*#__PURE__*/React.createElement("a", {
-    href: "https://wa.me/31617657327",
-    target: "_blank",
-    rel: "noreferrer noopener",
-    className: "note-link"
-  }, /*#__PURE__*/React.createElement("strong", {
-    "data-cms-field": "home.cta.notePhone"
-  }, C.notePhone)), " ", /*#__PURE__*/React.createElement("span", {
-    "data-cms-field": "home.cta.noteTail"
-  }, C.noteTail))))));
-}
-function Wordmark() {
-  return /*#__PURE__*/React.createElement("section", {
-    className: "wordmark",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "glyph"
-  }, "NOXTA")));
-}
-function WhatsAppIcon() {
-  return /*#__PURE__*/React.createElement("svg", {
-    width: "14",
-    height: "14",
-    viewBox: "0 0 24 24",
-    fill: "none"
-  }, /*#__PURE__*/React.createElement("path", {
-    fill: "currentColor",
-    d: "M17.5 14.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.7-1.5-3.8-3.4-.3-.5.3-.5.8-1.5.1-.2.1-.3 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.8.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"
-  }), /*#__PURE__*/React.createElement("path", {
-    fill: "currentColor",
-    d: "M20.5 3.5A11 11 0 0 0 2.7 16.8L1 22l5.3-1.7a11 11 0 0 0 5.3 1.3h.1a11 11 0 0 0 7.8-18.6Zm-7.8 16.7a9 9 0 0 1-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3a9.2 9.2 0 1 1 7.4 4Z"
+  renderPricing("onetime");
+  document.querySelectorAll(".ptab").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".ptab").forEach(t => { t.classList.remove("is-active"); t.setAttribute("aria-selected", "false"); });
+    b.classList.add("is-active"); b.setAttribute("aria-selected", "true");
+    pgrid.setAttribute("aria-labelledby", b.id);
+    renderPricing(b.dataset.tab);
   }));
-}
-function LinkedInIcon() {
-  return /*#__PURE__*/React.createElement("svg", {
-    width: "14",
-    height: "14",
-    viewBox: "0 0 24 24",
-    fill: "currentColor"
-  }, /*#__PURE__*/React.createElement("path", {
-    d: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z"
-  }));
-}
-function SpecBar() {
-  const SPEC = getPage().spec;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "spec-bar",
-    "aria-label": "Studio at a glance"
-  }, SPEC.map((cell, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: "cell"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "k",
-    "data-cms-field": `home.spec.${i}.label`
-  }, cell.label), /*#__PURE__*/React.createElement("span", {
-    className: "v",
-    "data-cms-field": `home.spec.${i}.value`
-  }, cell.value))));
-}
-function Footer() {
-  const FOOT = getPage().footer;
-  return /*#__PURE__*/React.createElement("footer", {
-    className: "footer",
-    id: "end"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "foot-grid"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "foot-col foot-brand"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "lg"
-  }, "No", /*#__PURE__*/React.createElement("span", {
-    className: "x"
-  }, "x"), "ta"), /*#__PURE__*/React.createElement("div", {
-    className: "label",
-    style: {
-      marginBottom: 14
-    },
-    "data-cms-field": "home.footer.studioLine"
-  }, FOOT.studioLine), /*#__PURE__*/React.createElement("p", {
-    "data-cms-multiline": "true",
-    "data-cms-field": "home.footer.bio"
-  }, FOOT.bio)), /*#__PURE__*/React.createElement("div", {
-    className: "foot-col"
-  }, /*#__PURE__*/React.createElement("h4", null, "// Site"), /*#__PURE__*/React.createElement("a", {
-    href: "/"
-  }, "Home"), /*#__PURE__*/React.createElement("a", {
-    href: "/portfolio"
-  }, "Portfolio"), /*#__PURE__*/React.createElement("a", {
-    href: "/contact"
-  }, "Contact"), /*#__PURE__*/React.createElement("a", {
-    href: "/privacy"
-  }, "Privacy"), /*#__PURE__*/React.createElement("a", {
-    href: "/terms"
-  }, "Terms")), /*#__PURE__*/React.createElement("div", {
-    className: "foot-col"
-  }, /*#__PURE__*/React.createElement("h4", null, "// Contact"), /*#__PURE__*/React.createElement("a", {
-    href: "mailto:adrian@noxta.studio"
-  }, "adrian@noxta.studio"), /*#__PURE__*/React.createElement("a", {
-    href: "/contact"
-  }, "Contact"), /*#__PURE__*/React.createElement("p", null, "Tilburg, NL \xB7 UTC+1")), /*#__PURE__*/React.createElement("div", {
-    className: "foot-col"
-  }, /*#__PURE__*/React.createElement("h4", null, "// Elsewhere"), /*#__PURE__*/React.createElement("a", {
-    href: "https://wa.me/31617657327",
-    target: "_blank",
-    rel: "noreferrer noopener",
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement(WhatsAppIcon, null), " WhatsApp"), /*#__PURE__*/React.createElement("a", {
-    href: "https://www.linkedin.com/",
-    target: "_blank",
-    rel: "noreferrer noopener",
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement(LinkedInIcon, null), " LinkedIn"))), /*#__PURE__*/React.createElement("div", {
-    className: "foot-base"
-  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Adrian Tajti \xB7 Noxta Studio"), /*#__PURE__*/React.createElement("div", {
-    className: "dots"
-  }, /*#__PURE__*/React.createElement("span", null, "Hand-coded"), /*#__PURE__*/React.createElement("span", null, "Plain HTML"), /*#__PURE__*/React.createElement("span", null, "No analytics on this page")))));
-}
 
-/* ============ TWEAKS PANEL ============ */
+  /* ============ INTRO ANIMATION (preloader → hero) ============ */
+  const heroChars = document.querySelectorAll("[data-split]").length
+    ? [...document.querySelectorAll("[data-split]")].flatMap(splitChars) : [];
 
-function NoxtaTweaks({
-  tweaks,
-  setTweak
-}) {
-  return /*#__PURE__*/React.createElement(TweaksPanel, {
-    title: "Tweaks"
-  }, /*#__PURE__*/React.createElement(TweakSection, {
-    label: "Accent"
-  }, /*#__PURE__*/React.createElement(TweakColor, {
-    label: "Accent color",
-    value: tweaks.accent,
-    onChange: v => setTweak("accent", v),
-    options: [{
-      label: "Gradient",
-      value: "gradient"
-    }, {
-      label: "Ember",
-      value: "ember"
-    }, {
-      label: "Blaze",
-      value: "blaze"
-    }, {
-      label: "Rust",
-      value: "rust"
-    }].map(o => ({
-      value: o.value,
-      label: o.label,
-      color: ACCENTS[o.value].grad
-    }))
-  })), /*#__PURE__*/React.createElement(TweakSection, {
-    label: "Backdrop"
-  }, /*#__PURE__*/React.createElement(TweakSlider, {
-    label: "Glow intensity",
-    value: tweaks.backdropIntensity,
-    onChange: v => setTweak("backdropIntensity", v),
-    min: 0,
-    max: 100,
-    step: 5
-  })));
-}
-
-/* Custom TweakColor that accepts {value,label,color} with color being any CSS background */
-function TweakColor({
-  label,
-  value,
-  onChange,
-  options
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      flexDirection: "column",
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: "var(--f-mono)",
-      fontSize: 10,
-      letterSpacing: ".15em",
-      textTransform: "uppercase",
-      color: "var(--mute)"
-    }
-  }, label), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "grid",
-      gridTemplateColumns: "repeat(2, 1fr)",
-      gap: 8
-    }
-  }, options.map(o => /*#__PURE__*/React.createElement("button", {
-    key: o.value,
-    onClick: () => onChange(o.value),
-    style: {
-      padding: 8,
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      border: 0,
-      background: value === o.value ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.02)",
-      boxShadow: value === o.value ? "inset 0 0 0 1px rgba(255,255,255,.25)" : "inset 0 0 0 1px rgba(255,255,255,.06)",
-      cursor: "pointer",
-      color: "var(--ink)",
-      fontFamily: "var(--f-mono)",
-      fontSize: 11,
-      letterSpacing: ".05em",
-      textAlign: "left",
-      clipPath: "polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)"
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 22,
-      height: 22,
-      background: o.color,
-      flexShrink: 0,
-      clipPath: "polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)"
-    }
-  }), o.label))));
-}
-
-/* ============ ROOT ============ */
-
-function App() {
-  const [tweaks, _setTweaks] = useTweaks(TWEAK_DEFAULTS);
-  const setTweak = (k, v) => _setTweaks({
-    [k]: v
-  });
-
-  // apply accent to CSS vars
-  useEffect(() => {
-    const a = ACCENTS[tweaks.accent] || ACCENTS.gradient;
-    const root = document.documentElement;
-    root.style.setProperty("--accent", a.grad);
-    root.style.setProperty("--accent-solid", a.solid);
-    root.style.setProperty("--accent-glow", a.glow);
-  }, [tweaks.accent]);
-  useEffect(() => {
-    const root = document.documentElement;
-    const v = (tweaks.backdropIntensity ?? 65) / 100;
-    root.style.setProperty("--bg-glow-strength", String(v));
-    // tweak the hero glow strength by overriding opacity on the ::before pseudo via custom var
-    document.querySelectorAll(".portrait-glow").forEach(el => el.style.opacity = String(0.15 + v * 0.5));
-  }, [tweaks.backdropIntensity]);
-
-  // Scroll position restoration — only on reload, per page
-  useEffect(() => {
-    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    const key = "nx-scroll:" + window.location.pathname;
-    const navType = (performance.getEntriesByType("navigation")[0] || {}).type;
-    const isReload = navType === "reload";
-    if (isReload) {
-      const saved = parseInt(sessionStorage.getItem(key) || "0", 10);
-      if (saved > 0) {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            window.scrollTo({
-              top: saved,
-              behavior: "instant"
-            });
-          });
-        });
-      }
-    } else {
-      // Fresh navigation (link click, back/forward): clear and start at top
-      sessionStorage.removeItem(key);
-      window.scrollTo(0, 0);
-    }
-    let raf = null;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        sessionStorage.setItem(key, String(window.scrollY));
-        raf = null;
-      });
-    };
-    window.addEventListener("scroll", onScroll, {
-      passive: true
-    });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Scroll-triggered animations for sections below the hero
-  useEffect(() => {
-    const sections = document.querySelectorAll("#about, #services, #work, #believe, #pricing");
-    if (!sections.length) return;
-    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      sections.forEach(s => s.classList.add("nx-in-view"));
+  function runIntro(){
+    const num = document.getElementById("loaderNum");
+    const tl = gsap.timeline({defaults:{ease:"power3.inOut"}});
+    if(reduced){
+      document.getElementById("loader").style.display = "none";
+      gsap.set("[data-reveal], .line-mask > span, .ch", {opacity:1, y:0});
+      ScrollTrigger.refresh();
       return;
     }
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add("nx-in-view");
-          obs.unobserve(e.target);
+    const counter = {v: 0};
+    tl.to(counter, {v: 100, duration: 1.4, ease: "power2.inOut",
+        onUpdate: () => num.textContent = String(Math.round(counter.v)).padStart(3,"0")})
+      .to("#loaderBar", {scaleX: 1, duration: 1.4, ease: "power2.inOut"}, 0)
+      .to("#loader", {yPercent: -100, duration: .9, ease: "power4.inOut",
+        onComplete: () => document.getElementById("loader").style.display = "none"}, "+=.15")
+      .from(heroChars, {yPercent: 110, rotate: 4, duration: 1.1, stagger: .035, ease: "power4.out"}, "-=.45")
+      .from(".hero-visual", {opacity: 0, x: 90, duration: 1.5, ease: "power3.out"}, "-=.95")
+      .from(".hero-avail, .hero-role, .hero-rule, .hero-bio, .hero-ctas .btn, .scroll-cue, .hero .plus",
+        {y: 26, opacity: 0, duration: .8, stagger: .06, ease: "power3.out"}, "-=.7")
+      .add(() => ScrollTrigger.refresh());
+  }
+  if(document.readyState === "complete") runIntro();
+  else window.addEventListener("load", runIntro);
+
+  /* ============ INDEX-SPECIFIC SCROLL ANIMATIONS ============ */
+  if(!reduced){
+    /* work: horizontal pan (intro → Szabina), pinned — desktop only.
+       gsap.matchMedia auto-reverts below 901px → CSS vertical stack. */
+    window.__nxWorkMM = gsap.matchMedia();
+    window.__nxWorkMM.add("(min-width: 901px)", () => {
+      if(document.documentElement.classList.contains("lite")) return;  // lite-mode: stay vertical
+      const track = document.getElementById("workTrack");
+      if(!track) return;
+      const dist = () => track.scrollWidth - innerWidth;
+      gsap.to(track, {
+        x: () => -dist(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#work", start: "top top",
+          end: () => "+=" + dist(),
+          pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true
         }
       });
-    }, {
-      threshold: 0.12,
-      rootMargin: "0px 0px -8% 0px"
     });
-    sections.forEach(s => obs.observe(s));
-    return () => obs.disconnect();
-  }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(Marquee, {
-    items: MARQUEE_ITEMS
-  }), /*#__PURE__*/React.createElement(Intro, null), /*#__PURE__*/React.createElement(Services, null), /*#__PURE__*/React.createElement(Work, null), /*#__PURE__*/React.createElement(StaticStrip, {
-    text: getPage().strip.text
-  }), /*#__PURE__*/React.createElement(Believe, null), /*#__PURE__*/React.createElement(Pricing, null), /*#__PURE__*/React.createElement(CTA, null)), /*#__PURE__*/React.createElement(SpecBar, null), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(NoxtaTweaks, {
-    tweaks: tweaks,
-    setTweak: setTweak
-  }));
-}
-(async function bootstrap() {
-  try {
-    const res = await fetch("/content/home.json?v=" + Date.now(), { cache: "no-store" });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && typeof data === "object") window.__PAGE__ = data;
+    /* hero parallax out */
+    gsap.to(".hero-name", {yPercent: -10, opacity: .25, ease: "none",
+      scrollTrigger: {trigger: ".hero", start: "bottom 90%", end: "bottom 20%", scrub: true}});
+    gsap.to("#heroImg", {yPercent: 7, ease: "none",
+      scrollTrigger: {trigger: ".hero", start: "bottom 95%", end: "bottom 30%", scrub: true}});
+    /* services card stack scale */
+    const cards = gsap.utils.toArray(".svc-card");
+    cards.forEach((card, i) => {
+      if(i === cards.length - 1) return;
+      gsap.timeline({scrollTrigger: {trigger: cards[i+1], start: "top 80%", end: "top 14vh", scrub: true}})
+        .to(card, {scale: .94, ease: "none"}, 0)
+        .to(card.querySelector(".svc-dim"), {opacity: .68, ease: "none"}, 0);
+    });
+    /* CTA giant word scale-in */
+    gsap.from(".cta h2", {scale: .9, transformOrigin: "0 100%", ease: "none",
+      scrollTrigger: {trigger: ".cta", start: "top bottom", end: "top 30%", scrub: true}});
+  }
+
+  /* ============ EAR ↔ NAV-T ALIGNMENT ============ */
+  /* Pins the head's ear line (measured at 0.692 of the portrait's width)
+     to the right edge of the final T in the nav CTA, at any viewport. */
+  (() => {
+    const img = document.getElementById("heroImg"), cta = document.querySelector(".nav-cta");
+    if(!img || !cta) return;
+    const EAR = 0.692;
+    function align(){
+      if(innerWidth <= 1080) { img.style.right = ""; return; }
+      const c = cta.getBoundingClientRect();
+      const padR = parseFloat(getComputedStyle(cta).paddingRight) || 20;
+      const targetX = c.right - padR - innerWidth * .035;   // a touch left of the nav T
+      const r = img.getBoundingClientRect();
+      if(!r.width) return;
+      // compensate for the intro tween's in-flight translateX on .hero-visual
+      const vis = document.querySelector(".hero-visual");
+      let tx = 0;
+      try { tx = new DOMMatrix(getComputedStyle(vis).transform).m41 || 0; } catch(e){}
+      const earX = r.left - tx + r.width * EAR;              // where the ear settles at x:0
+      const shift = targetX - earX;                          // +ve → move right
+      const cur = parseFloat(getComputedStyle(img).right) || 0;
+      let next = cur - shift;
+      // never reveal a gap on the right edge: image right edge stays >= viewport right
+      const newRightEdge = r.right - tx + shift;
+      if(newRightEdge < innerWidth) next = cur - (innerWidth - r.right);
+      img.style.right = next + "px";
     }
-  } catch (_) { /* fall back to PAGE_FALLBACK baked into the page */ }
-  ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
-})();
+    if(img.complete) align(); else img.addEventListener("load", align);
+    window.addEventListener("load", align);
+    let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(align, 120); });
+  })();
+
+}
 </script>
-    <script src="/admin/theme-loader.js"></script>
-    <script type="module" src="/admin/live-edit.js"></script>
-  </body>
+</body>
 </html>

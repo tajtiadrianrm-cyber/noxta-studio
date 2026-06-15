@@ -1,552 +1,276 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>General Terms &amp; Conditions · Noxta Studio</title>
-  <meta name="description" content="General Terms and Conditions of Noxta Studio." />
-  <meta name="robots" content="noindex,follow" />
-  <link rel="canonical" href="https://noxta.studio/terms" />
-
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
-  <meta name="theme-color" content="#ff4d15" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
-
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --bg-soft: #121414;
-      --bg-tint: #1a1c1c;
-      --ink: #f5f6f7;
-      --ink-soft: #cfcccb;
-      --mute: #8a8786;
-      --hairline: rgba(255, 255, 255, 0.08);
-      --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
-      --accent-solid: #ff4d15;
-      --accent-glow: rgba(255, 77, 21, 0.5);
-      --f-display: "Orbitron", system-ui, sans-serif;
-      --f-body: "Manrope", system-ui, -apple-system, sans-serif;
-      --f-mono: "JetBrains Mono", ui-monospace, monospace;
-      --pad-x: clamp(20px, 5vw, 64px);
-      --max-w: 1440px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--f-body);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      overflow-x: clip;
-    }
-
-    body { position: relative; isolation: isolate; min-height: 100dvh; }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      background:
-        radial-gradient(ellipse 60% 50% at 12% 18%, rgba(255, 122, 61, 0.12), transparent 60%),
-        radial-gradient(ellipse 50% 60% at 88% 82%, rgba(214, 58, 13, 0.10), transparent 60%);
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      opacity: 0.4;
-      mix-blend-mode: screen;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--pad-x);
-    }
-
-    /* ── Nav ── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(10, 10, 10, 0.78);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--hairline);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 18px;
-      padding-bottom: 18px;
-    }
-    .nav-logo {
-      font-family: var(--f-display);
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-    }
-    .nav-logo .x {
-      background: var(--accent);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-style: italic;
-    }
-    .nav-back {
-      font-family: var(--f-mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      transition: color 150ms;
-    }
-    .nav-back:hover { color: var(--accent-solid); }
-
-    /* ── Article ── */
-    .article {
-      padding: clamp(48px, 8vw, 120px) 0;
-    }
-    .article-wrap { max-width: 760px; margin: 0 auto; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent-solid);
-      margin-bottom: 28px;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background: var(--accent-solid);
-      box-shadow: 0 0 12px var(--accent-glow);
-      border-radius: 50%;
-    }
-
-    h1.title {
-      font-family: var(--f-display);
-      font-weight: 700;
-      font-size: clamp(36px, 5.5vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 18px;
-    }
-    .lead {
-      color: var(--mute);
-      font-size: 14px;
-      font-family: var(--f-mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 36px;
-    }
-
-    .article-wrap h2 {
-      font-family: var(--f-display);
-      font-weight: 600;
-      font-size: clamp(20px, 2.6vw, 24px);
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      margin: 48px 0 14px;
-      padding-top: 24px;
-      border-top: 1px solid var(--hairline);
-    }
-    .article-wrap p,
-    .article-wrap li {
-      font-family: var(--f-body);
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--ink-soft);
-      font-weight: 300;
-    }
-    .article-wrap p { margin-bottom: 14px; }
-    .article-wrap ul { padding-left: 22px; margin-bottom: 14px; }
-    .article-wrap li { margin-bottom: 6px; }
-    .article-wrap a {
-      color: var(--accent-solid);
-      border-bottom: 1px solid rgba(255, 77, 21, 0.35);
-      transition: border-color 150ms;
-    }
-    .article-wrap a:hover { border-bottom-color: var(--accent-solid); }
-    .article-wrap strong { color: var(--ink); font-weight: 600; }
-
-    .btn-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 56px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 22px;
-      font-family: var(--f-mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink);
-      border: 1px solid var(--hairline);
-      background: var(--bg-soft);
-      transition: all 150ms;
-    }
-    .btn:hover {
-      border-color: var(--accent-solid);
-      color: var(--accent-solid);
-    }
-
-    /* ── Footer ── */
-    .footer {
-      border-top: 1px solid var(--hairline);
-      padding-top: 60px;
-      padding-bottom: 40px;
-      position: relative;
-    }
-    .foot-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 0.9fr 0.9fr 0.9fr;
-      gap: 0;
-      margin-bottom: 60px;
-    }
-    .foot-col { padding: 4px 32px 4px 0; }
-    .foot-col + .foot-col { border-left: 1px solid var(--hairline); padding-left: 32px; }
-    @media (max-width: 800px) {
-      .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .foot-col, .foot-col + .foot-col { padding: 0; border-left: 0; }
-    }
-    .foot-col h4 {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent-solid);
-      margin-bottom: 18px;
-      font-weight: 400;
-    }
-    .foot-col a, .foot-col p {
-      display: block;
-      font-size: 14px;
-      color: var(--ink-soft);
-      margin-bottom: 10px;
-      transition: color 150ms;
-    }
-    .foot-col a { min-height: 32px; }
-    .foot-col a:hover { color: var(--ink); }
-    .foot-brand .lg {
-      font-family: var(--f-display);
-      font-weight: 900;
-      font-size: 32px;
-      letter-spacing: -0.01em;
-      margin-bottom: 14px;
-    }
-    .foot-brand .lg .x {
-      background: var(--accent);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-style: italic;
-    }
-    .foot-brand .label {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mute);
-      margin-bottom: 14px;
-    }
-    .foot-brand p {
-      max-width: 32ch;
-      font-size: 13px;
-      color: var(--mute);
-      line-height: 1.5;
-    }
-    .foot-base {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 24px;
-      border-top: 1px solid var(--hairline);
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--mute);
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General Terms &amp; Conditions · Noxta Studio</title>
+<meta name="description" content="Noxta Studio's general terms and conditions (B2B) — Dutch law, version 1.0.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://noxta.studio/terms">
+<!-- Favicons / app icons -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@1,6..72,200..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/noxta.css">
+<style>.legal-hero .page-h1{font-size:clamp(2.2rem,5.2vw,3.8rem)}</style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="container nav-inner">
-    <a href="/" class="nav-logo">No<span class="x">x</span>ta</a>
-    <a href="/" class="nav-back">← Back to home</a>
+<canvas id="embers"></canvas>
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a class="wm" href="/">NO<span class="x">X</span>TA</a>
+  <div class="nav-right">
+    <span class="clock" id="clock">TILBURG — 00:00:00</span>
+    <a class="nav-link" href="/portfolio" data-hover>Portfolio</a>
+    <a class="nav-cta" href="/contact" data-hover>Start a project</a>
   </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="page-hero legal-hero">
+  <div class="page-ghost" aria-hidden="true" data-parallax="0.08">§</div>
+  <div class="sec-label mono" data-reveal>Legal · Terms</div>
+  <h1 class="page-h1" style="margin-top:1.4rem">General Terms &amp; <span class="grad-text">Conditions</span></h1>
+  <p class="page-lede" data-reveal>The ground rules for working together. Noxta Studio contracts with business clients (B2B), under Dutch law.</p>
 </header>
 
-<section class="article">
-  <div class="container">
-    <div class="article-wrap">
+<!-- ============ CONTENT ============ -->
+<section class="section" style="padding-top:0">
+  <div class="legal" data-reveal>
+    <p class="updated">Noxta Studio · Version 1.0 · 29 May 2026</p>
 
-      <span class="eyebrow">Legal · Terms</span>
+    <h2>Article 1 — Definitions</h2>
+    <ul>
+      <li><strong>Noxta Studio:</strong> Adrian Tajti, trading as Noxta Studio, established in Tilburg, the Netherlands. KVK: <!-- TODO -->, BTW: <!-- TODO -->.</li>
+      <li><strong>Client:</strong> the natural or legal person who enters into an agreement with Noxta Studio.</li>
+      <li><strong>Agreement:</strong> the contract between Noxta Studio and the Client to which these conditions apply.</li>
+      <li><strong>Services:</strong> all work performed by Noxta Studio, including but not limited to web design, web development, branding and consulting.</li>
+      <li><strong>Deliverables:</strong> the digital files, designs, code or other outputs delivered to the Client.</li>
+    </ul>
 
-      <h1 class="title">General Terms &amp; Conditions</h1>
-      <p class="lead">Noxta Studio · Version 1.0 · 29 May 2026</p>
+    <h2>Article 2 — Applicability</h2>
+    <p>
+      2.1 These conditions apply to every quotation, agreement and Service
+      between Noxta Studio and the Client.<br>
+      2.2 Deviating terms apply only if expressly agreed in writing.<br>
+      2.3 The Client&rsquo;s own general terms are explicitly rejected.<br>
+      2.4 These conditions are made available to the Client by reference in
+      every quotation issued by Noxta Studio and are published at
+      <a href="https://noxta.studio/terms">noxta.studio/terms</a>. The
+      Client confirms receipt by accepting the quotation in writing
+      (including by email).<br>
+      2.5 Noxta Studio contracts with business clients (B2B) exclusively.
+      Consumer (B2C) engagements are not offered. Where a Client is a
+      natural person acting outside their trade or profession, no
+      Agreement is formed unless Noxta Studio has expressly agreed
+      otherwise in writing.
+    </p>
 
-      <h2>Article 1 — Definitions</h2>
-      <ul>
-        <li><strong>Noxta Studio:</strong> Adrian Tajti, trading as Noxta Studio, established in Tilburg, the Netherlands. KVK: <!-- TODO -->, BTW: <!-- TODO -->.</li>
-        <li><strong>Client:</strong> the natural or legal person who enters into an agreement with Noxta Studio.</li>
-        <li><strong>Agreement:</strong> the contract between Noxta Studio and the Client to which these conditions apply.</li>
-        <li><strong>Services:</strong> all work performed by Noxta Studio, including but not limited to web design, web development, branding and consulting.</li>
-        <li><strong>Deliverables:</strong> the digital files, designs, code or other outputs delivered to the Client.</li>
-      </ul>
+    <h2>Article 3 — Quotations and agreement</h2>
+    <p>
+      3.1 All quotations are non-binding and valid for 30 days from the date
+      of issue, unless stated otherwise.<br>
+      3.2 The Agreement is formed when the Client confirms the quotation in
+      writing (including by email) or when Noxta Studio begins performance
+      at the Client&rsquo;s request.<br>
+      3.3 Obvious errors in a quotation do not bind Noxta Studio.
+    </p>
 
-      <h2>Article 2 — Applicability</h2>
-      <p>
-        2.1 These conditions apply to every quotation, agreement and Service
-        between Noxta Studio and the Client.<br />
-        2.2 Deviating terms apply only if expressly agreed in writing.<br />
-        2.3 The Client&rsquo;s own general terms are explicitly rejected.<br />
-        2.4 These conditions are made available to the Client by reference in
-        every quotation issued by Noxta Studio and are published at
-        <a href="https://noxta.studio/terms">noxta.studio/terms</a>. The
-        Client confirms receipt by accepting the quotation in writing
-        (including by email).<br />
-        2.5 Noxta Studio contracts with business clients (B2B) exclusively.
-        Consumer (B2C) engagements are not offered. Where a Client is a
-        natural person acting outside their trade or profession, no
-        Agreement is formed unless Noxta Studio has expressly agreed
-        otherwise in writing.
-      </p>
+    <h2>Article 4 — Performance of the Services</h2>
+    <p>
+      4.1 Noxta Studio will perform the Services with reasonable skill and
+      care on a best-efforts basis. Unless explicitly agreed in writing, all
+      deadlines are indicative.<br>
+      4.2 The Client provides all materials, content, access and feedback
+      needed to perform the Services in a timely manner.<br>
+      4.3 Delay caused by the Client extends Noxta Studio&rsquo;s deadlines
+      and may increase the agreed price.
+    </p>
 
-      <h2>Article 3 — Quotations and agreement</h2>
-      <p>
-        3.1 All quotations are non-binding and valid for 30 days from the date
-        of issue, unless stated otherwise.<br />
-        3.2 The Agreement is formed when the Client confirms the quotation in
-        writing (including by email) or when Noxta Studio begins performance
-        at the Client&rsquo;s request.<br />
-        3.3 Obvious errors in a quotation do not bind Noxta Studio.
-      </p>
+    <h2>Article 5 — Changes and additional work</h2>
+    <p>
+      5.1 Changes to the agreed scope are only carried out after written
+      agreement on the new scope and any additional fee.<br>
+      5.2 The quotation includes one round of revisions per design stage
+      unless otherwise specified. Further revisions are billed at the
+      applicable hourly rate.
+    </p>
 
-      <h2>Article 4 — Performance of the Services</h2>
-      <p>
-        4.1 Noxta Studio will perform the Services with reasonable skill and
-        care on a best-efforts basis. Unless explicitly agreed in writing, all
-        deadlines are indicative.<br />
-        4.2 The Client provides all materials, content, access and feedback
-        needed to perform the Services in a timely manner.<br />
-        4.3 Delay caused by the Client extends Noxta Studio&rsquo;s deadlines
-        and may increase the agreed price.
-      </p>
+    <h2>Article 6 — Prices and payment</h2>
+    <p>
+      6.1 All prices are in euros and exclusive of BTW (VAT) and third-party
+      costs (e.g. hosting, domain, fonts, stock images, plugins), unless
+      stated otherwise.<br>
+      6.2 Unless otherwise agreed, Noxta Studio invoices 50% of the project
+      fee at the start and 50% on delivery. Maintenance and hourly work are
+      invoiced monthly.<br>
+      6.2.1 Maintenance retainers are monthly. Either party may cancel with
+      30 days&rsquo; written notice (email is sufficient). Unused edit
+      hours do not roll forward beyond the retainer&rsquo;s stated limit
+      (e.g. 2 months for the Light plan) and are not refundable on
+      cancellation. Annual prepay arrangements, where offered, are
+      non-refundable once paid.<br>
+      6.3 Invoices are payable within 14 days of the invoice date.<br>
+      6.4 If the Client fails to pay on time, the Client is in default
+      without further notice and owes statutory commercial interest
+      (Article 6:119a Dutch Civil Code) and extrajudicial collection costs
+      in accordance with the Decree on Compensation for Extrajudicial
+      Collection Costs.<br>
+      6.5 Noxta Studio may suspend Services and withhold delivery while
+      invoices remain unpaid.
+    </p>
 
-      <h2>Article 5 — Changes and additional work</h2>
-      <p>
-        5.1 Changes to the agreed scope are only carried out after written
-        agreement on the new scope and any additional fee.<br />
-        5.2 The quotation includes one round of revisions per design stage
-        unless otherwise specified. Further revisions are billed at the
-        applicable hourly rate.
-      </p>
+    <h2>Article 7 — Delivery and acceptance</h2>
+    <p>
+      7.1 Deliverables are considered accepted if the Client does not report
+      substantiated defects within 7 days of delivery.<br>
+      7.2 Minor defects do not justify withholding acceptance or payment.
+    </p>
 
-      <h2>Article 6 — Prices and payment</h2>
-      <p>
-        6.1 All prices are in euros and exclusive of BTW (VAT) and third-party
-        costs (e.g. hosting, domain, fonts, stock images, plugins), unless
-        stated otherwise.<br />
-        6.2 Unless otherwise agreed, Noxta Studio invoices 50% of the project
-        fee at the start and 50% on delivery. Maintenance and hourly work are
-        invoiced monthly.<br />
-        6.2.1 Maintenance retainers are monthly. Either party may cancel with
-        30 days&rsquo; written notice (email is sufficient). Unused edit
-        hours do not roll forward beyond the retainer&rsquo;s stated limit
-        (e.g. 2 months for the Light plan) and are not refundable on
-        cancellation. Annual prepay arrangements, where offered, are
-        non-refundable once paid.<br />
-        6.3 Invoices are payable within 14 days of the invoice date.<br />
-        6.4 If the Client fails to pay on time, the Client is in default
-        without further notice and owes statutory commercial interest
-        (Article 6:119a Dutch Civil Code) and extrajudicial collection costs
-        in accordance with the Decree on Compensation for Extrajudicial
-        Collection Costs.<br />
-        6.5 Noxta Studio may suspend Services and withhold delivery while
-        invoices remain unpaid.
-      </p>
+    <h2>Article 8 — Intellectual property</h2>
+    <p>
+      8.1 All intellectual property rights in Deliverables remain with Noxta
+      Studio until the Client has paid all amounts due in full.<br>
+      8.2 Upon full payment, the Client receives a non-exclusive, worldwide,
+      perpetual licence to use the Deliverables for the purpose agreed in
+      the Agreement.<br>
+      8.3 Source files, design files and working files remain the property
+      of Noxta Studio unless their transfer is expressly agreed.<br>
+      8.4 Noxta Studio retains the right to use the Deliverables for its own
+      portfolio, marketing and reference purposes unless the Client objects
+      in writing for legitimate reasons.<br>
+      8.5 Third-party assets (fonts, plugins, stock photography) are
+      licensed to the Client subject to those third parties&rsquo; terms.<br>
+      8.6 Domain names registered for the Client&rsquo;s project are
+      registered in the Client&rsquo;s name from the outset, or transferred
+      to the Client at project end without restriction or fee. Noxta Studio
+      never holds Client domains hostage.
+    </p>
 
-      <h2>Article 7 — Delivery and acceptance</h2>
-      <p>
-        7.1 Deliverables are considered accepted if the Client does not report
-        substantiated defects within 7 days of delivery.<br />
-        7.2 Minor defects do not justify withholding acceptance or payment.
-      </p>
+    <h2>Article 9 — Confidentiality</h2>
+    <p>
+      Both parties treat information marked or reasonably understood as
+      confidential with appropriate care and do not disclose it to third
+      parties without consent, except where required by law.
+    </p>
 
-      <h2>Article 8 — Intellectual property</h2>
-      <p>
-        8.1 All intellectual property rights in Deliverables remain with Noxta
-        Studio until the Client has paid all amounts due in full.<br />
-        8.2 Upon full payment, the Client receives a non-exclusive, worldwide,
-        perpetual licence to use the Deliverables for the purpose agreed in
-        the Agreement.<br />
-        8.3 Source files, design files and working files remain the property
-        of Noxta Studio unless their transfer is expressly agreed.<br />
-        8.4 Noxta Studio retains the right to use the Deliverables for its own
-        portfolio, marketing and reference purposes unless the Client objects
-        in writing for legitimate reasons.<br />
-        8.5 Third-party assets (fonts, plugins, stock photography) are
-        licensed to the Client subject to those third parties&rsquo; terms.<br />
-        8.6 Domain names registered for the Client&rsquo;s project are
-        registered in the Client&rsquo;s name from the outset, or transferred
-        to the Client at project end without restriction or fee. Noxta Studio
-        never holds Client domains hostage.
-      </p>
+    <h2>Article 10 — Liability</h2>
+    <p>
+      10.1 Noxta Studio&rsquo;s total liability for any direct damage is
+      limited to the higher of (a) &euro;5,000, or (b) the total amount
+      paid by the Client under the relevant Agreement in the twelve months
+      preceding the event causing the damage.<br>
+      10.2 Liability for indirect damage, including but not limited to lost
+      profits, loss of data, missed savings or business interruption, is
+      excluded.<br>
+      10.3 The limitations in this article do not apply in cases of intent
+      or gross negligence by Noxta Studio.
+    </p>
 
-      <h2>Article 9 — Confidentiality</h2>
-      <p>
-        Both parties treat information marked or reasonably understood as
-        confidential with appropriate care and do not disclose it to third
-        parties without consent, except where required by law.
-      </p>
+    <h2>Article 11 — Force majeure</h2>
+    <p>
+      Neither party is liable for failure to perform caused by force
+      majeure, including illness, internet outages, third-party service
+      failures, government measures or other circumstances beyond reasonable
+      control.
+    </p>
 
-      <h2>Article 10 — Liability</h2>
-      <p>
-        10.1 Noxta Studio&rsquo;s total liability for any direct damage is
-        limited to the higher of (a) &euro;5,000, or (b) the total amount
-        paid by the Client under the relevant Agreement in the twelve months
-        preceding the event causing the damage.<br />
-        10.2 Liability for indirect damage, including but not limited to lost
-        profits, loss of data, missed savings or business interruption, is
-        excluded.<br />
-        10.3 The limitations in this article do not apply in cases of intent
-        or gross negligence by Noxta Studio.
-      </p>
+    <h2>Article 12 — Termination</h2>
+    <p>
+      12.1 Either party may terminate the Agreement in writing if the other
+      party materially breaches its obligations and fails to cure within
+      14 days of written notice.<br>
+      12.2 On termination, the Client pays for all Services performed up to
+      the termination date plus any non-cancellable third-party costs
+      already committed.
+    </p>
 
-      <h2>Article 11 — Force majeure</h2>
-      <p>
-        Neither party is liable for failure to perform caused by force
-        majeure, including illness, internet outages, third-party service
-        failures, government measures or other circumstances beyond reasonable
-        control.
-      </p>
+    <h2>Article 13 — Complaints</h2>
+    <p>
+      Complaints must be submitted in writing to
+      <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a> within
+      14 days of discovery, describing the issue as clearly as possible.
+    </p>
 
-      <h2>Article 12 — Termination</h2>
-      <p>
-        12.1 Either party may terminate the Agreement in writing if the other
-        party materially breaches its obligations and fails to cure within
-        14 days of written notice.<br />
-        12.2 On termination, the Client pays for all Services performed up to
-        the termination date plus any non-cancellable third-party costs
-        already committed.
-      </p>
+    <h2>Article 14 — Applicable law and disputes</h2>
+    <p>
+      14.1 Dutch law applies to all Agreements and these conditions.<br>
+      14.2 Disputes will be submitted exclusively to the competent court in
+      the district of Zeeland-West-Brabant (location Breda), unless
+      mandatory law designates another court.
+    </p>
 
-      <h2>Article 13 — Complaints</h2>
-      <p>
-        Complaints must be submitted in writing to
-        <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a> within
-        14 days of discovery, describing the issue as clearly as possible.
-      </p>
+    <h2>Article 15 — Data Processing</h2>
+    <p>
+      15.1 Where the Services involve Noxta Studio processing personal data
+      on behalf of the Client (for example: content migration, CMS
+      administration, customer database setup, mailing-list imports), the
+      Client is the Data Controller and Noxta Studio is the Data Processor
+      as defined in the GDPR (Regulation (EU) 2016/679).<br>
+      15.2 In such cases, the parties enter into a separate Data Processing
+      Agreement (DPA) compliant with Art. 28 GDPR prior to processing.
+      Noxta Studio&rsquo;s standard DPA is available on request at
+      <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>.<br>
+      15.3 Sub-processors used by Noxta Studio (hosting providers, analytics
+      services, email providers, form processors) are documented in the
+      Noxta Studio Privacy Policy at
+      <a href="https://noxta.studio/privacy">noxta.studio/privacy</a> and
+      may be updated from time to time with reasonable notice to the Client.
+    </p>
 
-      <h2>Article 14 — Applicable law and disputes</h2>
-      <p>
-        14.1 Dutch law applies to all Agreements and these conditions.<br />
-        14.2 Disputes will be submitted exclusively to the competent court in
-        the district of Zeeland-West-Brabant (location Breda), unless
-        mandatory law designates another court.
-      </p>
+    <h2>Article 16 — Amendments</h2>
+    <p>
+      Noxta Studio may amend these conditions. The version in force at the
+      time the Agreement is formed governs that Agreement.
+    </p>
 
-      <h2>Article 15 — Data Processing</h2>
-      <p>
-        15.1 Where the Services involve Noxta Studio processing personal data
-        on behalf of the Client (for example: content migration, CMS
-        administration, customer database setup, mailing-list imports), the
-        Client is the Data Controller and Noxta Studio is the Data Processor
-        as defined in the GDPR (Regulation (EU) 2016/679).<br />
-        15.2 In such cases, the parties enter into a separate Data Processing
-        Agreement (DPA) compliant with Art. 28 GDPR prior to processing.
-        Noxta Studio&rsquo;s standard DPA is available on request at
-        <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>.<br />
-        15.3 Sub-processors used by Noxta Studio (hosting providers, analytics
-        services, email providers, form processors) are documented in the
-        Noxta Studio Privacy Policy at
-        <a href="https://noxta.studio/privacy">noxta.studio/privacy</a> and
-        may be updated from time to time with reasonable notice to the Client.
-      </p>
-
-      <h2>Article 16 — Amendments</h2>
-      <p>
-        Noxta Studio may amend these conditions. The version in force at the
-        time the Agreement is formed governs that Agreement.
-      </p>
-
-      <div class="btn-row">
-        <a href="/" class="btn">← Home</a>
-        <a href="/privacy" class="btn">Privacy Policy →</a>
-      </div>
-
+    <div class="btn-row">
+      <a class="btn btn-ghost" href="/" data-hover data-magnetic><span class="fill"></span><span>← Home</span></a>
+      <a class="btn btn-ghost" href="/privacy" data-hover data-magnetic><span class="fill"></span><span>Privacy Policy →</span></a>
     </div>
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="container">
-    <div class="foot-grid">
-      <div class="foot-col foot-brand">
-        <div class="lg">No<span class="x">x</span>ta</div>
-        <div class="label">Studio · Tilburg, NL · Est. 2026</div>
-        <p>A one-person studio building considered websites for small companies that want a partner — not a vendor.</p>
-      </div>
-      <div class="foot-col">
-        <h4>// Site</h4>
-        <a href="/">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-      </div>
-      <div class="foot-col">
-        <h4>// Contact</h4>
-        <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
-        <a href="/contact">Book a call</a>
-        <p>Tilburg, NL · UTC+1</p>
-      </div>
-      <div class="foot-col">
-        <h4>// Elsewhere</h4>
-        <a href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener">WhatsApp</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-      </div>
+  <div class="footer-grid">
+    <div>
+      <div class="wm">NO<span class="x">X</span>TA STUDIO</div>
+      <p>Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.</p>
     </div>
-    <div class="foot-base">
-      <span>© 2026 Adrian Tajti · Noxta Studio</span>
-      <span>Hand-coded · Plain HTML · No tracking</span>
+    <div class="fl">
+      <span class="mono">// Pages</span>
+      <a href="/" data-hover>Home</a>
+      <a href="/portfolio" data-hover>Portfolio</a>
+      <a href="/contact" data-hover>Contact</a>
     </div>
+    <div class="fl">
+      <span class="mono">// Studio</span>
+      <a href="mailto:adrian@noxta.studio" data-hover>adrian@noxta.studio</a>
+      <a href="https://wa.me/31617657327" data-hover>WhatsApp</a>
+      <a href="/privacy" data-hover>Privacy</a>
+      <a href="/terms" data-hover>Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="mono">Studio · Tilburg, NL · Est. 2026</span>
+    <span class="mono">© 2026 Noxta Studio — Hand-coded, no template</span>
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/noxta.js"></script>
 </body>
 </html>

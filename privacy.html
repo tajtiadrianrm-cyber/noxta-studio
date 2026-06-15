@@ -1,412 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy · Noxta Studio</title>
-  <meta name="description" content="How Noxta Studio handles your personal data." />
-  <meta name="robots" content="noindex,follow" />
-  <link rel="canonical" href="https://noxta.studio/privacy" />
-
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
-  <meta name="theme-color" content="#ff4d15" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
-
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --bg-soft: #121414;
-      --bg-tint: #1a1c1c;
-      --ink: #f5f6f7;
-      --ink-soft: #cfcccb;
-      --mute: #8a8786;
-      --hairline: rgba(255, 255, 255, 0.08);
-      --accent: linear-gradient(100deg, #ff7a3d 0%, #ff4d15 50%, #d63a0d 100%);
-      --accent-solid: #ff4d15;
-      --accent-glow: rgba(255, 77, 21, 0.5);
-      --f-display: "Orbitron", system-ui, sans-serif;
-      --f-body: "Manrope", system-ui, -apple-system, sans-serif;
-      --f-mono: "JetBrains Mono", ui-monospace, monospace;
-      --pad-x: clamp(20px, 5vw, 64px);
-      --max-w: 1440px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--f-body);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      overflow-x: clip;
-    }
-
-    body { position: relative; isolation: isolate; min-height: 100dvh; }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      background:
-        radial-gradient(ellipse 60% 50% at 12% 18%, rgba(255, 122, 61, 0.12), transparent 60%),
-        radial-gradient(ellipse 50% 60% at 88% 82%, rgba(214, 58, 13, 0.10), transparent 60%);
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      opacity: 0.4;
-      mix-blend-mode: screen;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--pad-x);
-    }
-
-    /* ── Nav ── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(10, 10, 10, 0.78);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--hairline);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 18px;
-      padding-bottom: 18px;
-    }
-    .nav-logo {
-      font-family: var(--f-display);
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-    }
-    .nav-logo .x {
-      background: var(--accent);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-style: italic;
-    }
-    .nav-back {
-      font-family: var(--f-mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      transition: color 150ms;
-    }
-    .nav-back:hover { color: var(--accent-solid); }
-
-    /* ── Article ── */
-    .article {
-      padding: clamp(48px, 8vw, 120px) 0;
-    }
-    .article-wrap { max-width: 760px; margin: 0 auto; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent-solid);
-      margin-bottom: 28px;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background: var(--accent-solid);
-      box-shadow: 0 0 12px var(--accent-glow);
-      border-radius: 50%;
-    }
-
-    h1.title {
-      font-family: var(--f-display);
-      font-weight: 700;
-      font-size: clamp(40px, 6vw, 64px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 18px;
-    }
-    .lead {
-      color: var(--mute);
-      font-size: 14px;
-      font-family: var(--f-mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    .intro {
-      color: var(--ink-soft);
-      font-size: 17px;
-      line-height: 1.7;
-      font-weight: 300;
-      margin-bottom: 8px;
-    }
-
-    .article-wrap h2 {
-      font-family: var(--f-display);
-      font-weight: 600;
-      font-size: clamp(22px, 3vw, 28px);
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      margin: 56px 0 16px;
-      padding-top: 24px;
-      border-top: 1px solid var(--hairline);
-    }
-    .article-wrap h3 {
-      font-family: var(--f-body);
-      font-weight: 600;
-      font-size: 16px;
-      color: var(--ink);
-      margin: 28px 0 10px;
-      letter-spacing: 0.01em;
-    }
-    .article-wrap p,
-    .article-wrap li {
-      font-family: var(--f-body);
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--ink-soft);
-      font-weight: 300;
-    }
-    .article-wrap p { margin-bottom: 14px; }
-    .article-wrap ul { padding-left: 22px; margin-bottom: 14px; }
-    .article-wrap li { margin-bottom: 6px; }
-    .article-wrap a {
-      color: var(--accent-solid);
-      border-bottom: 1px solid rgba(255, 77, 21, 0.35);
-      transition: border-color 150ms;
-    }
-    .article-wrap a:hover { border-bottom-color: var(--accent-solid); }
-    .article-wrap strong { color: var(--ink); font-weight: 600; }
-
-    .legal-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 18px 0 28px;
-      font-size: 14px;
-      background: var(--bg-soft);
-      border: 1px solid var(--hairline);
-    }
-    .legal-table th, .legal-table td {
-      text-align: left;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--hairline);
-      color: var(--ink-soft);
-      font-weight: 300;
-      vertical-align: top;
-    }
-    .legal-table tbody tr:last-child td { border-bottom: 0; }
-    .legal-table th {
-      color: var(--accent-solid);
-      font-weight: 500;
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      background: var(--bg-tint);
-    }
-
-    .btn-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 56px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 22px;
-      font-family: var(--f-mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink);
-      border: 1px solid var(--hairline);
-      background: var(--bg-soft);
-      transition: all 150ms;
-    }
-    .btn:hover {
-      border-color: var(--accent-solid);
-      color: var(--accent-solid);
-    }
-
-    /* ── Footer (matches main pages) ── */
-    .footer {
-      border-top: 1px solid var(--hairline);
-      padding-top: 60px;
-      padding-bottom: 40px;
-      position: relative;
-    }
-    .foot-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 0.9fr 0.9fr 0.9fr;
-      gap: 0;
-      margin-bottom: 60px;
-    }
-    .foot-col { padding: 4px 32px 4px 0; }
-    .foot-col + .foot-col { border-left: 1px solid var(--hairline); padding-left: 32px; }
-    @media (max-width: 800px) {
-      .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .foot-col, .foot-col + .foot-col { padding: 0; border-left: 0; }
-    }
-    .foot-col h4 {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent-solid);
-      margin-bottom: 18px;
-      font-weight: 400;
-    }
-    .foot-col a, .foot-col p {
-      display: block;
-      font-size: 14px;
-      color: var(--ink-soft);
-      margin-bottom: 10px;
-      transition: color 150ms;
-    }
-    .foot-col a { min-height: 32px; }
-    .foot-col a:hover { color: var(--ink); }
-    .foot-brand .lg {
-      font-family: var(--f-display);
-      font-weight: 900;
-      font-size: 32px;
-      letter-spacing: -0.01em;
-      margin-bottom: 14px;
-    }
-    .foot-brand .lg .x {
-      background: var(--accent);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-style: italic;
-    }
-    .foot-brand .label {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mute);
-      margin-bottom: 14px;
-    }
-    .foot-brand p {
-      max-width: 32ch;
-      font-size: 13px;
-      color: var(--mute);
-      line-height: 1.5;
-    }
-    .foot-base {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 24px;
-      border-top: 1px solid var(--hairline);
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--mute);
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy · Noxta Studio</title>
+<meta name="description" content="How Noxta Studio handles your personal data — GDPR / UAVG compliant.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://noxta.studio/privacy">
+<!-- Favicons / app icons -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@1,6..72,200..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/noxta.css">
+<style>.legal-hero .page-h1{font-size:clamp(2.6rem,6vw,4.4rem)}</style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="container nav-inner">
-    <a href="/" class="nav-logo">No<span class="x">x</span>ta</a>
-    <a href="/" class="nav-back">← Back to home</a>
+<canvas id="embers"></canvas>
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a class="wm" href="/">NO<span class="x">X</span>TA</a>
+  <div class="nav-right">
+    <span class="clock" id="clock">TILBURG — 00:00:00</span>
+    <a class="nav-link" href="/portfolio" data-hover>Portfolio</a>
+    <a class="nav-cta" href="/contact" data-hover>Start a project</a>
   </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="page-hero legal-hero">
+  <div class="page-ghost" aria-hidden="true" data-parallax="0.08">§</div>
+  <div class="sec-label mono" data-reveal>Legal · Privacy</div>
+  <h1 class="page-h1" style="margin-top:1.4rem">Privacy <span class="grad-text">Policy</span></h1>
+  <p class="page-lede" data-reveal>How Noxta Studio collects, uses and protects your personal data when you visit the site or get in touch.</p>
 </header>
 
-<section class="article">
-  <div class="container">
-    <div class="article-wrap">
+<!-- ============ CONTENT ============ -->
+<section class="section" style="padding-top:0">
+  <div class="legal" data-reveal>
+    <p class="updated">Last updated: 29 May 2026</p>
 
-      <span class="eyebrow">Legal · Privacy</span>
+    <p class="intro">
+      This privacy policy explains how Noxta Studio (&ldquo;we&rdquo;, &ldquo;us&rdquo;)
+      collects, uses and protects your personal data when you visit
+      <a href="https://noxta.studio">noxta.studio</a> or contact us through the
+      website. We comply with the EU General Data Protection Regulation (GDPR)
+      and the Dutch Implementation Act (UAVG).
+    </p>
 
-      <h1 class="title">Privacy Policy</h1>
-      <p class="lead">Last updated: 29 May 2026</p>
-      <p class="intro">
-        This privacy policy explains how Noxta Studio (&ldquo;we&rdquo;, &ldquo;us&rdquo;)
-        collects, uses and protects your personal data when you visit
-        <a href="https://noxta.studio">noxta.studio</a> or contact us through the
-        website. We comply with the EU General Data Protection Regulation (GDPR)
-        and the Dutch Implementation Act (UAVG).
-      </p>
+    <h2>1. Who we are</h2>
+    <p>
+      Noxta Studio is a freelance web design business based in Tilburg, the
+      Netherlands, operated by Adrian Tajti.
+    </p>
+    <ul>
+      <li>Email: <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a></li>
+      <li>Website: <a href="https://noxta.studio">noxta.studio</a></li>
+      <li>KVK number: <!-- TODO: add after KVK registration --></li>
+      <li>BTW (VAT) number: <!-- TODO: add after KVK registration --></li>
+      <li>Address: <!-- TODO: add business address --></li>
+    </ul>
 
-      <h2>1. Who we are</h2>
-      <p>
-        Noxta Studio is a freelance web design business based in Tilburg, the
-        Netherlands, operated by Adrian Tajti.
-      </p>
-      <ul>
-        <li>Email: <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a></li>
-        <li>Website: <a href="https://noxta.studio">noxta.studio</a></li>
-        <li>KVK number: <!-- TODO: add after KVK registration --></li>
-        <li>BTW (VAT) number: <!-- TODO: add after KVK registration --></li>
-        <li>Address: <!-- TODO: add business address --></li>
-      </ul>
+    <h2>2. What data we collect</h2>
 
-      <h2>2. What data we collect</h2>
+    <h3>2.1 Contact form</h3>
+    <p>When you submit our contact form, we collect:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>The message you send us</li>
+    </ul>
 
-      <h3>2.1 Contact form</h3>
-      <p>When you submit our contact form, we collect:</p>
-      <ul>
-        <li>Your name</li>
-        <li>Your email address</li>
-        <li>The message you send us</li>
-      </ul>
+    <h3>2.2 Analytics</h3>
+    <p>
+      We use <strong>Cloudflare Web Analytics</strong> to understand how
+      visitors use our site. Cloudflare Web Analytics is cookieless and does
+      not track individuals across sites. It collects aggregated, anonymous
+      data such as pages visited, referrer, country and device type. No
+      personal data is processed for this purpose.
+    </p>
 
-      <h3>2.2 Analytics</h3>
-      <p>
-        We use <strong>Cloudflare Web Analytics</strong> to understand how
-        visitors use our site. Cloudflare Web Analytics is cookieless and does
-        not track individuals across sites. It collects aggregated, anonymous
-        data such as pages visited, referrer, country and device type. No
-        personal data is processed for this purpose.
-      </p>
+    <h3>2.3 Cookies</h3>
+    <p>
+      We do not place tracking cookies. Our site may use strictly necessary
+      cookies only if required for basic functionality.
+    </p>
 
-      <h3>2.3 Cookies</h3>
-      <p>
-        We do not place tracking cookies. Our site may use strictly necessary
-        cookies only if required for basic functionality.
-      </p>
-
-      <h2>3. Why we collect this data</h2>
+    <h2>3. Why we collect this data</h2>
+    <div class="legal-scroll">
       <table class="legal-table">
         <thead>
           <tr><th>Purpose</th><th>Data</th><th>Legal basis (GDPR Art. 6)</th></tr>
@@ -424,150 +115,144 @@
           </tr>
         </tbody>
       </table>
+    </div>
 
-      <h2>4. How long we keep your data</h2>
-      <ul>
-        <li>
-          <strong>Contact form submissions:</strong> kept for up to 12 months
-          after the last contact, then deleted unless we have entered a business
-          relationship (in which case fiscal retention rules apply &mdash;
-          7 years for tax-relevant records).
-        </li>
-        <li>
-          <strong>Analytics:</strong> anonymous and aggregated; retention is
-          handled by Cloudflare under their privacy policy.
-        </li>
-      </ul>
+    <h2>4. How long we keep your data</h2>
+    <ul>
+      <li>
+        <strong>Contact form submissions:</strong> kept for up to 12 months
+        after the last contact, then deleted unless we have entered a business
+        relationship (in which case fiscal retention rules apply &mdash;
+        7 years for tax-relevant records).
+      </li>
+      <li>
+        <strong>Analytics:</strong> anonymous and aggregated; retention is
+        handled by Cloudflare under their privacy policy.
+      </li>
+    </ul>
 
-      <h2>5. Who we share your data with</h2>
-      <p>
-        We do not sell your data. We share it only with service providers
-        strictly necessary to operate the site:
-      </p>
-      <ul>
-        <li>
-          <strong>Cloudflare, Inc. (United States)</strong> &mdash; analytics
-          and CDN/security. Cloudflare may process data outside the EU under
-          the EU&ndash;US Data Privacy Framework.
-          <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer noopener">Privacy policy</a>.
-        </li>
-        <li>
-          <strong>Web3Forms (United States)</strong> &mdash; processes contact
-          form submissions before they reach our inbox. Standard Contractual
-          Clauses apply for EU&ndash;US transfers; submissions are deleted
-          from Web3Forms&rsquo; servers after delivery.
-          <a href="https://web3forms.com/privacy" target="_blank" rel="noreferrer noopener">Privacy policy</a>.
-        </li>
-        <li>
-          <strong>GitHub, Inc. (United States)</strong> &mdash; website
-          hosting via GitHub Pages. Processes visitor IP addresses and
-          request metadata to deliver page content. EU&ndash;US transfers
-          are covered by Standard Contractual Clauses and the EU&ndash;US
-          Data Privacy Framework.
-          <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer noopener">Privacy statement</a>.
-        </li>
-        <li>
-          <strong>Google Ireland Limited &amp; Google LLC (Ireland / United States)</strong>
-          &mdash; Google Workspace, used for the adrian@noxta.studio mailbox
-          and any subsequent email correspondence. EU&ndash;US transfers are
-          covered by Standard Contractual Clauses and the EU&ndash;US Data
-          Privacy Framework.
-          <a href="https://workspace.google.com/terms/dpa_terms.html" target="_blank" rel="noreferrer noopener">DPA</a>
-          &middot;
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer noopener">Privacy policy</a>.
-        </li>
-      </ul>
-      <p>
-        If you wish to object to any international data transfer involving
-        your personal data, contact us at
-        <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>.
-      </p>
+    <h2>5. Who we share your data with</h2>
+    <p>
+      We do not sell your data. We share it only with service providers
+      strictly necessary to operate the site:
+    </p>
+    <ul>
+      <li>
+        <strong>Cloudflare, Inc. (United States)</strong> &mdash; analytics
+        and CDN/security. Cloudflare may process data outside the EU under
+        the EU&ndash;US Data Privacy Framework.
+        <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer noopener">Privacy policy</a>.
+      </li>
+      <li>
+        <strong>Web3Forms (United States)</strong> &mdash; processes contact
+        form submissions before they reach our inbox. Standard Contractual
+        Clauses apply for EU&ndash;US transfers; submissions are deleted
+        from Web3Forms&rsquo; servers after delivery.
+        <a href="https://web3forms.com/privacy" target="_blank" rel="noreferrer noopener">Privacy policy</a>.
+      </li>
+      <li>
+        <strong>GitHub, Inc. (United States)</strong> &mdash; website
+        hosting via GitHub Pages. Processes visitor IP addresses and
+        request metadata to deliver page content. EU&ndash;US transfers
+        are covered by Standard Contractual Clauses and the EU&ndash;US
+        Data Privacy Framework.
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer noopener">Privacy statement</a>.
+      </li>
+      <li>
+        <strong>Google Ireland Limited &amp; Google LLC (Ireland / United States)</strong>
+        &mdash; Google Workspace, used for the adrian@noxta.studio mailbox
+        and any subsequent email correspondence. EU&ndash;US transfers are
+        covered by Standard Contractual Clauses and the EU&ndash;US Data
+        Privacy Framework.
+        <a href="https://workspace.google.com/terms/dpa_terms.html" target="_blank" rel="noreferrer noopener">DPA</a>
+        &middot;
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer noopener">Privacy policy</a>.
+      </li>
+    </ul>
+    <p>
+      If you wish to object to any international data transfer involving
+      your personal data, contact us at
+      <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>.
+    </p>
 
-      <h2>6. Your rights</h2>
-      <p>Under the GDPR you have the right to:</p>
-      <ul>
-        <li>Access the personal data we hold about you</li>
-        <li>Have inaccurate data corrected</li>
-        <li>Have your data deleted (&ldquo;right to be forgotten&rdquo;)</li>
-        <li>Restrict or object to processing</li>
-        <li>Data portability</li>
-        <li>Withdraw consent at any time, where processing is based on consent</li>
-      </ul>
-      <p>
-        To exercise any of these rights, email
-        <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>. We will
-        respond within one month.
-      </p>
+    <h2>6. Your rights</h2>
+    <p>Under the GDPR you have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Have inaccurate data corrected</li>
+      <li>Have your data deleted (&ldquo;right to be forgotten&rdquo;)</li>
+      <li>Restrict or object to processing</li>
+      <li>Data portability</li>
+      <li>Withdraw consent at any time, where processing is based on consent</li>
+    </ul>
+    <p>
+      To exercise any of these rights, email
+      <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>. We will
+      respond within one month.
+    </p>
 
-      <h2>7. Lodging a complaint</h2>
-      <p>
-        If you believe we have not handled your data correctly, you have the
-        right to lodge a complaint with the Dutch Data Protection Authority
-        (Autoriteit Persoonsgegevens):
-        <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noreferrer noopener">autoriteitpersoonsgegevens.nl</a>.
-      </p>
+    <h2>7. Lodging a complaint</h2>
+    <p>
+      If you believe we have not handled your data correctly, you have the
+      right to lodge a complaint with the Dutch Data Protection Authority
+      (Autoriteit Persoonsgegevens):
+      <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noreferrer noopener">autoriteitpersoonsgegevens.nl</a>.
+    </p>
 
-      <h2>8. Security and breach notification</h2>
-      <p>
-        We take reasonable technical and organisational measures to protect
-        your data, including HTTPS encryption for all site traffic and limited
-        access to received messages.
-      </p>
-      <p>
-        In the event of a personal data breach affecting your data, we will
-        notify you and the Autoriteit Persoonsgegevens within 72 hours of
-        becoming aware, as required by Art. 33&ndash;34 GDPR.
-      </p>
+    <h2>8. Security and breach notification</h2>
+    <p>
+      We take reasonable technical and organisational measures to protect
+      your data, including HTTPS encryption for all site traffic and limited
+      access to received messages.
+    </p>
+    <p>
+      In the event of a personal data breach affecting your data, we will
+      notify you and the Autoriteit Persoonsgegevens within 72 hours of
+      becoming aware, as required by Art. 33&ndash;34 GDPR.
+    </p>
 
-      <h2>9. Changes to this policy</h2>
-      <p>
-        We may update this policy from time to time. The date at the top of
-        this page reflects the latest revision.
-      </p>
+    <h2>9. Changes to this policy</h2>
+    <p>
+      We may update this policy from time to time. The date at the top of
+      this page reflects the latest revision.
+    </p>
 
-      <div class="btn-row">
-        <a href="/" class="btn">← Home</a>
-        <a href="/terms" class="btn">Terms &amp; Conditions →</a>
-      </div>
-
+    <div class="btn-row">
+      <a class="btn btn-ghost" href="/" data-hover data-magnetic><span class="fill"></span><span>← Home</span></a>
+      <a class="btn btn-ghost" href="/terms" data-hover data-magnetic><span class="fill"></span><span>Terms &amp; Conditions →</span></a>
     </div>
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="container">
-    <div class="foot-grid">
-      <div class="foot-col foot-brand">
-        <div class="lg">No<span class="x">x</span>ta</div>
-        <div class="label">Studio · Tilburg, NL · Est. 2026</div>
-        <p>A one-person studio building considered websites for small companies that want a partner — not a vendor.</p>
-      </div>
-      <div class="foot-col">
-        <h4>// Site</h4>
-        <a href="/">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-      </div>
-      <div class="foot-col">
-        <h4>// Contact</h4>
-        <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
-        <a href="/contact">Book a call</a>
-        <p>Tilburg, NL · UTC+1</p>
-      </div>
-      <div class="foot-col">
-        <h4>// Elsewhere</h4>
-        <a href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener">WhatsApp</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-      </div>
+  <div class="footer-grid">
+    <div>
+      <div class="wm">NO<span class="x">X</span>TA STUDIO</div>
+      <p>Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.</p>
     </div>
-    <div class="foot-base">
-      <span>© 2026 Adrian Tajti · Noxta Studio</span>
-      <span>Hand-coded · Plain HTML · No tracking</span>
+    <div class="fl">
+      <span class="mono">// Pages</span>
+      <a href="/" data-hover>Home</a>
+      <a href="/portfolio" data-hover>Portfolio</a>
+      <a href="/contact" data-hover>Contact</a>
     </div>
+    <div class="fl">
+      <span class="mono">// Studio</span>
+      <a href="mailto:adrian@noxta.studio" data-hover>adrian@noxta.studio</a>
+      <a href="https://wa.me/31617657327" data-hover>WhatsApp</a>
+      <a href="/privacy" data-hover>Privacy</a>
+      <a href="/terms" data-hover>Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="mono">Studio · Tilburg, NL · Est. 2026</span>
+    <span class="mono">© 2026 Noxta Studio — Hand-coded, no template</span>
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/noxta.js"></script>
 </body>
 </html>
