@@ -13,60 +13,173 @@
 <link rel="shortcut icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
+
+<!-- v7 system: Clash Display · General Sans · Space Mono · Instrument Serif -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@1,6..72,200..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/noxta.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-.nf{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:7rem 7vw 6rem;overflow:hidden}
-.nf-ghost{position:absolute;right:-3vw;top:50%;transform:translateY(-50%);z-index:0;font-family:var(--font-d);font-weight:700;font-size:clamp(13rem,42vw,42rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,122,61,.16);pointer-events:none;user-select:none}
+/* ===== NOXTA v7 — 404 (paper). Shares the index/contact system. ===== */
+:root{
+  --orange:#ff5a1f; --orange-deep:#e8430a; --ink:#0e0a06; --ink-soft:#181109; --cream:#faf3e8; --white:#fff4e6;
+  --bg:var(--cream); --fg:var(--ink); --accent:var(--orange);
+  --line:rgba(14,10,6,.16); --line-2:rgba(14,10,6,.10);
+  --maxw:1680px; --pad:clamp(20px,4.5vw,72px);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --font-display:"Clash Display","Arial Narrow",sans-serif;
+  --font-body:"General Sans",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  --font-serif:"Instrument Serif",Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+
+/* ===== NAV + FULLSCREEN MENU + PAGE TRANSITION ===== in noxta.css (shared) = */
+
+/* ===== 404 ===== */
+.nf{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  padding:clamp(130px,18vh,200px) var(--pad) clamp(60px,9vh,110px);overflow:hidden}
+.nf-ghost{position:absolute;right:-3vw;top:50%;transform:translateY(-50%);z-index:0;
+  font-family:var(--font-display);font-weight:700;font-size:clamp(13rem,42vw,42rem);line-height:.8;
+  color:transparent;-webkit-text-stroke:1.5px rgba(255,90,31,.18);pointer-events:none;user-select:none}
 .nf>*{position:relative;z-index:2}
-.nf .code{display:flex;align-items:center;gap:.7rem;font-family:var(--font-m);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember-2);margin-bottom:2.4rem}
-.nf .code .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--glow);animation:pulse 2.2s infinite}
-.nf h1{font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,8vw,6rem);line-height:.95;letter-spacing:-.01em}
-.nf p{max-width:46ch;color:var(--ink-2);font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.7;margin-top:2rem}
-.nf .actions{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:4vh}
-@media (max-width:900px){.nf{padding:6.5rem 6vw 7rem}.nf-ghost{opacity:.6}}
+.nf h1{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,9vw,7rem);line-height:.9;letter-spacing:-.02em}
+.nf h1 .accent{color:var(--orange)}
+.nf p{max-width:48ch;opacity:.78;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.7;margin-top:2rem}
+.nf .actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:clamp(2.4rem,5vh,3.4rem)}
+.btn-pill{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--orange);
+  font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1rem;padding:15px 30px;border-radius:100px;transition:transform .3s}
+.btn-pill:hover{transform:translateY(-3px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);color:var(--ink);
+  font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1rem;padding:14px 28px;border-radius:100px;
+  transition:border-color .2s,color .2s,transform .3s}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+@media(max-width:900px){.nf-ghost{opacity:.55}}
+
+/* ===== ASK RULE + FOOTER (v7, paper) ===== */
+.ask__rule{height:2px;background:rgba(14,10,6,.22);margin-top:clamp(40px,6vh,80px)}
+.foot{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px);
+  align-items:flex-start;justify-content:space-between;color:var(--ink);
+  padding:clamp(40px,6vh,72px) var(--pad) clamp(28px,4vh,48px)}
+.foot__logo{font-family:var(--font-display);font-weight:700;font-size:clamp(2.8rem,7vw,5.5rem);line-height:.78}
+.foot__nav{display:flex;gap:clamp(22px,3vw,56px);border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__col{display:flex;flex-direction:column;gap:13px}
+.foot__col a{display:flex;gap:11px;align-items:baseline;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__col a span{font-family:var(--font-mono);font-size:.66rem;opacity:.5;font-weight:400}
+.foot__col a:hover{color:var(--orange)}
+.foot__social{display:flex;flex-direction:column;gap:13px;border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__social a{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__social a:hover{color:var(--orange)}
+.foot__social svg{width:19px;height:19px;flex:none;fill:currentColor}
+.foot__copy{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;opacity:.65;text-align:right}
+@media(max-width:880px){.foot{gap:34px}.foot__nav,.foot__social{border-left:0;padding-left:0}.foot__copy{text-align:left;width:100%}}
+
 </style>
+<!-- Shared nav/menu + page-transition styles (defined once) -->
+<link rel="stylesheet" href="noxta.css" />
+<!-- Page-transition gate: if we arrived via an internal link, cover at first
+     paint (tcover) so there's no flash before the ignite reveal. -->
+<script>try{var h=document.documentElement;if(sessionStorage.getItem('noxtaPT')==='1'){sessionStorage.removeItem('noxtaPT');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)){h.classList.add('tcover','is-loading');}}}catch(e){}</script>
 </head>
 <body>
 
-<canvas id="embers"></canvas>
-<div class="grain"></div>
-<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+<!-- ===================== PAGE TRANSITION ===================== -->
+<div class="ptrans" id="ptrans" aria-hidden="true"><span class="ptrans__word">NOXTA</span></div>
 
-<!-- ============ NAV ============ -->
-<nav class="nav is-scrolled" id="nav">
-  <a class="wm" href="/">NO<span class="x">X</span>TA</a>
-  <div class="nav-right">
-    <span class="clock" id="clock">TILBURG — 00:00:00</span>
-    <a class="nav-link" href="/portfolio" data-hover>Portfolio</a>
-    <a class="nav-cta" href="/contact" data-hover>Start a project</a>
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">NOXTA</a>
+  <span class="nav__dash"></span>
+  <div class="nav__links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="contact.html" class="nav__cta">Contact</a>
   </div>
+  <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+    <span></span><span></span>
+  </button>
 </nav>
 
-<!-- ============ 404 ============ -->
+<!-- ===================== MOBILE MENU ===================== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__inner" aria-label="Mobile">
+    <a class="menu__link" href="index.html#work"><span class="menu__num">01</span> Work</a>
+    <a class="menu__link" href="index.html#about"><span class="menu__num">02</span> About</a>
+    <a class="menu__link" href="index.html#pricing"><span class="menu__num">03</span> Pricing</a>
+    <a class="menu__link" href="contact.html"><span class="menu__num">04</span> Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
+    <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/31617657327" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<!-- ===================== 404 ===================== -->
 <main class="nf">
   <div class="nf-ghost" aria-hidden="true">404</div>
-  <div class="code"><span class="dot"></span>Error · 404 · Page not found</div>
-  <h1>This page<br><span class="grad-text">wandered off.</span></h1>
-  <p>The link's broken or the page moved. Nothing's lost — head back to the start, or tell me what you were looking for and I'll point you the right way.</p>
+  <h1>This page<br><span class="accent">wandered off.</span></h1>
+  <p>The link&rsquo;s broken or the page moved. Nothing&rsquo;s lost — head back to the start, or tell me what you were looking for and I&rsquo;ll point you the right way.</p>
   <div class="actions">
-    <a class="btn btn-primary" href="/" data-hover data-magnetic><span class="fill"></span><span>← Back home</span></a>
-    <a class="btn btn-ghost" href="/contact" data-hover data-magnetic><span class="fill"></span><span>Get in touch</span></a>
+    <a class="btn-pill" href="index.html"><span>&#8592; Back home</span></a>
+    <a class="btn-ghost" href="contact.html">Get in touch</a>
   </div>
 </main>
 
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="footer-bottom" style="border-top:0;padding-top:0">
-    <span class="mono">Studio · Tilburg, NL · Est. 2026</span>
-    <span class="mono">© 2026 Noxta Studio — Hand-coded, no template</span>
+<!-- ===================== FOOTER ===================== -->
+<div class="wrap"><div class="ask__rule" aria-hidden="true"></div></div>
+<footer class="foot">
+  <div class="foot__logo">NOXTA</div>
+  <nav class="foot__nav">
+    <div class="foot__col">
+      <a href="index.html#work"><span>01</span> Work</a>
+      <a href="index.html#services"><span>02</span> Services</a>
+      <a href="index.html#about"><span>03</span> About</a>
+    </div>
+    <div class="foot__col">
+      <a href="index.html#pricing"><span>04</span> Pricing</a>
+      <a href="contact.html"><span>05</span> Contact</a>
+      <a href="privacy.html"><span>06</span> Privacy</a>
+      <a href="terms.html"><span>07</span> Terms</a>
+    </div>
+  </nav>
+  <div class="foot__social">
+    <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg> Instagram</a>
+    <a href="https://dribbble.com/adrian-tajti" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24C5.39 24 0 18.61 0 12S5.39 0 12 0s12 5.39 12 12-5.39 12-12 12zm10.12-10.36c-.35-.11-3.17-.95-6.38-.44 1.34 3.68 1.89 6.68 1.99 7.31a10.05 10.05 0 004.39-6.87zm-6.11 7.81c-.15-.9-.75-4.03-2.19-7.77l-.07.02c-5.79 2.02-7.86 6.03-8.04 6.4A9.96 9.96 0 0012 22c1.42 0 2.77-.29 4-.81zM4.39 18.86c.23-.4 3.05-5.06 8.33-6.77l.41-.12c-.26-.59-.54-1.17-.83-1.74-5.12 1.53-10.08 1.47-10.53 1.46v.31c0 2.63 1 5.04 2.63 6.86zm-2.42-8.96c.46.01 4.68.03 9.48-1.25-1.7-3.02-3.53-5.56-3.8-5.93a10.05 10.05 0 00-5.68 7.18zM9.6 2.05c.28.38 2.15 2.91 3.82 6 3.65-1.37 5.19-3.44 5.37-3.7A9.96 9.96 0 0012 2c-.83 0-1.63.1-2.4.29zm10.34 3.48c-.22.29-1.94 2.49-5.73 4.04.24.49.47.99.68 1.49.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.89-4.64-2.31-6.39z"/></svg> Dribbble</a>
+    <a href="https://www.linkedin.com/in/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+    <a href="https://wa.me/31617657327" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.43 9.88-9.88 9.88M20.46 3.49A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/></svg> WhatsApp</a>
   </div>
+  <div class="foot__copy">&copy; 2026 Noxta Studio<br>All rights reserved<br>KvK 42092474</div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="assets/noxta.js"></script>
+<script>
+(function(){
+  "use strict";
+  var nav = document.getElementById("nav");
+  if(nav){
+    var lastY = window.scrollY;
+    window.addEventListener("scroll", function(){
+      var y = window.scrollY;
+      if(y <= 80){ nav.classList.remove("is-hidden"); }
+      else if(y > lastY){ nav.classList.add("is-hidden"); }
+      else if(y < lastY){ nav.classList.remove("is-hidden"); }
+      lastY = y;
+    }, {passive:true});
+  }
+})();
+</script>
+
+<!-- Shared nav/menu + page transitions (defined once in noxta.js) -->
+<script src="noxta.js"></script>
 </body>
 </html>

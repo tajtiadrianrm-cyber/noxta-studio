@@ -1,18 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "noxta-studio",
-  "main": "_worker.js",
   "compatibility_date": "2026-06-01",
-  "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
-  // Non-secret env vars (committed to repo, OK to be public).
-  // Secrets (ADMIN_PASSWORD, GITHUB_TOKEN) are set in the CF dashboard.
-  "vars": {
-    "GITHUB_REPO": "tajtiadrianrm-cyber/noxta-studio"
-  },
-  // Serve everything in the repo as static assets.
-  // .assetsignore keeps .git, scripts/, etc. out.
-  // The Worker (_worker.js) is only invoked for paths that don't match an asset.
+  // Pure static site — every file in the repo is served as a static asset.
+  // .assetsignore keeps .git, scripts/, etc. out. No Worker: there are no
+  // dynamic routes (the contact form posts directly to web3forms).
   "assets": {
     "directory": "."
   }

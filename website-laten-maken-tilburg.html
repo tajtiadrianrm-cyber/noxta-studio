@@ -1,459 +1,1481 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website laten maken Tilburg · Noxta Studio — Adrian Tajti</title>
-<meta name="description" content="Website laten maken in Tilburg. Eén freelance webdesigner, geen bureau — ontwerp, copy, code en betalingen in één hand. Reactie binnen 24 uur.">
-<link rel="canonical" href="https://noxta.studio/website-laten-maken-tilburg">
-<!-- Favicons / app icons -->
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-<link rel="shortcut icon" href="assets/favicon.ico">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
-<!-- Open Graph / social -->
-<meta property="og:locale" content="nl_NL">
-<meta property="og:title" content="Website laten maken Tilburg · Noxta Studio">
-<meta property="og:description" content="Freelance webdesigner in Tilburg. Eén persoon, full stack — ontwerp, copy, code en betalingen in één hand.">
-<meta property="og:image" content="https://noxta.studio/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://noxta.studio/website-laten-maken-tilburg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Noxta Studio">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Website laten maken Tilburg · Noxta Studio">
-<meta name="twitter:description" content="Freelance webdesigner in Tilburg. Eén persoon, full stack.">
-<meta name="twitter:image" content="https://noxta.studio/og-image.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Noxta Studio",
-  "alternateName": "Noxta Studio · Adrian Tajti",
-  "description": "Freelance webdesigner in Tilburg. Eén persoon, geen bureau — ontwerp, copy, code en betalingen in één hand.",
-  "url": "https://noxta.studio/website-laten-maken-tilburg",
-  "image": "https://noxta.studio/og-image.png",
-  "email": "adrian@noxta.studio",
-  "telephone": "+31617657327",
-  "founder": { "@type": "Person", "name": "Adrian Tajti" },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Tilburg",
-    "addressRegion": "Noord-Brabant",
-    "addressCountry": "NL"
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Tilburg" },
-    { "@type": "City", "name": "Eindhoven" },
-    { "@type": "City", "name": "Breda" },
-    { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
-  ],
-  "priceRange": "€€",
-  "knowsLanguage": ["nl", "en", "hu"]
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@1,6..72,200..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/noxta.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website laten maken in Tilburg · Noxta Studio — Adrian Tajti</title>
+<meta name="description" content="Website laten maken in Tilburg? Eén freelance webdesigner, geen bureau — ontwerp, copy, code en hosting in één hand. Een site die net zo goed is als jouw bedrijf. Reactie binnen 24 uur." />
+
+<link rel="canonical" href="https://noxta.studio/website-laten-maken-tilburg" />
+<link rel="alternate" hreflang="nl" href="https://noxta.studio/website-laten-maken-tilburg" />
+<link rel="alternate" hreflang="en" href="https://noxta.studio/" />
+<link rel="alternate" hreflang="x-default" href="https://noxta.studio/" />
+
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:title" content="Website laten maken in Tilburg · Noxta Studio" />
+<meta property="og:description" content="Freelance webdesigner in Tilburg. Eén persoon, full stack — ontwerp, copy, code en hosting in één hand." />
+<meta property="og:image" content="https://noxta.studio/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://noxta.studio/website-laten-maken-tilburg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Noxta Studio" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Website laten maken in Tilburg · Noxta Studio" />
+<meta name="twitter:description" content="Freelance webdesigner in Tilburg. Eén persoon, full stack." />
+<meta name="twitter:image" content="https://noxta.studio/og-image.png" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<!-- Preloader / transition gate (must run before first paint): a fresh load
+     plays the ignite intro; arriving via an internal page transition does a
+     quick reveal instead (and suppresses the heavy intro); reduced-motion skips
+     both. is-loading = scroll lock until the cover clears. -->
+<script>try{var _h=document.documentElement,_r=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches,_m=window.matchMedia&&matchMedia('(max-width:760px)').matches,_pt=false;try{_pt=sessionStorage.getItem('noxtaPT')==='1';if(_pt)sessionStorage.removeItem('noxtaPT');}catch(e){}if(_r||_m){_h.classList.add('intro-seen');}else if(_pt){_h.classList.add('intro-seen','tcover','is-loading');}else{_h.classList.add('is-loading');}}catch(e){}</script>
+<noscript><style>#preloader{display:none!important}</style></noscript>
+
+<!-- Display: Clash Display (variable, Fontshare) · Body: General Sans · Mono: Space Mono · Serif accent: Instrument Serif -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
 <style>
-/* ---------- hero role keyword ---------- */
-.page-hero .role{display:flex;align-items:center;gap:1rem;margin-top:3.2vh;font-family:var(--font-m);font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ember-2)}
-.page-hero .role::before{content:"";width:38px;height:2px;background:var(--ember)}
-.page-hero .bio{color:var(--ink-2);font-size:clamp(1.05rem,1.35vw,1.25rem);line-height:1.75;max-width:52ch;margin-top:3vh}
-.page-hero .ctas{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:4.5vh}
+/* =========================================================================
+   NOXTA v7 — "The Transformation Machine"
+   The page proves the claim on itself: a V-arc from peak orange (the dream)
+   down into the prospect's drab reality (the Mirror) and back up to a fully
+   realized brand by the CTA. Color + type transform as you scroll.
 
-/* ---------- services grid ---------- */
-.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
-.svc-c{position:relative;background:var(--bg-2);border:1px solid var(--line);clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%);padding:clamp(1.6rem,2.6vw,2.4rem);display:flex;flex-direction:column;gap:1rem}
-.svc-c .n{font-family:var(--font-m);font-size:.8rem;color:var(--ember-2)}
-.svc-c h3{font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:.01em;line-height:1}
-.svc-c p{color:var(--ink-2);line-height:1.65;font-size:clamp(.95rem,1.1vw,1.05rem)}
-.svc-c .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto;padding-top:.6rem}
-.svc-c .tags span{font-family:var(--font-m);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);clip-path:polygon(0 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%);padding:.4rem .8rem}
-@media (max-width:760px){.svc-grid{grid-template-columns:1fr}}
+   Emotional arc (the section rhythm):
+   HERO(orange peak) → MIRROR(dead grey trough) → TURN(orange ignite)
+   → PROOF(ink) → PROMISE(cream) → ASK(orange, earned)
+   ========================================================================= */
 
-/* ---------- brand strip ---------- */
-.brandstrip{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);padding:2.2rem 4vw}
-.brandstrip .row{display:flex;align-items:center;justify-content:center;gap:2.2rem;flex-wrap:wrap;font-weight:900;font-variation-settings:"wdth" 122;text-transform:uppercase;font-size:clamp(1.3rem,3vw,2.4rem);letter-spacing:-.02em;text-align:center}
-.brandstrip .row em{font-family:var(--font-s);font-style:italic;font-weight:300;color:var(--ember-2)}
-.brandstrip .row .sep{width:9px;height:9px;background:var(--ember);border-radius:50%;flex:none}
+:root{
+  /* Brand palette */
+  --orange:#ff5a1f;
+  --orange-deep:#e8430a;
+  --ink:#0e0a06;
+  --ink-soft:#181109;
+  --cream:#faf3e8;
+  --white:#fff4e6;
+  /* Dead / "corporate template" trough palette — deliberately lifeless */
+  --dead-paper:#e9e8e4;
+  --dead-ink:#8e8d88;
+  --dead-line:#cfcdc7;
 
-/* ---------- principles ---------- */
-.principles{}
-.principle{padding:3.2rem 0;display:grid;grid-template-columns:auto 1fr 1.1fr;gap:3vw;align-items:start;position:relative;transition:padding-left .45s var(--ease)}
-.principle::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;background:var(--grad);transform:scaleY(0);transform-origin:0 0;transition:transform .5s var(--ease)}
-.principle:hover{padding-left:1.6rem}
-.principle:hover::before{transform:scaleY(1)}
-.principle .n{font-family:var(--font-m);color:var(--ember-2);font-size:.8rem;padding-top:.5rem}
-.principle h3{font-weight:900;font-variation-settings:"wdth" 118;text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.8rem);letter-spacing:-.02em;line-height:1}
-.principle p{color:var(--ink-2);line-height:1.7;max-width:52ch}
-@media (max-width:900px){.principle{grid-template-columns:auto 1fr}.principle p{grid-column:2}}
+  /* Live theme tokens — these are what the scroll engine tweens.
+     Start = HERO (peak orange). */
+  --bg:var(--orange);
+  --fg:var(--ink);
+  --accent:var(--ink);
+  --line:rgba(14,10,6,.18);
 
-/* ---------- pricing (static) ---------- */
-.price-group{margin-bottom:3.4rem}
-.price-group>.glabel{display:inline-block;font-family:var(--font-d);font-weight:600;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:#0a0908;background:var(--grad);padding:.55rem 1.2rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%);margin-bottom:1.6rem}
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;align-items:stretch}
-.tcard{position:relative;background:var(--bg-2);border:1px solid var(--line);border-radius:18px;padding:2.1rem 1.8rem;display:flex;flex-direction:column;gap:1.2rem;overflow:hidden}
-.tcard.reco{border-color:rgba(255,77,21,.55);background:linear-gradient(180deg,rgba(255,77,21,.07),rgba(17,16,16,1) 40%)}
-.tcard .flag{position:absolute;top:1.2rem;right:1.2rem;font-family:var(--font-m);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:#0a0908;background:var(--grad);border-radius:99px;padding:.38rem .75rem;font-weight:500}
-.tcard .tier{font-family:var(--font-m);font-size:.72rem;letter-spacing:.04em;color:var(--ink-3)}
-.tcard .amount{font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(1.6rem,2.3vw,2.1rem);letter-spacing:-.02em}
-.tcard .pname{font-weight:900;font-variation-settings:"wdth" 122;text-transform:uppercase;font-size:1.05rem;letter-spacing:.02em}
-.tcard .pdesc{font-family:var(--font-s);font-style:italic;font-weight:300;color:var(--ember-3);font-size:1.1rem}
-.tcard ul{list-style:none;display:flex;flex-direction:column;gap:.65rem;border-top:1px solid var(--line);padding-top:1.3rem;flex:1}
-.tcard li{color:var(--ink-2);font-size:.9rem;line-height:1.5;padding-left:1.3rem;position:relative}
-.tcard li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:1.5px;background:var(--ember)}
-.tcard .ideal{font-size:.84rem;color:var(--ink-3);line-height:1.6;border-top:1px solid var(--line);padding-top:1.1rem}
-@media (max-width:1000px){.tgrid{grid-template-columns:1fr}}
+  /* Animated display weight for the transformation headline */
+  --wght:700;
 
-/* ---------- page CTA ---------- */
-.page-cta{position:relative;z-index:2;padding:16vh 4vw;border-top:1px solid var(--line);overflow:hidden}
-.page-cta .meta{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:5vh}
-.page-cta .meta .blk{display:flex;flex-direction:column;gap:.4rem}
-.page-cta .meta .v{font-family:var(--font-d);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
-.page-cta h2{font-family:var(--font-d);font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:clamp(3.4rem,13vw,12rem);line-height:.86;letter-spacing:-.03em}
-.page-cta .lede{max-width:52ch;color:var(--ink-2);font-size:clamp(1rem,1.3vw,1.2rem);line-height:1.7;margin:4vh 0 5vh}
-.page-cta .actions{display:flex;align-items:center;gap:1.3rem;flex-wrap:wrap}
-.page-cta .wa{font-family:var(--font-m);font-size:.72rem;letter-spacing:.1em;color:var(--ink-3)}
-.page-cta .wa b{color:var(--ink);font-weight:500}
-.page-cta-ghost{position:absolute;bottom:-4vw;right:-2vw;font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(8rem,26vw,26rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,122,61,.16);pointer-events:none;user-select:none;white-space:nowrap}
+  --maxw:1680px;
+  --pad:clamp(20px,4.5vw,72px);
+
+  --font-display:"Clash Display","Arial Narrow",sans-serif;
+  --font-body:"General Sans",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  --font-serif:"Instrument Serif",Georgia,serif;
+
+  /* shared paper-grain noise tile (used by .grain and the mobile static pivot) */
+  --grain-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  /* The palette engine eases --bg/--fg to each section's theme over .6s (time-
+     based, not scrubbed to scroll), so the background is a plain var(--bg): it
+     repaints only during a transition, never per scroll frame. */
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-body);
+  font-size:18px;
+  line-height:1.4;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ---- shared type ---- */
+.display{font-family:var(--font-display);font-weight:700;line-height:.86;letter-spacing:-.01em;text-transform:uppercase}
+.mono{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;opacity:.7}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+section{position:relative}
+
+/* ===== GPU background arc =============================================
+   Solid-colour layers (one per palette section) crossfaded by OPACITY, so the
+   scroll palette composites on the GPU instead of repainting the full viewport
+   every frame. Built + driven in JS. Sits behind all content. */
+.bg-arc{position:fixed;inset:0;z-index:-1;pointer-events:none}
+/* ===== PAPER GRAIN — baked into the arc layers (cheap) =================
+   Grain lives ON each bg-arc colour layer via background-blend-mode: a LOCAL
+   blend (the layer's noise ⊗ its own colour), rasterised ONCE when the layer
+   paints, then just crossfaded by opacity with everything else. It is NOT a
+   fixed mix-blend overlay recomposited against the page every frame (that was
+   the earlier perf sin). soft-light textures the colour without darkening it.
+   (Desktop only — on mobile/reduced-motion the bg-arc isn't built.) */
+.bg-arc .bg-layer{position:absolute;inset:0;will-change:opacity;
+  background-image:var(--grain-tex);background-blend-mode:soft-light}
+
+/* ===== SCROLL PROGRESS BAR ============================================
+   Thin bar pinned at the very top; the fill scales left→right with scroll
+   progress. Uses the palette tokens (--accent fill on a faint --line track) so
+   it stays legible as the page morphs orange→grey→ink→cream. */
+.progress{position:fixed;top:0;left:0;right:0;height:5px;z-index:96;pointer-events:none;
+  background:color-mix(in srgb, var(--accent) 22%, transparent)}
+.progress__fill{display:block;height:100%;transform-origin:left center;transform:scaleX(0);
+  background:var(--accent);will-change:transform}
+
+/* ===== NAV + FULLSCREEN MENU ===== moved to noxta.css (shared, all pages) = */
+
+/* ===== HERO (locked composition) ====================================== */
+.hero{min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
+.hero__photo{
+  position:absolute;top:0;bottom:0;right:clamp(16px,4vw,90px);
+  width:min(46vw,760px);
+  /* contain (not cover) so the full figure always shows — narrowing the
+     screen scales it down instead of cropping the arms. Inset from the
+     right edge so the body sits a touch left. */
+  background:url("assets/adrian-hero.webp") right bottom/contain no-repeat;
+  z-index:2;
+}
+@media(max-width:760px){
+  .hero__photo{background-image:url("assets/adrian-hero-mobile.webp");right:0;width:78vw}
+  /* The figure's height is set by its width (78vw × portrait ratio ≈ 155vw). On a
+     short mobile viewport (Safari URL bar → 100svh can be ~660px) the bottom-
+     anchored figure would otherwise rise into the headline. Grow the hero so the
+     figure always sits below the headline, whatever the viewport height. */
+  .hero{min-height:max(100svh, calc(155vw + 220px))}
+}
+.hero__new{
+  position:absolute;top:108px;right:var(--pad);z-index:4;
+  font-family:var(--font-display);font-weight:700;font-size:1.5rem;
+  border:3px solid var(--ink);padding:6px 12px 4px;transform:rotate(8deg);
+  background:transparent;letter-spacing:.02em;
+}
+.hero__intro{
+  flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  position:relative;z-index:3;
+  padding:clamp(90px,11vh,140px) 0 clamp(28px,4vh,56px) var(--pad);
+}
+.hero__tagline{
+  font-family:var(--font-display);font-weight:600;text-transform:none;
+  font-size:clamp(2.2rem,4.8vw,4.6rem);line-height:.98;letter-spacing:-.02em;word-spacing:.1em;
+}
+.hero__arrow{
+  margin-top:clamp(24px,3.5vh,48px);
+  width:82px;height:82px;border-radius:50%;
+  background:var(--ink);color:var(--orange);
+  display:grid;place-items:center;font-size:1.6rem;transition:transform .3s;
+}
+.hero__arrow:hover{transform:translateY(4px) scale(1.05)}
+/* mobile: lift the headline to the top — the figure is bottom-anchored so the
+   top of the hero is empty orange; putting the text there clears the face while
+   the figure stays full-size. (Placed AFTER the base .hero__intro so it wins.) */
+@media(max-width:760px){ .hero__intro{justify-content:flex-start} .hero__new{display:none} }
+.hero__create{
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:30vw;line-height:.7;letter-spacing:-.045em;
+  color:var(--ink);position:relative;z-index:1;
+  margin-top:0;margin-bottom:-0.06em;padding-left:0;
+  white-space:nowrap;
+}
+/* marquee — seamless infinite (JS fills the track past 2x viewport) */
+.marquee{
+  position:relative;z-index:3;background:var(--ink);color:var(--orange);
+  overflow:hidden;white-space:nowrap;padding:13px 0;
+}
+.marquee__track{display:flex;flex-wrap:nowrap;width:max-content;gap:46px;align-items:center;animation:slide 40s linear infinite;will-change:transform}
+.marquee__track span{flex:none;font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase}
+.marquee__track b{color:var(--orange);font-size:.7rem}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== generic section header ========================================= */
+.sec{padding:clamp(90px,13vh,170px) 0}
+.sec__kicker{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.sec__kicker .ln{flex:1;height:1px;background:currentColor;opacity:.25}
+.h-mega{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.2rem,11vw,11rem);line-height:.84;letter-spacing:-.02em;word-spacing:.16em}
+/* "No agency games." is the longest h-mega line and can't fit at 11vw, so it
+   wrapped and orphaned "NO". Cap this headline so both intended lines fit. */
+/* Base .h-mega now carries word-spacing so multi-word titles don't mush under the tight tracking.
+   #about is width-capped (nowrap "NO AGENCY GAMES") so it takes a smaller gap + a hair less size to still fit. */
+#about .h-mega{font-size:clamp(1.5rem,7.6vw,8rem);white-space:nowrap;word-spacing:.1em}
+/* #services is split into per-glyph spans for its animation; word-spacing can't reach the spaces there,
+   so it's neutralised here and the gap is added as margin on the space glyphs in splitChars(). */
+.nxChar{word-spacing:0}
+
+/* ===== PIVOT — pinned transformation set-piece ====================== */
+.pivot{position:relative;height:100svh;overflow:hidden}
+.pivot__phase{position:absolute;inset:0;display:flex;align-items:center;will-change:transform,opacity}
+.pivot__solution{opacity:0}
+.pivot__eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;opacity:.7;margin-bottom:26px}
+.pivot__thin{font-family:var(--font-display);font-weight:300;text-transform:uppercase;
+  font-size:clamp(2.2rem,6.5vw,5.5rem);line-height:.95;letter-spacing:-.01em;word-spacing:.16em}
+.pivot__heavy{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.8rem,9vw,8.5rem);line-height:.86;letter-spacing:-.02em;word-spacing:.16em;margin-top:.1em}
+.pivot__heavy--lg{font-size:clamp(2.8rem,8.2vw,7.8rem);max-width:15ch}
+.pivot__problem .pivot__heavy{color:#181109}
+.pivot__sub{margin-top:34px;max-width:34ch;font-size:1.15rem;opacity:.82}
+/* SOLUTION — centred set-piece with a serif-italic turn (from the standalone mockup) */
+.pivot__solution{justify-content:center;text-align:center}
+.pivot__solution .pivot__heavy{max-width:none;margin-inline:auto;text-wrap:balance}
+.pivot__serif{font-family:var(--font-serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+.pivot__solution .pivot__sub{max-width:none;margin:30px auto 0;opacity:.66;
+  font-family:var(--font-mono);text-transform:uppercase;font-size:.78rem;letter-spacing:.26em}
+/* mobile / reduced-motion: no pin — stack the two phases as solid blocks.
+   Grey base on the section + a 1px overlap on the solution so the orange page
+   background can't peek through a sub-pixel seam as a "divider line". */
+.pivot.is-static{height:auto;background:#e9e8e4}
+.pivot.is-static .pivot__phase{position:relative;inset:auto;opacity:1!important;transform:none!important;
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(90px,14vh,150px) 0}
+.pivot.is-static .pivot__problem{background:#e9e8e4;color:#6f6e69}
+.pivot.is-static .pivot__solution{background:#ff5a1f;color:#0e0a06;margin-top:-1px}
+
+/* ===== TURN (services) =============================================== */
+.svc{margin-top:clamp(50px,7vh,90px);border-top:2px solid var(--line)}
+.svc__row{display:grid;grid-template-columns:1.1fr 2.4fr 3fr;gap:24px;align-items:center;
+  padding:30px 0;border-bottom:2px solid var(--line);
+  transition:padding-left .35s, background-color .35s, color .35s}
+.svc__row:hover{padding-left:24px;background:var(--ink);color:var(--orange)}
+.svc__num{font-family:var(--font-mono);font-size:1rem;opacity:.9;transition:opacity .35s,color .35s}
+.svc__name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.9rem);line-height:1}
+.svc__desc{font-size:1rem;opacity:.9;max-width:34ch;justify-self:end;transition:opacity .35s,color .35s}
+.svc__row:hover .svc__num,.svc__row:hover .svc__desc{opacity:1;color:var(--cream)}
+@media(max-width:880px){.svc__row{grid-template-columns:auto 1fr;gap:14px}.svc__desc{display:none}}
+.svc__close{margin-top:clamp(30px,4.5vh,56px);font-family:var(--font-display);font-weight:600;font-size:clamp(1.3rem,2.4vw,2.05rem);line-height:1.25;letter-spacing:-.01em;word-spacing:.06em;max-width:46ch;text-wrap:balance}
+
+/* ===== PROOF (real testimonials) ===================================== */
+.workx{position:relative;height:100svh;overflow:hidden}
+.workx__track{display:flex;height:100%;width:max-content}
+.workx__panel{flex:0 0 100vw;height:100%;display:flex;align-items:center;gap:clamp(36px,5vw,84px);padding:0 var(--pad)}
+.workx__textwrap{max-width:var(--maxw)}
+.workx__hint{margin-top:34px;opacity:.45;letter-spacing:.22em;font-size:.7rem}
+.workx__panel--outro{justify-content:space-between}
+.workx__outro-text{max-width:48%}
+.workx__outro-text .workx__hint{margin-top:0;margin-bottom:18px}
+.workx__outro-head{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.3rem,4.4vw,4rem);line-height:.96;letter-spacing:-.02em;word-spacing:.16em;margin-bottom:24px}
+.workx__outro-note{font-size:1.05rem;line-height:1.5;opacity:.72;max-width:36ch}
+.workx__outro-cta{margin-top:30px}
+.workx__outro-circle{flex:none;width:clamp(96px,11vw,190px);height:clamp(96px,11vw,190px);border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-size:clamp(2.2rem,3.6vw,4rem);transition:transform .35s}
+.workx__outro-circle:hover{transform:scale(1.05)}
+@media(max-width:880px){.workx__outro-circle{display:none}.workx__outro-text{max-width:100%}}
+.workx__shot{flex:1 1 56%;max-width:58%;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--line);border-radius:3px;background:#0b0b0b;display:block;
+  /* offset outline "frame" behind the shot — brutalist depth. Two layered
+     shadows: an accent ring (spread 2) with a bg-coloured punch-out on top, so
+     only a 2px orange outline peeks at the offset. Uses palette vars (no
+     transition, so it never lags the scroll colour-scrub). */
+  --o:clamp(9px,1.5vw,16px);box-shadow:var(--o) var(--o) 0 0 var(--bg),var(--o) var(--o) 0 2px var(--accent)}
+.workx__shot img{width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.workx__shot:hover img{transform:scale(1.04)}
+.workx__info{flex:1 1 38%;max-width:460px}
+.workx__index{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;opacity:.5}
+.workx__name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.95;margin-top:14px}
+.workx__role{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-top:14px}
+.workx__quote{font-size:clamp(1.1rem,1.5vw,1.4rem);line-height:1.45;margin-top:26px;opacity:.92}
+.workx__who{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-top:22px}
+.workx__links{display:flex;gap:30px;margin-top:30px;align-items:center;flex-wrap:wrap}
+.workx__url,.workx__study{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:.92rem;transition:gap .25s,opacity .2s}
+.workx__url{opacity:.85}.workx__url:hover{opacity:1}
+.workx__study{color:var(--accent)}.workx__study:hover{gap:14px}
+/* mobile / reduced-motion: no pin — stack the panels vertically */
+.workx.is-static{height:auto;overflow:visible}
+.workx.is-static .workx__track{flex-direction:column;width:auto;height:auto}
+.workx.is-static .workx__panel{flex:none;width:auto;height:auto;min-height:0;flex-direction:column;align-items:flex-start;gap:26px;padding:clamp(40px,7vh,72px) var(--pad)}
+.workx.is-static .workx__shot{max-width:100%;flex:none;width:100%}
+.workx.is-static .workx__info{max-width:100%}
+.proof__line{font-size:1.25rem;max-width:40ch;opacity:.7}
+.proof__line b{color:var(--accent);font-weight:600;opacity:1}
+
+/* ===== PROMISE (de-risk + founder) =================================== */
+.promise__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);margin-top:clamp(50px,7vh,90px);align-items:start}
+@media(max-width:880px){.promise__grid{grid-template-columns:1fr;gap:54px}}
+.steps{display:flex;flex-direction:column;gap:2px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:26px 0;border-top:2px solid var(--line)}
+.step:last-child{border-bottom:2px solid var(--line)}
+.step__n{font-family:var(--font-display);font-weight:700;font-size:2.2rem;line-height:.9;color:var(--accent)}
+.step__t{font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.25rem;letter-spacing:-.01em}
+.step__d{font-size:.98rem;opacity:.75;margin-top:6px;grid-column:2}
+.guarantee{border:2px solid var(--accent);padding:34px;border-radius:2px}
+.guarantee h4{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.5rem;margin-bottom:14px}
+.guarantee p{font-size:1rem;opacity:.85;line-height:1.55}
+.founder{margin-top:46px;font-family:var(--font-serif);font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.35;font-style:italic}
+.founder .sig{display:block;margin-top:18px;font-family:var(--font-mono);font-style:normal;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+
+/* ===== PRICING (the investment, ink) =============================== */
+.toggle{display:inline-flex;border:2px solid currentColor;border-radius:2px;overflow:hidden;margin-top:30px}
+.toggle button{font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:.95rem;
+  padding:12px 24px;background:transparent;color:inherit;border:0;cursor:pointer;transition:background .25s,color .25s}
+.toggle button.is-active{background:var(--accent);color:var(--bg)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(38px,5vh,64px)}
+@media(max-width:980px){.tiers{grid-template-columns:1fr}}
+.tier{border:2px solid rgba(250,243,232,.22);background:rgba(250,243,232,.04);padding:30px 26px;display:flex;flex-direction:column;border-radius:2px;position:relative}
+.tier.rec{border-color:var(--accent)}
+.tier__badge{position:absolute;top:-13px;right:18px;background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px}
+.tier__label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;opacity:.55}
+.tier__name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:2rem;line-height:1;margin-top:6px}
+.tier__tag{font-size:.95rem;opacity:.7;margin-top:8px;min-height:2.7em}
+.tier__worth{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;opacity:.5;margin-top:16px}
+.tier__worth s{opacity:.85}
+.tier__price{font-family:var(--font-display);font-weight:700;font-size:1.65rem;color:var(--accent);margin:3px 0 2px}
+.tier__save{font-size:.74rem;font-style:italic;opacity:.6;margin:0 0 2px}
+.tier__feat{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:9px;font-size:.92rem}
+.tier__feat li{display:flex;gap:10px;opacity:.85;line-height:1.35;justify-content:space-between;align-items:baseline}
+.tier__feat li .tier__f{flex:1}
+.tier__feat li .tier__w{font-family:var(--font-mono);font-size:.72rem;opacity:.55;flex:none;white-space:nowrap;letter-spacing:.02em}
+.tier__feat li::before{content:"+";color:var(--accent);font-weight:700;flex:none}
+.tier__foot{font-size:.82rem;opacity:.55;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.tier__cta{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:.9rem;color:var(--accent)}
+.careplus{margin-top:24px;border:2px dashed var(--line);padding:24px 26px;display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center;justify-content:space-between;border-radius:2px}
+.careplus h4{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.2rem}
+.careplus .price{color:var(--accent)}
+.careplus .setup{opacity:.5;font-size:.8rem;font-family:var(--font-mono);letter-spacing:.1em}
+.careplus p{font-size:.9rem;opacity:.7;max-width:52ch;margin-top:8px}
+.pricing__note{margin-top:30px;opacity:.75;font-size:1.05rem}
+.pricing__note a{color:var(--accent);font-weight:600;border-bottom:1px solid currentColor}
+.pricing__terms{margin-top:20px;font-size:.95rem;opacity:.7}
+.answers__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4vw,60px);margin-top:clamp(42px,6vh,76px)}
+@media(max-width:880px){.answers__grid{grid-template-columns:1fr;gap:34px}}
+.qa{border-top:2px solid var(--line);padding-top:20px}
+.qa__q{font-family:var(--font-display);font-weight:600;font-size:clamp(1.12rem,1.7vw,1.42rem);letter-spacing:-.01em;line-height:1.22}
+.qa__a{margin-top:12px;font-size:1rem;line-height:1.62;opacity:.75;max-width:48ch}
+/* Mobile-only halftone melt dividers at the cream<->ink seams (injected by JS on mobile). */
+.melt-divider{display:block;line-height:0;font-size:0;margin:0}
+@media(min-width:761px){.melt-divider{display:none!important}}
+
+/* ===== ASK + FOOTER (orange, reference layout) ===================== */
+.ask{padding:clamp(80px,12vh,170px) 0 0}
+.ask__inner{position:relative}
+.ask__eyebrow{font-family:var(--font-mono);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.05em;text-transform:uppercase;opacity:.7;max-width:60%;margin-bottom:clamp(14px,2.4vh,26px)}
+.ask__big{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(4.5rem,21vw,21rem);line-height:.8;letter-spacing:-.03em;word-spacing:.08em}
+.ask__circle{position:absolute;right:var(--pad);top:clamp(20px,9vh,110px);
+  width:clamp(96px,11vw,190px);height:clamp(96px,11vw,190px);border-radius:50%;
+  background:var(--ink);color:var(--orange);display:grid;place-items:center;
+  font-size:clamp(2.2rem,3.6vw,4rem);transition:transform .3s}
+.ask__circle:hover{transform:scale(1.06)}
+.ask__row{display:flex;flex-wrap:wrap;align-items:center;gap:22px 40px;margin-top:clamp(28px,4vh,54px)}
+.ask__mail{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:clamp(1.3rem,2.6vw,2.4rem);transition:opacity .25s}
+.ask__mail:hover{opacity:.72}
+.ask__mailicon{display:grid;place-items:center;width:.95em;color:var(--ink)}
+.ask__mailicon svg{width:100%;height:auto;display:block}
+.btn-pill{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--orange);
+  font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.05rem;
+  padding:16px 32px;border-radius:100px;transition:transform .3s}
+.btn-pill:hover{transform:translateY(-3px)}
+.ask__rule{height:2px;background:var(--ink);margin-top:clamp(60px,8vh,110px)}
+
+/* footer row, on the page orange */
+.foot{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px);
+  align-items:flex-start;justify-content:space-between;color:var(--ink);
+  padding:clamp(40px,6vh,72px) var(--pad) clamp(28px,4vh,48px)}
+.foot__logo{font-family:var(--font-display);font-weight:700;font-size:clamp(2.8rem,7vw,5.5rem);line-height:.78}
+.foot__logo sup{font-size:.26em;vertical-align:top;font-weight:600}
+.foot__nav{display:flex;gap:clamp(22px,3vw,56px);border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__col{display:flex;flex-direction:column;gap:13px}
+.foot__col a{display:flex;gap:11px;align-items:baseline;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__col a span{font-family:var(--font-mono);font-size:.66rem;opacity:.5;font-weight:400}
+.foot__col a:hover{color:var(--orange-deep)}
+.foot__social{display:flex;flex-direction:column;gap:13px;border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__social a{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__social a:hover{color:var(--orange-deep)}
+.foot__social svg{width:19px;height:19px;flex:none;fill:currentColor}
+.foot__copy{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;opacity:.65;text-align:right}
+@media(max-width:880px){
+  .foot{gap:34px}
+  .foot__nav,.foot__social{border-left:0;padding-left:0}
+  .foot__copy{text-align:left;width:100%}
+  .ask__circle{display:none}
+}
+
+/* ===== PRELOADER — grey→orange "ignite", once per session ============
+   Covers the page on first paint (grey trough). The thin NOXTA then bulks up
+   to bold + the screen ignites orange as a 000→100 counter ticks, then the
+   panel wipes UP to reveal the (already-orange) hero — a short trailer for the
+   page's whole grey→orange thesis. Gated in JS + the <head> for reduced-motion
+   / returning visitors / no-JS / GSAP-fail. */
+.preloader{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;
+  background:var(--dead-paper);color:#5f5d58;overflow:hidden;
+}
+.preloader__word{
+  font-family:var(--font-display);font-weight:300;text-transform:uppercase;
+  font-size:clamp(3rem,16vw,15rem);letter-spacing:.02em;line-height:1;
+  will-change:font-weight,color;
+}
+.preloader__count{
+  position:absolute;right:var(--pad);bottom:clamp(20px,4vh,40px);
+  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.22em;opacity:.55;
+}
+.preloader__bar{
+  position:absolute;left:0;bottom:0;height:2px;width:100%;
+  transform:scaleX(0);transform-origin:left center;background:currentColor;opacity:.3;
+}
+html.is-loading{overflow:hidden}
+.intro-seen .preloader{display:none}
+
+/* ===== PAGE TRANSITION cover ===== moved to noxta.css (shared, all pages) = */
+
+/* ===== reveal (entrance) — GSAP-driven staggered masked wipe ========= */
+.reveal{opacity:0}
+.reveal.in{opacity:1}
+
+/* ===== reduced motion: show everything at target state, no scrub ===== */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important;transition:none}
+  body,.nav{transition:none}
+  .marquee__track{animation:none}
+}
 </style>
+<!-- Shared nav/menu + page-transition styles (defined once) -->
+<link rel="stylesheet" href="noxta.css" />
 </head>
 <body>
 
-<canvas id="embers"></canvas>
-<div class="grain"></div>
-<div class="progress" id="progress"></div>
-<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+<!-- scroll progress bar (fills across the whole page) -->
+<div class="progress" aria-hidden="true"><span class="progress__fill" id="progressFill"></span></div>
 
-<!-- ============ NAV ============ -->
-<nav class="nav" id="nav">
-  <a class="wm" href="/">NO<span class="x">X</span>TA</a>
-  <div class="nav-right">
-    <span class="clock" id="clock">TILBURG — 00:00:00</span>
-    <a class="nav-link" href="/portfolio" data-hover>Portfolio</a>
-    <a class="nav-cta" href="/contact" data-hover>Start een project</a>
-  </div>
-</nav>
-
-<!-- ============ HERO ============ -->
-<header class="page-hero">
-  <div class="page-ghost" aria-hidden="true" data-parallax="0.08">NL</div>
-  <div class="avail" data-reveal><span class="dot"></span>Beschikbaar · Q3 2026 · 2 plekken</div>
-  <div class="sec-label mono" data-reveal>Tilburg · Noord-Brabant — Noxta Studio</div>
-  <h1 class="page-h1" style="margin-top:1.6rem">
-    <span class="line-mask"><span>Website laten</span></span>
-    <span class="line-mask"><span>maken in <span class="grad-text">Tilburg.</span></span></span>
-  </h1>
-  <div class="role" data-reveal>Freelance webdesigner · Eén persoon, geen bureau</div>
-  <p class="bio" data-reveal>Ik ben een freelance webdesigner in Tilburg. Er zit geen bureau achter Noxta, alleen ik. Ik doe het ontwerp, schrijf de teksten en schrijf de code. Na de lancering blijf ik in beeld om dingen te verbeteren en uit te breiden zodra je dat nodig hebt. Jij mailt mij, ik mail jou terug.</p>
-  <div class="ctas" data-reveal>
-    <a class="btn btn-primary" href="/contact" data-hover data-magnetic><span class="fill"></span><span>Start een project →</span></a>
-    <a class="btn btn-ghost" href="#prijzen" data-hover data-magnetic><span class="fill"></span><span>Prijzen ↓</span></a>
-  </div>
-</header>
-
-<!-- ============ 00 · WIE IK BEN ============ -->
-<section class="section intro-sec" id="over">
-  <div class="sec-head">
-    <div class="sec-label mono" data-reveal>00 · Wie ik ben</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>Gewoon ik.</span></span>
-      <span class="line-mask"><span><span class="grad-text">Geen bureau</span></span></span>
-      <span class="line-mask"><span>erachter.</span></span>
-    </h2>
-    <p class="sec-sub" data-reveal>Ik werk bewust alleen. Het hele project in één hoofd houden zorgt dat er niets verloren gaat tussen specialisten die jouw bedrijf niet zo goed kennen als jij. De prijs daarvan is capaciteit: ik neem doorgaans twee klanten tegelijk aan, dus plekken zijn de moeite waard om vroeg vast te leggen.</p>
-  </div>
-  <div class="specbar" style="border-radius:0">
-    <div class="sp"><span class="k">// Gevestigd</span><span class="v">2026</span></div>
-    <div class="sp"><span class="k">// Reactievenster</span><span class="v">&lt; 24u</span></div>
-    <div class="sp"><span class="k">// Capaciteit</span><span class="v">2 klanten</span></div>
-    <div class="sp"><span class="k">// Bouw</span><span class="v">Met de hand</span></div>
-  </div>
-</section>
-
-<!-- ============ 01 · WAT IK DOE ============ -->
-<section class="section" id="diensten">
-  <div class="sec-head">
-    <div class="sec-ghost" aria-hidden="true" data-parallax="0.1" style="writing-mode:vertical-rl;top:-9vh;right:1vw">01</div>
-    <div class="sec-label mono" data-reveal>01 · Wat ik doe</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>Vier taken.</span></span>
-      <span class="line-mask"><span><span class="grad-text">Eén hoofd.</span></span></span>
-    </h2>
-    <p class="sec-sub" data-reveal>Ik doe het ontwerp, de teksten, de code en de betalingen zelf. Geen overdrachten tussen mensen die elkaar nauwelijks kennen. Als er iets stuk gaat, ben ik degene die je belt.</p>
-  </div>
-
-  <div class="svc-grid">
-    <div class="svc-c" data-reveal data-spotlight>
-      <span class="n">/01</span>
-      <h3>Websites</h3>
-      <p>Meerdere pagina's met SEO en analytics vanaf dag één ingebouwd, niet er een week vóór lancering aan vastgeplakt.</p>
-      <div class="tags"><span>Meerdere pagina's</span><span>Met de hand</span><span>Mobile-first</span></div>
-    </div>
-    <div class="svc-c" data-reveal data-spotlight>
-      <span class="n">/02</span>
-      <h3>E-commerce</h3>
-      <p>Echte webshops met echte betaalstromen. VOEP draait op 4.200 SKU's op de setup die ik bouwde.</p>
-      <div class="tags"><span>WooCommerce</span><span>Shopify</span><span>iDEAL / Bancontact</span></div>
-    </div>
-    <div class="svc-c" data-reveal data-spotlight>
-      <span class="n">/03</span>
-      <h3>Merk</h3>
-      <p>Woordmerk, kleurenpalet en typografisch systeem. Genoeg zodat de site eruitziet als een merk, niet als een template.</p>
-      <div class="tags"><span>Woordmerk</span><span>Palet</span><span>Typografie</span></div>
-    </div>
-    <div class="svc-c" data-reveal data-spotlight>
-      <span class="n">/04</span>
-      <h3>Onderhoud</h3>
-      <p>Ik blijf in beeld na de lancering. Updates, back-ups en de kleine aanpassingen die je normaal niet durft te vragen.</p>
-      <div class="tags"><span>Abonnement</span><span>Bereikbaar</span><span>Snelle aanpassingen</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 02 · GESELECTEERD WERK ============ -->
-<section class="section" id="werk">
-  <div class="sec-head">
-    <div class="sec-label mono" data-reveal>02 · Geselecteerd werk</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>Geselecteerd</span></span>
-      <span class="line-mask"><span><span class="grad-text">werk.</span></span></span>
-    </h2>
-  </div>
-
-  <article class="work-case">
-    <div class="work-info">
-      <div class="mono tag" data-reveal>Case 002 · Vintage Outboard Parts</div>
-      <h3 data-split-words>VOEP</h3>
-      <p data-reveal>Alex runt een winkel met vintage buitenboordmotor-onderdelen in België. Zestig jaar voorraad, geen website. We bouwden voor hem een webshop met 4.200 SKU's, iDEAL-checkout en een productzoekfunctie die ik met de hand heb afgesteld. De eerste verkoop kwam binnen een week.</p>
-      <div class="work-cells" data-reveal>
-        <div class="cell"><span class="mono">// Gebouwd in</span><span class="v">~60 uur</span></div>
-        <div class="cell"><span class="mono">// Eerste verkoop</span><span class="v">&lt; 7 dagen</span></div>
-        <div class="cell"><span class="mono">// Producten</span><span class="v">4.200+ SKU's</span></div>
-        <div class="cell"><span class="mono">// Checkout</span><span class="v">iDEAL · Bancontact</span></div>
-      </div>
-      <a class="btn btn-ghost" href="https://vintageoutboardengineparts.com/" target="_blank" rel="noopener" data-hover data-magnetic><span class="fill"></span><span>Bekijk de site →</span></a>
-    </div>
-    <a class="work-shot" href="https://vintageoutboardengineparts.com/" target="_blank" rel="noopener" data-hover-view>
-      <div class="frame-top"><i></i><i></i><i></i><span class="url">vintageoutboardengineparts.com</span></div>
-      <div class="shot-fallback"><span>VOEP</span></div>
-      <img src="voep-screenshot.webp" alt="Vintage Outboard Parts — screenshot van de homepage" loading="lazy" data-shot onerror="this.remove()">
-    </a>
-  </article>
-
-  <article class="work-case flip">
-    <div class="work-info">
-      <div class="mono tag" data-reveal>Case 001 · Persoonlijke reisblog</div>
-      <h3 data-split-words>Szabina</h3>
-      <p data-reveal>Szabina reist en schrijft erover. Na een reis plaatst ze een korte post: een titel, een alinea of twee over de plek, en de foto's die ze daar maakte. De site is statisch, met de hand gecodeerd. Ik bouwde een klein adminpaneel zodat ze niet hoeft te mailen telkens als ze een nieuw verhaal wil plaatsen.</p>
-      <div class="work-cells" data-reveal>
-        <div class="cell"><span class="mono">// Frequentie</span><span class="v">Per reis</span></div>
-        <div class="cell"><span class="mono">// Beheer</span><span class="v">Zelf gedaan</span></div>
-        <div class="cell"><span class="mono">// Stack</span><span class="v">Statisch · Met de hand</span></div>
-        <div class="cell"><span class="mono">// Hosting</span><span class="v">GitHub Pages</span></div>
-      </div>
-      <a class="btn btn-ghost" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener" data-hover data-magnetic><span class="fill"></span><span>Bekijk de site →</span></a>
-    </div>
-    <a class="work-shot" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener" data-hover-view>
-      <div class="frame-top"><i></i><i></i><i></i><span class="url">noxtastudio.github.io/szabina</span></div>
-      <div class="shot-fallback"><span>Szabina</span></div>
-      <img src="szabina-screenshot.webp" alt="Szabina — homepage van de reisblog" loading="lazy" data-shot onerror="this.remove()">
-    </a>
-  </article>
-</section>
-
-<!-- ============ MARQUEE ============ -->
-<div class="brandstrip">
-  <div class="row"><span>Eén persoon</span><span class="sep"></span><em>Eén studio</em><span class="sep"></span><span>Geen overdrachten</span></div>
+<!-- ===================== PRELOADER ===================== -->
+<div class="preloader" id="preloader" role="presentation" aria-hidden="true">
+  <div class="preloader__word">NOXTA</div>
+  <div class="preloader__count">000</div>
+  <span class="preloader__bar"></span>
 </div>
 
-<!-- ============ 03 · HOE IK WERK ============ -->
-<section class="section" id="hoe">
-  <div class="sec-head">
-    <div class="sec-label mono" data-reveal>03 · Hoe ik werk</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>Hoe dit</span></span>
-      <span class="line-mask"><span><span class="grad-text">meestal gaat.</span></span></span>
-    </h2>
-  </div>
+<!-- ===================== PAGE TRANSITION ===================== -->
+<div class="ptrans" id="ptrans" aria-hidden="true"><span class="ptrans__word">NOXTA</span></div>
 
-  <div class="principles">
-    <div class="principle" data-reveal>
-      <span class="n">/01</span>
-      <h3>Ik blijf tot het werkt.</h3>
-      <p>Veel freelancers leveren op en verdwijnen. Ik niet. Met of zonder abonnement ben ik bereikbaar na de lancering. Dat is meestal pas wanneer het echte werk begint.</p>
-    </div>
-    <div class="principle" data-reveal>
-      <span class="n">/02</span>
-      <h3>Details zijn het werk.</h3>
-      <p>Generieke sites zien er generiek uit omdat niemand zich druk maakt om de details. Als een knop twee pixels verkeerd staat, zie ik het. Jouw bezoekers ook, ook al kunnen ze niet precies aanwijzen waarom iets niet klopt.</p>
-    </div>
-    <div class="principle" data-reveal>
-      <span class="n">/03</span>
-      <h3>Van jou om te houden.</h3>
-      <p>Als het project eindigt is alles van jou: de code, het domein, de logins, de content. Wil je later ergens anders heen, dan help ik je verhuizen.</p>
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav__logo">NOXTA</a>
+  <span class="nav__dash"></span>
+  <div class="nav__links">
+    <a href="#work">Werk</a>
+    <a href="#about">Over</a>
+    <a href="#pricing">Prijzen</a>
+    <a href="contact.html" class="nav__cta">Contact</a>
+  </div>
+  <button class="nav__burger" id="navBurger" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===================== MOBILE MENU ===================== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__inner" aria-label="Mobiel">
+    <a class="menu__link" href="#work"><span class="menu__num">01</span> Werk</a>
+    <a class="menu__link" href="#about"><span class="menu__num">02</span> Over</a>
+    <a class="menu__link" href="#pricing"><span class="menu__num">03</span> Prijzen</a>
+    <a class="menu__link" href="contact.html"><span class="menu__num">04</span> Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
+    <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/31617657327" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<!-- ===================== HERO (locked) ===================== -->
+<section class="hero" id="top" data-theme="hero">
+  <div class="hero__photo" role="img" aria-label="Adrian, oprichter van Noxta"></div>
+  <div class="hero__new display">NIEUW</div>
+  <div class="hero__intro">
+    <h1 class="hero__tagline">Websites die<br>mensen iets<br>laten voelen.</h1>
+    <a href="contact.html" class="hero__arrow" aria-label="Start een project">&#8594;</a>
+  </div>
+  <div class="hero__create">Creëer</div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span><b>&#10039;</b> Digitaal Ontwerp</span><span><b>&#10039;</b> Branding</span><span><b>&#10039;</b> Webdevelopment</span>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 · PRIJZEN ============ -->
-<section class="section" id="prijzen">
-  <div class="sec-head">
-    <div class="sec-label mono" data-reveal>04 · Prijzen</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>Wat het</span></span>
-      <span class="line-mask"><span><span class="grad-text">kost.</span></span></span>
-    </h2>
-    <p class="sec-sub" data-reveal>Eerlijke ranges hieronder. Na een gesprek van 30 minuten geef ik je een vaste prijs, en die verandert niet, behalve als de scope verandert.</p>
-  </div>
-
-  <div class="price-group" data-reveal>
-    <span class="glabel">Eenmalig project</span>
-    <div class="tgrid">
-      <div class="tcard">
-        <span class="tier">Niveau · I</span>
-        <div><div class="amount">€600 – 1.200</div><div class="pname grad-text">Klein</div></div>
-        <div class="pdesc">Eén ding, goed gedaan.</div>
-        <ul>
-          <li>Eén landingspagina of kleine redesign</li>
-          <li>Eenvoudig merkteken of opfrissing woordmerk</li>
-          <li>Tot 600 woorden tekst die we samen schrijven</li>
-          <li>Basis-SEO (titel, meta, sitemap)</li>
-          <li>Mobile-first, met de hand gecodeerde HTML / CSS</li>
-        </ul>
-        <div class="ideal">Een gefocuste lanceringspagina of een eenmalige redesign voor een nevenproject. Meestal één tot twee weken werk.</div>
-      </div>
-      <div class="tcard reco">
-        <span class="flag">Aanbevolen</span>
-        <span class="tier">Niveau · II</span>
-        <div><div class="amount">€1.200 – 2.000</div><div class="pname grad-text">Midden</div></div>
-        <div class="pdesc">Een volledige site met een echt merk.</div>
-        <ul>
-          <li>Volledige website met meerdere pagina's (4–8)</li>
-          <li>Merkidentiteit: woordmerk, palet, typografie</li>
-          <li>Copywriting voor de hele site (~2.000 woorden)</li>
-          <li>Contactformulier, analytics, social meta</li>
-          <li>Twee revisierondes · 2–4 weken doorlooptijd</li>
-          <li>Eerste 30 dagen Standaard-abonnement inbegrepen</li>
-        </ul>
-        <div class="ideal">Kleine bedrijven zonder site, of waarvan de huidige meer kwaad dan goed doet. De meeste projecten landen hier.</div>
-      </div>
-      <div class="tcard">
-        <span class="tier">Niveau · III</span>
-        <div><div class="amount">€3.500 – 6.000</div><div class="pname grad-text">Groot</div></div>
-        <div class="pdesc">Echte webshops of maatwerk.</div>
-        <ul>
-          <li>WooCommerce- of Shopify-webshop</li>
-          <li>Custom WordPress child-theme</li>
-          <li>Productdatabase opzetten & importeren</li>
-          <li>Betalingen (iDEAL, Bancontact, kaart) + verzending</li>
-          <li>Drie revisierondes · 6–8 weken doorlooptijd</li>
-        </ul>
-        <div class="ideal">Webshops met echte voorraad of maatwerk-flows die een standaardtemplate niet aankan. &gt;2.000 producten op aanvraag. VOEP was een Groot-project.</div>
-      </div>
+<!-- ============ PIVOT — the pinned transformation set-piece ============ -->
+<section id="pivot" class="pivot">
+  <div class="pivot__phase pivot__problem">
+    <div class="wrap">
+      <p class="pivot__eyebrow">Eerst een harde waarheid</p>
+      <h2 class="pivot__thin">Je bedrijf is goed.</h2>
+      <h2 class="pivot__heavy">Je website<br>zegt iets anders.</h2>
+      <p class="pivot__sub">Op dit moment laat je merk je kleiner lijken dan je bent.</p>
     </div>
   </div>
-
-  <div class="price-group" data-reveal>
-    <span class="glabel">Maandelijks abonnement</span>
-    <div class="tgrid">
-      <div class="tcard">
-        <span class="tier">Plan · I</span>
-        <div><div class="amount">€50 / maand</div><div class="pname grad-text">Licht</div></div>
-        <div class="pdesc">Up-to-date en veilig gehouden.</div>
-        <ul>
-          <li>Uptime-monitoring</li>
-          <li>Wekelijkse automatische back-ups</li>
-          <li>Beveiligingspatches & plugin-updates</li>
-          <li>1 uur aanpassingen per maand, doorgeschoven tot max. 2 maanden</li>
-          <li>E-mailsupport, reactie binnen 48u</li>
-        </ul>
-        <div class="ideal">Afgeronde sites die gewoon online en up-to-date moeten blijven.</div>
-      </div>
-      <div class="tcard reco">
-        <span class="flag">Aanbevolen</span>
-        <span class="tier">Plan · II</span>
-        <div><div class="amount">€150 / maand</div><div class="pname grad-text">Standaard</div></div>
-        <div class="pdesc">Light plus actieve aanpassingen.</div>
-        <ul>
-          <li>Alles uit Light</li>
-          <li>3 uur aanpassingen per maand</li>
-          <li>Tekstaanpassingen & kleine layout-wijzigingen</li>
-          <li>Maandelijks prestatierapport</li>
-          <li>Aanpassingen binnen de week (ma–vr)</li>
-        </ul>
-        <div class="ideal">Sites die een paar keer per maand wijzigen: prijzen, menu, content-updates.</div>
-      </div>
-      <div class="tcard">
-        <span class="tier">Plan · III</span>
-        <div><div class="amount">€450 / maand</div><div class="pname grad-text">Actief</div></div>
-        <div class="pdesc">Ik zit eigenlijk in je team.</div>
-        <ul>
-          <li>Alles uit Standaard</li>
-          <li>8 uur aanpassingen per maand</li>
-          <li>Prioriteit (volgende werkdag)</li>
-          <li>Telefoon- / WhatsApp-support (ma–vr 9–17, alleen spoed)</li>
-          <li>Strategie-gesprek per kwartaal</li>
-        </ul>
-        <div class="ideal">Groeiende webshops en actieve marketing: nieuwe pagina's, campagnes en doorlopend werk.</div>
-      </div>
+  <div class="pivot__phase pivot__solution">
+    <div class="wrap">
+      <h2 class="pivot__heavy pivot__heavy--lg">We laten je er<br>net zo goed uitzien<br><em class="pivot__serif">als je echt bent.</em></h2>
+      <p class="pivot__sub">Onmogelijk te negeren. Met opzet.</p>
     </div>
-    <p class="sec-sub" style="margin-top:1.6rem">Jaarbetaling · 12 maanden voor de prijs van 11.</p>
   </div>
 </section>
 
-<!-- ============ 05 · CONTACT ============ -->
-<section class="page-cta" id="contact">
-  <div class="page-cta-ghost" aria-hidden="true" data-parallax="0.05">NOXTA</div>
-  <div class="meta" data-reveal>
-    <div class="blk"><span class="mono">05 · Neem contact op</span><span class="v">Twee plekken open · Q3 2026</span></div>
-    <div class="blk" style="text-align:right"><span class="mono">Gemiddelde reactie</span><span class="v">Binnen 24 uur</span></div>
-  </div>
-  <h2>
-    <span class="line-mask"><span>Laten we <span class="grad-text">praten.</span></span></span>
-  </h2>
-  <p class="lede" data-reveal>Stuur me waar je mee bezig bent en ik kom binnen een dag bij je terug. Als ik kan helpen, krijg je een offerte. Als ik dat niet kan, zeg ik het — en meestal ken ik iemand die het wél kan.</p>
-  <div class="actions" data-reveal>
-    <a class="btn btn-primary" href="/contact" data-hover data-magnetic><span class="fill"></span><span>Start een project →</span></a>
-    <a class="btn btn-ghost" href="mailto:adrian@noxta.studio" data-hover data-magnetic><span class="fill"></span><span>Mail</span></a>
-    <span class="wa">Of WhatsApp <a href="https://wa.me/31617657327" target="_blank" rel="noopener" data-hover style="color:inherit;text-decoration:none"><b>+31 6 17 657 327</b></a> · Ik lees elk bericht</span>
+<!-- ===================== TURN (services) ===================== -->
+<section class="sec turn" id="services" data-theme="orange">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>Wat we doen</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">Alles,<br>van A tot Z.</h2>
+
+    <div class="svc">
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">01</span>
+        <span class="svc__name">Webdesign</span>
+        <span class="svc__desc">Een site die eindelijk bij jouw niveau past en bezoekers omzet in klanten.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">02</span>
+        <span class="svc__name">Branding</span>
+        <span class="svc__desc">Een identiteit die mensen onthouden en doorvertellen. Die ze screenshotten, niet voorbijscrollen.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">03</span>
+        <span class="svc__name">Motion</span>
+        <span class="svc__desc">Momenten die mensen voelen, niet alleen lezen. Beweging die het merk laat landen.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">04</span>
+        <span class="svc__name">Development</span>
+        <span class="svc__desc">Snel, foutloos, gebouwd om te converteren. Schone code die op elk apparaat presteert.</span>
+      </a>
+    </div>
+    <p class="svc__close reveal">Het doel is niet gewoon een mooiere site. Het is er &eacute;&eacute;n die van &ldquo;mooi werk&rdquo; een geboekt gesprek maakt.</p>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="wm">NO<span class="x">X</span>TA STUDIO</div>
-      <p>Adrian Tajti. Een eenmansstudio in Tilburg. Ik werk met kleine bedrijven, vooral Nederlands en Belgisch, die een echt persoon willen bellen als er iets op hun site moet wijzigen.</p>
-    </div>
-    <div class="fl">
-      <span class="mono">// Pagina's</span>
-      <a href="/" data-hover>Home</a>
-      <a href="/portfolio" data-hover>Portfolio</a>
-      <a href="/contact" data-hover>Contact</a>
-    </div>
-    <div class="fl">
-      <span class="mono">// Studio</span>
-      <a href="mailto:adrian@noxta.studio" data-hover>adrian@noxta.studio</a>
-      <a href="https://wa.me/31617657327" data-hover>WhatsApp</a>
-      <a href="/privacy" data-hover>Privacy</a>
-      <a href="/terms" data-hover>Voorwaarden</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="mono">Studio · Tilburg, NL · Sinds 2026</span>
-    <span class="mono">© 2026 Noxta Studio — Met de hand gecodeerd, geen template</span>
-  </div>
-</footer>
+<!-- ============ PROOF — pinned horizontal one-by-one showcase ============ -->
+<section class="proof" id="work" data-theme="ink">
+  <div class="workx" aria-label="Geselecteerd werk — scroll om verder te gaan">
+    <div class="workx__track">
 
+      <div class="workx__panel workx__panel--text">
+        <div class="workx__textwrap">
+          <div class="sec__kicker mono"><span>Geselecteerd werk</span><span class="ln"></span></div>
+          <h2 class="h-mega">Echte mensen.<br>Echte resultaten.</h2>
+          <p class="workx__hint mono">Twee echte projecten &middot; blijf scrollen</p>
+        </div>
+      </div>
+
+      <article class="workx__panel">
+        <a class="workx__shot" href="work-szabina.html">
+          <img src="szabina-screenshot.webp" alt="Szabina — cinematisch reisjournaal gebouwd door Noxta" loading="lazy" />
+        </a>
+        <div class="workx__info">
+          <span class="workx__index">01 — 02</span>
+          <h3 class="workx__name">Szabina</h3>
+          <p class="workx__role">Cinematisch reisjournaal &middot; Zelf te bewerken</p>
+          <p class="workx__quote">&ldquo;Hij kon alles bouwen wat ik vroeg, helemaal op mij afgestemd. Snel, ontspannen, professioneel.&rdquo;</p>
+          <p class="workx__who">Szabina &mdash; Reisjournaal</p>
+          <div class="workx__links">
+            <a class="workx__url" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener">Bekijk de site</a>
+            <a class="workx__study" href="work-szabina.html">Lees de case study</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="workx__panel">
+        <a class="workx__shot" href="work-voep.html">
+          <img src="voep-screenshot.webp" alt="VOEP — webshop voor vintage buitenboordmotoronderdelen gebouwd door Noxta" loading="lazy" />
+        </a>
+        <div class="workx__info">
+          <span class="workx__index">02 — 02</span>
+          <h3 class="workx__name">VOEP</h3>
+          <p class="workx__role">Vintage watersport-webshop &middot; Eerste verkoop naar Zweden</p>
+          <p class="workx__quote">&ldquo;Nu ziet het er net zo professioneel uit als ik het altijd voor me zag &mdash; dankzij Adrians idee&euml;n en hulp.&rdquo;</p>
+          <p class="workx__who">Alex &mdash; Eigenaar</p>
+          <div class="workx__links">
+            <a class="workx__url" href="https://voep.nl" target="_blank" rel="noopener">voep.nl</a>
+            <a class="workx__study" href="work-voep.html">Lees de case study</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="workx__panel workx__panel--outro">
+        <div class="workx__outro-text">
+          <p class="workx__hint mono">Dat is het werk. Nu de pitch.</p>
+          <h3 class="workx__outro-head">De site die je nu<br>scrolt is het bewijs.</h3>
+          <p class="workx__outro-note">Nieuwe studio, geobsedeerd door het vak. Als het je iets liet voelen, dan is dat de hele pitch.</p>
+          <a class="workx__study workx__outro-cta" href="contact.html">Start een project</a>
+        </div>
+        <a class="workx__outro-circle" href="contact.html" aria-label="Start een project">&#8594;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROMISE (de-risk + founder) ===================== -->
+<section class="sec promise" id="about" data-theme="cream">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>Hoe we werken</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">Geen giswerk.<br>Geen bureauspelletjes.</h2>
+
+    <div class="promise__grid">
+      <div class="steps">
+        <div class="step reveal"><span class="step__n">01</span><div><div class="step__t">We duiken erin</div><p class="step__d">Een echt gesprek over je bedrijf, je klanten en wat het merk tegenhoudt.</p></div></div>
+        <div class="step reveal"><span class="step__n">02</span><div><div class="step__t">We ontwerpen het voor jou</div><p class="step__d">Eén heldere richting — meestal binnen een week — en dan een site die daaromheen wordt gebouwd, persoonlijk, geen template met jouw logo erin geplakt.</p></div></div>
+        <div class="step reveal"><span class="step__n">03</span><div><div class="step__t">We verfijnen tot het klopt</div><p class="step__d">Elk verzoek nagelopen en verfijnd. Jij krijgt geen zorgen en een site die je met trots doorstuurt.</p></div></div>
+      </div>
+
+      <div>
+        <div class="guarantee reveal">
+          <h4>De garantie</h4>
+          <p>Duidelijke scope, een vaste planning. Als de eerste ontwerprichting niet landt, werk ik hem &eacute;&eacute;n keer opnieuw uit &mdash; gratis. En als je dan nog niet verder wilt, betaal je alleen voor de gewerkte uren, met een maximum van 30%. Het risico is voor mij, niet voor jou.</p>
+        </div>
+        <p class="founder reveal">&ldquo;Ik ben Adrian. Ik ben Noxta in Tilburg begonnen omdat de meeste websites goede bedrijven gemiddeld laten lijken. Dat los ik op.&rdquo;
+          <span class="sig">Adrian &mdash; Oprichter, Noxta</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING (the investment) ===================== -->
+<section class="sec pricing" id="pricing" data-theme="ink">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>Prijzen</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">Kies je aanpak.</h2>
+    <div class="toggle reveal" id="priceToggle" role="tablist">
+      <button data-mode="one" class="is-active" type="button">Eenmalig project</button>
+      <button data-mode="ret" type="button">Maandelijkse retainer</button>
+    </div>
+    <div class="tiers" id="tiers"></div>
+    <p class="pricing__terms reveal">Projecten in 50% vooraf, 50% bij livegang &mdash; Tier III in drie termijnen. Geen verrassingen.</p>
+    <div class="careplus reveal">
+      <div>
+        <h4>Care+ FAQ-assistent <span class="price">+&euro;89&#8239;/&#8239;mnd</span> <span class="setup">&middot; &euro;750 opstart</span></h4>
+        <p>Een klein chatvenster voor de vragen die je nu tien keer per week via e-mail krijgt. Antwoorden uit een FAQ die ik samen met je schrijf; boekt direct in je agenda. Add-on bij Standard &amp; Active retainers.</p>
+      </div>
+      <a href="#contact" class="tier__cta">Vraag ernaar</a>
+    </div>
+    <p class="pricing__note reveal">Ergens &euro;500&ndash;1.000 voor een website gehoord? Dat was een templateprijs &mdash; dit is iets anders. Niet zeker welke aanpak? <a href="#contact">Start een project</a> en ik zeg je eerlijk welke past.</p>
+  </div>
+</section>
+
+<!-- ===================== STRAIGHT ANSWERS (objections) ===================== -->
+<section class="sec answers" id="answers" data-theme="ink">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>Eerlijke antwoorden</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">Het deel dat de meeste<br>studio&rsquo;s overslaan.</h2>
+    <div class="answers__grid">
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;Je bent &eacute;&eacute;n persoon &mdash; wat als je verdwijnt?&rdquo;</h3>
+        <p class="qa__a">Terecht. Daarom leunt niets wat ik bouw op mijn aanwezigheid. Het is schone, handgecodeerde, standaard HTML/CSS &mdash; elke developer kan het overnemen. Je domein, bestanden en accounts staan vanaf dag &eacute;&eacute;n op jouw naam. In het slechtste geval heb je nog steeds een site die werkt.</p>
+      </div>
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;Van wie is de code?&rdquo;</h3>
+        <p class="qa__a">Van jou. Om te houden &mdash; geen licentie, geen lock-in, geen maandbedrag alleen om online te blijven. Als het klaar is, geef ik je alles. Je kunt weglopen wanneer je wilt; de meesten doen dat niet, maar het kan.</p>
+      </div>
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;En als ik later wijzigingen nodig heb?&rdquo;</h3>
+        <p class="qa__a">Twee manieren. Mail me en ik offreer de wijziging &mdash; of houd me op een retainer (vanaf &euro;75/mnd) waar aanpassingen er gewoon bij horen: binnen dezelfde week, zonder telkens opnieuw uit te leggen wie je bent. Je beslist na de livegang, niet ervoor.</p>
+      </div>
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;Waarom niet gewoon Webflow of Squarespace?&rdquo;</h3>
+        <p class="qa__a">Als een template alles zegt wat je nodig hebt &mdash; gebruik er dan &eacute;&eacute;n. Je leest dit omdat dat niet zo is. Die tools geven iedereen dezelfde vormen; ik bouw die van jou vanaf nul, zodat het eruitziet als jij en snel laadt. Ander werk, ander resultaat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ASK + FOOTER ===================== -->
+<section class="ask" id="contact" data-theme="orange">
+  <div class="wrap ask__inner">
+    <p class="ask__eyebrow reveal">Het beste moment is v&oacute;&oacute;r je volgende lancering, niet erna.</p>
+    <h2 class="ask__big reveal">Aan de slag.</h2>
+    <a href="contact.html" class="ask__circle reveal" aria-label="Start een project">&#8594;</a>
+    <div class="ask__row reveal">
+      <a href="mailto:adrian@noxta.studio" class="ask__mail"><span class="ask__mailicon"><svg viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="22" height="16" rx="1.5"/><path d="M1.5 2.5 12 10 22.5 2.5"/></svg></span>adrian@noxta.studio</a>
+      <a href="contact.html" class="btn-pill">Start een project</a>
+    </div>
+  </div>
+
+  <div class="ask__rule" aria-hidden="true"></div>
+
+  <footer class="foot">
+    <div class="foot__logo">NOXTA</div>
+    <nav class="foot__nav">
+      <div class="foot__col">
+        <a href="#work"><span>01</span> Werk</a>
+        <a href="#services"><span>02</span> Diensten</a>
+        <a href="#about"><span>03</span> Over</a>
+      </div>
+      <div class="foot__col">
+        <a href="#pricing"><span>04</span> Prijzen</a>
+        <a href="contact.html"><span>05</span> Contact</a>
+        <a href="privacy.html"><span>06</span> Privacy</a>
+        <a href="terms.html"><span>07</span> Voorwaarden</a>
+      </div>
+    </nav>
+    <div class="foot__social">
+      <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg> Instagram</a>
+      <a href="https://dribbble.com/adrian-tajti" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24C5.39 24 0 18.61 0 12S5.39 0 12 0s12 5.39 12 12-5.39 12-12 12zm10.12-10.36c-.35-.11-3.17-.95-6.38-.44 1.34 3.68 1.89 6.68 1.99 7.31a10.05 10.05 0 004.39-6.87zm-6.11 7.81c-.15-.9-.75-4.03-2.19-7.77l-.07.02c-5.79 2.02-7.86 6.03-8.04 6.4A9.96 9.96 0 0012 22c1.42 0 2.77-.29 4-.81zM4.39 18.86c.23-.4 3.05-5.06 8.33-6.77l.41-.12c-.26-.59-.54-1.17-.83-1.74-5.12 1.53-10.08 1.47-10.53 1.46v.31c0 2.63 1 5.04 2.63 6.86zm-2.42-8.96c.46.01 4.68.03 9.48-1.25-1.7-3.02-3.53-5.56-3.8-5.93a10.05 10.05 0 00-5.68 7.18zM9.6 2.05c.28.38 2.15 2.91 3.82 6 3.65-1.37 5.19-3.44 5.37-3.7A9.96 9.96 0 0012 2c-.83 0-1.63.1-2.4.29zm10.34 3.48c-.22.29-1.94 2.49-5.73 4.04.24.49.47.99.68 1.49.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.89-4.64-2.31-6.39z"/></svg> Dribbble</a>
+      <a href="https://www.linkedin.com/in/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+      <a href="https://wa.me/31617657327" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.43 9.88-9.88 9.88M20.46 3.49A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/></svg> WhatsApp</a>
+    </div>
+    <div class="foot__copy">&copy; 2026 Noxta Studio<br>Alle rechten voorbehouden<br>KvK 42092474</div>
+  </footer>
+</section>
+
+<!-- ===================== SCRIPTS ===================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="assets/noxta.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var mqMobile = window.matchMedia("(max-width: 760px)");
+  var isMobile = mqMobile.matches;
+
+  /* ---- Low-performance fallback ----------------------------------------
+     The animated colour arc leans on the GPU. With hardware acceleration
+     off/blocklisted (common in Chrome on some machines) it repaints on the
+     CPU every frame and the smooth palette scrub degrades into a colour
+     STROBE. If this device was already measured as too slow, take the same
+     cheap path as reduced-motion/mobile: solid per-section colours, no arc. */
+  var lowPerf = false;
+  try { lowPerf = localStorage.getItem("noxtaLowPerf") === "1"; } catch(e){}
+
+  /* Watchdog: measure the real frame cadence DURING the first scroll — that's
+     when the colour scrub + repaints run and a throttled tab strobes. Idle
+     frames are cheap even on a slow tab (nothing to paint), so sampling at rest
+     misses it (macOS Low Power Mode / GPU-off only bite under load). Sample ~40
+     frames captured while actively scrolling; if the tab can't hold ~55fps (slow
+     median or a high share of slow frames — the jitter signature), reload ONCE
+     into the static path. Guarded so it fires at most once per session (no loop)
+     and only when storage actually persisted. */
+  if(!reduce && !isMobile && !lowPerf){
+    (function(){
+      var samples = [], lastFrame = performance.now(), lastScroll = 0, rafPending = false;
+      function decide(){
+        var s = samples.slice().sort(function(a,b){ return a - b; });
+        var med = s[s.length >> 1];
+        var slow = 0; for(var i=0;i<s.length;i++){ if(s[i] > 20) slow++; }   // frames slower than 50fps
+        // A jittery tab strobes even when the MEDIAN looks okay-ish (measured
+        // ~26–53fps swings), so trigger on a slow median OR a high share of slow
+        // frames (the jitter signature) — i.e. anything that can't hold ~55fps.
+        // No "already checked" session guard: the localStorage lowPerf flag alone
+        // stops a reload loop (the reloaded page is lowPerf → this is gated off),
+        // and a stale guard was silently disabling detection after one OK sample.
+        if(med > 18 || slow / s.length >= 0.30){
+          var saved = false;
+          try {
+            localStorage.setItem("noxtaLowPerf","1");
+            saved = true;                             // flag persisted → safe to reload
+            try { sessionStorage.setItem("noxtaPT","1"); } catch(e){}  // quick reveal on reload
+          } catch(e){}
+          if(saved) location.reload();                // no storage → no reload (avoid a loop)
+        }
+        // measured OK → do nothing; re-measure on the next load
+      }
+      function frame(now){
+        rafPending = false;
+        var dt = now - lastFrame; lastFrame = now;
+        if(now - lastScroll < 120){                   // only frames under active scrolling
+          if(dt < 200) samples.push(dt);              // skip the resume-from-pause gap frame
+          if(samples.length >= 40){ window.removeEventListener("scroll", onScroll); decide(); return; }
+          rafPending = true; requestAnimationFrame(frame);
+        }
+      }
+      function onScroll(){
+        lastScroll = performance.now();
+        if(!rafPending){ rafPending = true; requestAnimationFrame(frame); }
+      }
+      window.addEventListener("scroll", onScroll, { passive:true });
+    })();
+  }
+
+  /* The pinned vs stacked layout (pivot + work) is chosen ONCE here from
+     isMobile. If the viewport later crosses the mobile breakpoint (window
+     resize, device-mode toggle, phone rotation), those sections would be
+     stranded in the wrong layout — e.g. the desktop two-column work showcase
+     squeezed into a phone width. Re-evaluate by reloading on the crossing so
+     each mode is rebuilt cleanly. Fires only on the boundary cross, not on
+     every resize. */
+  (function(){
+    var onCross = function(){ location.reload(); };
+    if(mqMobile.addEventListener){ mqMobile.addEventListener("change", onCross); }
+    else if(mqMobile.addListener){ mqMobile.addListener(onCross); }
+  })();
+
+  /* ---- Pricing (real Noxta tiers). Rendered first so it works even if
+          GSAP never loads. One-Time vs Monthly Retainer toggle. ---- */
+  var ONE_TIME=[
+    {label:"Tier · I",price:"€800 – 1.200",name:"Small",tag:"Eén ding, goed gedaan.",worth:"1.900",features:[["Landingspagina of gerichte redesign, handgecodeerd","900"],["Merkteken / woordmerk opfrissen","350"],["Copy die ik samen met je schrijf (tot 600 woorden)","300"],["Basis-SEO: title, meta, sitemap","200"],["Domein + livegang instellen","150"],"Eén revisieronde"],foot:"Een gerichte lanceringspagina of een eenmalige redesign voor een klein project. Meestal een tot twee weken."},
+    {label:"Tier · II",price:"€1.800 – 3.500",name:"Mid",tag:"Een volledige site met een echt merk.",rec:true,worth:"4.500",features:[["Site met meerdere pagina's (4–8), handgecodeerd","2.200"],["Merkidentiteit: woordmerk, palet, typografie","900"],["Copywriting voor de hele site (~2.000 woorden)","650"],["On-page SEO, schema, sitemap","400"],["Contactformulier, analytics, social meta","200"],["Eerste 30 dagen Standard-onderhoud","150"],"Twee revisierondes · 2–4 weken doorlooptijd"],foot:"Kleine bedrijven zonder site, of met een site die ze schaadt. De meeste van mijn projecten landen hier."},
+    {label:"Tier · III",price:"€6.000+",name:"Large",tag:"Echte webshops of maatwerk.",worth:"11.650",features:[["E-commerce (WooCommerce / Shopify), handgecodeerd","7.000"],["Productdatabase opzetten + importeren","1.200"],["Betalingen (iDEAL, Bancontact, kaart) + verzending","900"],["Merkidentiteit: woordmerk, palet, typografie","1.000"],["Copywriting voor de hele webshop","800"],["E-commerce-SEO, schema, sitemap","600"],["Eerste 30 dagen Standard-onderhoud","150"],"Drie revisierondes · 6–8 weken doorlooptijd"],foot:"Webshops met echte voorraad of maatwerk dat een kant-en-klare template niet aankan. Boven de 2.000 SKU's op maat geoffreerd. VOEP was een Large."}
+  ];
+  var RETAINER=[
+    {label:"Plan · I",price:"€75 / maand",name:"Light",tag:"Up-to-date en veilig gehouden.",features:["Uptime-monitoring","Wekelijkse automatische back-ups","Beveiligingspatches en plugin-updates","1 uur aanpassingen per maand, tot 2 maanden mee te nemen","E-mailsupport, reactie binnen 48 uur","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Afgeronde sites die alleen online en up-to-date moeten blijven."},
+    {label:"Plan · II",price:"€150 / maand",name:"Standard",tag:"Light plus actieve aanpassingen.",rec:true,features:["Alles uit Light","3 uur aanpassingen per maand","Tekstaanpassingen en kleine layout-wijzigingen","Maandelijkse performance-rapportage","Aanpassingen binnen dezelfde week (ma–vr)","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Sites die een paar keer per maand wijzigen: prijzen, menu, content-updates."},
+    {label:"Plan · III",price:"€450 / maand",name:"Active",tag:"Ik zit praktisch in je team.",features:["Alles uit Standard","8 uur aanpassingen per maand","Prioriteitsreactie (volgende werkdag)","Telefoon / WhatsApp-support (ma–vr 9–17, alleen urgent)","Elk kwartaal een strategiegesprek","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Groeiende webshops en actieve marketing: nieuwe pagina's, campagnes en doorlopend werk."}
+  ];
+  function priceCard(t){
+    var feats=t.features.map(function(f){
+      return (typeof f==="string")
+        ? '<li><span class="tier__f">'+f+'</span></li>'
+        : '<li><span class="tier__f">'+f[0]+'</span><span class="tier__w">€'+f[1]+'</span></li>';
+    }).join("");
+    return '<div class="tier'+(t.rec?" rec":"")+'">'
+      +(t.rec?'<span class="tier__badge">Aanbevolen</span>':"")
+      +'<span class="tier__label">'+t.label+'</span>'
+      +'<span class="tier__name">'+t.name+'</span>'
+      +'<p class="tier__tag">'+t.tag+'</p>'
+      +(t.worth?'<div class="tier__worth">Los van elkaar &asymp; <s>€'+t.worth+'</s></div>':"")
+      +'<div class="tier__price">'+t.price+'</div>'
+      +(t.worth?'<p class="tier__save">Eén persoon, één prijs &mdash; geen opslag van vier freelancers.</p>':"")
+      +'<ul class="tier__feat">'+feats+'</ul>'
+      +'<p class="tier__foot">'+t.foot+'</p>'
+      +'<a href="#contact" class="tier__cta">Start een project</a>'
+      +'</div>';
+  }
+  function renderTiers(mode){
+    var box=document.getElementById("tiers"); if(!box) return;
+    box.innerHTML=(mode==="ret"?RETAINER:ONE_TIME).map(priceCard).join("");
+  }
+  renderTiers("one");
+  Array.prototype.forEach.call(document.querySelectorAll("#priceToggle button"),function(b){
+    b.addEventListener("click",function(){
+      Array.prototype.forEach.call(document.querySelectorAll("#priceToggle button"),function(x){x.classList.remove("is-active");});
+      b.classList.add("is-active");
+      renderTiers(b.getAttribute("data-mode"));
+    });
+  });
+
+  /* ---- Seamless marquees: duplicate the unit until the track is wider than
+          2x the viewport, with an even number of copies, so translateX(-50%)
+          loops with no gap on any screen. Re-runs after fonts load + resize. ---- */
+  var mqTracks = Array.prototype.slice.call(document.querySelectorAll(".marquee__track"));
+  function setupMarquee(t){
+    var unit = t.getAttribute("data-unit");
+    if(unit === null){ unit = t.innerHTML; t.setAttribute("data-unit", unit); }
+    t.innerHTML = unit;
+    var copies = 1, guard = 0;
+    while(t.scrollWidth < window.innerWidth * 2 && guard < 80){ t.insertAdjacentHTML("beforeend", unit); copies++; guard++; }
+    if(copies % 2 === 1){ t.insertAdjacentHTML("beforeend", unit); }
+  }
+  function setupMarquees(){ mqTracks.forEach(setupMarquee); }
+  setupMarquees();
+  window.addEventListener("load", setupMarquees);
+
+  /* ---- Fit the hero CREATE word to the exact viewport width, whatever font
+          loads. Measures the text with a detached probe (the real element is a
+          stretched flex child, so it can't be measured in place). ---- */
+  function fitCreate(){
+    var el = document.querySelector(".hero__create");
+    if(!el) return;
+    var cs = getComputedStyle(el);
+    var probe = document.createElement("span");
+    probe.textContent = el.textContent;
+    probe.style.cssText = "position:absolute;left:-99999px;top:0;visibility:hidden;white-space:nowrap;" +
+      "font-family:" + cs.fontFamily + ";font-weight:" + cs.fontWeight +
+      ";letter-spacing:" + cs.letterSpacing + ";text-transform:uppercase;font-size:300px";
+    document.body.appendChild(probe);
+    var textW = probe.getBoundingClientRect().width;
+    document.body.removeChild(probe);
+    if(textW <= 0) return;
+    var target = window.innerWidth;                 // full width, last letter at the edge
+    var size = 300 * (target / textW);
+    el.style.fontSize = size + "px";
+    // correction pass: scrollWidth is the real rendered text width (it overflows
+    // its stretched box), so this nails the fit even if the probe was slightly off.
+    var actual = el.scrollWidth;
+    if(actual > 0){ el.style.fontSize = (size * (target / actual)) + "px"; }
+  }
+  fitCreate();
+  window.addEventListener("load", fitCreate);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fitCreate); }
+  var _fcT; window.addEventListener("resize", function(){ clearTimeout(_fcT); _fcT = setTimeout(fitCreate, 150); });
+
+  /* Per-section theme targets. The scroll engine tweens --bg/--fg/--accent
+     to these as each section reaches viewport center, producing the V-arc:
+     orange -> dead -> orange -> ink -> cream -> orange. */
+  var THEMES = {
+    hero:   {bg:"#ff5a1f", fg:"#0e0a06", accent:"#0e0a06", line:"rgba(14,10,6,.18)"},
+    dead:   {bg:"#e9e8e4", fg:"#6f6e69", accent:"#5f5d58", line:"rgba(94,93,88,.22)"},
+    orange: {bg:"#ff5a1f", fg:"#0e0a06", accent:"#0e0a06", line:"rgba(14,10,6,.18)"},
+    ink:    {bg:"#0e0a06", fg:"#faf3e8", accent:"#ff5a1f", line:"rgba(250,243,232,.16)"},
+    cream:  {bg:"#faf3e8", fg:"#0e0a06", accent:"#ff5a1f", line:"rgba(14,10,6,.14)"}
+  };
+
+  // Static fallback: paint each section its OWN solid colour, no global
+  // animation. Used for reduced-motion (photosensitive-safe — no full-screen
+  // flashing) and if GSAP fails to load.
+  function paintSectionsStatic(){
+    document.querySelectorAll("section[data-theme]").forEach(function(sec){
+      var t = THEMES[sec.getAttribute("data-theme")];
+      if(!t) return;
+      sec.style.backgroundColor = t.bg;
+      sec.style.color = t.fg;
+      // --bg must travel with the section too: elements that use var(--bg) for
+      // their LABEL colour (toggle active button, "Recommended" badge, the work
+      // outro circle) go invisible otherwise, because the global --bg the
+      // animated engine tweens never updates on the static paths.
+      sec.style.setProperty("--bg", t.bg);
+      sec.style.setProperty("--fg", t.fg);
+      sec.style.setProperty("--accent", t.accent);
+      sec.style.setProperty("--line", t.line);
+    });
+  }
+
+  /* Memoised :root custom-property writer. Chrome (Blink) invalidates the WHOLE
+     document's style when an inherited custom property changes on :root, and then
+     repaints every element that consumes it — per scroll frame that's a big cost
+     (Safari/WebKit optimises this far better, hence "smoother in Safari"). GSAP's
+     colour interpolation returns integer rgb strings, so during slow scrolls /
+     the long pinned scrubbers many consecutive frames yield the SAME value —
+     skipping the redundant setProperty skips the recalc + repaint entirely.
+     Shared cache so the palette engine + pivot scrubber never fight it. */
+  var _rootStyle = document.documentElement.style, _rootVarCache = {};
+  function setRootVar(prop, val){
+    if(_rootVarCache[prop] !== val){ _rootStyle.setProperty(prop, val); _rootVarCache[prop] = val; }
+  }
+
+  /* Ease the whole palette to a section's theme over .6s — TIME-based, not scrubbed
+     to scroll position, so fast or up-and-down scrolling can't strobe. Reduced
+     motion snaps instantly. This is the original (pre-"bg-arc") smooth approach. */
+  function applyTheme(t){
+    if(reduce){
+      _rootStyle.setProperty("--bg",t.bg); _rootStyle.setProperty("--fg",t.fg);
+      _rootStyle.setProperty("--accent",t.accent); _rootStyle.setProperty("--line",t.line);
+      return;
+    }
+    gsap.to("html",{ "--bg":t.bg, "--fg":t.fg, "--accent":t.accent, "--line":t.line,
+      duration:.6, ease:"power2.out", overwrite:"auto" });
+  }
+
+  /* Static-path nav legibility (reduced-motion + GSAP-fail). With no palette
+     engine retinting the fixed nav, recolour it from whichever data-theme
+     section sits under the bar. Discrete colour swap, no animation —
+     photosensitive-safe. (#pivot has no data-theme and is light-bg in both
+     phases, so the inherited dark nav stays legible over it.) */
+  function navColorSync(){
+    var nav = document.getElementById("nav");
+    if(!nav) return;
+    var rs = document.documentElement.style;
+    var secs = Array.prototype.slice.call(document.querySelectorAll("section[data-theme]"));
+    // Also drive the fixed progress bar's tokens: on these paths (mobile/reduced)
+    // the :root --accent/--line don't morph (they're set per-section), so a fixed
+    // bar would keep the initial colour and vanish over e.g. the ink section.
+    function tint(t){ setRootVar("--accent", t.accent); setRootVar("--line", t.line); }
+    function sync(){
+      var navY = nav.getBoundingClientRect().bottom;
+      var matched = false;
+      for(var i = secs.length - 1; i >= 0; i--){
+        var r = secs[i].getBoundingClientRect();
+        if(r.top <= navY && r.bottom > navY){
+          var t = THEMES[secs[i].getAttribute("data-theme")];
+          if(t){ nav.style.color = t.fg; tint(t); matched = true; }
+          break;
+        }
+      }
+      // Only unthemed gap is #pivot, whose phases are both light-bg (grey then
+      // orange), so a dark nav stays legible there. Default to it so a scroll-up
+      // from an ink section doesn't strand a light nav over the grey.
+      if(!matched){ nav.style.color = THEMES.hero.fg; tint(THEMES.hero); }
+    }
+    sync();
+    window.addEventListener("scroll", sync, {passive:true});
+    window.addEventListener("resize", sync);
+  }
+
+  /* Hide-on-scroll-down, reveal-on-the-tiniest-scroll-up nav. Independent of the
+     palette engine (which only sets colour); runs in every path (Lenis /
+     reduced-motion / GSAP-fail) since it's wired before any early return. */
+  (function(){
+    var hnav = document.getElementById("nav");
+    if(!hnav) return;
+    var lastY = window.scrollY;
+    window.addEventListener("scroll", function(){
+      var y = window.scrollY;
+      if(y <= 80){ hnav.classList.remove("is-hidden"); }
+      else if(y > lastY){ hnav.classList.add("is-hidden"); }
+      else if(y < lastY){ hnav.classList.remove("is-hidden"); }
+      lastY = y;
+    }, {passive:true});
+  })();
+
+  /* Scroll progress bar — fill scaleX = how far through the page you are. Plain
+     scroll-linked (no GSAP dependency); Lenis still fires 'scroll' so it stays
+     smooth, and it works on the reduced-motion / GSAP-fail paths too. */
+  (function(){
+    var fill = document.getElementById("progressFill");
+    if(!fill) return;
+    var max = 0, lastM = -1e9, ticking = false;
+    function paint(){
+      ticking = false;
+      // Reading scrollHeight forces a layout — and during pinned sections layout is
+      // dirty every frame, so a per-frame read = a forced reflow every frame (jank).
+      // scrollHeight only changes on resize / pin-setup, NOT on scroll, so cache it
+      // and refresh at most ~2x/sec.
+      var now = performance.now();
+      if(now - lastM > 400){ max = document.documentElement.scrollHeight - window.innerHeight; lastM = now; }
+      var p = max > 0 ? window.scrollY / max : 0;
+      fill.style.transform = "scaleX(" + (p < 0 ? 0 : p > 1 ? 1 : p) + ")";
+    }
+    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(paint); } }
+    function onResize(){ lastM = -1e9; paint(); }   // force a fresh measure
+    paint();
+    window.addEventListener("scroll", onScroll, {passive:true});
+    window.addEventListener("resize", onResize);
+  })();
+
+  /* (Mobile menu + page transitions live in noxta.js — shared across pages.) */
+
+  if(!window.gsap){ // GSAP failed to load — static colours, reveal everything, bail.
+    var _pf = document.getElementById("preloader");
+    if(_pf){ _pf.style.display = "none"; }      // never strand the visitor on the curtain
+    document.documentElement.classList.remove("is-loading");
+    paintSectionsStatic();
+    navColorSync();
+    document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in");});
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Smooth scroll (Lenis) — eased, momentum scroll feel, synced to ScrollTrigger.
+     Native scroll kept for reduced-motion + touch (Lenis leaves touch native). */
+  if(!reduce && !lowPerf && window.Lenis){
+    var lenis = new Lenis({
+      duration: 1.15,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true
+    });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    // Smooth-scroll in-page anchor links (nav, hero arrow, CTAs). A smooth
+    // scroll updates ScrollTrigger continuously, so the section colours stay
+    // correct on a nav click instead of snapping to a wrong one on a jump.
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function(a){
+      a.addEventListener("click", function(e){
+        var id = a.getAttribute("href");
+        if(id.length > 1 && document.querySelector(id)){
+          e.preventDefault();
+          lenis.scrollTo(id, { duration: 1.4, offset: 0 });
+        }
+      });
+    });
+  }
+
+  /* 1) Section palette engine.
+        Reduced-motion (photosensitive-safe): no animated background — each
+        section just paints its own solid colour, so there is NO full-screen
+        flashing at all.
+        Otherwise: the page background CONTINUOUSLY interpolates between section
+        colours, locked to scroll position. Because the colour is tied to where
+        you are (not a discrete snap on a timer), fast scrolling produces one
+        smooth sweep instead of a rapid strobe — no seizure-trigger flashing. */
+  var paletteSections = gsap.utils.toArray("section[data-theme]");
+  // Mobile joins the static path: its sections are short + un-pinned, so the
+  // continuous arc's transitions OVERLAP and wash the orange sections lighter than
+  // the opaque pivot block (a visible seam). Discrete solid section colours avoid
+  // it and match the rest of mobile (work + pivot already render static here).
+  if(reduce || isMobile || lowPerf){
+    paintSectionsStatic();
+    navColorSync();
+  } else {
+    // Empty bg-arc container. Only the pinned pivot uses it now (its GPU grey
+    // overlay); flow-section colours are driven time-based on :root below.
+    var bgArc = document.createElement("div");
+    bgArc.className = "bg-arc"; bgArc.setAttribute("aria-hidden","true");
+    document.body.insertBefore(bgArc, document.body.firstChild);
+
+    // Time-based palette engine (restored from the pre-"bg-arc" version — it was
+    // smooth). Whichever section is crossing the viewport centre owns the page
+    // colours; entering it EASES --bg/--fg/--accent/--line to its theme over .6s
+    // via applyTheme(). Because it's tied to section ENTRY, not scroll position,
+    // fast or up-and-down scrolling can't drive the colour back and forth (no
+    // strobe), and there's no opaque-layer crossfade to muddy through grey.
+    gsap.utils.toArray("section[data-theme]").forEach(function(sec){
+      var t = THEMES[sec.getAttribute("data-theme")];
+      if(!t) return;
+      ScrollTrigger.create({
+        trigger: sec, start: "top center", end: "bottom center",
+        onToggle: function(self){ if(self.isActive) applyTheme(t); }
+      });
+    });
+  }
+
+  /* Mobile-only dither melt at the cream<->ink seams. Desktop keeps the colour-morph
+     arc (a crisp seam would clash with the mid-scroll blend); mobile is static hard-edged,
+     so the halftone dissolve drops in cleanly. Pure SVG, regenerated on resize. */
+  if(isMobile){
+    (function(){
+      var CREAM="#faf3e8", INK="#0e0a06";
+      function meltSVG(from,to,dotTop,dotBot){
+        var W=Math.max(360,Math.ceil(window.innerWidth)), h=300, cell=12, gamma=0.7, over=0.4,
+            maxR=cell*0.40, seam=h/2, cols=Math.ceil(W/cell)+2, rows=Math.ceil(h/cell)+2, c="";
+        function cl(v){return v<0?0:v>1?1:v;}
+        for(var ry=0;ry<rows;ry++){ for(var cx=0;cx<cols;cx++){
+          var x=cx*cell+(ry%2?cell/2:0), y=ry*cell, t, r;
+          if(y<=seam+over*cell){ t=cl(1-(seam-y)/seam); r=maxR*Math.pow(t,gamma);
+            if(r>0.45) c+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(2)+'" fill="'+dotTop+'"/>'; }
+          if(y>=seam-over*cell){ t=cl(1-(y-seam)/(h-seam)); r=maxR*Math.pow(t,gamma);
+            if(r>0.45) c+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(2)+'" fill="'+dotBot+'"/>'; }
+        }}
+        return '<svg viewBox="0 0 '+W+' '+h+'" preserveAspectRatio="none" width="100%" height="'+h+'" style="display:block" xmlns="http://www.w3.org/2000/svg">'
+          +'<rect width="'+W+'" height="'+seam+'" fill="'+from+'"/><rect y="'+seam+'" width="'+W+'" height="'+(h-seam)+'" fill="'+to+'"/>'+c+'</svg>';
+      }
+      var seams=[
+        {before:"#about",   from:INK,   to:CREAM, dotTop:CREAM, dotBot:INK},  // work(ink) -> about(cream)
+        {before:"#pricing", from:CREAM, to:INK,   dotTop:INK,   dotBot:CREAM} // about(cream) -> pricing(ink)
+      ], made=[];
+      seams.forEach(function(s){
+        var target=document.querySelector(s.before); if(!target) return;
+        var d=document.createElement("div"); d.className="melt-divider";
+        d.innerHTML=meltSVG(s.from,s.to,s.dotTop,s.dotBot);
+        target.parentNode.insertBefore(d,target); made.push({el:d,s:s});
+      });
+      var rt; window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(function(){
+        made.forEach(function(m){ m.el.innerHTML=meltSVG(m.s.from,m.s.to,m.s.dotTop,m.s.dotBot); });
+      },200); });
+    })();
+  }
+
+  /* 2) Entrance reveals — each beat gets its OWN motion that matches its job. */
+  if(reduce || lowPerf){
+    document.querySelectorAll(".reveal").forEach(function(el){ el.style.opacity = 1; });
+  } else {
+    // play forward on the way down, reverse on the way up
+    function reveal(sel, tl){
+      var el = document.querySelector(sel);
+      if(el) ScrollTrigger.create({
+        trigger:el, start:"top 76%", end:"bottom 24%",
+        toggleActions:"play none none reverse", animation:tl
+      });
+    }
+
+    // (The Mirror's sting now lives in the pinned #pivot set-piece below.)
+
+    // THE TURN (services) — kicker charges in, the headline RISES letter-by-letter
+    // (each line masked with overflow:hidden), then the rows charge in from the left.
+    // splitChars wraps each <br> line in a clip mask and every glyph in an
+    // inline-block .nxChar, so GSAP can stagger them up from under the line.
+    function splitChars(el){
+      if(!el) return [];
+      var lines = el.innerHTML.split(/<br\s*\/?>/i), chars = [];
+      el.innerHTML = "";
+      lines.forEach(function(lineHTML){
+        var probe = document.createElement("span"); probe.innerHTML = lineHTML;
+        var text = probe.textContent;
+        var mask = document.createElement("span");
+        mask.style.cssText = "display:block;overflow:hidden;padding:.12em 0;margin:-.12em 0";
+        var inner = document.createElement("span");
+        inner.style.cssText = "display:inline-block;white-space:pre";
+        for(var i=0;i<text.length;i++){
+          var s = document.createElement("span");
+          s.className = "nxChar"; s.style.cssText = "display:inline-block";
+          if(text[i] === " "){ s.style.marginRight = ".14em"; }   // word gap (word-spacing can't reach split spaces)
+          s.textContent = text[i];
+          inner.appendChild(s); chars.push(s);
+        }
+        mask.appendChild(inner); el.appendChild(mask);
+      });
+      return chars;
+    }
+    var svcChars = splitChars(document.querySelector("#services .h-mega"));
+    gsap.set("#services .sec__kicker", {opacity:0, x:-30});
+    gsap.set("#services .h-mega", {opacity:1});
+    gsap.set(svcChars, {yPercent:120});
+    gsap.set("#services .svc__row", {opacity:0, x:-70});
+    gsap.set("#services .svc__close", {opacity:0, y:20});
+    reveal("#services", gsap.timeline({paused:true})
+      .to("#services .sec__kicker", {opacity:1, x:0, duration:.5, ease:"power2.out"})
+      .to(svcChars, {yPercent:0, duration:.9, stagger:.022, ease:"power4.out"}, "-=.25")
+      .to("#services .svc__row", {opacity:1, x:0, duration:.7, stagger:.12, ease:"power3.out"}, "-=.55")
+      .to("#services .svc__close", {opacity:1, y:0, duration:.6, ease:"power2.out"}, "-=.2")
+    );
+
+    // THE PROOF — heading wipes up, quotes slide in from the right.
+    // THE PROOF — heading, cases, and closing line are all panels inside the
+    // pinned horizontal showcase (see block 3c); nothing to reveal vertically.
+
+    // THE PROMISE — steps reveal one at a time (methodical), founder fades in slow.
+    gsap.set("#about .sec__kicker", {opacity:0, y:16});
+    gsap.set("#about .h-mega", {opacity:0, y:40});
+    gsap.set("#about .step", {opacity:0, x:-40});
+    gsap.set("#about .guarantee", {opacity:0, scale:.96});
+    gsap.set("#about .founder", {opacity:0});
+    reveal("#about", gsap.timeline({paused:true})
+      .to("#about .sec__kicker", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#about .h-mega", {opacity:1, y:0, duration:.8, ease:"power3.out"}, "-=.2")
+      .to("#about .step", {opacity:1, x:0, duration:.55, stagger:.22, ease:"power2.out"}, "-=.1")
+      .to("#about .guarantee", {opacity:1, scale:1, duration:.6, ease:"power3.out"}, "-=.3")
+      .to("#about .founder", {opacity:1, duration:1.2, ease:"power1.out"}, "-=.2")
+    );
+
+    // PRICING — heading + toggle, then the tier cards rise in.
+    gsap.set("#pricing .sec__kicker", {opacity:0, y:16});
+    gsap.set("#pricing .h-mega", {opacity:0, y:40});
+    gsap.set("#pricing .toggle", {opacity:0, y:14});
+    gsap.set("#pricing .tier", {opacity:0, y:46});
+    gsap.set("#pricing .pricing__terms", {opacity:0, y:16});
+    gsap.set("#pricing .careplus", {opacity:0, y:20});
+    gsap.set("#pricing .pricing__note", {opacity:0, y:16});
+    reveal("#pricing", gsap.timeline({paused:true})
+      .to("#pricing .sec__kicker", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#pricing .h-mega", {opacity:1, y:0, duration:.8, ease:"power3.out"}, "-=.2")
+      .to("#pricing .toggle", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.3")
+      .to("#pricing .tier", {opacity:1, y:0, duration:.65, stagger:.12, ease:"power3.out"}, "-=.1")
+      .to("#pricing .pricing__terms", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.15")
+      .to("#pricing .careplus", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.2")
+      .to("#pricing .pricing__note", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.3")
+    );
+
+    // STRAIGHT ANSWERS — heading rises, each Q&A charges in from the left.
+    gsap.set("#answers .sec__kicker", {opacity:0, y:16});
+    gsap.set("#answers .h-mega", {opacity:0, y:40});
+    gsap.set("#answers .qa", {opacity:0, x:-40});
+    reveal("#answers", gsap.timeline({paused:true})
+      .to("#answers .sec__kicker", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#answers .h-mega", {opacity:1, y:0, duration:.8, ease:"power3.out"}, "-=.2")
+      .to("#answers .qa", {opacity:1, x:0, duration:.55, stagger:.14, ease:"power2.out"}, "-=.1")
+    );
+
+    // THE ASK — LET'S BUILD wipes up bold, the circle button pops.
+    gsap.set("#contact .ask__eyebrow", {opacity:0, y:16});
+    gsap.set("#contact .ask__big", {opacity:0, y:50, clipPath:"inset(0 0 100% 0)"});
+    gsap.set("#contact .ask__circle", {opacity:0, scale:.6});
+    gsap.set("#contact .ask__row", {opacity:0, y:24});
+    reveal("#contact", gsap.timeline({paused:true})
+      .to("#contact .ask__eyebrow", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#contact .ask__big", {opacity:1, y:0, clipPath:"inset(0 0 0% 0)", duration:1, ease:"power4.out"}, "-=.2")
+      .to("#contact .ask__circle", {opacity:1, scale:1, duration:.6, ease:"back.out(1.6)"}, "-=.5")
+      .to("#contact .ask__row", {opacity:1, y:0, duration:.6, ease:"power2.out"}, "-=.4")
+    );
+  }
+
+  /* 3) The signature transformation: variable font-weight on the headline
+        DEFLATES into the Mirror trough, then BULKS UP through the Turn.
+        Color is handled by the palette engine above; weight is the type
+        half of the before/after. Skipped on mobile + reduced-motion
+        (the static target states still read the arc). */
+  if(!reduce && !isMobile && !lowPerf){
+    // subtle parallax drift on the hero portrait
+    gsap.to(".hero__photo",{ yPercent:8, ease:"none",
+      scrollTrigger:{ trigger:".hero", start:"top top", end:"bottom top", scrub:true } });
+
+    // scroll-velocity skew on the big type — leans with your scroll, springs back to 0
+    var skewEls = gsap.utils.toArray(".hero__create");
+    if(skewEls.length){
+      var skewClamp = gsap.utils.clamp(-5, 5);
+      var skewProxy = {s:0};
+      var applySkew = function(v){ skewEls.forEach(function(el){ gsap.set(el, {skewY:v}); }); };
+      ScrollTrigger.create({
+        trigger:".hero", start:"top top", end:"bottom top",
+        onUpdate:function(self){
+          var sk = skewClamp(self.getVelocity() / -420);
+          if(Math.abs(sk) > Math.abs(skewProxy.s)){
+            skewProxy.s = sk;
+            gsap.to(skewProxy, {s:0, duration:.7, ease:"power3", overwrite:true,
+              onUpdate:function(){ applySkew(skewProxy.s); }});
+          }
+        }
+      });
+    }
+  }
+
+  /* 3b) THE PIVOT — pinned transformation set-piece. As you scroll in place,
+        the grey "your website says otherwise" drains and IGNITES orange into
+        "we make you look as good as you are." Static stacked blocks on
+        mobile / reduced-motion (no pin). The #pivot has no data-theme, so the
+        global palette engine skips it and this owns its colours. */
+  (function(){
+    var pivot = document.querySelector("#pivot");
+    if(!pivot) return;
+    if(reduce || lowPerf){ pivot.classList.add("is-static"); return; }   // reduced motion / low-perf: solid blocks, no ignite
+    if(isMobile){
+      // Mobile: stacked (no pin) but still IGNITE. A hard-edged grey→orange
+      // gradient WIPES up behind the text as the block scrolls in, so it never
+      // passes through a muddy grey/orange blend. Text stays ink throughout
+      // (legible on both). Reduced-motion keeps the solid-orange static block.
+      pivot.classList.add("is-static");
+      var solM = pivot.querySelector(".pivot__solution");
+      if(solM){
+        // Smooth IGNITE as a single colour FADE black→orange (text cream→ink).
+        // A grey→orange fade muddies into pink at the midpoint; black→orange is a
+        // warm fade through dark embers, so it stays clean — and being a fade,
+        // there's no wipe edge/line at all. Plays once on enter, reverses back.
+        var igniteTl = gsap.timeline({ paused:true })
+          .fromTo(solM, { backgroundColor:"#0e0a06", color:"#faf3e8" },
+            { backgroundColor:"#ff5a1f", color:"#0e0a06", duration:.9, ease:"power2.inOut" });
+        ScrollTrigger.create({ trigger:solM, start:"top 70%", end:"bottom 20%",
+          onEnter:function(){ igniteTl.play(); },
+          onLeaveBack:function(){ igniteTl.reverse(); } });
+      }
+      return;
+    }
+
+    var rs = document.documentElement.style;
+    // Pivot colour — time-based like the section engine (applyTheme eases the whole
+    // palette), NOT a per-frame scrub, so it can't fight the flow-section triggers
+    // that follow. Grey while the problem holds; ignite to orange as the solution
+    // rises inside the pin. State-tracked so applyTheme fires once per beat (never
+    // per frame), and it never leaves a stale scrub value bleeding into work/about.
+    var pivotWant = null;
+    function pivotColor(w){
+      if(w === pivotWant) return;
+      pivotWant = w;
+      applyTheme(w === "grey" ? THEMES.dead : THEMES.orange);
+    }
+    ScrollTrigger.create({
+      trigger:"#pivot", start:"top 62%", end:"+=" + (window.innerHeight * 2.1),
+      onUpdate:function(self){ pivotColor(self.progress < 0.6 ? "grey" : "orange"); },
+      onLeaveBack:function(){ pivotColor("orange"); }   // scrolled back above the pivot → orange (hero)
+    });
+
+    // The problem settles in: quiet line, then the truth RISES — a smooth masked
+    // line reveal (each line lifts up from behind a clip) instead of the old
+    // scale-pop "slam", which read too snappy.
+    function splitLines(el){
+      if(!el) return [];
+      var lines = el.innerHTML.split(/<br\s*\/?>/i), inners = [];
+      el.innerHTML = "";
+      lines.forEach(function(html){
+        var mask = document.createElement("span");
+        mask.style.cssText = "display:block;overflow:hidden;padding:.16em 0;margin:-.16em 0";
+        var inner = document.createElement("span");
+        inner.style.cssText = "display:block";
+        inner.innerHTML = html;
+        mask.appendChild(inner); el.appendChild(mask); inners.push(inner);
+      });
+      return inners;
+    }
+    var probLines = splitLines(document.querySelector("#pivot .pivot__problem .pivot__heavy"));
+    gsap.set("#pivot .pivot__eyebrow", {opacity:0, y:18});
+    gsap.set("#pivot .pivot__thin", {opacity:0, y:24});
+    gsap.set("#pivot .pivot__problem .pivot__heavy", {opacity:1});
+    gsap.set(probLines, {yPercent:118});
+    gsap.set("#pivot .pivot__problem .pivot__sub", {opacity:0, y:22});
+    ScrollTrigger.create({
+      trigger:"#pivot", start:"top 55%", once:true,
+      onEnter:function(){
+        gsap.timeline({ defaults:{ ease:"power3.out" } })
+          .to("#pivot .pivot__eyebrow", {opacity:1, y:0, duration:.6})
+          .to("#pivot .pivot__thin", {opacity:1, y:0, duration:.85}, "-=.4")
+          .to(probLines, {yPercent:0, duration:1.1, stagger:.16}, "-=.4")   // smooth line-by-line rise (no snap)
+          .to("#pivot .pivot__problem .pivot__sub", {opacity:1, y:0, duration:.8}, "-=.55");
+      }
+    });
+
+    // PIN + IGNITE: hold the problem (grey), ignite to orange while crossfading
+    // to the solution, then hold the solution (orange) before releasing.
+    // Pin + content motion only — colour is owned by the single scrub above.
+    gsap.timeline({ scrollTrigger:{ trigger:"#pivot", start:"top top", end:"+=150%",
+        pin:true, scrub:true, anticipatePin:1, refreshPriority:2 } })
+      .to({}, {duration:.4})                                            // hold the problem
+      .to("#pivot .pivot__problem", {opacity:0, yPercent:-34, duration:.4, ease:"power2.in"}, "ig")          // problem leaves UP first
+      .fromTo("#pivot .pivot__solution", {opacity:0, yPercent:36, scale:.97},
+        {opacity:1, yPercent:0, scale:1, duration:.5, ease:"power3.out"}, "ig+=.42")                         // then solution rises in
+      .to({}, {duration:.5});                                           // hold the solution
+  })();
+
+  /* 3c) WORK — pinned horizontal showcase: each case fills the screen one at a
+        time as you scroll sideways. Static vertical stack on mobile/reduced. */
+  (function(){
+    var workx = document.querySelector("#work .workx");
+    if(!workx) return;
+    if(reduce || isMobile || lowPerf){ workx.classList.add("is-static"); return; }
+    var track = workx.querySelector(".workx__track");
+    var panels = track.querySelectorAll(".workx__panel");
+    var count = panels.length;
+    // Dwell-then-move: each panel sits still for a stretch (readable), then
+    // slides quickly to the next. So you can stop anywhere in a dwell and read.
+    var tl = gsap.timeline({
+      scrollTrigger:{
+        trigger: workx, pin:true, scrub:true, anticipatePin:1, start:"top top",
+        end: function(){ return "+=" + Math.round(window.innerHeight * 0.9 * count); },
+        invalidateOnRefresh:true, refreshPriority:1
+      }
+    });
+    tl.to({}, {duration:0.9});                                // dwell on the title
+    for(var i=1; i<count; i++){
+      (function(idx){
+        tl.to(track, { x:function(){ return -panels[idx].offsetLeft; }, duration:0.69, ease:"power2.inOut" })
+          .to({}, {duration:1.1});                            // dwell on this panel
+      })(i);
+    }
+  })();
+
+  /* 4) Nav contrast floor — keep the logo/links legible over every theme.
+        (Handled by --fg inheritance; nothing extra needed, but force a
+        repaint sync on fast jumps.) */
+  ScrollTrigger.refresh();
+
+  /* 5) PRELOADER — grey→orange ignite, then wipe up into the hero. Plays on
+        every load; only skipped when the curtain isn't present (the <head> gate
+        removes it for reduced-motion). The WIPE is gated on document.fonts.ready
+        so fitCreate has sized the CREATE word before the hero is revealed — no
+        post-reveal reflow pop. */
+  (function(){
+    var pre = document.getElementById("preloader");
+    if(!pre || document.documentElement.classList.contains("intro-seen")){
+      if(pre){ pre.style.display = "none"; }
+      document.documentElement.classList.remove("is-loading");
+      return;
+    }
+
+    var word  = pre.querySelector(".preloader__word");
+    var count = pre.querySelector(".preloader__count");
+    var bar   = pre.querySelector(".preloader__bar");
+    var n = {v:0};
+    function pad3(x){ return ("00" + Math.round(x)).slice(-3); }
+
+    // IGNITE — runs immediately; ends on the lit (orange / bold / ink) state.
+    var ignite = gsap.timeline({ defaults:{ ease:"power2.inOut" } });
+    ignite.to({}, {duration:.4})                                            // brief grey hold
+      .to(pre,   { backgroundColor:"#ff5a1f", duration:1.1 }, "go")         // screen ignites orange
+      .to(word,  { fontWeight:700, color:"#0e0a06", duration:1.1 }, "go")   // thin grey -> bold ink
+      .to(count, { color:"#0e0a06", opacity:.85, duration:1.1 }, "go")
+      .to(bar,   { scaleX:1, backgroundColor:"#0e0a06", opacity:.85, duration:1.4, ease:"power1.inOut" }, "go")
+      .to(n,     { v:100, duration:1.4, ease:"power1.inOut",
+                   onUpdate:function(){ count.textContent = pad3(n.v); } }, "go");
+
+    // Hero entrance — plays as the curtain lifts so the reveal feels intentional.
+    function heroIn(){
+      gsap.from(".hero__tagline", { y:26, opacity:0, duration:.85, ease:"power3.out" });
+      gsap.from(".hero__arrow",   { y:18, opacity:0, duration:.6, delay:.18, ease:"power3.out" });
+      gsap.from(".hero__create",  { yPercent:16, opacity:0, duration:1, ease:"power3.out" });
+      gsap.from(".hero__photo",   { opacity:0, duration:1.1, ease:"power2.out" });
+    }
+
+    var wiped = false;
+    function wipeOut(){
+      if(wiped) return; wiped = true;
+      fitCreate();                                  // size CREATE before it's seen
+      gsap.to(pre, { yPercent:-100, duration:.9, ease:"power4.inOut",
+        onStart: heroIn,
+        onComplete:function(){
+          pre.style.display = "none";
+          document.documentElement.classList.remove("is-loading");
+          ScrollTrigger.refresh();
+        }
+      });
+    }
+
+    // Wipe only once BOTH the ignite has finished AND the fonts are ready.
+    var igniteDone = new Promise(function(res){ ignite.eventCallback("onComplete", res); });
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    Promise.all([igniteDone, fontsReady]).then(wipeOut);
+    setTimeout(wipeOut, 6000);                       // safety: never hang on the curtain
+  })();
+})();
+</script>
+
+<!-- Shared nav/menu + page transitions (defined once in noxta.js) -->
+<script src="noxta.js"></script>
 </body>
 </html>

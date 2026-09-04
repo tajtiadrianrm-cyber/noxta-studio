@@ -15,363 +15,246 @@
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
-    <meta name="theme-color" content="#ff4d15" />
+    <meta name="theme-color" content="#ff5a1f" />
 
+    <!-- v7 type: Clash Display (Fontshare) · General Sans · Space Mono · Instrument Serif -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
     <style>
-:root {
-  --bg: #0a0908;
-  --bg-soft: #111010;
-  --bg-tint: #181614;
-  --ink: #f2ede8;
-  --ink-soft: #a39c93;
-  --mute: #6b645c;
-  --hairline: rgba(255, 255, 255, 0.13);
-  --accent: linear-gradient(100deg, #ffb38a 0%, #ff7a3d 32%, #ff4d15 68%, #d63a0d 100%);
-  --accent-solid: #ff4d15;
-  --f-display: "Chakra Petch", "Archivo", sans-serif;
-  --f-body: "Archivo", sans-serif;
-  --f-mono: "IBM Plex Mono", monospace;
-  --pad-x: clamp(20px, 5vw, 40px);
+/* =========================================================================
+   NOXTA — digital business card (QR target). v7 "Transformation Machine"
+   HERO register: peak orange, black ink type, Clash Display, the homepage's
+   orange→ink invert row hover, and the black scrolling marquee.
+   ========================================================================= */
+:root{
+  --orange:#ff5a1f;
+  --orange-deep:#e8430a;
+  --ink:#0e0a06;
+  --cream:#faf3e8;
+  --line:rgba(14,10,6,.20);
+
+  --bg:var(--orange);
+  --fg:var(--ink);
+
+  --font-display:"Clash Display","Arial Narrow",sans-serif;
+  --font-body:"General Sans",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  --font-serif:"Instrument Serif",Georgia,serif;
+
+  --pad-x:clamp(22px,6vw,44px);
+  --grain-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0}
 
-html, body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--f-body);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: clip;
-  min-height: 100dvh;
+html,body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
+html{height:100%}
+body{
+  height:100dvh;overflow:hidden;                /* exactly one screen, never scrolls */
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;isolation:isolate;          /* card centered at any aspect ratio */
+}
+a{color:inherit;text-decoration:none}
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 64px var(--pad-x);
-  position: relative;
-  isolation: isolate;
-}
-
-/* Ambient orange glows */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-}
-body::before {
-  background:
-    radial-gradient(ellipse 60% 50% at 12% 18%, rgba(255, 122, 61, 0.18), transparent 60%),
-    radial-gradient(ellipse 50% 60% at 88% 82%, rgba(214, 58, 13, 0.15), transparent 60%);
-}
-body::after {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 0.4;
-  mix-blend-mode: screen;
+/* paper grain baked over the flat orange (soft-light, rasterised once) */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:var(--grain-tex);background-size:180px 180px;
+  opacity:.55;mix-blend-mode:soft-light;
 }
 
-.card-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.card{
+  position:relative;width:100%;max-width:452px;
+  display:flex;flex-direction:column;
+  transform-origin:center center;               /* scaled to fit the screen via JS */
 }
-.card-wrap::before,
-.card-wrap::after {
-  content: "+";
-  position: absolute;
-  font-family: var(--f-mono);
-  font-size: 14px;
-  color: var(--accent-solid);
-  line-height: 1;
+/* editorial corner ticks — a hinted card edge without a boxed panel */
+.card::before,.card::after{
+  content:"+";position:absolute;font-family:var(--font-mono);font-size:15px;
+  color:var(--ink);line-height:1;opacity:.75;
 }
-.card-wrap::before { top: -28px; left: -8px; }
-.card-wrap::after  { bottom: -28px; right: -8px; }
+.card::before{top:-26px;left:-6px}
+.card::after{bottom:-26px;right:-6px}
 
-.logo {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 32px;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  color: var(--ink);
-  display: inline-flex;
-  align-items: baseline;
+/* wordmark + nav-style rule */
+.brand{
+  font-family:var(--font-display);font-weight:700;font-size:1.9rem;
+  letter-spacing:-.02em;line-height:1;color:var(--fg);align-self:flex-start;
 }
-.logo .x {
-  color: var(--accent-solid);
-  padding: 0 1px;
-}
+.brand__dash{width:74px;height:2px;background:var(--ink);margin:16px 0 30px;opacity:.6}
 
-.logo-rule {
-  width: 56px;
-  height: 1px;
-  background: var(--accent);
-  margin: 18px 0 28px;
+/* name — the hero moment, black on orange */
+.card__name{
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(3.2rem,15.5vw,4.8rem);line-height:.84;letter-spacing:-.025em;
+}
+.card__role{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fg);opacity:.72;margin-top:20px;
+}
+.card__tag{
+  font-family:var(--font-serif);font-style:italic;font-size:1.5rem;line-height:1.16;
+  color:var(--fg);margin-top:14px;max-width:22ch;
 }
 
-.name {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: clamp(34px, 7vw, 48px);
-  line-height: 1;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  text-align: center;
+/* link rows — homepage svc__row DNA: hairlines + ink-invert on hover */
+.card__links{margin-top:38px;display:flex;flex-direction:column}
+.crow{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;
+  padding:19px 14px;border-top:2px solid var(--line);color:var(--fg);
+  transition:padding-left .35s cubic-bezier(.2,.7,.2,1),background-color .35s,color .35s;
+}
+.card__links .crow:last-child{border-bottom:2px solid var(--line)}
+.crow:hover{padding-left:26px;background:var(--ink);color:var(--orange)}
+.crow__icon{width:30px;height:30px;flex:none;display:grid;place-items:center;color:inherit}
+.crow__icon svg{width:100%;height:auto;display:block}
+.crow__text{min-width:0;display:flex;flex-direction:column}
+.crow__label{
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:1.28rem;line-height:1;letter-spacing:-.01em;
+}
+.crow__sub{
+  font-family:var(--font-mono);font-size:.84rem;letter-spacing:.04em;
+  margin-top:8px;opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.crow:hover .crow__sub{opacity:1}
+.crow__arrow{
+  font-family:var(--font-display);font-weight:600;font-size:1.3rem;opacity:.5;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .3s;
+}
+.crow:hover .crow__arrow{opacity:1;transform:translateX(5px)}
+
+.card__foot{
+  margin-top:32px;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--fg);opacity:.6;
 }
 
-.role {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-top: 14px;
+/* cinematic entrance (staggered rise) */
+@keyframes cardrise{
+  from{opacity:0;transform:translateY(20px);filter:blur(7px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
 }
+.brand,.brand__dash,.card__name,.card__role,.card__tag,.crow,.card__foot{
+  animation:cardrise 850ms cubic-bezier(.2,.7,.2,1) both;
+}
+.brand{animation-delay:60ms}
+.brand__dash{animation-delay:150ms}
+.card__name{animation-delay:230ms}
+.card__role{animation-delay:340ms}
+.card__tag{animation-delay:420ms}
+.card__links .crow:nth-child(1){animation-delay:500ms}
+.card__links .crow:nth-child(2){animation-delay:575ms}
+.card__links .crow:nth-child(3){animation-delay:650ms}
+.card__links .crow:nth-child(4){animation-delay:725ms}
+.card__foot{animation-delay:820ms}
 
-.divider {
-  width: 100%;
-  height: 1px;
-  background: var(--hairline);
-  margin: 36px 0 24px;
-}
-
-.links {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.link {
-  --mx: 50%;
-  --my: 50%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: var(--bg-soft);
-  color: var(--ink);
-  text-decoration: none;
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  overflow: hidden;
-  transition:
-    transform 280ms cubic-bezier(.2,.7,.2,1),
-    box-shadow 280ms cubic-bezier(.2,.7,.2,1),
-    background-color 280ms;
-}
-.link::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    260px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(255, 77, 21, 0.20),
-    rgba(255, 77, 21, 0) 70%
-  );
-  opacity: 0;
-  transition: opacity 240ms cubic-bezier(.2,.7,.2,1);
-  z-index: 1;
-  mix-blend-mode: screen;
-}
-.link > * { position: relative; z-index: 2; }
-.link:hover {
-  transform: translateY(-3px);
-  background-color: rgba(255, 77, 21, 0.04);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 77, 21, 0.45),
-    0 18px 40px -20px rgba(0, 0, 0, 0.6),
-    0 0 60px -30px rgba(255, 77, 21, 0.35);
-}
-.link:hover::after { opacity: 1; }
-
-.link-icon {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 77, 21, 0.10);
-  color: var(--accent-solid);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.30);
-  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-  transition: background 280ms, box-shadow 280ms;
-}
-.link:hover .link-icon {
-  background: rgba(255, 77, 21, 0.16);
-  box-shadow: inset 0 0 0 1px rgba(255, 77, 21, 0.55);
-}
-
-.link-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-}
-.link-label {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-}
-.link-sub {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.link-arrow {
-  color: var(--mute);
-  font-family: var(--f-display);
-  font-size: 18px;
-  transition: color 200ms cubic-bezier(.2,.7,.2,1), transform 200ms cubic-bezier(.2,.7,.2,1);
-}
-.link:hover .link-arrow {
-  color: var(--accent-solid);
-  transform: translateX(4px);
-}
-
-.foot {
-  margin-top: 32px;
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mute);
-  text-align: center;
-}
-
-/* Cinematic entrance */
-@keyframes cardrise {
-  from { opacity: 0; transform: translateY(20px); filter: blur(8px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
-}
-.logo, .logo-rule, .name, .role, .divider, .links .link, .foot {
-  animation: cardrise 900ms cubic-bezier(.2,.7,.2,1) both;
-}
-.logo       { animation-delay:  80ms; }
-.logo-rule  { animation-delay: 180ms; }
-.name       { animation-delay: 260ms; }
-.role       { animation-delay: 380ms; }
-.divider    { animation-delay: 480ms; }
-.links .link:nth-child(1) { animation-delay: 540ms; }
-.links .link:nth-child(2) { animation-delay: 620ms; }
-.links .link:nth-child(3) { animation-delay: 700ms; }
-.links .link:nth-child(4) { animation-delay: 780ms; }
-.foot       { animation-delay: 900ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  .logo, .logo-rule, .name, .role, .divider, .links .link, .foot {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
+@media(prefers-reduced-motion:reduce){
+  .brand,.brand__dash,.card__name,.card__role,.card__tag,.crow,.card__foot{
+    animation:none!important;opacity:1!important;transform:none!important;filter:none!important;
   }
 }
     </style>
   </head>
   <body>
-    <main class="card-wrap" id="card">
-      <a href="/" class="logo" aria-label="Noxta">NO<span class="x">X</span>TA</a>
-      <div class="logo-rule"></div>
+    <main class="card" id="card">
+      <a class="brand" href="https://noxta.studio" aria-label="Noxta Studio">NOXTA</a>
+      <span class="brand__dash" aria-hidden="true"></span>
 
-      <h1 class="name">Adrian Tajti</h1>
-      <div class="role">Founder · Noxta Studio</div>
+      <h1 class="card__name">Adrian<br>Tajti</h1>
+      <p class="card__role">Founder &middot; Noxta Studio</p>
+      <p class="card__tag">Editorial, hand-coded sites.</p>
 
-      <div class="divider"></div>
-
-      <div class="links">
-        <a class="link" href="https://noxta.studio" aria-label="Open noxta.studio">
-          <span class="link-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <nav class="card__links" aria-label="Contact links">
+        <a class="crow" href="https://noxta.studio" aria-label="Open noxta.studio">
+          <span class="crow__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="9" />
               <path d="M3 12h18" />
               <path d="M12 3a13 13 0 0 1 0 18" />
               <path d="M12 3a13 13 0 0 0 0 18" />
             </svg>
           </span>
-          <span class="link-text">
-            <span class="link-label">Visit website</span>
-            <span class="link-sub">noxta.studio</span>
+          <span class="crow__text">
+            <span class="crow__label">Website</span>
+            <span class="crow__sub">noxta.studio</span>
           </span>
-          <span class="link-arrow" aria-hidden="true">→</span>
+          <span class="crow__arrow" aria-hidden="true">&#8594;</span>
         </a>
 
-        <a class="link" href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp Adrian">
-          <span class="link-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.5 14.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.7-1.5-3.8-3.4-.3-.5.3-.5.8-1.5.1-.2.1-.3 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.8.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z" />
-              <path d="M20.5 3.5A11 11 0 0 0 2.7 16.8L1 22l5.3-1.7a11 11 0 0 0 5.3 1.3h.1a11 11 0 0 0 7.8-18.6Zm-7.8 16.7a9 9 0 0 1-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3a9.2 9.2 0 1 1 7.4 4Z" />
+        <a class="crow" href="https://wa.me/31617657327" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp Adrian">
+          <span class="crow__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
           </span>
-          <span class="link-text">
-            <span class="link-label">WhatsApp</span>
-            <span class="link-sub">+31 6 17 657 327</span>
+          <span class="crow__text">
+            <span class="crow__label">WhatsApp</span>
+            <span class="crow__sub">+31 6 1765 7327</span>
           </span>
-          <span class="link-arrow" aria-hidden="true">→</span>
+          <span class="crow__arrow" aria-hidden="true">&#8594;</span>
         </a>
 
-        <a class="link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn profile">
-          <span class="link-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <a class="crow" href="https://www.linkedin.com/in/adriantajti/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn profile">
+          <span class="crow__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z" />
             </svg>
           </span>
-          <span class="link-text">
-            <span class="link-label">LinkedIn</span>
-            <span class="link-sub">Connect with me</span>
+          <span class="crow__text">
+            <span class="crow__label">LinkedIn</span>
+            <span class="crow__sub">Connect with me</span>
           </span>
-          <span class="link-arrow" aria-hidden="true">→</span>
+          <span class="crow__arrow" aria-hidden="true">&#8594;</span>
         </a>
 
-        <a class="link" href="mailto:adrian@noxta.studio" aria-label="Email Adrian">
-          <span class="link-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <a class="crow" href="mailto:adrian@noxta.studio" aria-label="Email Adrian">
+          <span class="crow__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="5" width="18" height="14" rx="1.5" />
               <path d="m3.5 6.5 8.5 6 8.5-6" />
             </svg>
           </span>
-          <span class="link-text">
-            <span class="link-label">Email</span>
-            <span class="link-sub">adrian@noxta.studio</span>
+          <span class="crow__text">
+            <span class="crow__label">Email</span>
+            <span class="crow__sub">adrian@noxta.studio</span>
           </span>
-          <span class="link-arrow" aria-hidden="true">→</span>
+          <span class="crow__arrow" aria-hidden="true">&#8594;</span>
         </a>
-      </div>
+      </nav>
 
-      <div class="foot">Web design · Tilburg, NL · Est. 2026</div>
+      <p class="card__foot">Web design &middot; Tilburg, NL &middot; Est. 2026</p>
     </main>
 
     <script>
-      // Cursor-tracking spotlight on each link
-      document.querySelectorAll(".link").forEach((el) => {
-        el.addEventListener("mousemove", (e) => {
-          const r = el.getBoundingClientRect();
-          el.style.setProperty("--mx", (e.clientX - r.left) + "px");
-          el.style.setProperty("--my", (e.clientY - r.top) + "px");
-        });
-      });
+      // Fit the whole card into one screen at any ratio (16:9, 16:10, portrait,
+      // landscape phone…). Caps at 1× on tall screens; shrinks to fit on short ones.
+      (function () {
+        var card = document.getElementById("card");
+        if (!card) return;
+        function fit() {
+          var margin = 48;                       // min breathing room; also clears the corner ticks
+          var s = Math.min(
+            1,
+            (window.innerWidth  - margin * 2) / card.offsetWidth,
+            (window.innerHeight - margin * 2) / card.offsetHeight
+          );
+          card.style.transform = "scale(" + s + ")";
+        }
+        fit();
+        addEventListener("resize", fit);
+        addEventListener("orientationchange", fit);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+      })();
     </script>
   </body>
 </html>

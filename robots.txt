@@ -1,9 +1,11 @@
 User-agent: *
 Allow: /
 
-# Don't index utility pages
-Disallow: /og-image.html
-Disallow: /business-card.html
-Disallow: /business-card-print.html
+# Utility / non-marketing pages — keep out of search
+# (prefix form also covers the extensionless clean URLs)
+Disallow: /business-card
+Disallow: /business-card-print
+Disallow: /card
+Disallow: /poster
 
 Sitemap: https://noxta.studio/sitemap.xml

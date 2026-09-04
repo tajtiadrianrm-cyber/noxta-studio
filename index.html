@@ -1,787 +1,1481 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noxta Studio — Adrian Tajti, freelance web designer in Tilburg</title>
-<meta name="description" content="One-person web design studio in Tilburg. Design, copy, code, payments — handled by one head. I stay until it works.">
-<link rel="canonical" href="https://noxta.studio/">
-<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<!-- Favicons / app icons -->
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-<link rel="shortcut icon" href="assets/favicon.ico">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
-<!-- Open Graph / social -->
-<meta property="og:title" content="Noxta Studio · Built by hand, kept by hand.">
-<meta property="og:description" content="Freelance web designer in Tilburg. One person, full stack — design, copy, code, and payments handled in one head.">
-<meta property="og:image" content="https://noxta.studio/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://noxta.studio/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Noxta Studio">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Noxta Studio · Built by hand, kept by hand.">
-<meta name="twitter:description" content="Freelance web designer in Tilburg. One person, full stack.">
-<meta name="twitter:image" content="https://noxta.studio/og-image.png">
-<!-- Structured data: steers the Google result thumbnail to a branded, well-cropped image -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://noxta.studio/#business",
-  "name": "Noxta Studio",
-  "url": "https://noxta.studio/",
-  "image": [
-    "https://noxta.studio/assets/search-card-1x1.jpg",
-    "https://noxta.studio/assets/search-card-4x3.jpg",
-    "https://noxta.studio/assets/search-card-16x9.jpg"
-  ],
-  "logo": "https://noxta.studio/assets/apple-touch-icon.png",
-  "description": "One-person web design studio in Tilburg. Design, copy, code, payments — handled by one head. I stay until it works.",
-  "email": "adrian@noxta.studio",
-  "founder": { "@type": "Person", "name": "Adrian Tajti" },
-  "knowsLanguage": "en",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Tilburg",
-    "addressRegion": "Noord-Brabant",
-    "addressCountry": "NL"
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Tilburg" },
-    { "@type": "AdministrativeArea", "name": "Noord-Brabant" },
-    { "@type": "Country", "name": "Netherlands" }
-  ]
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@1,6..72,200..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/noxta.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Noxta — Websites that make people feel something</title>
+<meta name="description" content="Noxta is a digital studio for ambitious businesses that refuse to blend in. We build websites that make you look as good as you actually are." />
+
+<link rel="canonical" href="https://noxta.studio/" />
+<link rel="alternate" hreflang="en" href="https://noxta.studio/" />
+<link rel="alternate" hreflang="nl" href="https://noxta.studio/website-laten-maken-tilburg" />
+<link rel="alternate" hreflang="x-default" href="https://noxta.studio/" />
+
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content="Noxta — Websites that make people feel something" />
+<meta property="og:description" content="A digital studio for ambitious businesses that refuse to blend in. We build websites that make you look as good as you actually are." />
+<meta property="og:image" content="https://noxta.studio/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://noxta.studio/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Noxta Studio" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Noxta — Websites that make people feel something" />
+<meta name="twitter:description" content="Websites that make you look as good as you actually are." />
+<meta name="twitter:image" content="https://noxta.studio/og-image.png" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<!-- Preloader / transition gate (must run before first paint): a fresh load
+     plays the ignite intro; arriving via an internal page transition does a
+     quick reveal instead (and suppresses the heavy intro); reduced-motion skips
+     both. is-loading = scroll lock until the cover clears. -->
+<script>try{var _h=document.documentElement,_r=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches,_m=window.matchMedia&&matchMedia('(max-width:760px)').matches,_pt=false;try{_pt=sessionStorage.getItem('noxtaPT')==='1';if(_pt)sessionStorage.removeItem('noxtaPT');}catch(e){}if(_r||_m){_h.classList.add('intro-seen');}else if(_pt){_h.classList.add('intro-seen','tcover','is-loading');}else{_h.classList.add('is-loading');}}catch(e){}</script>
+<noscript><style>#preloader{display:none!important}</style></noscript>
+
+<!-- Display: Clash Display (variable, Fontshare) · Body: General Sans · Mono: Space Mono · Serif accent: Instrument Serif -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
 <style>
-/* ---------- preloader ---------- */
-.loader{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:flex-end;justify-content:space-between;padding:4vw;overflow:hidden}
-.loader .lwm,.loader .lnum{position:relative;z-index:2}
-.loader .lbar{z-index:2}
-.loader .lwm{font-family:var(--font-d);font-variation-settings:"wdth" 125;font-weight:900;font-size:clamp(2rem,5vw,4rem);letter-spacing:-.02em;line-height:1}
-.loader .lwm .x{color:var(--ember)}
-.loader .lnum{font-family:var(--font-d);font-variation-settings:"wdth" 75;font-weight:200;font-size:clamp(5rem,16vw,13rem);line-height:.8;color:var(--ink);font-feature-settings:"tnum"}
-.loader .lbar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--grad);transform-origin:0 50%;transform:scaleX(0)}
+/* =========================================================================
+   NOXTA v7 — "The Transformation Machine"
+   The page proves the claim on itself: a V-arc from peak orange (the dream)
+   down into the prospect's drab reality (the Mirror) and back up to a fully
+   realized brand by the CTA. Color + type transform as you scroll.
 
+   Emotional arc (the section rhythm):
+   HERO(orange peak) → MIRROR(dead grey trough) → TURN(orange ignite)
+   → PROOF(ink) → PROMISE(cream) → ASK(orange, earned)
+   ========================================================================= */
 
-/* ---------- section ghost numbers (per-section placement) ---------- */
-/* 01 — vertical, hugging the right edge */
-#services .sec-ghost{writing-mode:vertical-rl;top:-9vh;right:1vw;font-size:clamp(10rem,15.5vw,19.5rem)}
-/* 02 — oversized, behind the headline, bleeding off the left */
-#work .sec-ghost{left:-3vw;right:auto;top:-12vh;font-size:clamp(13rem,21vw,24rem);-webkit-text-stroke:1px rgba(255,122,61,.18)}
-/* 03 — monumental, centered behind the principle rows */
-#how .sec-ghost{left:0;right:0;top:34%;text-align:center;font-size:clamp(16rem,30vw,34rem);-webkit-text-stroke:1px rgba(255,122,61,.13)}
-/* 04 — low right, half-buried under the pricing cards */
-#pricing .sec-ghost{right:3vw;top:30vh;font-size:clamp(12rem,19vw,22rem);-webkit-text-stroke:1px rgba(255,122,61,.19)}
+:root{
+  /* Brand palette */
+  --orange:#ff5a1f;
+  --orange-deep:#e8430a;
+  --ink:#0e0a06;
+  --ink-soft:#181109;
+  --cream:#faf3e8;
+  --white:#fff4e6;
+  /* Dead / "corporate template" trough palette — deliberately lifeless */
+  --dead-paper:#e9e8e4;
+  --dead-ink:#8e8d88;
+  --dead-line:#cfcdc7;
 
-/* ---------- hero: cinematic full-bleed ---------- */
-.hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:7rem 7vw 6rem;z-index:2}
-.hero-visual{position:absolute;top:0;right:0;bottom:0;width:64vw;z-index:0;pointer-events:none;user-select:none}
-/* warm key-glow behind the left of the face — gives the cut-out depth */
-.hero-visual::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(40% 52% at 53% 45%,rgba(255,125,55,.22) 0%,rgba(200,80,30,.1) 42%,rgba(120,45,16,.03) 70%,transparent 85%)}
-.hero-visual .wrap{position:absolute;inset:0;z-index:1}
-.hero-visual img{position:absolute;right:-9vw;bottom:0;height:94%;width:auto;max-width:none;
-  filter:contrast(1.1) brightness(.9) saturate(.85);will-change:transform}
-.hero-left{position:relative;z-index:2;max-width:46rem}
-.hero-avail{display:flex;align-items:center;gap:.7rem;font-family:var(--font-m);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);margin-bottom:3.5vh}
-.hero-avail .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--glow);animation:pulse 2.2s infinite}
-.hero-name{font-family:var(--font-d);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:.96;font-size:clamp(3.6rem,7.6vw,8.2rem);user-select:none}
-.hero-name .row{display:block;overflow:hidden;will-change:transform}
-.hero-name .ch{display:inline-block;will-change:transform}
-.hero-role{display:flex;align-items:center;gap:1rem;margin-top:3.2vh;font-family:var(--font-m);font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
-.hero-role::before{content:"";width:38px;height:2px;background:var(--ember)}
-.hero-rule{border:0;height:1px;background:var(--line);margin:4vh 0 3.4vh;width:min(26rem,72%);margin-left:0}
-.hero-bio{color:var(--ink-2);font-size:clamp(1rem,1.25vw,1.2rem);line-height:1.75;max-width:38ch}
-.hero-ctas{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:5vh}
-.hero .plus{position:absolute;font-family:var(--font-m);color:var(--ember);font-size:1rem;z-index:3}
-.hero .plus.tl{top:6rem;left:2.4rem}
-.hero .plus.br{bottom:2.2rem;right:2.4rem}
-.scroll-cue{position:absolute;left:50%;bottom:2rem;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;
-  font-family:var(--font-m);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ember-2)}
-.scroll-cue svg{width:22px;height:22px;stroke:var(--ember);fill:none;stroke-width:2;animation:cue 1.6s var(--ease) infinite}
-@keyframes cue{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(7px);opacity:.45}}
-/* stacked hero: whole portrait, centered — darkened backdrop blends into the page */
-@media (max-width:1080px){
-  header.hero{flex-direction:column;justify-content:flex-start;gap:1.4rem;padding:6.5rem 6vw 4rem}
-  .hero-visual{position:relative;inset:auto;width:100%;height:auto;margin:0;order:-1;opacity:1;display:flex;justify-content:center}
-  .hero-visual .wrap{position:relative;inset:auto;width:auto;height:auto;-webkit-mask-image:none;mask-image:none}
-  .hero-visual img{position:relative;right:auto;bottom:auto;display:block;width:auto;height:auto;max-height:50vh;max-width:100%;object-fit:contain;
-    -webkit-mask-image:linear-gradient(180deg,#000 84%,transparent 100%);mask-image:linear-gradient(180deg,#000 84%,transparent 100%)}
-  .hero-left{max-width:none}
-  .hero-bio{max-width:62ch}
-  .scroll-cue{display:none}
-  .hero .plus{display:none}
-}
-@media (max-width:700px){
-  .hero-visual img{max-height:40vh}
+  /* Live theme tokens — these are what the scroll engine tweens.
+     Start = HERO (peak orange). */
+  --bg:var(--orange);
+  --fg:var(--ink);
+  --accent:var(--ink);
+  --line:rgba(14,10,6,.18);
+
+  /* Animated display weight for the transformation headline */
+  --wght:700;
+
+  --maxw:1680px;
+  --pad:clamp(20px,4.5vw,72px);
+
+  --font-display:"Clash Display","Arial Narrow",sans-serif;
+  --font-body:"General Sans",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  --font-serif:"Instrument Serif",Georgia,serif;
+
+  /* shared paper-grain noise tile (used by .grain and the mobile static pivot) */
+  --grain-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ---------- mesh atmosphere (anchored to each section's ghost) ---------- */
-#services::before,#work::before,#how::before,#pricing::before,.cta::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
-  background-size:56px 56px;
-  -webkit-mask-image:radial-gradient(var(--mesh-size,52% 64%) at var(--mesh-x,50%) var(--mesh-y,50%),#000 0,transparent 72%);
-  mask-image:radial-gradient(var(--mesh-size,52% 64%) at var(--mesh-x,50%) var(--mesh-y,50%),#000 0,transparent 72%)}
-#services{--mesh-x:94%;--mesh-y:14%;--mesh-size:46% 52%}
-#work{--mesh-x:6%;--mesh-y:5%;--mesh-size:48% 42%}
-#how{--mesh-x:50%;--mesh-y:48%;--mesh-size:64% 70%}
-#pricing{--mesh-x:90%;--mesh-y:32%;--mesh-size:46% 56%}
-.cta{--mesh-x:86%;--mesh-y:88%;--mesh-size:52% 60%}
-@media (max-width:900px){#services::before,#work::before,#how::before,#pricing::before,.cta::before{display:none}}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  /* The palette engine eases --bg/--fg to each section's theme over .6s (time-
+     based, not scrubbed to scroll), so the background is a plain var(--bg): it
+     repaints only during a transition, never per scroll frame. */
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-body);
+  font-size:18px;
+  line-height:1.4;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 
-/* ---------- intro: readout ---------- */
-.intro{border-top:1px solid var(--line);position:relative}
-.intro::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
-  background-size:56px 56px;
-  -webkit-mask-image:radial-gradient(85% 95% at 74% 38%,#000 0,transparent 72%);
-  mask-image:radial-gradient(85% 95% at 74% 38%,#000 0,transparent 72%)}
-.intro-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:5vw;align-items:start}
-.intro h2{font-size:clamp(2.8rem,6.4vw,5.6rem)}
-.intro-right{position:relative}
-.intro-ghost{position:absolute;top:-12%;right:55%;z-index:0;font-family:var(--font-d);font-weight:700;
-  font-size:clamp(12rem,22vw,24rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,122,61,.26);user-select:none;pointer-events:none}
-.readout{position:relative;z-index:1;max-width:34rem;margin-left:auto;border:1px solid var(--line-2);background:linear-gradient(180deg,rgba(24,22,20,.92),rgba(17,16,16,.96));
-  clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%);padding:1.6rem 1.7rem 1.8rem}
-.readout::before,.readout::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none;z-index:2}
-.readout::before{top:.65rem;left:.65rem;border-top:1px solid var(--ember);border-left:1px solid var(--ember)}
-.readout::after{bottom:.65rem;right:1.4rem;border-bottom:1px solid var(--ember);border-right:1px solid var(--ember)}
-.ro-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-m);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember-2);padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
-.ro-head .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px var(--glow);animation:pulse 2.2s infinite}
-.ro-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--line)}
-.ro-row .k{font-family:var(--font-m);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.ro-row .v{font-family:var(--font-d);font-weight:600;font-size:1.02rem;letter-spacing:.04em;text-transform:uppercase;text-align:right}
-.ro-row .v b{color:var(--ember-2);font-weight:600}
-.ro-radar{display:flex;align-items:center;gap:1.4rem;padding-top:1.4rem}
-.ro-radar svg{width:104px;height:104px;flex:none}
-.ro-radar circle.ring{fill:none;stroke:var(--line-2);stroke-width:1}
-.ro-radar line.cross{stroke:var(--line);stroke-width:1}
-.ro-radar .sweep{stroke:var(--ember);stroke-width:1.5;opacity:.8;transform-origin:52px 52px;animation:sweep 4.5s linear infinite}
-.ro-radar .blip{fill:var(--ember);animation:pulse 2.2s infinite}
-@keyframes sweep{to{transform:rotate(360deg)}}
-.ro-loc .city{font-family:var(--font-d);font-weight:600;font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase}
-.ro-loc .sub{font-family:var(--font-m);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:.45rem}
-@media (max-width:900px){
-  .intro-grid{grid-template-columns:1fr}
-  .intro-ghost{display:none}
-  .intro::before{-webkit-mask-image:radial-gradient(120% 70% at 50% 20%,#000 0,transparent 75%);mask-image:radial-gradient(120% 70% at 50% 20%,#000 0,transparent 75%)}
+/* ---- shared type ---- */
+.display{font-family:var(--font-display);font-weight:700;line-height:.86;letter-spacing:-.01em;text-transform:uppercase}
+.mono{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;opacity:.7}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+section{position:relative}
+
+/* ===== GPU background arc =============================================
+   Solid-colour layers (one per palette section) crossfaded by OPACITY, so the
+   scroll palette composites on the GPU instead of repainting the full viewport
+   every frame. Built + driven in JS. Sits behind all content. */
+.bg-arc{position:fixed;inset:0;z-index:-1;pointer-events:none}
+/* ===== PAPER GRAIN — baked into the arc layers (cheap) =================
+   Grain lives ON each bg-arc colour layer via background-blend-mode: a LOCAL
+   blend (the layer's noise ⊗ its own colour), rasterised ONCE when the layer
+   paints, then just crossfaded by opacity with everything else. It is NOT a
+   fixed mix-blend overlay recomposited against the page every frame (that was
+   the earlier perf sin). soft-light textures the colour without darkening it.
+   (Desktop only — on mobile/reduced-motion the bg-arc isn't built.) */
+.bg-arc .bg-layer{position:absolute;inset:0;will-change:opacity;
+  background-image:var(--grain-tex);background-blend-mode:soft-light}
+
+/* ===== SCROLL PROGRESS BAR ============================================
+   Thin bar pinned at the very top; the fill scales left→right with scroll
+   progress. Uses the palette tokens (--accent fill on a faint --line track) so
+   it stays legible as the page morphs orange→grey→ink→cream. */
+.progress{position:fixed;top:0;left:0;right:0;height:5px;z-index:96;pointer-events:none;
+  background:color-mix(in srgb, var(--accent) 22%, transparent)}
+.progress__fill{display:block;height:100%;transform-origin:left center;transform:scaleX(0);
+  background:var(--accent);will-change:transform}
+
+/* ===== NAV + FULLSCREEN MENU ===== moved to noxta.css (shared, all pages) = */
+
+/* ===== HERO (locked composition) ====================================== */
+.hero{min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
+.hero__photo{
+  position:absolute;top:0;bottom:0;right:clamp(16px,4vw,90px);
+  width:min(46vw,760px);
+  /* contain (not cover) so the full figure always shows — narrowing the
+     screen scales it down instead of cropping the arms. Inset from the
+     right edge so the body sits a touch left. */
+  background:url("assets/adrian-hero.webp") right bottom/contain no-repeat;
+  z-index:2;
+}
+@media(max-width:760px){
+  .hero__photo{background-image:url("assets/adrian-hero-mobile.webp");right:0;width:78vw}
+  /* The figure's height is set by its width (78vw × portrait ratio ≈ 155vw). On a
+     short mobile viewport (Safari URL bar → 100svh can be ~660px) the bottom-
+     anchored figure would otherwise rise into the headline. Grow the hero so the
+     figure always sits below the headline, whatever the viewport height. */
+  .hero{min-height:max(100svh, calc(155vw + 220px))}
+}
+.hero__new{
+  position:absolute;top:108px;right:var(--pad);z-index:4;
+  font-family:var(--font-display);font-weight:700;font-size:1.5rem;
+  border:3px solid var(--ink);padding:6px 12px 4px;transform:rotate(8deg);
+  background:transparent;letter-spacing:.02em;
+}
+.hero__intro{
+  flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  position:relative;z-index:3;
+  padding:clamp(90px,11vh,140px) 0 clamp(28px,4vh,56px) var(--pad);
+}
+.hero__tagline{
+  font-family:var(--font-display);font-weight:600;text-transform:none;
+  font-size:clamp(2.2rem,4.8vw,4.6rem);line-height:.98;letter-spacing:-.02em;word-spacing:.1em;
+}
+.hero__arrow{
+  margin-top:clamp(24px,3.5vh,48px);
+  width:82px;height:82px;border-radius:50%;
+  background:var(--ink);color:var(--orange);
+  display:grid;place-items:center;font-size:1.6rem;transition:transform .3s;
+}
+.hero__arrow:hover{transform:translateY(4px) scale(1.05)}
+/* mobile: lift the headline to the top — the figure is bottom-anchored so the
+   top of the hero is empty orange; putting the text there clears the face while
+   the figure stays full-size. (Placed AFTER the base .hero__intro so it wins.) */
+@media(max-width:760px){ .hero__intro{justify-content:flex-start} .hero__new{display:none} }
+.hero__create{
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:30vw;line-height:.7;letter-spacing:-.045em;
+  color:var(--ink);position:relative;z-index:1;
+  margin-top:0;margin-bottom:-0.06em;padding-left:0;
+  white-space:nowrap;
+}
+/* marquee — seamless infinite (JS fills the track past 2x viewport) */
+.marquee{
+  position:relative;z-index:3;background:var(--ink);color:var(--orange);
+  overflow:hidden;white-space:nowrap;padding:13px 0;
+}
+.marquee__track{display:flex;flex-wrap:nowrap;width:max-content;gap:46px;align-items:center;animation:slide 40s linear infinite;will-change:transform}
+.marquee__track span{flex:none;font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase}
+.marquee__track b{color:var(--orange);font-size:.7rem}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== generic section header ========================================= */
+.sec{padding:clamp(90px,13vh,170px) 0}
+.sec__kicker{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.sec__kicker .ln{flex:1;height:1px;background:currentColor;opacity:.25}
+.h-mega{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.2rem,11vw,11rem);line-height:.84;letter-spacing:-.02em;word-spacing:.16em}
+/* "No agency games." is the longest h-mega line and can't fit at 11vw, so it
+   wrapped and orphaned "NO". Cap this headline so both intended lines fit. */
+/* Base .h-mega now carries word-spacing so multi-word titles don't mush under the tight tracking.
+   #about is width-capped (nowrap "NO AGENCY GAMES") so it takes a smaller gap + a hair less size to still fit. */
+#about .h-mega{font-size:clamp(1.5rem,7.6vw,8rem);white-space:nowrap;word-spacing:.1em}
+/* #services is split into per-glyph spans for its animation; word-spacing can't reach the spaces there,
+   so it's neutralised here and the gap is added as margin on the space glyphs in splitChars(). */
+.nxChar{word-spacing:0}
+
+/* ===== PIVOT — pinned transformation set-piece ====================== */
+.pivot{position:relative;height:100svh;overflow:hidden}
+.pivot__phase{position:absolute;inset:0;display:flex;align-items:center;will-change:transform,opacity}
+.pivot__solution{opacity:0}
+.pivot__eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;opacity:.7;margin-bottom:26px}
+.pivot__thin{font-family:var(--font-display);font-weight:300;text-transform:uppercase;
+  font-size:clamp(2.2rem,6.5vw,5.5rem);line-height:.95;letter-spacing:-.01em;word-spacing:.16em}
+.pivot__heavy{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.8rem,9vw,8.5rem);line-height:.86;letter-spacing:-.02em;word-spacing:.16em;margin-top:.1em}
+.pivot__heavy--lg{font-size:clamp(2.8rem,8.2vw,7.8rem);max-width:15ch}
+.pivot__problem .pivot__heavy{color:#181109}
+.pivot__sub{margin-top:34px;max-width:34ch;font-size:1.15rem;opacity:.82}
+/* SOLUTION — centred set-piece with a serif-italic turn (from the standalone mockup) */
+.pivot__solution{justify-content:center;text-align:center}
+.pivot__solution .pivot__heavy{max-width:none;margin-inline:auto;text-wrap:balance}
+.pivot__serif{font-family:var(--font-serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+.pivot__solution .pivot__sub{max-width:none;margin:30px auto 0;opacity:.66;
+  font-family:var(--font-mono);text-transform:uppercase;font-size:.78rem;letter-spacing:.26em}
+/* mobile / reduced-motion: no pin — stack the two phases as solid blocks.
+   Grey base on the section + a 1px overlap on the solution so the orange page
+   background can't peek through a sub-pixel seam as a "divider line". */
+.pivot.is-static{height:auto;background:#e9e8e4}
+.pivot.is-static .pivot__phase{position:relative;inset:auto;opacity:1!important;transform:none!important;
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(90px,14vh,150px) 0}
+.pivot.is-static .pivot__problem{background:#e9e8e4;color:#6f6e69}
+.pivot.is-static .pivot__solution{background:#ff5a1f;color:#0e0a06;margin-top:-1px}
+
+/* ===== TURN (services) =============================================== */
+.svc{margin-top:clamp(50px,7vh,90px);border-top:2px solid var(--line)}
+.svc__row{display:grid;grid-template-columns:1.1fr 2.4fr 3fr;gap:24px;align-items:center;
+  padding:30px 0;border-bottom:2px solid var(--line);
+  transition:padding-left .35s, background-color .35s, color .35s}
+.svc__row:hover{padding-left:24px;background:var(--ink);color:var(--orange)}
+.svc__num{font-family:var(--font-mono);font-size:1rem;opacity:.9;transition:opacity .35s,color .35s}
+.svc__name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.9rem);line-height:1}
+.svc__desc{font-size:1rem;opacity:.9;max-width:34ch;justify-self:end;transition:opacity .35s,color .35s}
+.svc__row:hover .svc__num,.svc__row:hover .svc__desc{opacity:1;color:var(--cream)}
+@media(max-width:880px){.svc__row{grid-template-columns:auto 1fr;gap:14px}.svc__desc{display:none}}
+.svc__close{margin-top:clamp(30px,4.5vh,56px);font-family:var(--font-display);font-weight:600;font-size:clamp(1.3rem,2.4vw,2.05rem);line-height:1.25;letter-spacing:-.01em;word-spacing:.06em;max-width:46ch;text-wrap:balance}
+
+/* ===== PROOF (real testimonials) ===================================== */
+.workx{position:relative;height:100svh;overflow:hidden}
+.workx__track{display:flex;height:100%;width:max-content}
+.workx__panel{flex:0 0 100vw;height:100%;display:flex;align-items:center;gap:clamp(36px,5vw,84px);padding:0 var(--pad)}
+.workx__textwrap{max-width:var(--maxw)}
+.workx__hint{margin-top:34px;opacity:.45;letter-spacing:.22em;font-size:.7rem}
+.workx__panel--outro{justify-content:space-between}
+.workx__outro-text{max-width:48%}
+.workx__outro-text .workx__hint{margin-top:0;margin-bottom:18px}
+.workx__outro-head{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.3rem,4.4vw,4rem);line-height:.96;letter-spacing:-.02em;word-spacing:.16em;margin-bottom:24px}
+.workx__outro-note{font-size:1.05rem;line-height:1.5;opacity:.72;max-width:36ch}
+.workx__outro-cta{margin-top:30px}
+.workx__outro-circle{flex:none;width:clamp(96px,11vw,190px);height:clamp(96px,11vw,190px);border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-size:clamp(2.2rem,3.6vw,4rem);transition:transform .35s}
+.workx__outro-circle:hover{transform:scale(1.05)}
+@media(max-width:880px){.workx__outro-circle{display:none}.workx__outro-text{max-width:100%}}
+.workx__shot{flex:1 1 56%;max-width:58%;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--line);border-radius:3px;background:#0b0b0b;display:block;
+  /* offset outline "frame" behind the shot — brutalist depth. Two layered
+     shadows: an accent ring (spread 2) with a bg-coloured punch-out on top, so
+     only a 2px orange outline peeks at the offset. Uses palette vars (no
+     transition, so it never lags the scroll colour-scrub). */
+  --o:clamp(9px,1.5vw,16px);box-shadow:var(--o) var(--o) 0 0 var(--bg),var(--o) var(--o) 0 2px var(--accent)}
+.workx__shot img{width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.workx__shot:hover img{transform:scale(1.04)}
+.workx__info{flex:1 1 38%;max-width:460px}
+.workx__index{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;opacity:.5}
+.workx__name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.95;margin-top:14px}
+.workx__role{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-top:14px}
+.workx__quote{font-size:clamp(1.1rem,1.5vw,1.4rem);line-height:1.45;margin-top:26px;opacity:.92}
+.workx__who{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-top:22px}
+.workx__links{display:flex;gap:30px;margin-top:30px;align-items:center;flex-wrap:wrap}
+.workx__url,.workx__study{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:.92rem;transition:gap .25s,opacity .2s}
+.workx__url{opacity:.85}.workx__url:hover{opacity:1}
+.workx__study{color:var(--accent)}.workx__study:hover{gap:14px}
+/* mobile / reduced-motion: no pin — stack the panels vertically */
+.workx.is-static{height:auto;overflow:visible}
+.workx.is-static .workx__track{flex-direction:column;width:auto;height:auto}
+.workx.is-static .workx__panel{flex:none;width:auto;height:auto;min-height:0;flex-direction:column;align-items:flex-start;gap:26px;padding:clamp(40px,7vh,72px) var(--pad)}
+.workx.is-static .workx__shot{max-width:100%;flex:none;width:100%}
+.workx.is-static .workx__info{max-width:100%}
+.proof__line{font-size:1.25rem;max-width:40ch;opacity:.7}
+.proof__line b{color:var(--accent);font-weight:600;opacity:1}
+
+/* ===== PROMISE (de-risk + founder) =================================== */
+.promise__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);margin-top:clamp(50px,7vh,90px);align-items:start}
+@media(max-width:880px){.promise__grid{grid-template-columns:1fr;gap:54px}}
+.steps{display:flex;flex-direction:column;gap:2px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:26px 0;border-top:2px solid var(--line)}
+.step:last-child{border-bottom:2px solid var(--line)}
+.step__n{font-family:var(--font-display);font-weight:700;font-size:2.2rem;line-height:.9;color:var(--accent)}
+.step__t{font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.25rem;letter-spacing:-.01em}
+.step__d{font-size:.98rem;opacity:.75;margin-top:6px;grid-column:2}
+.guarantee{border:2px solid var(--accent);padding:34px;border-radius:2px}
+.guarantee h4{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.5rem;margin-bottom:14px}
+.guarantee p{font-size:1rem;opacity:.85;line-height:1.55}
+.founder{margin-top:46px;font-family:var(--font-serif);font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.35;font-style:italic}
+.founder .sig{display:block;margin-top:18px;font-family:var(--font-mono);font-style:normal;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+
+/* ===== PRICING (the investment, ink) =============================== */
+.toggle{display:inline-flex;border:2px solid currentColor;border-radius:2px;overflow:hidden;margin-top:30px}
+.toggle button{font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:.95rem;
+  padding:12px 24px;background:transparent;color:inherit;border:0;cursor:pointer;transition:background .25s,color .25s}
+.toggle button.is-active{background:var(--accent);color:var(--bg)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(38px,5vh,64px)}
+@media(max-width:980px){.tiers{grid-template-columns:1fr}}
+.tier{border:2px solid rgba(250,243,232,.22);background:rgba(250,243,232,.04);padding:30px 26px;display:flex;flex-direction:column;border-radius:2px;position:relative}
+.tier.rec{border-color:var(--accent)}
+.tier__badge{position:absolute;top:-13px;right:18px;background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px}
+.tier__label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;opacity:.55}
+.tier__name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:2rem;line-height:1;margin-top:6px}
+.tier__tag{font-size:.95rem;opacity:.7;margin-top:8px;min-height:2.7em}
+.tier__worth{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;opacity:.5;margin-top:16px}
+.tier__worth s{opacity:.85}
+.tier__price{font-family:var(--font-display);font-weight:700;font-size:1.65rem;color:var(--accent);margin:3px 0 2px}
+.tier__save{font-size:.74rem;font-style:italic;opacity:.6;margin:0 0 2px}
+.tier__feat{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:9px;font-size:.92rem}
+.tier__feat li{display:flex;gap:10px;opacity:.85;line-height:1.35;justify-content:space-between;align-items:baseline}
+.tier__feat li .tier__f{flex:1}
+.tier__feat li .tier__w{font-family:var(--font-mono);font-size:.72rem;opacity:.55;flex:none;white-space:nowrap;letter-spacing:.02em}
+.tier__feat li::before{content:"+";color:var(--accent);font-weight:700;flex:none}
+.tier__foot{font-size:.82rem;opacity:.55;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.tier__cta{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:.9rem;color:var(--accent)}
+.careplus{margin-top:24px;border:2px dashed var(--line);padding:24px 26px;display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center;justify-content:space-between;border-radius:2px}
+.careplus h4{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.2rem}
+.careplus .price{color:var(--accent)}
+.careplus .setup{opacity:.5;font-size:.8rem;font-family:var(--font-mono);letter-spacing:.1em}
+.careplus p{font-size:.9rem;opacity:.7;max-width:52ch;margin-top:8px}
+.pricing__note{margin-top:30px;opacity:.75;font-size:1.05rem}
+.pricing__note a{color:var(--accent);font-weight:600;border-bottom:1px solid currentColor}
+.pricing__terms{margin-top:20px;font-size:.95rem;opacity:.7}
+.answers__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4vw,60px);margin-top:clamp(42px,6vh,76px)}
+@media(max-width:880px){.answers__grid{grid-template-columns:1fr;gap:34px}}
+.qa{border-top:2px solid var(--line);padding-top:20px}
+.qa__q{font-family:var(--font-display);font-weight:600;font-size:clamp(1.12rem,1.7vw,1.42rem);letter-spacing:-.01em;line-height:1.22}
+.qa__a{margin-top:12px;font-size:1rem;line-height:1.62;opacity:.75;max-width:48ch}
+/* Mobile-only halftone melt dividers at the cream<->ink seams (injected by JS on mobile). */
+.melt-divider{display:block;line-height:0;font-size:0;margin:0}
+@media(min-width:761px){.melt-divider{display:none!important}}
+
+/* ===== ASK + FOOTER (orange, reference layout) ===================== */
+.ask{padding:clamp(80px,12vh,170px) 0 0}
+.ask__inner{position:relative}
+.ask__eyebrow{font-family:var(--font-mono);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.05em;text-transform:uppercase;opacity:.7;max-width:60%;margin-bottom:clamp(14px,2.4vh,26px)}
+.ask__big{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(4.5rem,21vw,21rem);line-height:.8;letter-spacing:-.03em;word-spacing:.08em}
+.ask__circle{position:absolute;right:var(--pad);top:clamp(20px,9vh,110px);
+  width:clamp(96px,11vw,190px);height:clamp(96px,11vw,190px);border-radius:50%;
+  background:var(--ink);color:var(--orange);display:grid;place-items:center;
+  font-size:clamp(2.2rem,3.6vw,4rem);transition:transform .3s}
+.ask__circle:hover{transform:scale(1.06)}
+.ask__row{display:flex;flex-wrap:wrap;align-items:center;gap:22px 40px;margin-top:clamp(28px,4vh,54px)}
+.ask__mail{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:clamp(1.3rem,2.6vw,2.4rem);transition:opacity .25s}
+.ask__mail:hover{opacity:.72}
+.ask__mailicon{display:grid;place-items:center;width:.95em;color:var(--ink)}
+.ask__mailicon svg{width:100%;height:auto;display:block}
+.btn-pill{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--orange);
+  font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.05rem;
+  padding:16px 32px;border-radius:100px;transition:transform .3s}
+.btn-pill:hover{transform:translateY(-3px)}
+.ask__rule{height:2px;background:var(--ink);margin-top:clamp(60px,8vh,110px)}
+
+/* footer row, on the page orange */
+.foot{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px);
+  align-items:flex-start;justify-content:space-between;color:var(--ink);
+  padding:clamp(40px,6vh,72px) var(--pad) clamp(28px,4vh,48px)}
+.foot__logo{font-family:var(--font-display);font-weight:700;font-size:clamp(2.8rem,7vw,5.5rem);line-height:.78}
+.foot__logo sup{font-size:.26em;vertical-align:top;font-weight:600}
+.foot__nav{display:flex;gap:clamp(22px,3vw,56px);border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__col{display:flex;flex-direction:column;gap:13px}
+.foot__col a{display:flex;gap:11px;align-items:baseline;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__col a span{font-family:var(--font-mono);font-size:.66rem;opacity:.5;font-weight:400}
+.foot__col a:hover{color:var(--orange-deep)}
+.foot__social{display:flex;flex-direction:column;gap:13px;border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__social a{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__social a:hover{color:var(--orange-deep)}
+.foot__social svg{width:19px;height:19px;flex:none;fill:currentColor}
+.foot__copy{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;opacity:.65;text-align:right}
+@media(max-width:880px){
+  .foot{gap:34px}
+  .foot__nav,.foot__social{border-left:0;padding-left:0}
+  .foot__copy{text-align:left;width:100%}
+  .ask__circle{display:none}
 }
 
-/* ---------- services stack ---------- */
-.svc-stack{display:flex;flex-direction:column;gap:0}
-.svc-card{position:sticky;top:14vh;background:var(--bg-2);border:1px solid var(--line);clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%);padding:clamp(1.6rem,3.4vw,3.2rem);display:grid;grid-template-columns:auto 1fr auto;gap:3vw;align-items:center;margin-bottom:1.2rem;overflow:hidden}
-.svc-card::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,77,21,.09),transparent 45%);opacity:0;transition:opacity .4s;pointer-events:none}
-.svc-card:hover::before{opacity:1}
-.svc-card .n{font-family:var(--font-m);font-size:.8rem;color:var(--ember-2)}
-.svc-card h3{font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(1.9rem,4.8vw,4rem);letter-spacing:.01em;line-height:.98}
-.svc-dim{position:absolute;inset:0;background:#0a0908;opacity:0;pointer-events:none;z-index:3}
-.svc-card .desc{color:var(--ink-2);line-height:1.65;max-width:36ch;margin-top:.9rem;font-size:clamp(.95rem,1.1vw,1.05rem)}
-.svc-tags{display:flex;flex-direction:column;gap:.5rem;align-items:flex-end}
-.svc-tags span{font-family:var(--font-m);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);padding:.46rem .9rem;white-space:nowrap}
-@media (max-width:900px){.svc-card{grid-template-columns:1fr;gap:1.1rem}.svc-tags{flex-direction:row;flex-wrap:wrap;align-items:flex-start}}
-
-
-/* ---------- work: client quote ---------- */
-.work-quote{position:absolute;right:0;top:.5rem;z-index:1;max-width:30rem;padding-left:1.6rem;border-left:2px solid var(--ember)}
-.work-quote::before{content:"";position:absolute;top:-2px;left:-2px;width:12px;height:12px;border-top:1px solid var(--ember);border-left:1px solid var(--ember)}
-.wq-label{font-family:var(--font-m);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember-2);margin-bottom:1.1rem}
-.wq-stars{color:var(--ember);font-size:.85rem;letter-spacing:.25em;margin-bottom:1rem}
-.wq-text{font-family:var(--font-s);font-style:italic;font-weight:300;font-size:clamp(1.15rem,1.5vw,1.5rem);line-height:1.55;color:var(--ink)}
-.wq-who{margin-top:1.3rem;font-family:var(--font-d);font-weight:600;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
-.wq-who span{font-family:var(--font-m);font-weight:400;font-size:.64rem;letter-spacing:.14em;color:var(--ink-3);margin-left:.6rem}
-.work-quotes{position:absolute;right:0;top:.5rem;z-index:1;display:flex;flex-direction:column;gap:2.2rem;max-width:30rem}
-.work-quotes .work-quote{position:static;max-width:none}
-@media (max-width:1100px){.work-quotes{position:static;margin-top:2.6rem;max-width:40rem}}
-
-/* ---------- work: horizontal-scroll choreography ---------- */
-#work.work-h{height:100svh;padding:0;overflow:hidden}
-.work-h-pin{height:100%}
-.work-h-track{display:flex;height:100%;width:max-content;will-change:transform}
-.hpanel{flex:none;width:100vw;height:100%;display:flex;flex-direction:column;justify-content:center;padding:7rem 4vw 5rem;position:relative}
-.hpanel-intro .sec-head{margin-bottom:0;max-width:none}
-.hpanel .work-case{padding:0}
-.hpanel-cue{position:absolute;left:4vw;bottom:3.2rem;display:flex;align-items:center;gap:.85rem;font-family:var(--font-m);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ember-2)}
-.hpanel-cue svg{width:30px;height:18px;stroke:var(--ember);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:cueX 1.6s var(--ease) infinite}
-@keyframes cueX{0%,100%{transform:translateX(0);opacity:.5}50%{transform:translateX(7px);opacity:1}}
-@media (max-width:900px),(prefers-reduced-motion:reduce){
-  #work.work-h{height:auto;overflow:visible;padding:14vh 4vw}
-  .work-h-pin{height:auto}
-  .work-h-track{flex-direction:column;width:100%;transform:none!important;will-change:auto}
-  .hpanel{width:100%;height:auto;min-height:0;padding:0;display:block}
-  .hpanel-intro{margin-bottom:9vh}
-  .hpanel-intro .sec-head{margin-bottom:0}
-  .hpanel + .hpanel{margin-top:9vh}
-  .hpanel-cue{display:none}
+/* ===== PRELOADER — grey→orange "ignite", once per session ============
+   Covers the page on first paint (grey trough). The thin NOXTA then bulks up
+   to bold + the screen ignites orange as a 000→100 counter ticks, then the
+   panel wipes UP to reveal the (already-orange) hero — a short trailer for the
+   page's whole grey→orange thesis. Gated in JS + the <head> for reduced-motion
+   / returning visitors / no-JS / GSAP-fail. */
+.preloader{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;
+  background:var(--dead-paper);color:#5f5d58;overflow:hidden;
 }
-/* lite-mode (low-power / throttled GPU): section 02 falls back to vertical — same cards */
-html.lite #work.work-h{height:auto;overflow:visible;padding:14vh 4vw}
-html.lite .work-h-pin{height:auto}
-html.lite .work-h-track{flex-direction:column;width:100%;transform:none!important;will-change:auto}
-html.lite .hpanel{width:100%;height:auto;min-height:0;padding:0;display:block}
-html.lite .hpanel-intro{margin-bottom:9vh}
-html.lite .hpanel + .hpanel{margin-top:9vh}
-html.lite .hpanel-cue{display:none}
-html.lite .work-quotes{position:static;margin-top:2.6rem;max-width:40rem}
+.preloader__word{
+  font-family:var(--font-display);font-weight:300;text-transform:uppercase;
+  font-size:clamp(3rem,16vw,15rem);letter-spacing:.02em;line-height:1;
+  will-change:font-weight,color;
+}
+.preloader__count{
+  position:absolute;right:var(--pad);bottom:clamp(20px,4vh,40px);
+  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.22em;opacity:.55;
+}
+.preloader__bar{
+  position:absolute;left:0;bottom:0;height:2px;width:100%;
+  transform:scaleX(0);transform-origin:left center;background:currentColor;opacity:.3;
+}
+html.is-loading{overflow:hidden}
+.intro-seen .preloader{display:none}
 
-/* ---------- marquee ---------- */
-.marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.2rem 0;overflow:hidden;background:var(--bg-2)}
-.marquee .track{display:flex;gap:4rem;width:max-content;will-change:transform}
-.marquee .item{display:flex;align-items:center;gap:4rem;font-weight:900;font-variation-settings:"wdth" 122;text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.8rem);letter-spacing:-.02em;white-space:nowrap}
-.marquee .item em{font-family:var(--font-s);font-style:italic;font-weight:300;color:var(--ember-2)}
-.marquee .item .sep{width:10px;height:10px;background:var(--ember);border-radius:50%;flex:none}
+/* ===== PAGE TRANSITION cover ===== moved to noxta.css (shared, all pages) = */
 
-/* ---------- believe ---------- */
-.believe-row{padding:3.4rem 0;display:grid;grid-template-columns:auto 1fr 1.1fr;gap:3vw;align-items:start;position:relative;transition:padding-left .45s var(--ease)}
+/* ===== reveal (entrance) — GSAP-driven staggered masked wipe ========= */
+.reveal{opacity:0}
+.reveal.in{opacity:1}
 
-.believe-row::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;background:var(--grad);transform:scaleY(0);transform-origin:0 0;transition:transform .5s var(--ease)}
-.believe-row:hover{padding-left:1.6rem}
-.believe-row:hover::before{transform:scaleY(1)}
-.believe-row .n{font-family:var(--font-m);color:var(--ember-2);font-size:.8rem;padding-top:.5rem}
-.believe-row h3{font-weight:900;font-variation-settings:"wdth" 118;text-transform:uppercase;font-size:clamp(1.7rem,3.6vw,3rem);letter-spacing:-.02em;line-height:1}
-.believe-row p{color:var(--ink-2);line-height:1.7;max-width:52ch}
-@media (max-width:900px){.believe-row{grid-template-columns:auto 1fr}.believe-row p{grid-column:2}}
-
-/* ---------- pricing ---------- */
-.ptabs{position:relative;z-index:1;display:inline-flex;border:1px solid var(--line-2);padding:.3rem;gap:.3rem;margin-bottom:5vh;background:var(--bg-2);clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%)}
-.ptab{font-family:var(--font-d);font-weight:600;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);background:transparent;border:0;padding:.75rem 1.4rem;cursor:none;transition:color .3s,background .3s}
-@media (hover:none),(max-width:900px){.ptab{cursor:pointer}}
-.ptab.is-active{background:var(--grad);color:#0a0908;font-weight:500}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;align-items:stretch}
-.pcard{position:relative;background:var(--bg-2);border:1px solid var(--line);border-radius:18px;padding:2.2rem 1.9rem;display:flex;flex-direction:column;gap:1.4rem;overflow:hidden;transition:transform .45s var(--ease-out),border-color .45s}
-.pcard:hover{transform:translateY(-8px);border-color:rgba(255,122,61,.4)}
-.pcard.is-reco{border-color:rgba(255,77,21,.55);background:linear-gradient(180deg,rgba(255,77,21,.07),rgba(17,16,16,1) 40%)}
-.pcard .flag{position:absolute;top:1.3rem;right:1.3rem;font-family:var(--font-m);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#0a0908;background:var(--grad);border-radius:99px;padding:.4rem .8rem;font-weight:500}
-.pcard .amount{font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(1.7rem,2.4vw,2.3rem);letter-spacing:-.02em}
-.pcard .pname{font-weight:900;font-variation-settings:"wdth" 122;text-transform:uppercase;font-size:1.1rem;letter-spacing:.02em}
-.pcard .pdesc{font-family:var(--font-s);font-style:italic;font-weight:300;color:var(--ember-3);font-size:1.15rem}
-.pcard ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;border-top:1px solid var(--line);padding-top:1.4rem;flex:1}
-.pcard li{color:var(--ink-2);font-size:.92rem;line-height:1.5;padding-left:1.3rem;position:relative}
-.pcard li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:1.5px;background:var(--ember)}
-.pcard .ideal{font-size:.85rem;color:var(--ink-3);line-height:1.6;border-top:1px solid var(--line);padding-top:1.2rem}
-@media (max-width:1000px){.pgrid{grid-template-columns:1fr}}
-
-.careplus{margin-top:1.2rem;border:1px dashed rgba(255,122,61,.4);border-radius:18px;padding:2.4rem;display:grid;grid-template-columns:1.2fr .8fr;gap:3vw;background:rgba(255,77,21,.03)}
-.careplus h3{font-weight:900;font-variation-settings:"wdth" 120;text-transform:uppercase;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.02em;margin:.8rem 0 .4rem}
-.careplus .amt{font-weight:900;font-size:1.3rem}
-.careplus .amt small{font-family:var(--font-m);font-size:.7rem;color:var(--ink-3);font-weight:400;margin-left:.7rem}
-.careplus p{color:var(--ink-2);line-height:1.7;margin-top:1rem;max-width:56ch}
-.careplus ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
-.careplus li{color:var(--ink-2);font-size:.92rem;line-height:1.5;padding-left:1.3rem;position:relative}
-.careplus li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:1.5px;background:var(--ember)}
-.careplus .foot{font-family:var(--font-m);font-size:.66rem;letter-spacing:.1em;color:var(--ink-3);margin-top:1.4rem;text-transform:uppercase}
-@media (max-width:900px){.careplus{grid-template-columns:1fr}}
-
-/* ---------- CTA ---------- */
-.cta{position:relative;min-height:92svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-.cta-meta{display:flex;justify-content:space-between;margin-bottom:7vh;gap:2rem;flex-wrap:wrap}
-.cta-meta .blk{display:flex;flex-direction:column;gap:.4rem}
-.cta h2{font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:clamp(4rem,15vw,14rem);line-height:.85;letter-spacing:-.035em}
-.cta .lede{max-width:52ch;color:var(--ink-2);font-size:clamp(1rem,1.3vw,1.2rem);line-height:1.7;margin:4vh 0 5vh}
-.cta-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
-.cta .wa{font-family:var(--font-m);font-size:.74rem;letter-spacing:.1em;color:var(--ink-3)}
-.cta .wa b{color:var(--ink);font-weight:500}
-.cta-ghost-word{position:absolute;bottom:-2vw;right:-2vw;font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(8rem,26vw,26rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,122,61,.17);pointer-events:none;user-select:none;white-space:nowrap}
+/* ===== reduced motion: show everything at target state, no scrub ===== */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important;transition:none}
+  body,.nav{transition:none}
+  .marquee__track{animation:none}
+}
 </style>
+<!-- Shared nav/menu + page-transition styles (defined once) -->
+<link rel="stylesheet" href="noxta.css" />
 </head>
 <body>
 
-<canvas id="embers"></canvas>
-<div class="grain"></div>
-<div class="progress" id="progress"></div>
-<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+<!-- scroll progress bar (fills across the whole page) -->
+<div class="progress" aria-hidden="true"><span class="progress__fill" id="progressFill"></span></div>
 
-<!-- ============ PRELOADER ============ -->
-<div class="loader" id="loader">
-  <div class="lwm">NO<span class="x">X</span>TA<br>STUDIO</div>
-  <div class="lnum" id="loaderNum">000</div>
-  <div class="lbar" id="loaderBar"></div>
+<!-- ===================== PRELOADER ===================== -->
+<div class="preloader" id="preloader" role="presentation" aria-hidden="true">
+  <div class="preloader__word">NOXTA</div>
+  <div class="preloader__count">000</div>
+  <span class="preloader__bar"></span>
 </div>
 
-<!-- ============ NAV ============ -->
+<!-- ===================== PAGE TRANSITION ===================== -->
+<div class="ptrans" id="ptrans" aria-hidden="true"><span class="ptrans__word">NOXTA</span></div>
+
+<!-- ===================== NAV ===================== -->
 <nav class="nav" id="nav">
-  <a class="wm" href="/">NO<span class="x">X</span>TA</a>
-  <div class="nav-right">
-    <span class="clock" id="clock">TILBURG — 00:00:00</span>
-    <a class="nav-link" href="/portfolio" data-hover>Portfolio</a>
-    <a class="nav-cta" href="/contact" data-hover>Start a project</a>
+  <a href="#top" class="nav__logo">NOXTA</a>
+  <span class="nav__dash"></span>
+  <div class="nav__links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#pricing">Pricing</a>
+    <a href="contact.html" class="nav__cta">Contact</a>
   </div>
+  <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+    <span></span><span></span>
+  </button>
 </nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero" id="hero">
-  <span class="plus tl">+</span>
-  <span class="plus br">+</span>
-
-  <div class="hero-visual" aria-hidden="true">
-    <div class="wrap">
-      <img id="heroImg" src="assets/portrait-hero.webp" alt="" fetchpriority="high">
-    </div>
+<!-- ===================== MOBILE MENU ===================== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__inner" aria-label="Mobile">
+    <a class="menu__link" href="#work"><span class="menu__num">01</span> Work</a>
+    <a class="menu__link" href="#about"><span class="menu__num">02</span> About</a>
+    <a class="menu__link" href="#pricing"><span class="menu__num">03</span> Pricing</a>
+    <a class="menu__link" href="contact.html"><span class="menu__num">04</span> Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
+    <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/31617657327" target="_blank" rel="noopener">WhatsApp</a>
   </div>
-
-  <div class="hero-left">
-    <div class="hero-avail" data-reveal><span class="dot"></span>Available · Q3 2026 · 2 slots</div>
-    <h1 class="hero-name" aria-label="Adrian Tajti">
-      <span class="row"><span class="word" data-split>ADRIAN</span></span>
-      <span class="row"><span class="word grad-text" data-split>TAJTI.</span></span>
-    </h1>
-    <div class="hero-role" data-reveal>Freelance Web Designer, Tilburg</div>
-    <hr class="hero-rule" data-reveal>
-    <p class="hero-bio" data-reveal>I'm a freelance web designer in Tilburg. There's no agency behind Noxta, just me. I do the design, write the copy, and write the code. After launch I stick around to fix things and add new ones as you need them. You email me, I email you back.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="/contact" data-hover data-magnetic><span class="fill"></span><span>Start a project →</span></a>
-      <a class="btn btn-ghost" href="#pricing" data-hover data-magnetic><span class="fill"></span><span>Pricing ↓</span></a>
-    </div>
-  </div>
-
-  <div class="scroll-cue">Scroll
-    <svg viewBox="0 0 24 24"><path d="M4 7l8 7 8-7M4 13l8 7 8-7"/></svg>
-  </div>
-</header>
-
-<!-- ============ INTRO 00 ============ -->
-<section class="section intro" id="about">
-  <div class="intro-grid">
-    <div>
-      <div class="sec-label mono" data-reveal>00 · Who I am</div>
-      <h2 class="sec-title" style="margin-top:1.4rem">
-        <span class="line-mask"><span>Just me.</span></span>
-        <span class="line-mask"><span><span class="grad-text">No agency</span></span></span>
-        <span class="line-mask"><span>in the back.</span></span>
-      </h2>
-      <p class="sec-sub" style="margin-top:2.2rem" data-reveal>I work alone on purpose. Keeping the whole project in one head means nothing gets dropped between specialists who don't know your business as well as you do. The trade-off is capacity: I usually have two clients at a time, which is why slots are worth booking early.</p>
-    </div>
-    <div class="intro-right">
-      <div class="intro-ghost" data-parallax="0.12" aria-hidden="true">00</div>
-      <aside class="readout" data-reveal aria-label="Studio facts">
-        <div class="ro-head"><span>// Studio readout</span><span class="dot"></span></div>
-        <div class="ro-row"><span class="k">Est.</span><span class="v"><span data-count="2026" data-start="1970">1970</span></span></div>
-        <div class="ro-row"><span class="k">Reply window</span><span class="v">&lt; <b><span data-count="24">0</span>h</b></span></div>
-        <div class="ro-row"><span class="k">Capacity</span><span class="v"><b><span data-count="2" data-pad="2">00</span></b> clients at a time</span></div>
-        <div class="ro-row"><span class="k">Build</span><span class="v">Hand-coded · No template</span></div>
-        <div class="ro-radar">
-          <svg viewBox="0 0 104 104" aria-hidden="true">
-            <circle class="ring" cx="52" cy="52" r="14"/>
-            <circle class="ring" cx="52" cy="52" r="30"/>
-            <circle class="ring" cx="52" cy="52" r="46"/>
-            <line class="cross" x1="52" y1="2" x2="52" y2="102"/>
-            <line class="cross" x1="2" y1="52" x2="102" y2="52"/>
-            <line class="sweep" x1="52" y1="52" x2="52" y2="8"/>
-            <circle class="blip" cx="63" cy="41" r="3.5"/>
-          </svg>
-          <div class="ro-loc">
-            <div class="city">Tilburg, NL</div>
-            <div class="sub">51.56°N · 5.09°E // On the map</div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SERVICES 01 ============ -->
-<section class="section" id="services">
-  <div class="sec-head">
-    <div class="sec-ghost" aria-hidden="true" data-parallax="0.1">01</div>
-    <div class="sec-label mono" data-reveal>01 · What I do</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>Four jobs.</span></span>
-      <span class="line-mask"><span><span class="grad-text">One head.</span></span></span>
-    </h2>
-    <p class="sec-sub" data-reveal>I handle the design, the copy, the code, and the payments myself. So there's no handoff between people who barely know each other, and if something breaks the person to call is me.</p>
-  </div>
-
-  <div class="svc-stack">
-    <div class="svc-card" data-spotlight>
-      <span class="n">/01</span>
-      <div><h3>Websites</h3><p class="desc">Multi-page sites with SEO and analytics wired in from day one, not bolted on the week before launch.</p></div>
-      <div class="svc-tags"><span>Multi-page</span><span>Hand-coded</span><span>Mobile-first</span></div>
-    <div class="svc-dim"></div>
-    </div>
-    <div class="svc-card" data-spotlight>
-      <span class="n">/02</span>
-      <div><h3>E-commerce</h3><p class="desc">Real shops with real payment flows. VOEP runs 4,200 SKUs on the setup I built.</p></div>
-      <div class="svc-tags"><span>WooCommerce</span><span>Shopify</span><span>IDEAL / Bancontact</span></div>
-    <div class="svc-dim"></div>
-    </div>
-    <div class="svc-card" data-spotlight>
-      <span class="n">/03</span>
-      <div><h3>Brand</h3><p class="desc">Wordmark, palette, and type system. Enough so the site looks like a brand, not a template.</p></div>
-      <div class="svc-tags"><span>Wordmark</span><span>Palette</span><span>Type system</span></div>
-    <div class="svc-dim"></div>
-    </div>
-    <div class="svc-card" data-spotlight>
-      <span class="n">/04</span>
-      <div><h3>Maintenance</h3><p class="desc">I stick around after launch. Updates, backups, and the small edits you'd usually be afraid to ask for.</p></div>
-      <div class="svc-tags"><span>Retainer</span><span>On call</span><span>Same-week edits</span></div>
-    <div class="svc-dim"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WORK 02 — horizontal scroll (intro → Szabina → VOEP) ============ -->
-<section class="work-h" id="work" aria-label="Selected work">
-  <div class="work-h-pin">
-    <div class="work-h-track" id="workTrack">
-
-      <!-- Panel A — section intro -->
-      <div class="hpanel hpanel-intro">
-        <div class="sec-head">
-          <div class="sec-ghost" aria-hidden="true" data-parallax="0.1">02</div>
-          <div class="sec-label mono" data-reveal>02 · Selected work</div>
-          <h2 class="sec-title">
-            <span class="line-mask"><span>Selected</span></span>
-            <span class="line-mask"><span><span class="grad-text">work.</span></span></span>
-          </h2>
-          <div class="work-quotes">
-            <aside class="work-quote" data-reveal>
-              <div class="wq-label">// From the client</div>
-              <div class="wq-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote class="wq-text">"As a hobby photographer, I wanted a website which shows my photos and tells my stories. I was out of ideas, Adrian gave me plenty for the start. After choosing the final direction he could basically build anything I was asking for, personalized for me. The communication was super fast, easy-going and professional. He traced and fine-tuned every request, giving me no worries, but an enjoyable time."</blockquote>
-              <div class="wq-who">Szabina <span>Case 001 · Travel blog</span></div>
-            </aside>
-            <!-- Alex/VOEP testimonial — hidden until the real quote is in (remove `hidden` to ship) -->
-            <aside class="work-quote" data-reveal hidden>
-              <div class="wq-label">// From the client</div>
-              <blockquote class="wq-text">"[ PASTE ALEX'S REAL QUOTE HERE — DO NOT SHIP THIS PLACEHOLDER ]"</blockquote>
-              <div class="wq-who">Alex <span>Case 002 · Vintage Outboard Parts</span></div>
-            </aside>
-          </div>
-        </div>
-        <div class="hpanel-cue" aria-hidden="true">
-          <span>Scroll</span>
-          <svg viewBox="0 0 30 18"><path d="M2 9h25M21 3l6 6-6 6"/></svg>
-        </div>
-      </div>
-
-      <!-- Panel B — Szabina -->
-      <div class="hpanel">
-        <article class="work-case">
-          <div class="work-info">
-            <div class="mono tag" data-reveal>Case 001 · Personal travel blog</div>
-            <h3 data-split-words>Szabina</h3>
-            <p data-reveal>Szabina travels and writes about it. After a trip she puts up a short post: a title, a paragraph or two, and the photos she took. I built her a static, hand-coded site with a small admin she runs herself.</p>
-            <div class="work-cells" data-reveal>
-              <div class="cell"><span class="mono">// Cadence</span><span class="v">Per trip</span></div>
-              <div class="cell"><span class="mono">// Editor</span><span class="v">Self-served</span></div>
-              <div class="cell"><span class="mono">// Stack</span><span class="v">Static · Hand-coded</span></div>
-              <div class="cell"><span class="mono">// Hosting</span><span class="v">GitHub Pages</span></div>
-            </div>
-            <a class="btn btn-ghost" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener" data-hover data-magnetic><span class="fill"></span><span>Visit the site →</span></a>
-          </div>
-          <a class="work-shot" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener" data-hover-view>
-            <div class="frame-top"><i></i><i></i><i></i><span class="url">noxtastudio.github.io/szabina</span></div>
-            <div class="shot-fallback"><span>Szabina</span></div>
-            <img src="szabina-screenshot.webp" alt="Szabina — editorial photo journal homepage" loading="lazy" data-shot onerror="this.remove()">
-          </a>
-        </article>
-      </div>
-
-      <!-- Panel C — VOEP -->
-      <div class="hpanel">
-        <article class="work-case flip">
-          <div class="work-info">
-            <div class="mono tag" data-reveal>Case 002 · Vintage Outboard Parts</div>
-            <h3 data-split-words>VOEP</h3>
-            <p data-reveal>Alex runs a vintage outboard parts shop in Belgium. Sixty years of inventory, no website. We built him a 4,200-SKU store with IDEAL checkout and a product search I tuned by hand. First sale came within a week.</p>
-            <div class="work-cells" data-reveal>
-              <div class="cell"><span class="mono">// Built in</span><span class="v">~60 hours</span></div>
-              <div class="cell"><span class="mono">// First sale</span><span class="v">&lt; 7 days</span></div>
-              <div class="cell"><span class="mono">// Products</span><span class="v">4,200+ SKUs</span></div>
-              <div class="cell"><span class="mono">// Stack</span><span class="v">WP · Woo · Flat</span></div>
-            </div>
-            <a class="btn btn-ghost" href="https://vintageoutboardengineparts.com/" target="_blank" rel="noopener" data-hover data-magnetic><span class="fill"></span><span>Visit the site →</span></a>
-          </div>
-          <a class="work-shot" href="https://vintageoutboardengineparts.com/" target="_blank" rel="noopener" data-hover-view>
-            <div class="frame-top"><i></i><i></i><i></i><span class="url">vintageoutboardengineparts.com</span></div>
-            <div class="shot-fallback"><span>VOEP</span></div>
-            <img src="voep-screenshot.webp" alt="Vintage Outboard Parts — homepage screenshot" loading="lazy" data-shot onerror="this.remove()">
-          </a>
-        </article>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ BELIEVE 03 ============ -->
-<section class="section" id="how">
-  <div class="sec-ghost" aria-hidden="true" data-parallax="0.06">03</div>
-  <div class="sec-head">
-    <div class="sec-label mono" data-reveal>03 · How I work</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>How this</span></span>
-      <span class="line-mask"><span><span class="grad-text">usually goes.</span></span></span>
-    </h2>
-  </div>
-
-  <div class="believe-row" data-reveal>
-    <span class="n">/01</span>
-    <h3>I stay until it works.</h3>
-    <p>Lots of freelancers ship and disappear. I don't. Retainer or ad-hoc, you can reach me after launch. That's usually when the real work starts anyway.</p>
-  </div>
-  <div class="believe-row" data-reveal>
-    <span class="n">/02</span>
-    <h3>Details are the work.</h3>
-    <p>Generic sites look generic because nobody sweated the details. If a button is off by two pixels I'll catch it. So will your visitors, even if they can't quite say why something feels off.</p>
-  </div>
-  <div class="believe-row" data-reveal>
-    <span class="n">/03</span>
-    <h3>Yours to keep.</h3>
-    <p>When the project ends you own all of it: the code, the domain, the logins, the content. If you decide to take it somewhere else later, I'll help you move.</p>
-  </div>
-</section>
-
-<!-- ============ MARQUEE 2 ============ -->
-<div class="marquee" id="marquee2">
-  <div class="track" id="marqueeTrack2"></div>
 </div>
 
-<!-- ============ PRICING 04 ============ -->
-<section class="section" id="pricing">
-  <div class="sec-ghost" aria-hidden="true" data-parallax="0.08">04</div>
-  <div class="sec-head">
-    <div class="sec-label mono" data-reveal>04 · Pricing</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>What it</span></span>
-      <span class="line-mask"><span><span class="grad-text">costs.</span></span></span>
-    </h2>
-    <p class="sec-sub" data-reveal>Honest ranges below. I quote you a fixed number after a 30-minute call, and that number doesn't move unless the scope does.</p>
+<!-- ===================== HERO (locked) ===================== -->
+<section class="hero" id="top" data-theme="hero">
+  <div class="hero__photo" role="img" aria-label="Adrian, founder of Noxta"></div>
+  <div class="hero__new display">NEW</div>
+  <div class="hero__intro">
+    <h1 class="hero__tagline">Websites that<br>make people feel<br>something.</h1>
+    <a href="contact.html" class="hero__arrow" aria-label="Start a project">&#8594;</a>
   </div>
-
-  <div class="ptabs" role="tablist" aria-label="Pricing type" data-reveal>
-    <button class="ptab is-active" id="tab-onetime" role="tab" aria-selected="true" aria-controls="pgrid" data-tab="onetime" data-hover>One-time project</button>
-    <button class="ptab" id="tab-monthly" role="tab" aria-selected="false" aria-controls="pgrid" data-tab="monthly" data-hover>Monthly retainer</button>
-  </div>
-
-  <div class="pgrid" id="pgrid" role="tabpanel" aria-labelledby="tab-onetime"></div>
-
-  <div class="careplus" id="careplus" data-reveal>
-    <div>
-      <span class="mono">// Add-on · Standard &amp; Active plans</span>
-      <h3>Care+ FAQ assistant</h3>
-      <div class="amt">+ €89 / month <small>€750 one-time setup</small></div>
-      <p>A small chat box on your site for the questions you already get by email ten times a week. Opening hours, prices, parking, do you take walk-ins. The answers come from a FAQ I write with you. When someone's ready to book, it sends them to your calendar. When it doesn't know the answer, it says so instead of guessing.</p>
-      <div class="foot">Standard and Active retainers only · Limited availability for now · Ask if you'd like a spot</div>
+  <div class="hero__create">Create</div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span><b>&#10039;</b> Digital Design</span><span><b>&#10039;</b> Branding</span><span><b>&#10039;</b> Web Development</span>
     </div>
-    <ul>
-      <li>Lives in the bottom corner of your site, in your colours</li>
-      <li>Answers come from a FAQ I write with you</li>
-      <li>Books straight into your calendar</li>
-      <li>I read every month's transcripts and tune it so it doesn't start making things up</li>
-      <li>API and hosting costs come out of the €89, not your card</li>
-    </ul>
   </div>
 </section>
 
-<!-- ============ CTA 05 ============ -->
-<section class="section cta" id="contact">
-  <div class="cta-meta">
-    <div class="blk" data-reveal><span class="mono">05 · Get in touch</span><span class="v" style="font-weight:700">Two slots open · Q3 2026</span></div>
-    <div class="blk" data-reveal style="text-align:right"><span class="mono">Usual reply</span><span class="v" style="font-weight:700">Within 24 hours</span></div>
+<!-- ============ PIVOT — the pinned transformation set-piece ============ -->
+<section id="pivot" class="pivot">
+  <div class="pivot__phase pivot__problem">
+    <div class="wrap">
+      <p class="pivot__eyebrow">A hard truth first</p>
+      <h2 class="pivot__thin">Your business is good.</h2>
+      <h2 class="pivot__heavy">Your website<br>says otherwise.</h2>
+      <p class="pivot__sub">Right now, your brand makes you look smaller than you are.</p>
+    </div>
   </div>
-  <h2><span class="line-mask"><span>Let's <span class="grad-text">talk.</span></span></span></h2>
-  <p class="lede" data-reveal>Send me what you're working on and I'll come back within a day. If I can help, I'll quote you. If I can't, I'll tell you, and usually I know someone who can.</p>
-  <div class="cta-actions" data-reveal>
-    <a class="btn btn-primary" href="/contact" data-hover data-magnetic><span class="fill"></span><span>Start a project →</span></a>
-    <a class="btn btn-ghost" href="mailto:adrian@noxta.studio" data-hover data-magnetic><span class="fill"></span><span>Mail</span></a>
-    <span class="wa">Or WhatsApp <a href="https://wa.me/31617657327" target="_blank" rel="noopener" data-hover style="color:inherit;text-decoration:none"><b>+31 6 17 657 327</b></a> · I read every message</span>
+  <div class="pivot__phase pivot__solution">
+    <div class="wrap">
+      <h2 class="pivot__heavy pivot__heavy--lg">We make you look<br>as good as you<br><em class="pivot__serif">actually are.</em></h2>
+      <p class="pivot__sub">Impossible to ignore. On purpose.</p>
+    </div>
   </div>
-  <div class="cta-ghost-word">NOXTA</div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="wm">NO<span class="x">X</span>TA STUDIO</div>
-      <p>Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.</p>
-    </div>
-    <div class="fl">
-      <span class="mono">// Pages</span>
-      <a href="/portfolio" data-hover>Portfolio</a>
-      <a href="/contact" data-hover>Contact</a>
-      <a href="/website-laten-maken-tilburg" data-hover>Website laten maken — Tilburg</a>
-    </div>
-    <div class="fl">
-      <span class="mono">// Studio</span>
-      <a href="mailto:adrian@noxta.studio" data-hover>adrian@noxta.studio</a>
-      <a href="https://wa.me/31617657327" data-hover>WhatsApp</a>
-      <a href="/privacy" data-hover>Privacy</a>
-      <a href="/terms" data-hover>Terms</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="mono">Studio · Tilburg, NL · Est. 2026</span>
-    <span class="mono">© 2026 Noxta Studio — Hand-coded, no template</span>
-  </div>
-</footer>
+<!-- ===================== TURN (services) ===================== -->
+<section class="sec turn" id="services" data-theme="orange">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>What we do</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">Everything,<br>end to end.</h2>
 
+    <div class="svc">
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">01</span>
+        <span class="svc__name">Web Design</span>
+        <span class="svc__desc">A site that finally matches your standards and turns visitors into customers.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">02</span>
+        <span class="svc__name">Branding</span>
+        <span class="svc__desc">An identity people remember and repeat. The one they screenshot, not scroll past.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">03</span>
+        <span class="svc__name">Motion</span>
+        <span class="svc__desc">Moments people feel, not just read. Movement that makes the brand land.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">04</span>
+        <span class="svc__name">Development</span>
+        <span class="svc__desc">Fast, flawless, built to convert. Clean code that performs on every device.</span>
+      </a>
+    </div>
+    <p class="svc__close reveal">The point isn&rsquo;t just a prettier site. It&rsquo;s one that turns &ldquo;nice work&rdquo; into a booked call.</p>
+  </div>
+</section>
+
+<!-- ============ PROOF — pinned horizontal one-by-one showcase ============ -->
+<section class="proof" id="work" data-theme="ink">
+  <div class="workx" aria-label="Selected work — scroll to advance">
+    <div class="workx__track">
+
+      <div class="workx__panel workx__panel--text">
+        <div class="workx__textwrap">
+          <div class="sec__kicker mono"><span>Selected work</span><span class="ln"></span></div>
+          <h2 class="h-mega">Real people.<br>Real results.</h2>
+          <p class="workx__hint mono">Two real builds &middot; keep scrolling</p>
+        </div>
+      </div>
+
+      <article class="workx__panel">
+        <a class="workx__shot" href="work-szabina.html">
+          <img src="szabina-screenshot.webp" alt="Szabina — cinematic travel journal built by Noxta" loading="lazy" />
+        </a>
+        <div class="workx__info">
+          <span class="workx__index">01 — 02</span>
+          <h3 class="workx__name">Szabina</h3>
+          <p class="workx__role">Cinematic travel journal &middot; Self-editing</p>
+          <p class="workx__quote">&ldquo;He could build anything I asked for, personalized for me. Fast, easy-going, professional.&rdquo;</p>
+          <p class="workx__who">Szabina &mdash; Travel journal</p>
+          <div class="workx__links">
+            <a class="workx__url" href="https://noxtastudio.github.io/szabina/" target="_blank" rel="noopener">View site</a>
+            <a class="workx__study" href="work-szabina.html">Read case study</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="workx__panel">
+        <a class="workx__shot" href="work-voep.html">
+          <img src="voep-screenshot.webp" alt="VOEP — vintage outboard parts shop built by Noxta" loading="lazy" />
+        </a>
+        <div class="workx__info">
+          <span class="workx__index">02 — 02</span>
+          <h3 class="workx__name">VOEP</h3>
+          <p class="workx__role">Vintage marine e-commerce &middot; First sale shipped to Sweden</p>
+          <p class="workx__quote">&ldquo;Now it looks as professional as I always pictured &mdash; thanks to Adrian&rsquo;s ideas and help.&rdquo;</p>
+          <p class="workx__who">Alex &mdash; Owner</p>
+          <div class="workx__links">
+            <a class="workx__url" href="https://voep.nl" target="_blank" rel="noopener">voep.nl</a>
+            <a class="workx__study" href="work-voep.html">Read case study</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="workx__panel workx__panel--outro">
+        <div class="workx__outro-text">
+          <p class="workx__hint mono">That&rsquo;s the work. Here&rsquo;s the pitch.</p>
+          <h3 class="workx__outro-head">The site you&rsquo;re<br>scrolling is the proof.</h3>
+          <p class="workx__outro-note">New studio, obsessed with the craft. If it made you feel something, that&rsquo;s the whole pitch.</p>
+          <a class="workx__study workx__outro-cta" href="contact.html">Start a project</a>
+        </div>
+        <a class="workx__outro-circle" href="contact.html" aria-label="Start a project">&#8594;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROMISE (de-risk + founder) ===================== -->
+<section class="sec promise" id="about" data-theme="cream">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>How we work</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">No guesswork.<br>No agency games.</h2>
+
+    <div class="promise__grid">
+      <div class="steps">
+        <div class="step reveal"><span class="step__n">01</span><div><div class="step__t">We dig in</div><p class="step__d">A real conversation about your business, your customers, and what&rsquo;s holding the brand back.</p></div></div>
+        <div class="step reveal"><span class="step__n">02</span><div><div class="step__t">We design it for you</div><p class="step__d">One clear direction — usually within a week — then a site built around it, personalized, not a template with your logo dropped in.</p></div></div>
+        <div class="step reveal"><span class="step__n">03</span><div><div class="step__t">We fine-tune until it&rsquo;s right</div><p class="step__d">Every request traced and refined. You get no worries and a site you&rsquo;re proud to send.</p></div></div>
+      </div>
+
+      <div>
+        <div class="guarantee reveal">
+          <h4>The guarantee</h4>
+          <p>Clear scope, a fixed timeline. If the first design direction doesn&rsquo;t land, I rework it once &mdash; free. And if you still don&rsquo;t want to carry on, you pay only for the hours worked, capped at 30%. The risk is mine, not yours.</p>
+        </div>
+        <p class="founder reveal">&ldquo;I&rsquo;m Adrian. I started Noxta because most websites make good businesses look average. I fix that.&rdquo;
+          <span class="sig">Adrian &mdash; Founder, Noxta</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING (the investment) ===================== -->
+<section class="sec pricing" id="pricing" data-theme="ink">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>Pricing</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">Pick your lane.</h2>
+    <div class="toggle reveal" id="priceToggle" role="tablist">
+      <button data-mode="one" class="is-active" type="button">One-Time Project</button>
+      <button data-mode="ret" type="button">Monthly Retainer</button>
+    </div>
+    <div class="tiers" id="tiers"></div>
+    <p class="pricing__terms reveal">Projects split 50% to start, 50% at launch &mdash; Tier III in three. No surprises.</p>
+    <div class="careplus reveal">
+      <div>
+        <h4>Care+ FAQ Assistant <span class="price">+&euro;89&#8239;/&#8239;mo</span> <span class="setup">&middot; &euro;750 setup</span></h4>
+        <p>A small chat box for the questions you already get by email ten times a week. Answers from a FAQ I write with you; books straight into your calendar. Add-on for Standard &amp; Active retainers.</p>
+      </div>
+      <a href="#contact" class="tier__cta">Ask about it</a>
+    </div>
+    <p class="pricing__note reveal">Been quoted &euro;500&ndash;1,000 for a website? That was a template price &mdash; this is a different thing. Not sure which lane? <a href="#contact">Start a project</a> and I&rsquo;ll tell you straight which one fits.</p>
+  </div>
+</section>
+
+<!-- ===================== STRAIGHT ANSWERS (objections) ===================== -->
+<section class="sec answers" id="answers" data-theme="ink">
+  <div class="wrap">
+    <div class="sec__kicker mono reveal"><span>Straight answers</span><span class="ln"></span></div>
+    <h2 class="h-mega reveal">The part most<br>studios skip.</h2>
+    <div class="answers__grid">
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;You&rsquo;re one person &mdash; what if you disappear?&rdquo;</h3>
+        <p class="qa__a">Fair. So nothing I build leans on me being around. It&rsquo;s clean, hand-coded, standard HTML/CSS &mdash; any developer can pick it up. Your domain, files and accounts are in your name from day one. Worst case, you still own a site that works.</p>
+      </div>
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;Who owns the code?&rdquo;</h3>
+        <p class="qa__a">You do. Yours to keep &mdash; no license, no lock-in, no monthly fee just to stay online. When it&rsquo;s done I hand you everything. You can walk away whenever you like; most people don&rsquo;t, but you can.</p>
+      </div>
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;What if I need changes later?&rdquo;</h3>
+        <p class="qa__a">Two ways. Email me and I quote the change &mdash; or keep me on a retainer (from &euro;75/mo) where edits are just part of the deal: same-week, no re-explaining who you are each time. You decide after launch, not before.</p>
+      </div>
+      <div class="qa reveal">
+        <h3 class="qa__q">&ldquo;Why not just use Webflow or Squarespace?&rdquo;</h3>
+        <p class="qa__a">If a template says everything you need &mdash; use one. You&rsquo;re reading this because it doesn&rsquo;t. Those tools hand everyone the same shapes; I build yours from scratch, so it looks like you and loads fast. Different job, different result.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ASK + FOOTER ===================== -->
+<section class="ask" id="contact" data-theme="orange">
+  <div class="wrap ask__inner">
+    <p class="ask__eyebrow reveal">The best time is before your next launch, not after.</p>
+    <h2 class="ask__big reveal">Let&rsquo;s build.</h2>
+    <a href="contact.html" class="ask__circle reveal" aria-label="Start a project">&#8594;</a>
+    <div class="ask__row reveal">
+      <a href="mailto:adrian@noxta.studio" class="ask__mail"><span class="ask__mailicon"><svg viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="22" height="16" rx="1.5"/><path d="M1.5 2.5 12 10 22.5 2.5"/></svg></span>adrian@noxta.studio</a>
+      <a href="contact.html" class="btn-pill">Start a project</a>
+    </div>
+  </div>
+
+  <div class="ask__rule" aria-hidden="true"></div>
+
+  <footer class="foot">
+    <div class="foot__logo">NOXTA</div>
+    <nav class="foot__nav">
+      <div class="foot__col">
+        <a href="#work"><span>01</span> Work</a>
+        <a href="#services"><span>02</span> Services</a>
+        <a href="#about"><span>03</span> About</a>
+      </div>
+      <div class="foot__col">
+        <a href="#pricing"><span>04</span> Pricing</a>
+        <a href="contact.html"><span>05</span> Contact</a>
+        <a href="privacy.html"><span>06</span> Privacy</a>
+        <a href="terms.html"><span>07</span> Terms</a>
+      </div>
+    </nav>
+    <div class="foot__social">
+      <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg> Instagram</a>
+      <a href="https://dribbble.com/adrian-tajti" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24C5.39 24 0 18.61 0 12S5.39 0 12 0s12 5.39 12 12-5.39 12-12 12zm10.12-10.36c-.35-.11-3.17-.95-6.38-.44 1.34 3.68 1.89 6.68 1.99 7.31a10.05 10.05 0 004.39-6.87zm-6.11 7.81c-.15-.9-.75-4.03-2.19-7.77l-.07.02c-5.79 2.02-7.86 6.03-8.04 6.4A9.96 9.96 0 0012 22c1.42 0 2.77-.29 4-.81zM4.39 18.86c.23-.4 3.05-5.06 8.33-6.77l.41-.12c-.26-.59-.54-1.17-.83-1.74-5.12 1.53-10.08 1.47-10.53 1.46v.31c0 2.63 1 5.04 2.63 6.86zm-2.42-8.96c.46.01 4.68.03 9.48-1.25-1.7-3.02-3.53-5.56-3.8-5.93a10.05 10.05 0 00-5.68 7.18zM9.6 2.05c.28.38 2.15 2.91 3.82 6 3.65-1.37 5.19-3.44 5.37-3.7A9.96 9.96 0 0012 2c-.83 0-1.63.1-2.4.29zm10.34 3.48c-.22.29-1.94 2.49-5.73 4.04.24.49.47.99.68 1.49.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.89-4.64-2.31-6.39z"/></svg> Dribbble</a>
+      <a href="https://www.linkedin.com/in/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+      <a href="https://wa.me/31617657327" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.43 9.88-9.88 9.88M20.46 3.49A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/></svg> WhatsApp</a>
+    </div>
+    <div class="foot__copy">&copy; 2026 Noxta Studio<br>All rights reserved<br>KvK 42092474</div>
+  </footer>
+</section>
+
+<!-- ===================== SCRIPTS ===================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="assets/noxta.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
-if(window.gsapReady){
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var mqMobile = window.matchMedia("(max-width: 760px)");
+  var isMobile = mqMobile.matches;
 
-  /* ============ MARQUEES ============ */
-  /* text scrolls left; direction flips when you scroll back up (timeScale = self.direction) */
-  function buildMarquee(bandSel, trackId, item){
-    const track = document.getElementById(trackId);
-    if(!track) return;
-    track.innerHTML = item.repeat(6);
-    if(reduced) return;
-    const half = track.scrollWidth / 2;
-    const tween = gsap.to(track, {x: -half, duration: 26, ease: "none", repeat: -1});
-    ScrollTrigger.create({
-      trigger: bandSel, start: "top bottom", end: "bottom top",
-      onUpdate: self => gsap.to(tween, {timeScale: self.direction, duration: .3})
+  /* ---- Low-performance fallback ----------------------------------------
+     The animated colour arc leans on the GPU. With hardware acceleration
+     off/blocklisted (common in Chrome on some machines) it repaints on the
+     CPU every frame and the smooth palette scrub degrades into a colour
+     STROBE. If this device was already measured as too slow, take the same
+     cheap path as reduced-motion/mobile: solid per-section colours, no arc. */
+  var lowPerf = false;
+  try { lowPerf = localStorage.getItem("noxtaLowPerf") === "1"; } catch(e){}
+
+  /* Watchdog: measure the real frame cadence DURING the first scroll — that's
+     when the colour scrub + repaints run and a throttled tab strobes. Idle
+     frames are cheap even on a slow tab (nothing to paint), so sampling at rest
+     misses it (macOS Low Power Mode / GPU-off only bite under load). Sample ~40
+     frames captured while actively scrolling; if the tab can't hold ~55fps (slow
+     median or a high share of slow frames — the jitter signature), reload ONCE
+     into the static path. Guarded so it fires at most once per session (no loop)
+     and only when storage actually persisted. */
+  if(!reduce && !isMobile && !lowPerf){
+    (function(){
+      var samples = [], lastFrame = performance.now(), lastScroll = 0, rafPending = false;
+      function decide(){
+        var s = samples.slice().sort(function(a,b){ return a - b; });
+        var med = s[s.length >> 1];
+        var slow = 0; for(var i=0;i<s.length;i++){ if(s[i] > 20) slow++; }   // frames slower than 50fps
+        // A jittery tab strobes even when the MEDIAN looks okay-ish (measured
+        // ~26–53fps swings), so trigger on a slow median OR a high share of slow
+        // frames (the jitter signature) — i.e. anything that can't hold ~55fps.
+        // No "already checked" session guard: the localStorage lowPerf flag alone
+        // stops a reload loop (the reloaded page is lowPerf → this is gated off),
+        // and a stale guard was silently disabling detection after one OK sample.
+        if(med > 18 || slow / s.length >= 0.30){
+          var saved = false;
+          try {
+            localStorage.setItem("noxtaLowPerf","1");
+            saved = true;                             // flag persisted → safe to reload
+            try { sessionStorage.setItem("noxtaPT","1"); } catch(e){}  // quick reveal on reload
+          } catch(e){}
+          if(saved) location.reload();                // no storage → no reload (avoid a loop)
+        }
+        // measured OK → do nothing; re-measure on the next load
+      }
+      function frame(now){
+        rafPending = false;
+        var dt = now - lastFrame; lastFrame = now;
+        if(now - lastScroll < 120){                   // only frames under active scrolling
+          if(dt < 200) samples.push(dt);              // skip the resume-from-pause gap frame
+          if(samples.length >= 40){ window.removeEventListener("scroll", onScroll); decide(); return; }
+          rafPending = true; requestAnimationFrame(frame);
+        }
+      }
+      function onScroll(){
+        lastScroll = performance.now();
+        if(!rafPending){ rafPending = true; requestAnimationFrame(frame); }
+      }
+      window.addEventListener("scroll", onScroll, { passive:true });
+    })();
+  }
+
+  /* The pinned vs stacked layout (pivot + work) is chosen ONCE here from
+     isMobile. If the viewport later crosses the mobile breakpoint (window
+     resize, device-mode toggle, phone rotation), those sections would be
+     stranded in the wrong layout — e.g. the desktop two-column work showcase
+     squeezed into a phone width. Re-evaluate by reloading on the crossing so
+     each mode is rebuilt cleanly. Fires only on the boundary cross, not on
+     every resize. */
+  (function(){
+    var onCross = function(){ location.reload(); };
+    if(mqMobile.addEventListener){ mqMobile.addEventListener("change", onCross); }
+    else if(mqMobile.addListener){ mqMobile.addListener(onCross); }
+  })();
+
+  /* ---- Pricing (real Noxta tiers). Rendered first so it works even if
+          GSAP never loads. One-Time vs Monthly Retainer toggle. ---- */
+  var ONE_TIME=[
+    {label:"Tier · I",price:"€800 – 1,200",name:"Small",tag:"One thing, done well.",worth:"1,900",features:[["Landing page or focused redesign, hand-coded","900"],["Brand mark / wordmark refresh","350"],["Copy I write with you (up to 600 words)","300"],["Basic SEO: title, meta, sitemap","200"],["Domain + launch setup","150"],"One round of revisions"],foot:"A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks."},
+    {label:"Tier · II",price:"€1,800 – 3,500",name:"Mid",tag:"A full site with a real brand.",rec:true,worth:"4,500",features:[["Multi-page site (4–8 pages), hand-coded","2,200"],["Brand identity: wordmark, palette, type","900"],["Copywriting across the site (~2,000 words)","650"],["On-page SEO, schema, sitemap","400"],["Contact form, analytics, social meta","200"],["First 30 days of Standard care","150"],"Two rounds of revisions · 2–4 week turnaround"],foot:"Small businesses without a site, or whose current one is hurting them. Most of my projects land here."},
+    {label:"Tier · III",price:"€6,000+",name:"Large",tag:"Real shops or custom builds.",worth:"11,650",features:[["E-commerce build (WooCommerce / Shopify), hand-coded","7,000"],["Product database setup + import","1,200"],["Payments (IDEAL, Bancontact, card) + shipping","900"],["Brand identity: wordmark, palette, type","1,000"],["Copywriting across the store","800"],["E-commerce SEO, schema, sitemap","600"],["First 30 days of Standard care","150"],"Three rounds of revisions · 6–8 week turnaround"],foot:"Shops with real inventory or custom flows an off-the-shelf template can't handle. Over 2,000 SKUs quoted bespoke. VOEP was a Large."}
+  ];
+  var RETAINER=[
+    {label:"Plan · I",price:"€75 / month",name:"Light",tag:"Kept up to date and safe.",features:["Uptime monitoring","Weekly automated backups","Security patches and plugin updates","1 hour of edits per month, rolled forward up to 2 months","Email support, 48h reply","Annual prepay · 12 months for the price of 11"],foot:"Finished sites that just need to stay alive and up to date."},
+    {label:"Plan · II",price:"€150 / month",name:"Standard",tag:"Light plus active edits.",rec:true,features:["Everything in Light","3 hours of edits per month","Copy tweaks and small layout changes","Monthly performance report","Same-week edits (Mon–Fri)","Annual prepay · 12 months for the price of 11"],foot:"Sites that change a few times a month: pricing, menu, content updates."},
+    {label:"Plan · III",price:"€450 / month",name:"Active",tag:"I'm basically on your team.",features:["Everything in Standard","8 hours of edits per month","Priority response (next business day)","Phone / WhatsApp support (Mon–Fri 9–17, urgent only)","Quarterly strategy call","Annual prepay · 12 months for the price of 11"],foot:"Growing shops and active marketing: new pages, campaigns, and ongoing work."}
+  ];
+  function priceCard(t){
+    var feats=t.features.map(function(f){
+      return (typeof f==="string")
+        ? '<li><span class="tier__f">'+f+'</span></li>'
+        : '<li><span class="tier__f">'+f[0]+'</span><span class="tier__w">€'+f[1]+'</span></li>';
+    }).join("");
+    return '<div class="tier'+(t.rec?" rec":"")+'">'
+      +(t.rec?'<span class="tier__badge">Recommended</span>':"")
+      +'<span class="tier__label">'+t.label+'</span>'
+      +'<span class="tier__name">'+t.name+'</span>'
+      +'<p class="tier__tag">'+t.tag+'</p>'
+      +(t.worth?'<div class="tier__worth">Piece by piece &asymp; <s>€'+t.worth+'</s></div>':"")
+      +'<div class="tier__price">'+t.price+'</div>'
+      +(t.worth?'<p class="tier__save">One head, one price &mdash; no four-freelancer markup.</p>':"")
+      +'<ul class="tier__feat">'+feats+'</ul>'
+      +'<p class="tier__foot">'+t.foot+'</p>'
+      +'<a href="#contact" class="tier__cta">Start a project</a>'
+      +'</div>';
+  }
+  function renderTiers(mode){
+    var box=document.getElementById("tiers"); if(!box) return;
+    box.innerHTML=(mode==="ret"?RETAINER:ONE_TIME).map(priceCard).join("");
+  }
+  renderTiers("one");
+  Array.prototype.forEach.call(document.querySelectorAll("#priceToggle button"),function(b){
+    b.addEventListener("click",function(){
+      Array.prototype.forEach.call(document.querySelectorAll("#priceToggle button"),function(x){x.classList.remove("is-active");});
+      b.classList.add("is-active");
+      renderTiers(b.getAttribute("data-mode"));
+    });
+  });
+
+  /* ---- Seamless marquees: duplicate the unit until the track is wider than
+          2x the viewport, with an even number of copies, so translateX(-50%)
+          loops with no gap on any screen. Re-runs after fonts load + resize. ---- */
+  var mqTracks = Array.prototype.slice.call(document.querySelectorAll(".marquee__track"));
+  function setupMarquee(t){
+    var unit = t.getAttribute("data-unit");
+    if(unit === null){ unit = t.innerHTML; t.setAttribute("data-unit", unit); }
+    t.innerHTML = unit;
+    var copies = 1, guard = 0;
+    while(t.scrollWidth < window.innerWidth * 2 && guard < 80){ t.insertAdjacentHTML("beforeend", unit); copies++; guard++; }
+    if(copies % 2 === 1){ t.insertAdjacentHTML("beforeend", unit); }
+  }
+  function setupMarquees(){ mqTracks.forEach(setupMarquee); }
+  setupMarquees();
+  window.addEventListener("load", setupMarquees);
+
+  /* ---- Fit the hero CREATE word to the exact viewport width, whatever font
+          loads. Measures the text with a detached probe (the real element is a
+          stretched flex child, so it can't be measured in place). ---- */
+  function fitCreate(){
+    var el = document.querySelector(".hero__create");
+    if(!el) return;
+    var cs = getComputedStyle(el);
+    var probe = document.createElement("span");
+    probe.textContent = el.textContent;
+    probe.style.cssText = "position:absolute;left:-99999px;top:0;visibility:hidden;white-space:nowrap;" +
+      "font-family:" + cs.fontFamily + ";font-weight:" + cs.fontWeight +
+      ";letter-spacing:" + cs.letterSpacing + ";text-transform:uppercase;font-size:300px";
+    document.body.appendChild(probe);
+    var textW = probe.getBoundingClientRect().width;
+    document.body.removeChild(probe);
+    if(textW <= 0) return;
+    var target = window.innerWidth;                 // full width, last letter at the edge
+    var size = 300 * (target / textW);
+    el.style.fontSize = size + "px";
+    // correction pass: scrollWidth is the real rendered text width (it overflows
+    // its stretched box), so this nails the fit even if the probe was slightly off.
+    var actual = el.scrollWidth;
+    if(actual > 0){ el.style.fontSize = (size * (target / actual)) + "px"; }
+  }
+  fitCreate();
+  window.addEventListener("load", fitCreate);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fitCreate); }
+  var _fcT; window.addEventListener("resize", function(){ clearTimeout(_fcT); _fcT = setTimeout(fitCreate, 150); });
+
+  /* Per-section theme targets. The scroll engine tweens --bg/--fg/--accent
+     to these as each section reaches viewport center, producing the V-arc:
+     orange -> dead -> orange -> ink -> cream -> orange. */
+  var THEMES = {
+    hero:   {bg:"#ff5a1f", fg:"#0e0a06", accent:"#0e0a06", line:"rgba(14,10,6,.18)"},
+    dead:   {bg:"#e9e8e4", fg:"#6f6e69", accent:"#5f5d58", line:"rgba(94,93,88,.22)"},
+    orange: {bg:"#ff5a1f", fg:"#0e0a06", accent:"#0e0a06", line:"rgba(14,10,6,.18)"},
+    ink:    {bg:"#0e0a06", fg:"#faf3e8", accent:"#ff5a1f", line:"rgba(250,243,232,.16)"},
+    cream:  {bg:"#faf3e8", fg:"#0e0a06", accent:"#ff5a1f", line:"rgba(14,10,6,.14)"}
+  };
+
+  // Static fallback: paint each section its OWN solid colour, no global
+  // animation. Used for reduced-motion (photosensitive-safe — no full-screen
+  // flashing) and if GSAP fails to load.
+  function paintSectionsStatic(){
+    document.querySelectorAll("section[data-theme]").forEach(function(sec){
+      var t = THEMES[sec.getAttribute("data-theme")];
+      if(!t) return;
+      sec.style.backgroundColor = t.bg;
+      sec.style.color = t.fg;
+      // --bg must travel with the section too: elements that use var(--bg) for
+      // their LABEL colour (toggle active button, "Recommended" badge, the work
+      // outro circle) go invisible otherwise, because the global --bg the
+      // animated engine tweens never updates on the static paths.
+      sec.style.setProperty("--bg", t.bg);
+      sec.style.setProperty("--fg", t.fg);
+      sec.style.setProperty("--accent", t.accent);
+      sec.style.setProperty("--line", t.line);
     });
   }
-  buildMarquee("#marquee2", "marqueeTrack2",
-    `<div class="item"><span>Hand-coded</span><span class="sep"></span><em>Built to last</em><span class="sep"></span><span>No templates</span><span class="sep"></span></div>`);
 
-  /* ============ PRICING DATA + TABS ============ */
-  const PRICING = {
-    onetime: [
-      {flag:"",tier:"Tier · I",amount:"€600 – 1,200",name:"Small",desc:"One thing, done well.",feats:["Single landing page or minor redesign","Simple brand mark or wordmark refresh","Up to 600 words of copy I write with you","Basic SEO setup (title, meta, sitemap)","Mobile-first, hand-coded HTML / CSS","One round of revisions"],ideal:"A focused launch page or a one-off redesign for a side project. Usually takes one to two weeks."},
-      {flag:"Recommended",tier:"Tier · II",amount:"€1,200 – 2,000",name:"Mid",desc:"A full site with a real brand.",feats:["Full multi-page website (4–8 pages)","Brand identity: wordmark, palette, type","Copywriting across the site (~2,000 words)","On-page SEO, schema, sitemap","Contact form, analytics, social meta","Two rounds of revisions · 2–4 week turnaround","First 30 days of Standard retainer included"],ideal:"Small businesses without a site, or whose current one is hurting them. Most of my projects land here."},
-      {flag:"",tier:"Tier · III",amount:"€3,500 – 6,000",name:"Large",desc:"Real shops or custom builds.",feats:["WooCommerce or Shopify e-commerce builds","Custom WordPress child theme","Product database setup & import","Payments (IDEAL, Bancontact, card) + shipping","Search, filters, custom mobile UX","Three revision rounds · 6–8 week turnaround","First 30 days of Standard retainer included"],ideal:"Shops with real inventory or custom flows that an off-the-shelf template can't handle. >2,000 SKUs quoted bespoke. VOEP was a Large."}
-    ],
-    monthly: [
-      {flag:"",tier:"Plan · I",amount:"€50 / month",name:"Light",desc:"Kept up to date and safe.",feats:["Uptime monitoring","Weekly automated backups","Security patches & plugin updates","1 hour of edits per month, rolled forward up to 2 months","Email support, 48h reply","Annual prepay · 12 months for the price of 11"],ideal:"Finished sites that just need to stay alive and up to date."},
-      {flag:"Recommended",tier:"Plan · II",amount:"€150 / month",name:"Standard",desc:"Light plus active edits.",feats:["Everything in Light","3 hours of edits per month","Copy tweaks & small layout changes","Monthly performance report","Same-week edits (Mon–Fri)","Annual prepay · 12 months for the price of 11"],ideal:"Sites that change a few times a month: pricing, menu, content updates."},
-      {flag:"",tier:"Plan · III",amount:"€450 / month",name:"Active",desc:"I'm basically on your team.",feats:["Everything in Standard","8 hours of edits per month","Priority response (next business day)","Phone / WhatsApp support (Mon–Fri 9–17, urgent only)","Quarterly strategy call","Annual prepay · 12 months for the price of 11"],ideal:"Growing shops and active marketing: new pages, campaigns, and ongoing work."}
-    ]
-  };
-  const pgrid = document.getElementById("pgrid");
-  function renderPricing(key){
-    pgrid.innerHTML = PRICING[key].map(p => `
-      <div class="pcard ${p.flag ? "is-reco" : ""}">
-        ${p.flag ? `<span class="flag">${p.flag}</span>` : ""}
-        <span class="mono">${p.tier}</span>
-        <div><div class="amount">${p.amount}</div><div class="pname grad-text">${p.name}</div></div>
-        <div class="pdesc">${p.desc}</div>
-        <ul>${p.feats.map(f => `<li>${f}</li>`).join("")}</ul>
-        <div class="ideal">${p.ideal}</div>
-      </div>`).join("");
-    if(!reduced) gsap.fromTo(".pcard",{y:36,opacity:0},{y:0,opacity:1,duration:.7,stagger:.08,ease:"power3.out"});
+  /* Memoised :root custom-property writer. Chrome (Blink) invalidates the WHOLE
+     document's style when an inherited custom property changes on :root, and then
+     repaints every element that consumes it — per scroll frame that's a big cost
+     (Safari/WebKit optimises this far better, hence "smoother in Safari"). GSAP's
+     colour interpolation returns integer rgb strings, so during slow scrolls /
+     the long pinned scrubbers many consecutive frames yield the SAME value —
+     skipping the redundant setProperty skips the recalc + repaint entirely.
+     Shared cache so the palette engine + pivot scrubber never fight it. */
+  var _rootStyle = document.documentElement.style, _rootVarCache = {};
+  function setRootVar(prop, val){
+    if(_rootVarCache[prop] !== val){ _rootStyle.setProperty(prop, val); _rootVarCache[prop] = val; }
   }
-  renderPricing("onetime");
-  document.querySelectorAll(".ptab").forEach(b => b.addEventListener("click", () => {
-    document.querySelectorAll(".ptab").forEach(t => { t.classList.remove("is-active"); t.setAttribute("aria-selected", "false"); });
-    b.classList.add("is-active"); b.setAttribute("aria-selected", "true");
-    pgrid.setAttribute("aria-labelledby", b.id);
-    renderPricing(b.dataset.tab);
-  }));
 
-  /* ============ INTRO ANIMATION (preloader → hero) ============ */
-  const heroChars = document.querySelectorAll("[data-split]").length
-    ? [...document.querySelectorAll("[data-split]")].flatMap(splitChars) : [];
-
-  function runIntro(){
-    const num = document.getElementById("loaderNum");
-    const tl = gsap.timeline({defaults:{ease:"power3.inOut"}});
-    if(reduced){
-      document.getElementById("loader").style.display = "none";
-      gsap.set("[data-reveal], .line-mask > span, .ch", {opacity:1, y:0});
-      ScrollTrigger.refresh();
+  /* Ease the whole palette to a section's theme over .6s — TIME-based, not scrubbed
+     to scroll position, so fast or up-and-down scrolling can't strobe. Reduced
+     motion snaps instantly. This is the original (pre-"bg-arc") smooth approach. */
+  function applyTheme(t){
+    if(reduce){
+      _rootStyle.setProperty("--bg",t.bg); _rootStyle.setProperty("--fg",t.fg);
+      _rootStyle.setProperty("--accent",t.accent); _rootStyle.setProperty("--line",t.line);
       return;
     }
-    const counter = {v: 0};
-    tl.to(counter, {v: 100, duration: 1.4, ease: "power2.inOut",
-        onUpdate: () => num.textContent = String(Math.round(counter.v)).padStart(3,"0")})
-      .to("#loaderBar", {scaleX: 1, duration: 1.4, ease: "power2.inOut"}, 0)
-      .to("#loader", {yPercent: -100, duration: .9, ease: "power4.inOut",
-        onComplete: () => document.getElementById("loader").style.display = "none"}, "+=.15")
-      .from(heroChars, {yPercent: 110, rotate: 4, duration: 1.1, stagger: .035, ease: "power4.out"}, "-=.45")
-      .from(".hero-visual", {opacity: 0, x: 90, duration: 1.5, ease: "power3.out"}, "-=.95")
-      .from(".hero-avail, .hero-role, .hero-rule, .hero-bio, .hero-ctas .btn, .scroll-cue, .hero .plus",
-        {y: 26, opacity: 0, duration: .8, stagger: .06, ease: "power3.out"}, "-=.7")
-      .add(() => ScrollTrigger.refresh());
+    gsap.to("html",{ "--bg":t.bg, "--fg":t.fg, "--accent":t.accent, "--line":t.line,
+      duration:.6, ease:"power2.out", overwrite:"auto" });
   }
-  if(document.readyState === "complete") runIntro();
-  else window.addEventListener("load", runIntro);
 
-  /* ============ INDEX-SPECIFIC SCROLL ANIMATIONS ============ */
-  if(!reduced){
-    /* work: horizontal pan (intro → Szabina), pinned — desktop only.
-       gsap.matchMedia auto-reverts below 901px → CSS vertical stack. */
-    window.__nxWorkMM = gsap.matchMedia();
-    window.__nxWorkMM.add("(min-width: 901px)", () => {
-      if(document.documentElement.classList.contains("lite")) return;  // lite-mode: stay vertical
-      const track = document.getElementById("workTrack");
-      if(!track) return;
-      const dist = () => track.scrollWidth - innerWidth;
-      gsap.to(track, {
-        x: () => -dist(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#work", start: "top top",
-          end: () => "+=" + dist(),
-          pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true
+  /* Static-path nav legibility (reduced-motion + GSAP-fail). With no palette
+     engine retinting the fixed nav, recolour it from whichever data-theme
+     section sits under the bar. Discrete colour swap, no animation —
+     photosensitive-safe. (#pivot has no data-theme and is light-bg in both
+     phases, so the inherited dark nav stays legible over it.) */
+  function navColorSync(){
+    var nav = document.getElementById("nav");
+    if(!nav) return;
+    var rs = document.documentElement.style;
+    var secs = Array.prototype.slice.call(document.querySelectorAll("section[data-theme]"));
+    // Also drive the fixed progress bar's tokens: on these paths (mobile/reduced)
+    // the :root --accent/--line don't morph (they're set per-section), so a fixed
+    // bar would keep the initial colour and vanish over e.g. the ink section.
+    function tint(t){ setRootVar("--accent", t.accent); setRootVar("--line", t.line); }
+    function sync(){
+      var navY = nav.getBoundingClientRect().bottom;
+      var matched = false;
+      for(var i = secs.length - 1; i >= 0; i--){
+        var r = secs[i].getBoundingClientRect();
+        if(r.top <= navY && r.bottom > navY){
+          var t = THEMES[secs[i].getAttribute("data-theme")];
+          if(t){ nav.style.color = t.fg; tint(t); matched = true; }
+          break;
+        }
+      }
+      // Only unthemed gap is #pivot, whose phases are both light-bg (grey then
+      // orange), so a dark nav stays legible there. Default to it so a scroll-up
+      // from an ink section doesn't strand a light nav over the grey.
+      if(!matched){ nav.style.color = THEMES.hero.fg; tint(THEMES.hero); }
+    }
+    sync();
+    window.addEventListener("scroll", sync, {passive:true});
+    window.addEventListener("resize", sync);
+  }
+
+  /* Hide-on-scroll-down, reveal-on-the-tiniest-scroll-up nav. Independent of the
+     palette engine (which only sets colour); runs in every path (Lenis /
+     reduced-motion / GSAP-fail) since it's wired before any early return. */
+  (function(){
+    var hnav = document.getElementById("nav");
+    if(!hnav) return;
+    var lastY = window.scrollY;
+    window.addEventListener("scroll", function(){
+      var y = window.scrollY;
+      if(y <= 80){ hnav.classList.remove("is-hidden"); }
+      else if(y > lastY){ hnav.classList.add("is-hidden"); }
+      else if(y < lastY){ hnav.classList.remove("is-hidden"); }
+      lastY = y;
+    }, {passive:true});
+  })();
+
+  /* Scroll progress bar — fill scaleX = how far through the page you are. Plain
+     scroll-linked (no GSAP dependency); Lenis still fires 'scroll' so it stays
+     smooth, and it works on the reduced-motion / GSAP-fail paths too. */
+  (function(){
+    var fill = document.getElementById("progressFill");
+    if(!fill) return;
+    var max = 0, lastM = -1e9, ticking = false;
+    function paint(){
+      ticking = false;
+      // Reading scrollHeight forces a layout — and during pinned sections layout is
+      // dirty every frame, so a per-frame read = a forced reflow every frame (jank).
+      // scrollHeight only changes on resize / pin-setup, NOT on scroll, so cache it
+      // and refresh at most ~2x/sec.
+      var now = performance.now();
+      if(now - lastM > 400){ max = document.documentElement.scrollHeight - window.innerHeight; lastM = now; }
+      var p = max > 0 ? window.scrollY / max : 0;
+      fill.style.transform = "scaleX(" + (p < 0 ? 0 : p > 1 ? 1 : p) + ")";
+    }
+    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(paint); } }
+    function onResize(){ lastM = -1e9; paint(); }   // force a fresh measure
+    paint();
+    window.addEventListener("scroll", onScroll, {passive:true});
+    window.addEventListener("resize", onResize);
+  })();
+
+  /* (Mobile menu + page transitions live in noxta.js — shared across pages.) */
+
+  if(!window.gsap){ // GSAP failed to load — static colours, reveal everything, bail.
+    var _pf = document.getElementById("preloader");
+    if(_pf){ _pf.style.display = "none"; }      // never strand the visitor on the curtain
+    document.documentElement.classList.remove("is-loading");
+    paintSectionsStatic();
+    navColorSync();
+    document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in");});
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Smooth scroll (Lenis) — eased, momentum scroll feel, synced to ScrollTrigger.
+     Native scroll kept for reduced-motion + touch (Lenis leaves touch native). */
+  if(!reduce && !lowPerf && window.Lenis){
+    var lenis = new Lenis({
+      duration: 1.15,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true
+    });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    // Smooth-scroll in-page anchor links (nav, hero arrow, CTAs). A smooth
+    // scroll updates ScrollTrigger continuously, so the section colours stay
+    // correct on a nav click instead of snapping to a wrong one on a jump.
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function(a){
+      a.addEventListener("click", function(e){
+        var id = a.getAttribute("href");
+        if(id.length > 1 && document.querySelector(id)){
+          e.preventDefault();
+          lenis.scrollTo(id, { duration: 1.4, offset: 0 });
         }
       });
     });
-    /* hero parallax out */
-    gsap.to(".hero-name", {yPercent: -10, opacity: .25, ease: "none",
-      scrollTrigger: {trigger: ".hero", start: "bottom 90%", end: "bottom 20%", scrub: true}});
-    gsap.to("#heroImg", {yPercent: 7, ease: "none",
-      scrollTrigger: {trigger: ".hero", start: "bottom 95%", end: "bottom 30%", scrub: true}});
-    /* services card stack scale */
-    const cards = gsap.utils.toArray(".svc-card");
-    cards.forEach((card, i) => {
-      if(i === cards.length - 1) return;
-      gsap.timeline({scrollTrigger: {trigger: cards[i+1], start: "top 80%", end: "top 14vh", scrub: true}})
-        .to(card, {scale: .94, ease: "none"}, 0)
-        .to(card.querySelector(".svc-dim"), {opacity: .68, ease: "none"}, 0);
-    });
-    /* CTA giant word scale-in */
-    gsap.from(".cta h2", {scale: .9, transformOrigin: "0 100%", ease: "none",
-      scrollTrigger: {trigger: ".cta", start: "top bottom", end: "top 30%", scrub: true}});
   }
 
-  /* ============ EAR ↔ NAV-T ALIGNMENT ============ */
-  /* Pins the head's ear line (measured at 0.692 of the portrait's width)
-     to the right edge of the final T in the nav CTA, at any viewport. */
-  (() => {
-    const img = document.getElementById("heroImg"), cta = document.querySelector(".nav-cta");
-    if(!img || !cta) return;
-    const EAR = 0.692;
-    function align(){
-      if(innerWidth <= 1080) { img.style.right = ""; return; }
-      const c = cta.getBoundingClientRect();
-      const padR = parseFloat(getComputedStyle(cta).paddingRight) || 20;
-      const targetX = c.right - padR - innerWidth * .035;   // a touch left of the nav T
-      const r = img.getBoundingClientRect();
-      if(!r.width) return;
-      // compensate for the intro tween's in-flight translateX on .hero-visual
-      const vis = document.querySelector(".hero-visual");
-      let tx = 0;
-      try { tx = new DOMMatrix(getComputedStyle(vis).transform).m41 || 0; } catch(e){}
-      const earX = r.left - tx + r.width * EAR;              // where the ear settles at x:0
-      const shift = targetX - earX;                          // +ve → move right
-      const cur = parseFloat(getComputedStyle(img).right) || 0;
-      let next = cur - shift;
-      // never reveal a gap on the right edge: image right edge stays >= viewport right
-      const newRightEdge = r.right - tx + shift;
-      if(newRightEdge < innerWidth) next = cur - (innerWidth - r.right);
-      img.style.right = next + "px";
+  /* 1) Section palette engine.
+        Reduced-motion (photosensitive-safe): no animated background — each
+        section just paints its own solid colour, so there is NO full-screen
+        flashing at all.
+        Otherwise: the page background CONTINUOUSLY interpolates between section
+        colours, locked to scroll position. Because the colour is tied to where
+        you are (not a discrete snap on a timer), fast scrolling produces one
+        smooth sweep instead of a rapid strobe — no seizure-trigger flashing. */
+  var paletteSections = gsap.utils.toArray("section[data-theme]");
+  // Mobile joins the static path: its sections are short + un-pinned, so the
+  // continuous arc's transitions OVERLAP and wash the orange sections lighter than
+  // the opaque pivot block (a visible seam). Discrete solid section colours avoid
+  // it and match the rest of mobile (work + pivot already render static here).
+  if(reduce || isMobile || lowPerf){
+    paintSectionsStatic();
+    navColorSync();
+  } else {
+    // Empty bg-arc container. Only the pinned pivot uses it now (its GPU grey
+    // overlay); flow-section colours are driven time-based on :root below.
+    var bgArc = document.createElement("div");
+    bgArc.className = "bg-arc"; bgArc.setAttribute("aria-hidden","true");
+    document.body.insertBefore(bgArc, document.body.firstChild);
+
+    // Time-based palette engine (restored from the pre-"bg-arc" version — it was
+    // smooth). Whichever section is crossing the viewport centre owns the page
+    // colours; entering it EASES --bg/--fg/--accent/--line to its theme over .6s
+    // via applyTheme(). Because it's tied to section ENTRY, not scroll position,
+    // fast or up-and-down scrolling can't drive the colour back and forth (no
+    // strobe), and there's no opaque-layer crossfade to muddy through grey.
+    gsap.utils.toArray("section[data-theme]").forEach(function(sec){
+      var t = THEMES[sec.getAttribute("data-theme")];
+      if(!t) return;
+      ScrollTrigger.create({
+        trigger: sec, start: "top center", end: "bottom center",
+        onToggle: function(self){ if(self.isActive) applyTheme(t); }
+      });
+    });
+  }
+
+  /* Mobile-only dither melt at the cream<->ink seams. Desktop keeps the colour-morph
+     arc (a crisp seam would clash with the mid-scroll blend); mobile is static hard-edged,
+     so the halftone dissolve drops in cleanly. Pure SVG, regenerated on resize. */
+  if(isMobile){
+    (function(){
+      var CREAM="#faf3e8", INK="#0e0a06";
+      function meltSVG(from,to,dotTop,dotBot){
+        var W=Math.max(360,Math.ceil(window.innerWidth)), h=300, cell=12, gamma=0.7, over=0.4,
+            maxR=cell*0.40, seam=h/2, cols=Math.ceil(W/cell)+2, rows=Math.ceil(h/cell)+2, c="";
+        function cl(v){return v<0?0:v>1?1:v;}
+        for(var ry=0;ry<rows;ry++){ for(var cx=0;cx<cols;cx++){
+          var x=cx*cell+(ry%2?cell/2:0), y=ry*cell, t, r;
+          if(y<=seam+over*cell){ t=cl(1-(seam-y)/seam); r=maxR*Math.pow(t,gamma);
+            if(r>0.45) c+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(2)+'" fill="'+dotTop+'"/>'; }
+          if(y>=seam-over*cell){ t=cl(1-(y-seam)/(h-seam)); r=maxR*Math.pow(t,gamma);
+            if(r>0.45) c+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(2)+'" fill="'+dotBot+'"/>'; }
+        }}
+        return '<svg viewBox="0 0 '+W+' '+h+'" preserveAspectRatio="none" width="100%" height="'+h+'" style="display:block" xmlns="http://www.w3.org/2000/svg">'
+          +'<rect width="'+W+'" height="'+seam+'" fill="'+from+'"/><rect y="'+seam+'" width="'+W+'" height="'+(h-seam)+'" fill="'+to+'"/>'+c+'</svg>';
+      }
+      var seams=[
+        {before:"#about",   from:INK,   to:CREAM, dotTop:CREAM, dotBot:INK},  // work(ink) -> about(cream)
+        {before:"#pricing", from:CREAM, to:INK,   dotTop:INK,   dotBot:CREAM} // about(cream) -> pricing(ink)
+      ], made=[];
+      seams.forEach(function(s){
+        var target=document.querySelector(s.before); if(!target) return;
+        var d=document.createElement("div"); d.className="melt-divider";
+        d.innerHTML=meltSVG(s.from,s.to,s.dotTop,s.dotBot);
+        target.parentNode.insertBefore(d,target); made.push({el:d,s:s});
+      });
+      var rt; window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(function(){
+        made.forEach(function(m){ m.el.innerHTML=meltSVG(m.s.from,m.s.to,m.s.dotTop,m.s.dotBot); });
+      },200); });
+    })();
+  }
+
+  /* 2) Entrance reveals — each beat gets its OWN motion that matches its job. */
+  if(reduce || lowPerf){
+    document.querySelectorAll(".reveal").forEach(function(el){ el.style.opacity = 1; });
+  } else {
+    // play forward on the way down, reverse on the way up
+    function reveal(sel, tl){
+      var el = document.querySelector(sel);
+      if(el) ScrollTrigger.create({
+        trigger:el, start:"top 76%", end:"bottom 24%",
+        toggleActions:"play none none reverse", animation:tl
+      });
     }
-    if(img.complete) align(); else img.addEventListener("load", align);
-    window.addEventListener("load", align);
-    let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(align, 120); });
+
+    // (The Mirror's sting now lives in the pinned #pivot set-piece below.)
+
+    // THE TURN (services) — kicker charges in, the headline RISES letter-by-letter
+    // (each line masked with overflow:hidden), then the rows charge in from the left.
+    // splitChars wraps each <br> line in a clip mask and every glyph in an
+    // inline-block .nxChar, so GSAP can stagger them up from under the line.
+    function splitChars(el){
+      if(!el) return [];
+      var lines = el.innerHTML.split(/<br\s*\/?>/i), chars = [];
+      el.innerHTML = "";
+      lines.forEach(function(lineHTML){
+        var probe = document.createElement("span"); probe.innerHTML = lineHTML;
+        var text = probe.textContent;
+        var mask = document.createElement("span");
+        mask.style.cssText = "display:block;overflow:hidden;padding:.12em 0;margin:-.12em 0";
+        var inner = document.createElement("span");
+        inner.style.cssText = "display:inline-block;white-space:pre";
+        for(var i=0;i<text.length;i++){
+          var s = document.createElement("span");
+          s.className = "nxChar"; s.style.cssText = "display:inline-block";
+          if(text[i] === " "){ s.style.marginRight = ".14em"; }   // word gap (word-spacing can't reach split spaces)
+          s.textContent = text[i];
+          inner.appendChild(s); chars.push(s);
+        }
+        mask.appendChild(inner); el.appendChild(mask);
+      });
+      return chars;
+    }
+    var svcChars = splitChars(document.querySelector("#services .h-mega"));
+    gsap.set("#services .sec__kicker", {opacity:0, x:-30});
+    gsap.set("#services .h-mega", {opacity:1});
+    gsap.set(svcChars, {yPercent:120});
+    gsap.set("#services .svc__row", {opacity:0, x:-70});
+    gsap.set("#services .svc__close", {opacity:0, y:20});
+    reveal("#services", gsap.timeline({paused:true})
+      .to("#services .sec__kicker", {opacity:1, x:0, duration:.5, ease:"power2.out"})
+      .to(svcChars, {yPercent:0, duration:.9, stagger:.022, ease:"power4.out"}, "-=.25")
+      .to("#services .svc__row", {opacity:1, x:0, duration:.7, stagger:.12, ease:"power3.out"}, "-=.55")
+      .to("#services .svc__close", {opacity:1, y:0, duration:.6, ease:"power2.out"}, "-=.2")
+    );
+
+    // THE PROOF — heading wipes up, quotes slide in from the right.
+    // THE PROOF — heading, cases, and closing line are all panels inside the
+    // pinned horizontal showcase (see block 3c); nothing to reveal vertically.
+
+    // THE PROMISE — steps reveal one at a time (methodical), founder fades in slow.
+    gsap.set("#about .sec__kicker", {opacity:0, y:16});
+    gsap.set("#about .h-mega", {opacity:0, y:40});
+    gsap.set("#about .step", {opacity:0, x:-40});
+    gsap.set("#about .guarantee", {opacity:0, scale:.96});
+    gsap.set("#about .founder", {opacity:0});
+    reveal("#about", gsap.timeline({paused:true})
+      .to("#about .sec__kicker", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#about .h-mega", {opacity:1, y:0, duration:.8, ease:"power3.out"}, "-=.2")
+      .to("#about .step", {opacity:1, x:0, duration:.55, stagger:.22, ease:"power2.out"}, "-=.1")
+      .to("#about .guarantee", {opacity:1, scale:1, duration:.6, ease:"power3.out"}, "-=.3")
+      .to("#about .founder", {opacity:1, duration:1.2, ease:"power1.out"}, "-=.2")
+    );
+
+    // PRICING — heading + toggle, then the tier cards rise in.
+    gsap.set("#pricing .sec__kicker", {opacity:0, y:16});
+    gsap.set("#pricing .h-mega", {opacity:0, y:40});
+    gsap.set("#pricing .toggle", {opacity:0, y:14});
+    gsap.set("#pricing .tier", {opacity:0, y:46});
+    gsap.set("#pricing .pricing__terms", {opacity:0, y:16});
+    gsap.set("#pricing .careplus", {opacity:0, y:20});
+    gsap.set("#pricing .pricing__note", {opacity:0, y:16});
+    reveal("#pricing", gsap.timeline({paused:true})
+      .to("#pricing .sec__kicker", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#pricing .h-mega", {opacity:1, y:0, duration:.8, ease:"power3.out"}, "-=.2")
+      .to("#pricing .toggle", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.3")
+      .to("#pricing .tier", {opacity:1, y:0, duration:.65, stagger:.12, ease:"power3.out"}, "-=.1")
+      .to("#pricing .pricing__terms", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.15")
+      .to("#pricing .careplus", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.2")
+      .to("#pricing .pricing__note", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.3")
+    );
+
+    // STRAIGHT ANSWERS — heading rises, each Q&A charges in from the left.
+    gsap.set("#answers .sec__kicker", {opacity:0, y:16});
+    gsap.set("#answers .h-mega", {opacity:0, y:40});
+    gsap.set("#answers .qa", {opacity:0, x:-40});
+    reveal("#answers", gsap.timeline({paused:true})
+      .to("#answers .sec__kicker", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#answers .h-mega", {opacity:1, y:0, duration:.8, ease:"power3.out"}, "-=.2")
+      .to("#answers .qa", {opacity:1, x:0, duration:.55, stagger:.14, ease:"power2.out"}, "-=.1")
+    );
+
+    // THE ASK — LET'S BUILD wipes up bold, the circle button pops.
+    gsap.set("#contact .ask__eyebrow", {opacity:0, y:16});
+    gsap.set("#contact .ask__big", {opacity:0, y:50, clipPath:"inset(0 0 100% 0)"});
+    gsap.set("#contact .ask__circle", {opacity:0, scale:.6});
+    gsap.set("#contact .ask__row", {opacity:0, y:24});
+    reveal("#contact", gsap.timeline({paused:true})
+      .to("#contact .ask__eyebrow", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+      .to("#contact .ask__big", {opacity:1, y:0, clipPath:"inset(0 0 0% 0)", duration:1, ease:"power4.out"}, "-=.2")
+      .to("#contact .ask__circle", {opacity:1, scale:1, duration:.6, ease:"back.out(1.6)"}, "-=.5")
+      .to("#contact .ask__row", {opacity:1, y:0, duration:.6, ease:"power2.out"}, "-=.4")
+    );
+  }
+
+  /* 3) The signature transformation: variable font-weight on the headline
+        DEFLATES into the Mirror trough, then BULKS UP through the Turn.
+        Color is handled by the palette engine above; weight is the type
+        half of the before/after. Skipped on mobile + reduced-motion
+        (the static target states still read the arc). */
+  if(!reduce && !isMobile && !lowPerf){
+    // subtle parallax drift on the hero portrait
+    gsap.to(".hero__photo",{ yPercent:8, ease:"none",
+      scrollTrigger:{ trigger:".hero", start:"top top", end:"bottom top", scrub:true } });
+
+    // scroll-velocity skew on the big type — leans with your scroll, springs back to 0
+    var skewEls = gsap.utils.toArray(".hero__create");
+    if(skewEls.length){
+      var skewClamp = gsap.utils.clamp(-5, 5);
+      var skewProxy = {s:0};
+      var applySkew = function(v){ skewEls.forEach(function(el){ gsap.set(el, {skewY:v}); }); };
+      ScrollTrigger.create({
+        trigger:".hero", start:"top top", end:"bottom top",
+        onUpdate:function(self){
+          var sk = skewClamp(self.getVelocity() / -420);
+          if(Math.abs(sk) > Math.abs(skewProxy.s)){
+            skewProxy.s = sk;
+            gsap.to(skewProxy, {s:0, duration:.7, ease:"power3", overwrite:true,
+              onUpdate:function(){ applySkew(skewProxy.s); }});
+          }
+        }
+      });
+    }
+  }
+
+  /* 3b) THE PIVOT — pinned transformation set-piece. As you scroll in place,
+        the grey "your website says otherwise" drains and IGNITES orange into
+        "we make you look as good as you are." Static stacked blocks on
+        mobile / reduced-motion (no pin). The #pivot has no data-theme, so the
+        global palette engine skips it and this owns its colours. */
+  (function(){
+    var pivot = document.querySelector("#pivot");
+    if(!pivot) return;
+    if(reduce || lowPerf){ pivot.classList.add("is-static"); return; }   // reduced motion / low-perf: solid blocks, no ignite
+    if(isMobile){
+      // Mobile: stacked (no pin) but still IGNITE. A hard-edged grey→orange
+      // gradient WIPES up behind the text as the block scrolls in, so it never
+      // passes through a muddy grey/orange blend. Text stays ink throughout
+      // (legible on both). Reduced-motion keeps the solid-orange static block.
+      pivot.classList.add("is-static");
+      var solM = pivot.querySelector(".pivot__solution");
+      if(solM){
+        // Smooth IGNITE as a single colour FADE black→orange (text cream→ink).
+        // A grey→orange fade muddies into pink at the midpoint; black→orange is a
+        // warm fade through dark embers, so it stays clean — and being a fade,
+        // there's no wipe edge/line at all. Plays once on enter, reverses back.
+        var igniteTl = gsap.timeline({ paused:true })
+          .fromTo(solM, { backgroundColor:"#0e0a06", color:"#faf3e8" },
+            { backgroundColor:"#ff5a1f", color:"#0e0a06", duration:.9, ease:"power2.inOut" });
+        ScrollTrigger.create({ trigger:solM, start:"top 70%", end:"bottom 20%",
+          onEnter:function(){ igniteTl.play(); },
+          onLeaveBack:function(){ igniteTl.reverse(); } });
+      }
+      return;
+    }
+
+    var rs = document.documentElement.style;
+    // Pivot colour — time-based like the section engine (applyTheme eases the whole
+    // palette), NOT a per-frame scrub, so it can't fight the flow-section triggers
+    // that follow. Grey while the problem holds; ignite to orange as the solution
+    // rises inside the pin. State-tracked so applyTheme fires once per beat (never
+    // per frame), and it never leaves a stale scrub value bleeding into work/about.
+    var pivotWant = null;
+    function pivotColor(w){
+      if(w === pivotWant) return;
+      pivotWant = w;
+      applyTheme(w === "grey" ? THEMES.dead : THEMES.orange);
+    }
+    ScrollTrigger.create({
+      trigger:"#pivot", start:"top 62%", end:"+=" + (window.innerHeight * 2.1),
+      onUpdate:function(self){ pivotColor(self.progress < 0.6 ? "grey" : "orange"); },
+      onLeaveBack:function(){ pivotColor("orange"); }   // scrolled back above the pivot → orange (hero)
+    });
+
+    // The problem settles in: quiet line, then the truth RISES — a smooth masked
+    // line reveal (each line lifts up from behind a clip) instead of the old
+    // scale-pop "slam", which read too snappy.
+    function splitLines(el){
+      if(!el) return [];
+      var lines = el.innerHTML.split(/<br\s*\/?>/i), inners = [];
+      el.innerHTML = "";
+      lines.forEach(function(html){
+        var mask = document.createElement("span");
+        mask.style.cssText = "display:block;overflow:hidden;padding:.16em 0;margin:-.16em 0";
+        var inner = document.createElement("span");
+        inner.style.cssText = "display:block";
+        inner.innerHTML = html;
+        mask.appendChild(inner); el.appendChild(mask); inners.push(inner);
+      });
+      return inners;
+    }
+    var probLines = splitLines(document.querySelector("#pivot .pivot__problem .pivot__heavy"));
+    gsap.set("#pivot .pivot__eyebrow", {opacity:0, y:18});
+    gsap.set("#pivot .pivot__thin", {opacity:0, y:24});
+    gsap.set("#pivot .pivot__problem .pivot__heavy", {opacity:1});
+    gsap.set(probLines, {yPercent:118});
+    gsap.set("#pivot .pivot__problem .pivot__sub", {opacity:0, y:22});
+    ScrollTrigger.create({
+      trigger:"#pivot", start:"top 55%", once:true,
+      onEnter:function(){
+        gsap.timeline({ defaults:{ ease:"power3.out" } })
+          .to("#pivot .pivot__eyebrow", {opacity:1, y:0, duration:.6})
+          .to("#pivot .pivot__thin", {opacity:1, y:0, duration:.85}, "-=.4")
+          .to(probLines, {yPercent:0, duration:1.1, stagger:.16}, "-=.4")   // smooth line-by-line rise (no snap)
+          .to("#pivot .pivot__problem .pivot__sub", {opacity:1, y:0, duration:.8}, "-=.55");
+      }
+    });
+
+    // PIN + IGNITE: hold the problem (grey), ignite to orange while crossfading
+    // to the solution, then hold the solution (orange) before releasing.
+    // Pin + content motion only — colour is owned by the single scrub above.
+    gsap.timeline({ scrollTrigger:{ trigger:"#pivot", start:"top top", end:"+=150%",
+        pin:true, scrub:true, anticipatePin:1, refreshPriority:2 } })
+      .to({}, {duration:.4})                                            // hold the problem
+      .to("#pivot .pivot__problem", {opacity:0, yPercent:-34, duration:.4, ease:"power2.in"}, "ig")          // problem leaves UP first
+      .fromTo("#pivot .pivot__solution", {opacity:0, yPercent:36, scale:.97},
+        {opacity:1, yPercent:0, scale:1, duration:.5, ease:"power3.out"}, "ig+=.42")                         // then solution rises in
+      .to({}, {duration:.5});                                           // hold the solution
   })();
 
-}
+  /* 3c) WORK — pinned horizontal showcase: each case fills the screen one at a
+        time as you scroll sideways. Static vertical stack on mobile/reduced. */
+  (function(){
+    var workx = document.querySelector("#work .workx");
+    if(!workx) return;
+    if(reduce || isMobile || lowPerf){ workx.classList.add("is-static"); return; }
+    var track = workx.querySelector(".workx__track");
+    var panels = track.querySelectorAll(".workx__panel");
+    var count = panels.length;
+    // Dwell-then-move: each panel sits still for a stretch (readable), then
+    // slides quickly to the next. So you can stop anywhere in a dwell and read.
+    var tl = gsap.timeline({
+      scrollTrigger:{
+        trigger: workx, pin:true, scrub:true, anticipatePin:1, start:"top top",
+        end: function(){ return "+=" + Math.round(window.innerHeight * 0.9 * count); },
+        invalidateOnRefresh:true, refreshPriority:1
+      }
+    });
+    tl.to({}, {duration:0.9});                                // dwell on the title
+    for(var i=1; i<count; i++){
+      (function(idx){
+        tl.to(track, { x:function(){ return -panels[idx].offsetLeft; }, duration:0.69, ease:"power2.inOut" })
+          .to({}, {duration:1.1});                            // dwell on this panel
+      })(i);
+    }
+  })();
+
+  /* 4) Nav contrast floor — keep the logo/links legible over every theme.
+        (Handled by --fg inheritance; nothing extra needed, but force a
+        repaint sync on fast jumps.) */
+  ScrollTrigger.refresh();
+
+  /* 5) PRELOADER — grey→orange ignite, then wipe up into the hero. Plays on
+        every load; only skipped when the curtain isn't present (the <head> gate
+        removes it for reduced-motion). The WIPE is gated on document.fonts.ready
+        so fitCreate has sized the CREATE word before the hero is revealed — no
+        post-reveal reflow pop. */
+  (function(){
+    var pre = document.getElementById("preloader");
+    if(!pre || document.documentElement.classList.contains("intro-seen")){
+      if(pre){ pre.style.display = "none"; }
+      document.documentElement.classList.remove("is-loading");
+      return;
+    }
+
+    var word  = pre.querySelector(".preloader__word");
+    var count = pre.querySelector(".preloader__count");
+    var bar   = pre.querySelector(".preloader__bar");
+    var n = {v:0};
+    function pad3(x){ return ("00" + Math.round(x)).slice(-3); }
+
+    // IGNITE — runs immediately; ends on the lit (orange / bold / ink) state.
+    var ignite = gsap.timeline({ defaults:{ ease:"power2.inOut" } });
+    ignite.to({}, {duration:.4})                                            // brief grey hold
+      .to(pre,   { backgroundColor:"#ff5a1f", duration:1.1 }, "go")         // screen ignites orange
+      .to(word,  { fontWeight:700, color:"#0e0a06", duration:1.1 }, "go")   // thin grey -> bold ink
+      .to(count, { color:"#0e0a06", opacity:.85, duration:1.1 }, "go")
+      .to(bar,   { scaleX:1, backgroundColor:"#0e0a06", opacity:.85, duration:1.4, ease:"power1.inOut" }, "go")
+      .to(n,     { v:100, duration:1.4, ease:"power1.inOut",
+                   onUpdate:function(){ count.textContent = pad3(n.v); } }, "go");
+
+    // Hero entrance — plays as the curtain lifts so the reveal feels intentional.
+    function heroIn(){
+      gsap.from(".hero__tagline", { y:26, opacity:0, duration:.85, ease:"power3.out" });
+      gsap.from(".hero__arrow",   { y:18, opacity:0, duration:.6, delay:.18, ease:"power3.out" });
+      gsap.from(".hero__create",  { yPercent:16, opacity:0, duration:1, ease:"power3.out" });
+      gsap.from(".hero__photo",   { opacity:0, duration:1.1, ease:"power2.out" });
+    }
+
+    var wiped = false;
+    function wipeOut(){
+      if(wiped) return; wiped = true;
+      fitCreate();                                  // size CREATE before it's seen
+      gsap.to(pre, { yPercent:-100, duration:.9, ease:"power4.inOut",
+        onStart: heroIn,
+        onComplete:function(){
+          pre.style.display = "none";
+          document.documentElement.classList.remove("is-loading");
+          ScrollTrigger.refresh();
+        }
+      });
+    }
+
+    // Wipe only once BOTH the ignite has finished AND the fonts are ready.
+    var igniteDone = new Promise(function(res){ ignite.eventCallback("onComplete", res); });
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    Promise.all([igniteDone, fontsReady]).then(wipeOut);
+    setTimeout(wipeOut, 6000);                       // safety: never hang on the curtain
+  })();
+})();
 </script>
+
+<!-- Shared nav/menu + page transitions (defined once in noxta.js) -->
+<script src="noxta.js"></script>
 </body>
 </html>

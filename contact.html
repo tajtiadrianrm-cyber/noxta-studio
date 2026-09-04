@@ -26,125 +26,224 @@
 <meta name="twitter:title" content="Contact · Noxta Studio">
 <meta name="twitter:description" content="Tell me about your project. I reply within 24 hours.">
 <meta name="twitter:image" content="https://noxta.studio/og-image.png">
+
+<!-- index-v7 system: Clash Display · General Sans · Space Mono · Instrument Serif -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@1,6..72,200..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/noxta.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-/* ---------- contact grid ---------- */
-.contact-grid{position:relative;z-index:2;display:grid;grid-template-columns:.82fr 1.18fr;gap:4vw;align-items:start;padding-top:0}
-@media (max-width:920px){.contact-grid{grid-template-columns:1fr;gap:3.4rem}}
+/* =========================================================================
+   NOXTA v7 — Contact. Self-contained, built on the index-v7.html system.
+   Single ink theme (cream text, orange accent) — matches v7's ink sections.
+   ========================================================================= */
+:root{
+  --orange:#ff5a1f; --orange-deep:#e8430a; --ink:#0e0a06; --ink-soft:#181109; --cream:#faf3e8; --white:#fff4e6;
+  /* live theme tokens — paper page */
+  --bg:var(--cream); --fg:var(--ink); --accent:var(--orange);
+  --line:rgba(14,10,6,.16); --line-2:rgba(14,10,6,.10);
+  --maxw:1680px; --pad:clamp(20px,4.5vw,72px);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --font-display:"Clash Display","Arial Narrow",sans-serif;
+  --font-body:"General Sans",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  --font-serif:"Instrument Serif",Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.accent{color:var(--orange)}
+
+/* ---- shared type (from index-v7) ---- */
+.mono{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;opacity:.7}
+.sec__kicker{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.sec__kicker .ln{flex:1;height:1px;background:currentColor;opacity:.25}
+.h-mega{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(3rem,11vw,11rem);line-height:.84;letter-spacing:-.02em}
+.sec{padding-block:clamp(80px,12vh,150px)}
+
+/* ===== NAV + FULLSCREEN MENU + PAGE TRANSITION ===== in noxta.css (shared) = */
+
+/* ===== HERO (index-v7 ask language) ===== */
+.ask{position:relative;padding:clamp(150px,21vh,250px) 0 0}
+.ask__inner{position:relative}
+.ask__big{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(4.5rem,21vw,21rem);line-height:.8;letter-spacing:-.03em}
+.c-lede{font-size:clamp(1.05rem,1.7vw,1.4rem);line-height:1.55;max-width:48ch;margin-top:clamp(30px,4vh,52px);opacity:.82}
+
+/* ===== CONTACT GRID ===== */
+.contact-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2.5rem,4vw,5rem);align-items:start}
+@media(max-width:920px){.contact-grid{grid-template-columns:1fr;gap:3.4rem}}
 .col-label{margin-bottom:1.8rem}
 
-/* ---------- direct column ---------- */
-.fact-list{display:flex;flex-direction:column}
-.fact{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.25rem 0;text-decoration:none;transition:padding-left .35s var(--ease)}
+/* direct facts — ledger rows in the v7 svc language */
+.facts{border-top:1px solid var(--line)}
+.fact{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.3rem 0;
+  border-bottom:1px solid var(--line);transition:padding-left .35s var(--ease)}
 a.fact:hover{padding-left:.7rem}
-.fact .k{font-family:var(--font-m);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.fact .v{font-family:var(--font-d);font-weight:600;font-size:clamp(.98rem,1.25vw,1.12rem);letter-spacing:.02em;text-align:right;color:var(--ink);transition:color .3s}
-a.fact:hover .v{color:var(--ember-2)}
-.direct-note{margin-top:2rem;font-family:var(--font-s);font-style:italic;font-weight:300;color:var(--ember-3);font-size:1.15rem;line-height:1.5}
+.fact .k{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;opacity:.5}
+.fact .v{font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,1.4vw,1.22rem);letter-spacing:.01em;text-align:right;transition:color .3s}
+a.fact:hover .v{color:var(--orange)}
+.direct-note{margin-top:2rem;font-family:var(--font-serif);font-style:italic;color:var(--orange);font-size:1.3rem;line-height:1.45}
 
-/* ---------- form ---------- */
-.form-wrap{position:relative;background:var(--bg-2);border:1px solid var(--line);clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%);padding:clamp(1.8rem,3vw,2.8rem)}
+/* form */
+.form-wrap{position:relative;background:rgba(14,10,6,.025);border:1px solid var(--line);border-radius:2px;padding:clamp(1.8rem,3vw,2.8rem)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
-.field{display:flex;flex-direction:column;gap:.55rem}
+.field{display:flex;flex-direction:column;gap:.6rem}
 .field.full{grid-column:1/-1}
-.field label{font-family:var(--font-m);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
-.field label .opt{opacity:.55}
-.field input,.field select,.field textarea{font-family:var(--font-b);font-size:.98rem;color:var(--ink);background:var(--bg-3);border:1px solid var(--line-2);padding:.85rem 1rem;width:100%;border-radius:0;-webkit-appearance:none;appearance:none;transition:border-color .3s,background .3s}
-.field textarea{min-height:8rem;resize:vertical;line-height:1.6}
-.field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ember);background:#1d1a17}
-/* kill the browser autofill yellow — paint over it with the field bg */
-.field input:-webkit-autofill,.field input:-webkit-autofill:hover,.field input:-webkit-autofill:focus,.field textarea:-webkit-autofill,.field select:-webkit-autofill{-webkit-text-fill-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--bg-3) inset;box-shadow:0 0 0 1000px var(--bg-3) inset;caret-color:var(--ink);transition:background-color 9999s ease-out 0s}
-.field input:-webkit-autofill:focus,.field textarea:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px #1d1a17 inset;box-shadow:0 0 0 1000px #1d1a17 inset}
-.field input:autofill,.field textarea:autofill{-webkit-text-fill-color:var(--ink);box-shadow:0 0 0 1000px var(--bg-3) inset}
-.field select{cursor:none;color:var(--ink);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ff7a3d' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.4rem}
-.field select option{background:var(--bg-2);color:var(--ink)}
-@media (hover:none),(max-width:900px){.field select{cursor:pointer}}
-/* segmented option buttons (project type / budget / timeline) */
+.field label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;opacity:.55}
+.field label .opt{opacity:.6}
+.field input,.field textarea{font-family:var(--font-body);font-size:1rem;color:var(--ink);background:rgba(14,10,6,.05);
+  border:1px solid var(--line);border-radius:2px;padding:.9rem 1rem;width:100%;-webkit-appearance:none;appearance:none;
+  transition:border-color .3s,background .3s}
+.field textarea{min-height:8.5rem;resize:vertical;line-height:1.6}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink);opacity:.45}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--orange);background:rgba(14,10,6,.06)}
+.field input:-webkit-autofill,.field input:-webkit-autofill:hover,.field input:-webkit-autofill:focus,.field textarea:-webkit-autofill{-webkit-text-fill-color:var(--ink);-webkit-box-shadow:0 0 0 1000px #efe8db inset;box-shadow:0 0 0 1000px #efe8db inset;caret-color:var(--ink);transition:background-color 9999s ease-out 0s}
+.field input:autofill,.field textarea:autofill{-webkit-text-fill-color:var(--ink);box-shadow:0 0 0 1000px #efe8db inset}
+/* segmented option buttons — v7 toggle language (rectangular, accent-fill active) */
 .optgrid{display:flex;flex-wrap:wrap;gap:.55rem}
-.opt-btn{font-family:var(--font-m);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);background:var(--bg-3);border:0;box-shadow:inset 0 0 0 1px var(--line-2);border-radius:0;clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%);padding:.85rem 1.1rem;line-height:1;-webkit-appearance:none;appearance:none;transition:color .25s,background .25s,box-shadow .25s}
-.opt-btn:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ember-3)}
-.opt-btn.is-active{background:var(--grad);color:#0a0908;box-shadow:none;font-weight:600}
+.opt-btn{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+  background:transparent;border:1px solid var(--line);border-radius:2px;padding:.8rem 1.05rem;line-height:1;cursor:pointer;
+  -webkit-appearance:none;appearance:none;transition:color .25s,background .25s,border-color .25s}
+.opt-btn:hover{border-color:var(--orange)}
+.opt-btn.is-active{background:var(--orange);color:var(--ink);border-color:var(--orange);font-weight:700}
 .form-actions{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;margin-top:1.9rem}
-.form-note{font-family:var(--font-m);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.form-note{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5}
 .hp{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
-.btn[disabled]{opacity:.6;pointer-events:none}
-@media (max-width:560px){.form-grid{grid-template-columns:1fr}}
+/* pill submit — v7 btn-pill, inverted for the ink page (orange fill, ink text) */
+.btn-pill{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--orange);
+  font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.05rem;
+  padding:16px 32px;border:0;border-radius:100px;cursor:pointer;transition:transform .3s}
+.btn-pill:hover{transform:translateY(-3px)}
+.btn-pill[disabled]{opacity:.6;pointer-events:none}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}}
 
-/* ---------- success ---------- */
-.form-success{position:relative;background:linear-gradient(180deg,rgba(255,77,21,.07),rgba(17,16,16,1) 42%);border:1px solid rgba(255,77,21,.4);clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%);padding:clamp(2rem,3.4vw,3rem)}
-.form-success h2{font-family:var(--font-d);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.96;letter-spacing:-.01em}
-.form-success .lede{color:var(--ink-2);line-height:1.7;margin:1.4rem 0 2rem;max-width:46ch}
+/* success */
+.form-success{position:relative;background:linear-gradient(180deg,rgba(255,90,31,.08),transparent 50%);
+  border:1px solid rgba(255,90,31,.45);border-radius:2px;padding:clamp(2rem,3.4vw,3rem)}
+.form-success h2{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.96;letter-spacing:-.01em}
+.form-success .lede{line-height:1.7;margin:1.4rem 0 2rem;max-width:46ch;opacity:.78}
 .form-success .srow{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-top:1px solid var(--line)}
-.form-success .srow .k{font-family:var(--font-m);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.form-success .srow .v{font-family:var(--font-d);font-weight:600;letter-spacing:.02em;text-align:right}
+.form-success .srow .k{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;opacity:.5}
+.form-success .srow .v{font-family:var(--font-display);font-weight:600;letter-spacing:.01em;text-align:right}
 
-/* ---------- faq ---------- */
-.faq-list{max-width:62rem}
-.faq-item{}
-.faq-item summary{list-style:none;cursor:none;display:flex;justify-content:space-between;align-items:center;gap:1.4rem;padding:1.7rem 0;font-family:var(--font-d);font-weight:600;font-size:clamp(1.1rem,2.4vw,1.6rem);text-transform:uppercase;letter-spacing:-.01em}
+/* ===== FAQ ===== */
+.faq-list{max-width:64rem;margin-top:clamp(2rem,5vh,3.5rem)}
+.faq-item{border-top:1px solid var(--line)}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.4rem;
+  padding:1.7rem 0;font-family:var(--font-display);font-weight:600;font-size:clamp(1.1rem,2.4vw,1.6rem);text-transform:uppercase;letter-spacing:-.01em}
 .faq-item summary::-webkit-details-marker{display:none}
 .faq-item summary .ic{flex:none;position:relative;width:18px;height:18px;transition:transform .4s var(--ease)}
-.faq-item summary .ic::before,.faq-item summary .ic::after{content:"";position:absolute;background:var(--ember);left:50%;top:50%}
+.faq-item summary .ic::before,.faq-item summary .ic::after{content:"";position:absolute;background:var(--orange);left:50%;top:50%}
 .faq-item summary .ic::before{width:16px;height:1.5px;transform:translate(-50%,-50%)}
 .faq-item summary .ic::after{width:1.5px;height:16px;transform:translate(-50%,-50%)}
 .faq-item[open] summary .ic{transform:rotate(135deg)}
-.faq-item p{color:var(--ink-2);line-height:1.75;max-width:64ch;padding:0 0 1.9rem;font-size:1.02rem}
-@media (hover:none),(max-width:900px){.faq-item summary{cursor:pointer}}
+.faq-item p{line-height:1.75;max-width:64ch;padding:0 0 1.9rem;font-size:1.02rem;opacity:.78}
+#faq .h-mega .w{display:inline-block;will-change:transform}
+
+/* ===== ASK RULE + FOOTER (index-v7, themed for ink) ===== */
+.ask__rule{height:2px;background:rgba(14,10,6,.22);margin-top:clamp(60px,8vh,110px)}
+.foot{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px);
+  align-items:flex-start;justify-content:space-between;color:var(--ink);
+  padding:clamp(40px,6vh,72px) var(--pad) clamp(28px,4vh,48px)}
+.foot__logo{font-family:var(--font-display);font-weight:700;font-size:clamp(2.8rem,7vw,5.5rem);line-height:.78}
+.foot__nav{display:flex;gap:clamp(22px,3vw,56px);border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__col{display:flex;flex-direction:column;gap:13px}
+.foot__col a{display:flex;gap:11px;align-items:baseline;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__col a span{font-family:var(--font-mono);font-size:.66rem;opacity:.5;font-weight:400}
+.foot__col a:hover{color:var(--orange)}
+.foot__social{display:flex;flex-direction:column;gap:13px;border-left:1px solid var(--line);padding-left:clamp(22px,3vw,48px)}
+.foot__social a{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:1.1rem;transition:color .2s}
+.foot__social a:hover{color:var(--orange)}
+.foot__social svg{width:19px;height:19px;flex:none;fill:currentColor}
+.foot__copy{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;opacity:.65;text-align:right}
+@media(max-width:880px){
+  .foot{gap:34px}
+  .foot__nav,.foot__social{border-left:0;padding-left:0}
+  .foot__copy{text-align:left;width:100%}
+}
+
+/* ===== reveal + reduced motion ===== */
+.reveal{opacity:0}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+}
 
 </style>
+<!-- Shared nav/menu + page-transition styles (defined once) -->
+<link rel="stylesheet" href="noxta.css" />
+<!-- Page-transition gate: if we arrived via an internal link, cover at first
+     paint (tcover) so there's no flash before the ignite reveal. -->
+<script>try{var h=document.documentElement;if(sessionStorage.getItem('noxtaPT')==='1'){sessionStorage.removeItem('noxtaPT');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)){h.classList.add('tcover','is-loading');}}}catch(e){}</script>
 </head>
 <body>
 
-<canvas id="embers"></canvas>
-<div class="grain"></div>
-<div class="progress" id="progress"></div>
-<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+<!-- ===================== PAGE TRANSITION ===================== -->
+<div class="ptrans" id="ptrans" aria-hidden="true"><span class="ptrans__word">NOXTA</span></div>
 
-<!-- ============ NAV ============ -->
+<!-- ===================== NAV ===================== -->
 <nav class="nav" id="nav">
-  <a class="wm" href="/">NO<span class="x">X</span>TA</a>
-  <div class="nav-right">
-    <span class="clock" id="clock">TILBURG — 00:00:00</span>
-    <a class="nav-link" href="/portfolio" data-hover>Portfolio</a>
-    <a class="nav-cta" href="#contact-form" data-hover>Start a project</a>
+  <a href="index.html" class="nav__logo">NOXTA</a>
+  <span class="nav__dash"></span>
+  <div class="nav__links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="#contact-form" class="nav__cta">Contact</a>
   </div>
+  <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+    <span></span><span></span>
+  </button>
 </nav>
 
-<!-- ============ HERO ============ -->
-<header class="page-hero full">
-  <div class="avail" data-reveal><span class="dot"></span>Available · Q3 2026 · 2 slots</div>
-  <div class="sec-label mono" data-reveal>Contact · Form 01 — Noxta Studio · 2026</div>
-  <h1 class="page-h1" style="margin-top:1.6rem">
-    <span class="line-mask"><span>Let's <span class="grad-text">talk.</span></span></span>
-  </h1>
-  <p class="page-lede" data-reveal>Tell me about your project — a paragraph is fine, more if you have it. I read every message and reply within 24 hours, usually faster.</p>
-  <div class="scroll-cue">Scroll
-    <svg viewBox="0 0 24 24"><path d="M4 7l8 7 8-7M4 13l8 7 8-7"/></svg>
+<!-- ===================== MOBILE MENU ===================== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__inner" aria-label="Mobile">
+    <a class="menu__link" href="index.html#work"><span class="menu__num">01</span> Work</a>
+    <a class="menu__link" href="index.html#about"><span class="menu__num">02</span> About</a>
+    <a class="menu__link" href="index.html#pricing"><span class="menu__num">03</span> Pricing</a>
+    <a class="menu__link" href="#contact-form"><span class="menu__num">04</span> Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="mailto:adrian@noxta.studio">adrian@noxta.studio</a>
+    <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/31617657327" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="ask">
+  <div class="wrap ask__inner">
+    <h1 class="ask__big reveal">Let&rsquo;s <span class="accent">talk.</span></h1>
+    <p class="c-lede reveal">Tell me about your project — a paragraph is fine, more if you have it. I read every message and reply within 24 hours, usually faster.</p>
   </div>
 </header>
 
-<!-- ============ CONTACT GRID ============ -->
-<section class="section contact-grid" style="padding-top:8vh">
+<!-- ===================== CONTACT GRID ===================== -->
+<section class="wrap sec contact-grid">
   <!-- direct -->
   <aside class="contact-direct">
-    <div class="sec-label mono col-label" data-reveal>Direct · No form needed</div>
-    <div class="fact-list" data-reveal>
-      <a class="fact" href="mailto:adrian@noxta.studio" data-hover><span class="k">Email</span><span class="v">adrian@noxta.studio</span></a>
-      <a class="fact" href="#contact-form" data-hover><span class="k">Discovery</span><span class="v">30-min call</span></a>
-      <div class="fact"><span class="k">Where</span><span class="v">Tilburg, NL · UTC+1</span></div>
-      <div class="fact"><span class="k">Hours</span><span class="v">Mon–Fri · 09–18 CET</span></div>
-      <a class="fact" href="https://wa.me/31617657327" target="_blank" rel="noopener" data-hover><span class="k">WhatsApp</span><span class="v">+31 6 17 657 327</span></a>
+    <div class="sec__kicker mono col-label reveal"><span>Direct · No form needed</span><span class="ln"></span></div>
+    <div class="facts reveal">
+      <a class="fact" href="mailto:adrian@noxta.studio"><span class="k">Email</span><span class="v">adrian@noxta.studio</span></a>
+      <a class="fact" href="#contact-form"><span class="k">Discovery</span><span class="v">30-min call</span></a>
+      <div class="fact"><span class="k">Where</span><span class="v">Tilburg, Netherlands</span></div>
+      <div class="fact"><span class="k">Hours</span><span class="v">Mon–Fri · 09:00–18:00</span></div>
+      <a class="fact" href="https://wa.me/31617657327" target="_blank" rel="noopener"><span class="k">WhatsApp</span><span class="v">+31 6 17 657 327</span></a>
     </div>
-    <p class="direct-note" data-reveal>Prefer to skip the form? Email me directly — same inbox, same 24-hour reply.</p>
+    <p class="direct-note reveal">Prefer to skip the form? Email me directly — same inbox, same 24-hour reply.</p>
   </aside>
 
   <!-- form -->
-  <div class="form-wrap" id="contact-form" data-reveal>
-    <div class="sec-label mono col-label">Detailed · Form 01</div>
+  <div class="form-wrap reveal" id="contact-form">
+    <div class="sec__kicker mono col-label"><span>Detailed · Form</span><span class="ln"></span></div>
 
     <form id="cform" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="65886917-fcb6-469d-bf77-91c79c91776b">
@@ -166,15 +265,24 @@ a.fact:hover .v{color:var(--ember-2)}
           <input id="f-company" name="company" type="text" placeholder="Company name">
         </div>
         <div class="field full">
-          <label>// Project type</label>
+          <label>// What do you need</label>
           <div class="optgrid" data-optgroup="project_type">
-            <button type="button" class="opt-btn is-active">Website</button>
-            <button type="button" class="opt-btn">Brand identity</button>
-            <button type="button" class="opt-btn">E-commerce</button>
-            <button type="button" class="opt-btn">Maintenance</button>
-            <button type="button" class="opt-btn">Something else</button>
+            <button type="button" class="opt-btn is-active">Web Design</button>
+            <button type="button" class="opt-btn">Branding</button>
+            <button type="button" class="opt-btn">Motion</button>
+            <button type="button" class="opt-btn">Development</button>
+            <button type="button" class="opt-btn">Not sure</button>
           </div>
-          <input type="hidden" name="project_type" value="Website">
+          <input type="hidden" name="project_type" value="Web Design">
+        </div>
+        <div class="field full">
+          <label>// Engagement</label>
+          <div class="optgrid" data-optgroup="engagement">
+            <button type="button" class="opt-btn is-active">One-time project</button>
+            <button type="button" class="opt-btn">Monthly retainer</button>
+            <button type="button" class="opt-btn">Not sure</button>
+          </div>
+          <input type="hidden" name="engagement" value="One-time project">
         </div>
         <div class="field full">
           <label>// Budget</label>
@@ -203,13 +311,13 @@ a.fact:hover .v{color:var(--ember-2)}
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary" data-hover data-magnetic><span class="fill"></span><span>Send it →</span></button>
+        <button type="submit" class="btn-pill"><span>Send it</span></button>
         <span class="form-note">No tracking · No mailing list · I reply personally</span>
       </div>
     </form>
 
     <div class="form-success" id="formSuccess" hidden>
-      <div class="sec-label mono" style="margin-bottom:1.4rem">Sent · Form 01</div>
+      <div class="sec__kicker mono" style="margin-bottom:1.4rem"><span>Sent · Form</span><span class="ln"></span></div>
       <h2>Got it<span data-firstname></span>.</h2>
       <p class="lede">Your message is in. I read every one personally — expect a real reply, not a template.</p>
       <div class="srow"><span class="k">// Reply from</span><span class="v">adrian@noxta.studio</span></div>
@@ -219,28 +327,27 @@ a.fact:hover .v{color:var(--ember-2)}
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section" id="faq" style="padding-top:4vh">
-  <div class="sec-head">
-    <div class="sec-label mono" data-reveal>02 · Common questions</div>
-    <h2 class="sec-title">
-      <span class="line-mask"><span>Things people</span></span>
-      <span class="line-mask"><span><span class="grad-text">usually ask.</span></span></span>
-    </h2>
-  </div>
+<!-- ===================== FAQ ===================== -->
+<section class="wrap sec" id="faq" style="padding-top:0">
+  <div class="sec__kicker mono reveal"><span>Common questions</span><span class="ln"></span></div>
+  <h2 class="h-mega reveal"><span class="w">Things</span> <span class="w">people</span><br><span class="w accent">usually</span> <span class="w accent">ask.</span></h2>
 
-  <div class="faq-list" data-reveal>
+  <div class="faq-list reveal">
     <details class="faq-item">
       <summary>What happens after I send this?<span class="ic" aria-hidden="true"></span></summary>
-      <p>You'll get a personal reply (not a templated one) within 24 hours. If it looks like a fit, I propose a 30-minute discovery call. If it doesn't, I'll tell you and point you somewhere useful.</p>
+      <p>You&rsquo;ll get a personal reply (not a templated one) within 24 hours. If it looks like a fit, I propose a 30-minute discovery call. If it doesn&rsquo;t, I&rsquo;ll tell you and point you somewhere useful.</p>
     </details>
     <details class="faq-item">
       <summary>Do I have to know my budget?<span class="ic" aria-hidden="true"></span></summary>
-      <p>No, but it helps. Even a rough number lets me suggest the right tier. "Not sure" is a fine answer — we'll figure it out on the call.</p>
+      <p>No, but it helps. Even a rough number lets me suggest the right tier. &ldquo;Not sure&rdquo; is a fine answer — we&rsquo;ll figure it out on the call.</p>
+    </details>
+    <details class="faq-item">
+      <summary>One-time project or monthly retainer?<span class="ic" aria-hidden="true"></span></summary>
+      <p>Most builds are a one-time project. After launch, an optional retainer keeps the site updated, monitored, and edited. Pick &ldquo;Not sure&rdquo; and I&rsquo;ll recommend what fits.</p>
     </details>
     <details class="faq-item">
       <summary>Can we meet in person?<span class="ic" aria-hidden="true"></span></summary>
-      <p>Yes, if you're near Tilburg, Eindhoven or Breda. Otherwise we work over video and shared docs — fine for 95% of projects.</p>
+      <p>Yes, if you&rsquo;re near Tilburg, Eindhoven or Breda. Otherwise we work over video and shared docs — fine for 95% of projects.</p>
     </details>
     <details class="faq-item">
       <summary>Do you sign NDAs?<span class="ic" aria-hidden="true"></span></summary>
@@ -249,80 +356,232 @@ a.fact:hover .v{color:var(--ember-2)}
   </div>
 </section>
 
-<!-- ============ BRAND OUTRO ============ -->
-<section class="outro">
-  <div class="outro-ghost" aria-hidden="true" data-parallax="0.05">NOXTA</div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="wm">NO<span class="x">X</span>TA STUDIO</div>
-      <p>Adrian Tajti. A one-person studio in Tilburg. I work with small businesses, mostly Dutch and Belgian, who want a real person to call when something on their site needs changing.</p>
+<!-- ===================== FOOTER (index-v7) ===================== -->
+<div class="wrap"><div class="ask__rule" aria-hidden="true"></div></div>
+<footer class="foot">
+  <div class="foot__logo">NOXTA</div>
+  <nav class="foot__nav">
+    <div class="foot__col">
+      <a href="index.html#work"><span>01</span> Work</a>
+      <a href="index.html#services"><span>02</span> Services</a>
+      <a href="index.html#about"><span>03</span> About</a>
     </div>
-    <div class="fl">
-      <span class="mono">// Pages</span>
-      <a href="/" data-hover>Home</a>
-      <a href="/portfolio" data-hover>Portfolio</a>
-      <a href="/website-laten-maken-tilburg" data-hover>Website laten maken — Tilburg</a>
+    <div class="foot__col">
+      <a href="index.html#pricing"><span>04</span> Pricing</a>
+      <a href="#contact-form"><span>05</span> Contact</a>
+      <a href="privacy.html"><span>06</span> Privacy</a>
+      <a href="terms.html"><span>07</span> Terms</a>
     </div>
-    <div class="fl">
-      <span class="mono">// Studio</span>
-      <a href="mailto:adrian@noxta.studio" data-hover>adrian@noxta.studio</a>
-      <a href="https://wa.me/31617657327" data-hover>WhatsApp</a>
-      <a href="/privacy" data-hover>Privacy</a>
-      <a href="/terms" data-hover>Terms</a>
-    </div>
+  </nav>
+  <div class="foot__social">
+    <a href="https://www.instagram.com/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg> Instagram</a>
+    <a href="https://dribbble.com/adrian-tajti" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24C5.39 24 0 18.61 0 12S5.39 0 12 0s12 5.39 12 12-5.39 12-12 12zm10.12-10.36c-.35-.11-3.17-.95-6.38-.44 1.34 3.68 1.89 6.68 1.99 7.31a10.05 10.05 0 004.39-6.87zm-6.11 7.81c-.15-.9-.75-4.03-2.19-7.77l-.07.02c-5.79 2.02-7.86 6.03-8.04 6.4A9.96 9.96 0 0012 22c1.42 0 2.77-.29 4-.81zM4.39 18.86c.23-.4 3.05-5.06 8.33-6.77l.41-.12c-.26-.59-.54-1.17-.83-1.74-5.12 1.53-10.08 1.47-10.53 1.46v.31c0 2.63 1 5.04 2.63 6.86zm-2.42-8.96c.46.01 4.68.03 9.48-1.25-1.7-3.02-3.53-5.56-3.8-5.93a10.05 10.05 0 00-5.68 7.18zM9.6 2.05c.28.38 2.15 2.91 3.82 6 3.65-1.37 5.19-3.44 5.37-3.7A9.96 9.96 0 0012 2c-.83 0-1.63.1-2.4.29zm10.34 3.48c-.22.29-1.94 2.49-5.73 4.04.24.49.47.99.68 1.49.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.89-4.64-2.31-6.39z"/></svg> Dribbble</a>
+    <a href="https://www.linkedin.com/in/adriantajti/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+    <a href="https://wa.me/31617657327" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.43 9.88-9.88 9.88M20.46 3.49A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/></svg> WhatsApp</a>
   </div>
-  <div class="footer-bottom">
-    <span class="mono">Studio · Tilburg, NL · Est. 2026</span>
-    <span class="mono">© 2026 Noxta Studio — Hand-coded, no template</span>
-  </div>
+  <div class="foot__copy">&copy; 2026 Noxta Studio<br>All rights reserved<br>KvK 42092474</div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="assets/noxta.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
-/* ---------- contact form (works with or without GSAP) ---------- */
 (function(){
-  const form = document.getElementById("cform");
-  if(!form) return;
-  const success = document.getElementById("formSuccess");
-  const btn = form.querySelector("button[type=submit]");
-  /* segmented option buttons → hidden inputs */
-  form.querySelectorAll(".optgrid").forEach(grid => {
-    const input = form.querySelector('input[name="' + grid.dataset.optgroup + '"]');
-    grid.addEventListener("click", e => {
-      const b = e.target.closest(".opt-btn"); if(!b) return;
-      grid.querySelectorAll(".opt-btn").forEach(x => x.classList.remove("is-active"));
-      b.classList.add("is-active");
-      if(input) input.value = b.textContent.trim();
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- contact form (works with or without GSAP) ---------- */
+  (function(){
+    var form = document.getElementById("cform");
+    if(!form) return;
+    var success = document.getElementById("formSuccess");
+    var btn = form.querySelector("button[type=submit]");
+    form.querySelectorAll(".optgrid").forEach(function(grid){
+      var input = form.querySelector('input[name="' + grid.dataset.optgroup + '"]');
+      grid.addEventListener("click", function(e){
+        var b = e.target.closest(".opt-btn"); if(!b) return;
+        grid.querySelectorAll(".opt-btn").forEach(function(x){ x.classList.remove("is-active"); });
+        b.classList.add("is-active");
+        if(input) input.value = b.textContent.trim();
+      });
+    });
+    var setBtn = function(t){ var s = btn.querySelector("span"); if(s) s.textContent = t; };
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+      btn.disabled = true; setBtn("Sending…");
+      try{
+        var res = await fetch("https://api.web3forms.com/submit", {
+          method:"POST", headers:{Accept:"application/json"}, body:new FormData(form)
+        });
+        var json = await res.json();
+        if(!json.success) throw new Error(json.message || "Failed");
+        var first = (form.elements.name.value || "").trim().split(/\s+/)[0];
+        var fn = success.querySelector("[data-firstname]");
+        if(fn && first) fn.textContent = ", " + first;
+        form.hidden = true; success.hidden = false;
+        success.scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"center"});
+      }catch(err){
+        btn.disabled = false;
+        setBtn("Didn't send — email me directly");
+        btn.onclick = function(){ location.href = "mailto:adrian@noxta.studio"; };
+      }
+    });
+  })();
+
+  /* ---------- fixed nav: stays cream; hides on scroll-down, reveals on the tiniest
+     scroll-up (any position), always shows near the top. Runs in every path,
+     before the motion early-return. ---------- */
+  var nav = document.getElementById("nav");
+  if(nav){
+    var lastY = window.scrollY;
+    var navDir = function(){
+      var y = window.scrollY;
+      if(y <= 80){ nav.classList.remove("is-hidden"); }
+      else if(y > lastY){ nav.classList.add("is-hidden"); }
+      else if(y < lastY){ nav.classList.remove("is-hidden"); }
+      lastY = y;
+    };
+    window.addEventListener("scroll", navDir, {passive:true});
+  }
+
+  /* ---------- motion (Lenis + GSAP reveals); static fallback otherwise ---------- */
+  if(reduce || !window.gsap){
+    document.querySelectorAll(".reveal").forEach(function(el){ el.style.opacity = 1; });
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  if(window.Lenis){
+    var lenis = new Lenis({ duration:1.15, easing:function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel:true });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener("click", function(e){
+        var id = a.getAttribute("href");
+        if(id.length > 1 && document.querySelector(id)){ e.preventDefault(); lenis.scrollTo(id, { duration:1.4, offset:-30 }); }
+      });
+    });
+  }
+
+  /* ---------- per-beat entrance choreography (index-v7 vocabulary) ----------
+     Each beat gets motion that matches its job: big type wipes up bold via a
+     clip reveal, ledger/FAQ rows charge in from the left in a stagger, and the
+     supporting copy fades in slow. Reveals play on the way down and reverse on
+     the way up — alive, not the same one-shot fade on everything. */
+  function reveal(el, tl){
+    if(!el) return;
+    ScrollTrigger.create({ trigger:el, start:"top 80%", end:"bottom 20%",
+      toggleActions:"play none none reverse", animation:tl });
+  }
+
+  /* HERO — "Let's talk." wipes up bold (clip reveal), the lede rises after. */
+  gsap.set(".ask__big", {opacity:0, y:40, clipPath:"inset(0 0 100% 0)"});
+  gsap.set(".c-lede", {opacity:0, y:24});
+  gsap.timeline({delay:.12})
+    .to(".ask__big", {opacity:1, y:0, clipPath:"inset(0 0 0% 0)", duration:1, ease:"power4.out"})
+    .to(".c-lede", {opacity:1, y:0, duration:.7, ease:"power2.out"}, "-=.5");
+
+  /* DIRECT column — kicker slides in, the fact rows charge from the left in a
+     stagger, then the serif note fades in slow. */
+  gsap.set(".contact-direct .col-label", {opacity:0, x:-30});
+  gsap.set(".facts", {opacity:1});
+  gsap.set(".fact", {opacity:0, x:-48});
+  gsap.set(".direct-note", {opacity:0});
+  reveal(document.querySelector(".contact-direct"), gsap.timeline({paused:true})
+    .to(".contact-direct .col-label", {opacity:1, x:0, duration:.5, ease:"power2.out"})
+    .to(".fact", {opacity:1, x:0, duration:.6, stagger:.1, ease:"power3.out"}, "-=.2")
+    .to(".direct-note", {opacity:1, duration:1, ease:"power1.out"}, "-=.25")
+  );
+
+  /* FORM card — the bordered card holds its place while the content materializes
+     inside: kicker, then the fields lift in a stagger, then the action row. */
+  gsap.set(".form-wrap", {opacity:1});
+  gsap.set(".form-wrap .col-label", {opacity:0, y:14});
+  gsap.set(".form-grid .field", {opacity:0, y:26});
+  gsap.set(".form-actions", {opacity:0, y:18});
+  reveal(document.getElementById("contact-form"), gsap.timeline({paused:true})
+    .to(".form-wrap .col-label", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+    .to(".form-grid .field", {opacity:1, y:0, duration:.5, stagger:.06, ease:"power3.out"}, "-=.2")
+    .to(".form-actions", {opacity:1, y:0, duration:.5, ease:"power2.out"}, "-=.15")
+  );
+
+  /* FAQ — kicker, then the heading wipes up bold, then the questions charge in
+     one at a time from the left. */
+  gsap.set("#faq .sec__kicker", {opacity:0, y:16});
+  gsap.set("#faq .h-mega", {opacity:1});
+  gsap.set("#faq .h-mega .w", {opacity:0, yPercent:60});
+  gsap.set("#faq .faq-list", {opacity:1});
+  gsap.set("#faq .faq-item", {opacity:0, x:-48});
+  reveal(document.getElementById("faq"), gsap.timeline({paused:true})
+    .to("#faq .sec__kicker", {opacity:1, y:0, duration:.5, ease:"power2.out"})
+    .to("#faq .h-mega .w", {opacity:1, yPercent:0, duration:.7, stagger:.1, ease:"power4.out"}, "-=.2")
+    .to("#faq .faq-item", {opacity:1, x:0, duration:.55, stagger:.1, ease:"power3.out"}, "-=.25")
+  );
+
+  /* FAQ accordion — take over the native <details> toggle to animate the panel
+     open/closed with the +/× icon rotating in sync. Native <details> stays the
+     semantics + the no-JS / reduced-motion fallback.
+     Height AND padding are collapsed together: with box-sizing:border-box a box
+     can't shrink below its own padding, so animating height alone leaves a ~30px
+     floor that "snaps" at the start — that hitch is what reads as stutter.
+     Collapsing the padding too lets the panel grow cleanly from a true zero. */
+  gsap.utils.toArray("#faq .faq-item").forEach(function(item){
+    var summary = item.querySelector("summary");
+    var panel   = item.querySelector("p");
+    var icon    = item.querySelector(".ic");
+    if(!summary || !panel) return;
+    gsap.set(panel, {overflow:"hidden", willChange:"height"});
+    if(icon) icon.style.transition = "none";          // GSAP owns the icon now
+    var expanded = false, tween;
+    summary.addEventListener("click", function(e){
+      e.preventDefault();
+      if(tween) tween.kill();
+      expanded = !expanded;
+      if(expanded){
+        item.open = true;
+        gsap.set(panel, {height:"auto", clearProps:"paddingBottom"});
+        var h = panel.offsetHeight;                              // full, incl. padding
+        var pad = parseFloat(getComputedStyle(panel).paddingBottom) || 0;
+        tween = gsap.timeline({defaults:{ease:"power2.out"}});
+        tween.fromTo(panel, {height:0, paddingBottom:0, opacity:0},
+          {height:h, paddingBottom:pad, opacity:.78, duration:.5,
+           onComplete:function(){ gsap.set(panel, {height:"auto"}); }}, 0);
+        if(icon) tween.to(icon, {rotate:135, duration:.45}, 0);
+      } else {
+        tween = gsap.timeline({defaults:{ease:"power2.inOut"}});
+        tween.to(panel, {height:0, paddingBottom:0, opacity:0, duration:.38,
+          onComplete:function(){ item.open = false; gsap.set(panel, {clearProps:"height,paddingBottom,opacity"}); }}, 0);
+        if(icon) tween.to(icon, {rotate:0, duration:.38}, 0);
+      }
     });
   });
-  const setBtn = t => { const s = btn.querySelector("span:last-child"); if(s) s.textContent = t; };
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    btn.disabled = true; setBtn("Sending…");
-    try{
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method:"POST", headers:{Accept:"application/json"}, body:new FormData(form)
-      });
-      const json = await res.json();
-      if(!json.success) throw new Error(json.message || "Failed");
-      const first = (form.elements.name.value || "").trim().split(/\s+/)[0];
-      const fn = success.querySelector("[data-firstname]");
-      if(fn && first) fn.textContent = ", " + first;
-      form.hidden = true; success.hidden = false;
-      success.scrollIntoView({behavior: (window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"), block:"center"});
-    }catch(err){
-      btn.disabled = false;
-      setBtn("Didn't send — email me directly →");
-      btn.onclick = () => location.href = "mailto:adrian@noxta.studio";
-    }
-  });
+
+  /* Signature: scroll-velocity skew on the hero headline only — it leans into
+     your scroll and springs back to true, like the index-v7 hero word. The FAQ
+     heading deliberately stays still (its signature is the per-word rise). */
+  var skewEls = gsap.utils.toArray(".ask__big");
+  if(skewEls.length){
+    var skewClamp = gsap.utils.clamp(-4, 4);
+    var skewProxy = {s:0};
+    var applySkew = function(v){ skewEls.forEach(function(el){ gsap.set(el, {skewY:v}); }); };
+    ScrollTrigger.create({
+      onUpdate:function(self){
+        var sk = skewClamp(self.getVelocity() / -460);
+        if(Math.abs(sk) > Math.abs(skewProxy.s)){
+          skewProxy.s = sk;
+          gsap.to(skewProxy, {s:0, duration:.7, ease:"power3", overwrite:true,
+            onUpdate:function(){ applySkew(skewProxy.s); }});
+        }
+      }
+    });
+  }
+
+  ScrollTrigger.refresh();
 })();
 </script>
+
+<!-- Shared nav/menu + page transitions (defined once in noxta.js) -->
+<script src="noxta.js"></script>
 </body>
 </html>
