@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOEP · Case study — Noxta Studio</title>
-<meta name="description" content="A hand-built WooCommerce store for VOEP, a 60-year family outboard-parts business. Thousands of rare SKUs across five engine brands, bilingual and selling worldwide. A Noxta Studio case study.">
-<link rel="canonical" href="https://noxta.studio/work-voep">
+<title>Smells 'n Burns · Case study — Noxta Studio</title>
+<meta name="description" content="A candle brand built from a blank page for Smells 'n Burns: name, mascot, labels and a hand-coded shop with an admin made for the business. No WordPress, no Shopify. A Noxta Studio case study.">
+<link rel="canonical" href="https://noxta.studio/work-smellsnburns">
 <!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -14,16 +14,16 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <!-- Open Graph -->
-<meta property="og:title" content="VOEP · Case study — Noxta Studio">
-<meta property="og:description" content="A 60-year family parts business, rebuilt as a real WooCommerce shop selling worldwide. Built by hand by Noxta.">
+<meta property="og:title" content="Smells 'n Burns · Case study — Noxta Studio">
+<meta property="og:description" content="A candle brand from zero: name, mascot, labels, and a custom shop with an admin made for the maker. Built by hand by Noxta.">
 <meta property="og:image" content="https://noxta.studio/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://noxta.studio/work-voep">
+<meta property="og:url" content="https://noxta.studio/work-smellsnburns">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Noxta Studio">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="VOEP · Case study — Noxta Studio">
+<meta name="twitter:title" content="Smells 'n Burns · Case study — Noxta Studio">
 <meta name="twitter:image" content="https://noxta.studio/og-image.png">
 
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -79,22 +79,22 @@
   .step h3{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.45rem;line-height:1.05;margin:14px 0 11px;word-spacing:.06em}
   .step p{font-size:clamp(1rem,1.1vw,1.12rem);line-height:1.5;font-weight:500;opacity:.92}
 
-  /* dynamic editorial gallery (3 shots — product, cart, heritage; the storefront lives in the header hero) */
+  /* dynamic editorial gallery (3 shots — product, club, label art; the homepage lives in the header hero) */
   .gal{margin-top:50px;display:grid;gap:14px;grid-template-columns:repeat(4,1fr);
     grid-template-rows:repeat(2,clamp(190px,25vw,320px));
-    grid-template-areas:"prod prod cart cart" "prod prod about about"}
+    grid-template-areas:"prod prod club club" "prod prod label label"}
   .gal figure{position:relative;overflow:hidden;margin:0;background:#111}
   .gal img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
   .gal figure:hover img{transform:scale(1.05)}
   .gal figcaption{position:absolute;inset:auto 0 0 0;padding:32px 16px 13px;
     font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);
     background:linear-gradient(0deg,rgba(10,8,6,.74),rgba(10,8,6,0))}
-  .g-prod{grid-area:prod}.g-cart{grid-area:cart}.g-about{grid-area:about}
-  /* parchment page tiles: bias crop toward the top so title / cart table read */
-  .g-prod img{object-position:0% 0%}   /* portrait product shot ≈ cell ratio; left-top keeps the part photo, trims right whitespace / tabs */
-  .g-cart img{object-position:50% 6%}
-  /* about is a landscape hero — wide cell + full-width crop keeps the stacked headline */
-  .g-about img{object-position:50% 42%}
+  .g-prod{grid-area:prod}.g-club{grid-area:club}.g-work{grid-area:work}.g-label{grid-area:label}
+  /* page tiles: bias crop toward the top so headings read */
+  .g-prod img{object-position:0% 0%}
+  .g-club img{object-position:50% 0%}
+  .gal .g-label{background:#F2A33A}                /* label art shown whole on its own amber */
+  .g-label img{object-fit:contain;padding:6%}
 
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
   .chips span{font-family:var(--font-mono);font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid currentColor;border-radius:30px;padding:9px 16px}
@@ -139,6 +139,7 @@
     .gal{grid-template-columns:1fr;grid-template-rows:none;grid-template-areas:none}
     .gal figure{grid-area:auto!important;aspect-ratio:16/10}
     .gal .g-prod{aspect-ratio:7/8}   /* product shot is portrait — keep it portrait on mobile so nothing crops */
+    .gal .g-label{aspect-ratio:3/2}
   }
 </style>
 <link rel="stylesheet" href="noxta.css" />
@@ -185,16 +186,16 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="kick"><span>VOEP</span><i></i><span>E-commerce · Tier III</span></div>
-    <h1>Sixty years<br>of parts.<br><span>Now a<br>real shop.</span></h1>
-    <p class="hero__sub">A hand-built WooCommerce store for VOEP, a family outboard-parts business going since 1964. Thousands of rare parts across five engine brands, bilingual, and selling worldwide.</p>
+    <div class="kick"><span>Smells&nbsp;'n&nbsp;Burns</span><i></i><span>Brand + custom shop</span></div>
+    <h1>No name.<br>No shop.<br><span>Now a<br>brand.</span></h1>
+    <p class="hero__sub">A candle brand built from a blank page for Monika: the name, a mascot called Wick, the labels, and a hand&#8209;coded shop with an admin made for the business. No WordPress. No Shopify.</p>
   </div>
-  <div class="heroshot"><img src="voep-screenshot.webp" alt="VOEP — vintage outboard parts storefront"></div>
+  <div class="heroshot"><img src="snb-screenshot.webp" alt="Smells 'n Burns — candle shop homepage with Wick the mascot"></div>
   <div class="wrap"><div class="meta">
-    <div><span>Client</span><b>VOEP · Duinker Motor Service</b></div>
-    <div><span>Scope</span><b>Tier III · WooCommerce</b></div>
+    <div><span>Client</span><b>Monika · Smells 'n Burns</b></div>
+    <div><span>Scope</span><b>Brand + custom webshop</b></div>
     <div><span>Year</span><b>2026</b></div>
-    <div><span>Result</span><b>Live · First sale (Sweden)</b></div>
+    <div><span>Status</span><b>Live · Batch 01 in November</b></div>
   </div></div>
 </header>
 
@@ -202,8 +203,8 @@
   <div class="wrap row">
     <div class="kick">The brief</div>
     <div>
-      <p>VOEP has sold outboard-engine parts since 1964, a family trade that ran from Texel in the Netherlands to Paal-Beringen in Belgium. New, original, and quality-used parts for Mercury, Yamaha, Suzuki, Honda and Johnson/Evinrude.</p>
-      <p>Alex, the owner, is a mechanic of fifty years, not a web person. He needed a real shop: one that could carry thousands of rare parts and sell them worldwide.</p>
+      <p>Monika wanted to sell hand&#8209;poured candles. There was nothing to build on: no name, no look, no labels, no shop.</p>
+      <p>She needed a brand people remember and a shop she can run herself, from the first pour to the parcel at the door.</p>
     </div>
   </div>
 </section>
@@ -211,8 +212,8 @@
 <section class="ink pd">
   <div class="wrap row">
     <div class="kick">The challenge</div>
-    <div><h2 class="h-mega">A deep parts catalog, <span>made shoppable.</span></h2>
-      <p style="margin-top:26px">Thousands of SKUs across five engine brands, where the buyer is a mechanic hunting one exact part. It had to be searchable, sell across borders, take real payments, and stay legal in the EU, without looking like a stock template.</p>
+    <div><h2 class="h-mega">A tiny maker, <span>big&#8209;shop needs.</span></h2>
+      <p style="margin-top:26px">Payments, stock, emails, reviews, privacy rules, safety labels. A one&#8209;person candle business needs all of it, without a pile of plugins, monthly app fees, or an admin built for someone else&rsquo;s shop.</p>
     </div>
   </div>
 </section>
@@ -220,19 +221,19 @@
 <section class="pd">
   <div class="wrap">
     <div class="row"><div class="kick">The approach</div>
-      <div><h2 class="h-mega" style="font-size:clamp(1.7rem,3.9vw,3.3rem)">A real storefront,<br>hand&#8209;built for scale.</h2></div></div>
+      <div><h2 class="h-mega" style="font-size:clamp(1.7rem,3.9vw,3.3rem)">One brand,<br>one hand&#8209;built shop.</h2></div></div>
     <div class="steps">
       <div class="step">
-        <div class="n">01</div><h3>Built for the catalog</h3>
-        <p>A WooCommerce store on a custom theme, structured for thousands of parts across five brands, with SKU-and-name search so a mechanic finds the exact part in seconds.</p>
+        <div class="n">01</div><h3>A brand from zero</h3>
+        <p>The name, Wick the rubber&#8209;hose flame, a retro&#8209;cartoon look and a cheeky voice. Label art made with AI, then finished by hand for print.</p>
       </div>
       <div class="step">
-        <div class="n">02</div><h3>Sells across borders</h3>
-        <p>Bilingual EN and NL, EU-compliant checkout with card, Bancontact and iDeal, and worldwide shipping. Its first real order shipped to Sweden.</p>
+        <div class="n">02</div><h3>An admin made for the business</h3>
+        <p>Edit a product with one Save. Sales, sold&#8209;out and &ldquo;notify me&rdquo;, limited editions, Wick&rsquo;s Candle Club with a locked club price, one review request per order, a homemade mailer (single opt&#8209;in, max one mail a month) and privacy&#8209;friendly stats.</p>
       </div>
       <div class="step">
-        <div class="n">03</div><h3>Heritage, not a template</h3>
-        <p>Hand-coded, no page-builder bloat. A storefront that carries the 1964 family story instead of a generic shop skin, marine blueprints and all.</p>
+        <div class="n">03</div><h3>Built for the maker</h3>
+        <p>A Workshop for materials, recipes and batches. Every pour gets a lot number and updates the shop stock by itself. Dutch and English, safety&#8209;label and legal rules in mind, deployed over SSH.</p>
       </div>
     </div>
   </div>
@@ -240,11 +241,14 @@
 
 <section class="ink pd">
   <div class="wrap">
-    <div class="row"><div class="kick">The work</div><div><h2 class="h-mega" style="font-size:clamp(1.9rem,4.4vw,3.7rem)">Five brands,<br><span>one shop.</span></h2></div></div>
+    <div class="row"><div class="kick">The work</div><div><h2 class="h-mega" style="font-size:clamp(1.9rem,4.4vw,3.7rem)">Burns good.<br><span>Smells better.</span></h2></div></div>
     <div class="gal">
-      <figure class="g-prod"><img src="assets/case-src/voep-product.webp" alt="VOEP product page — original OMC throttle knob, in stock" loading="lazy"><figcaption>In the shop · OEM</figcaption></figure>
-      <figure class="g-cart"><img src="assets/case-src/voep-cart.webp" alt="VOEP cart — EU checkout with card and iDeal" loading="lazy"><figcaption>Checkout · EU&#8209;ready</figcaption></figure>
-      <figure class="g-about"><img src="assets/case-src/voep-about.webp" alt="VOEP about — two generations of outboard parts since 1964" loading="lazy"><figcaption>A family trade · since 1964</figcaption></figure>
+      <figure class="g-prod"><img src="assets/case-src/snb-product.webp" alt="Smells 'n Burns product page — Fireside candle" loading="lazy"><figcaption>In the shop</figcaption></figure>
+      <!-- Admin tile, add once a Workshop screenshot exists (grid area "work"):
+      <figure class="g-work"><img src="assets/case-src/snb-workshop.webp" alt="Smells 'n Burns admin — Workshop batch with lot number" loading="lazy"><figcaption>Admin · Workshop</figcaption></figure>
+      -->
+      <figure class="g-club"><img src="assets/case-src/snb-club.webp" alt="Wick's Candle Club — candle subscription with a locked club price" loading="lazy"><figcaption>Wick&rsquo;s Candle Club</figcaption></figure>
+      <figure class="g-label"><img src="assets/case-src/snb-label.webp" alt="Smells 'n Burns front label with Wick" loading="lazy"><figcaption>Label art</figcaption></figure>
     </div>
   </div>
 </section>
@@ -253,27 +257,29 @@
   <div class="wrap row">
     <div class="kick">The outcome</div>
     <div>
-      <p>Live and selling. The first real order shipped to Sweden within days of launch, and the store is built to carry the full four-thousand-plus part catalog as the data lands.</p>
-      <div class="chips"><span>WooCommerce</span><span>Custom theme</span><span>SKU search</span><span>Bilingual EN / NL</span><span>Card · Bancontact · iDeal</span><span>Worldwide shipping</span></div>
+      <p>Live at smellsnburns.nl and ready to sell. The first batch pours for mid&#8209;November, and Monika runs the whole shop herself.</p>
+      <div class="chips"><span>Brand identity</span><span>Mascot</span><span>Label art</span><span>Custom PHP shop</span><span>Custom admin</span><span>Subscriptions</span><span>Homemade mailer</span><span>Bilingual EN / NL</span></div>
     </div>
   </div>
 </section>
 
+<!-- Quote: Monika's testimonial goes here once approved. Uncomment and fill in.
 <section class="quote pd">
   <div class="wrap">
-    <blockquote>“Now it looks as professional as I always pictured.”</blockquote>
-    <div class="who">Alex — owner, VOEP</div>
+    <blockquote>“[ MONIKA'S QUOTE ]”</blockquote>
+    <div class="who">Monika — owner, Smells 'n Burns</div>
   </div>
 </section>
+-->
 
 <section class="cta">
   <div class="wrap">
-    <h2 class="h-mega">Got a shop that<br>deserves better?</h2>
+    <h2 class="h-mega">Got a product that<br>deserves its own shop?</h2>
     <div class="cta__row">
       <a class="btn btn--solid" href="contact.html">Start a project</a>
-      <a class="btn" href="https://vintageoutboardengineparts.com/" target="_blank" rel="noopener">See it live ↗</a>
+      <a class="btn" href="https://smellsnburns.nl/" target="_blank" rel="noopener">See it live ↗</a>
     </div>
-    <a class="nextcase" href="work-smellsnburns.html"><span class="nextcase__l">Next case</span><span class="nextcase__n">Smells&nbsp;&#8217;n Burns <span class="ar">→</span></span></a>
+    <a class="nextcase" href="work-szabina.html"><span class="nextcase__l">Next case</span><span class="nextcase__n">Szabina <span class="ar">→</span></span></a>
   </div>
 </section>
 
