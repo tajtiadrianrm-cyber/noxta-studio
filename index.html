@@ -278,6 +278,18 @@ section{position:relative}
   min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(90px,14vh,150px) 0}
 .pivot.is-static .pivot__problem{background:#e9e8e4;color:#6f6e69}
 .pivot.is-static .pivot__solution{background:#ff5a1f;color:#0e0a06;margin-top:-1px}
+/* Mobile (motion on): content-sized beats, grey problem → INK solution → orange services,
+   lines rise from masks via CSS transitions toggled by one IntersectionObserver (no ScrollTriggers). */
+.pivot.is-static.is-mob .pivot__phase{min-height:0;padding:clamp(96px,16vh,140px) 0}
+.pivot.is-mob .pivot__solution{background:#0e0a06;color:#faf3e8}
+.pivot.is-mob .pivot__solution .pivot__serif{color:#ff5a1f}
+.pivot.is-mob .mrv:not(.pivot__heavy){opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.pivot.is-mob .mrv.in:not(.pivot__heavy){opacity:1;transform:none}
+.pivot.is-mob .pivot__thin.mrv{transition-delay:.1s}
+.pivot.is-mob .pivot__sub.mrv.in{transition-delay:.35s}
+.pivot.is-mob .ml{display:block;overflow:hidden;padding:.14em 0;margin:-.14em 0}
+.pivot.is-mob .ml>span{display:block;text-wrap:balance;transform:translateY(112%);transition:transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i) * .12s)}
+.pivot.is-mob .pivot__heavy.in .ml>span{transform:none}
 
 /* ===== TURN (services) =============================================== */
 .svc{margin-top:clamp(50px,7vh,90px);border-top:2px solid var(--line)}
@@ -1034,7 +1046,12 @@ html.is-loading{overflow:hidden}
       // Only unthemed gap is #pivot, whose phases are both light-bg (grey then
       // orange), so a dark nav stays legible there. Default to it so a scroll-up
       // from an ink section doesn't strand a light nav over the grey.
-      if(!matched){ nav.style.color = THEMES.hero.fg; tint(THEMES.hero); }
+      // Exception: on mobile the solution beat is INK (see #pivot.is-mob) → cream nav.
+      if(!matched){
+        var sol = document.querySelector("#pivot.is-mob .pivot__solution"), sr = sol && sol.getBoundingClientRect();
+        var t0 = (sr && sr.top <= navY && sr.bottom > navY) ? THEMES.ink : THEMES.hero;
+        nav.style.color = t0.fg; tint(t0);
+      }
     }
     sync();
     window.addEventListener("scroll", sync, {passive:true});
@@ -1353,19 +1370,27 @@ html.is-loading{overflow:hidden}
       // gradient WIPES up behind the text as the block scrolls in, so it never
       // passes through a muddy grey/orange blend. Text stays ink throughout
       // (legible on both). Reduced-motion keeps the solid-orange static block.
-      pivot.classList.add("is-static");
-      var solM = pivot.querySelector(".pivot__solution");
-      if(solM){
-        // Smooth IGNITE as a single colour FADE black→orange (text cream→ink).
-        // A grey→orange fade muddies into pink at the midpoint; black→orange is a
-        // warm fade through dark embers, so it stays clean — and being a fade,
-        // there's no wipe edge/line at all. Plays once on enter, reverses back.
-        var igniteTl = gsap.timeline({ paused:true })
-          .fromTo(solM, { backgroundColor:"#0e0a06", color:"#faf3e8" },
-            { backgroundColor:"#ff5a1f", color:"#0e0a06", duration:.9, ease:"power2.inOut" });
-        ScrollTrigger.create({ trigger:solM, start:"top 70%", end:"bottom 20%",
-          onEnter:function(){ igniteTl.play(); },
-          onLeaveBack:function(){ igniteTl.reverse(); } });
+      // Mobile: stacked beats with their own colours — grey problem → INK solution
+      // ("actually are." in orange) → orange services — so the solution lands as a
+      // moment instead of merging into the orange below. Lines rise from masks via
+      // CSS transitions toggled by ONE IntersectionObserver: no extra ScrollTriggers
+      // (those were cut on mobile for TBT). Reverses when scrolled back out.
+      pivot.classList.add("is-static", "is-mob");
+      pivot.querySelectorAll(".pivot__heavy").forEach(function(el){
+        var lines = el.innerHTML.split(/<br\s*\/?>/i);
+        el.innerHTML = lines.map(function(html, i){
+          return '<span class="ml"><span style="--i:' + i + '">' + html + '</span></span>';
+        }).join("");
+      });
+      var mrv = pivot.querySelectorAll(".pivot__eyebrow, .pivot__thin, .pivot__heavy, .pivot__sub");
+      mrv.forEach(function(el){ el.classList.add("mrv"); });
+      if("IntersectionObserver" in window){
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ e.target.classList.toggle("in", e.isIntersecting); });
+        }, { rootMargin:"0px 0px -12% 0px" });
+        mrv.forEach(function(el){ io.observe(el); });
+      } else {
+        mrv.forEach(function(el){ el.classList.add("in"); });
       }
       return;
     }
