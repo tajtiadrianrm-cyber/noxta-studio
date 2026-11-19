@@ -1,3 +1,7 @@
 index-v5.html
 index-v6.html
 .gstack/
+
+.DS_Store
+.claude-flow/
+.claude/
