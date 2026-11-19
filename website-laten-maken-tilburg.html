@@ -1108,6 +1108,28 @@ html.is-loading{overflow:hidden}
   }
   gsap.registerPlugin(ScrollTrigger);
 
+  /* Keep the scroll position on refresh. The browser restores scroll before the
+     pins add their height (and while the preloader locks scrolling), so it lands
+     in the wrong place. Save the position on leave and restore it ourselves once
+     the layout is final (restoreScroll is called from the preloader below). */
+  var savedY = null;
+  try{
+    var navEntry = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    if(navEntry && navEntry.type === "reload"){ savedY = parseInt(sessionStorage.getItem("noxtaY:" + location.pathname), 10); }
+  }catch(e){}
+  if("scrollRestoration" in history){ history.scrollRestoration = "manual"; }
+  if(ScrollTrigger.clearScrollMemory){ ScrollTrigger.clearScrollMemory("manual"); }
+  window.addEventListener("pagehide", function(){
+    try{ sessionStorage.setItem("noxtaY:" + location.pathname, String(Math.round(window.scrollY))); }catch(e){}
+  });
+  function restoreScroll(){
+    if(savedY === null || isNaN(savedY)) return;
+    var y = savedY; savedY = null;
+    ScrollTrigger.refresh();
+    if(lenis){ lenis.scrollTo(y, { immediate:true, force:true }); } else { window.scrollTo(0, y); }
+    ScrollTrigger.update();
+  }
+
   /* Smooth scroll (Lenis) — eased, momentum scroll feel, synced to ScrollTrigger.
      Native scroll kept for reduced-motion + touch (Lenis leaves touch native). */
   if(!reduce && !lowPerf && window.Lenis){
@@ -1497,6 +1519,7 @@ html.is-loading{overflow:hidden}
     if(!pre || document.documentElement.classList.contains("intro-seen")){
       if(pre){ pre.style.display = "none"; }
       document.documentElement.classList.remove("is-loading");
+      ((document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve()).then(restoreScroll);
       return;
     }
 
@@ -1528,6 +1551,7 @@ html.is-loading{overflow:hidden}
     function wipeOut(){
       if(wiped) return; wiped = true;
       fitCreate();                                  // size CREATE before it's seen
+      restoreScroll();                              // refresh: back to where you were, behind the curtain
       gsap.to(pre, { yPercent:-100, duration:.9, ease:"power4.inOut",
         onStart: heroIn,
         onComplete:function(){
