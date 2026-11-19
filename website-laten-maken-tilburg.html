@@ -345,6 +345,7 @@ section{position:relative}
 .tier__worth{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;opacity:.5;margin-top:16px}
 .tier__worth s{opacity:.85}
 .tier__price{font-family:var(--font-display);font-weight:700;font-size:1.65rem;color:var(--accent);margin:3px 0 2px}
+.tier__vat{font-family:var(--font-mono);font-size:.66rem;font-weight:400;letter-spacing:.1em;color:var(--fg);opacity:.6;margin-left:8px;white-space:nowrap}
 .tier__save{font-size:.74rem;font-style:italic;opacity:.6;margin:0 0 2px}
 .tier__feat{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:9px;font-size:.92rem}
 .tier__feat li{display:flex;gap:10px;opacity:.85;line-height:1.35;justify-content:space-between;align-items:baseline}
@@ -692,7 +693,7 @@ html.is-loading{overflow:hidden}
       <button data-mode="ret" type="button">Maandelijkse retainer</button>
     </div>
     <div class="tiers" id="tiers"></div>
-    <p class="pricing__terms reveal">Projecten in 50% vooraf, 50% bij livegang &mdash; Tier III in drie termijnen. Geen verrassingen.</p>
+    <p class="pricing__terms reveal">Alle prijzen zijn excl. btw. Projecten in 50% vooraf, 50% bij livegang &mdash; Tier III in drie termijnen. Geen verrassingen.</p>
     <div class="careplus reveal">
       <div>
         <h4>Custom Business System <span class="price">&euro;2.500&ndash;4.000 + &euro;79&ndash;99&#8239;/&#8239;mnd</span> <span class="setup">&middot; excl. btw</span></h4>
@@ -702,7 +703,7 @@ html.is-loading{overflow:hidden}
     </div>
     <div class="careplus reveal">
       <div>
-        <h4>Care+ FAQ-assistent <span class="price">+&euro;89&#8239;/&#8239;mnd</span> <span class="setup">&middot; &euro;750 opstart</span></h4>
+        <h4>Care+ FAQ-assistent <span class="price">+&euro;89&#8239;/&#8239;mnd</span> <span class="setup">&middot; &euro;750 opstart &middot; excl. btw</span></h4>
         <p>Een klein chatvenster voor de vragen die je nu tien keer per week via e-mail krijgt. Antwoorden uit een FAQ die ik samen met je schrijf; boekt direct in je agenda. Add-on bij Standard &amp; Active retainers.</p>
       </div>
       <a href="#contact" class="tier__cta">Vraag ernaar</a>
@@ -734,7 +735,7 @@ html.is-loading{overflow:hidden}
       </div>
       <div class="qa reveal">
         <h3 class="qa__q">&ldquo;En als ik later wijzigingen nodig heb?&rdquo;</h3>
-        <p class="qa__a">Twee manieren. Mail me en ik offreer de wijziging &mdash; of houd me op een retainer (vanaf &euro;75/mnd) waar aanpassingen er gewoon bij horen: binnen dezelfde week, zonder telkens opnieuw uit te leggen wie je bent. Light is voor je website; Standard en Active nemen ook je shop-app mee, zonder apart maandbedrag. Je beslist na de livegang, niet ervoor.</p>
+        <p class="qa__a">Twee manieren. Mail me en ik offreer de wijziging &mdash; of houd me op een retainer (vanaf &euro;75/mnd excl. btw) waar aanpassingen er gewoon bij horen: binnen dezelfde week, zonder telkens opnieuw uit te leggen wie je bent. Light is voor je website; Standard en Active nemen ook je shop-app mee, zonder apart maandbedrag. Je beslist na de livegang, niet ervoor.</p>
       </div>
       <div class="qa reveal">
         <h3 class="qa__q">&ldquo;Waarom niet gewoon Webflow of Squarespace?&rdquo;</h3>
@@ -875,7 +876,7 @@ html.is-loading{overflow:hidden}
     {label:"Plan · I",price:"€75 / maand",name:"Light",tag:"Up-to-date en veilig gehouden.",features:["Alleen de website (shop-apps vallen onder Standard en Active)","Uptime-monitoring","Wekelijkse automatische back-ups","Beveiligingspatches en plugin-updates","1 uur aanpassingen per maand, tot 2 maanden mee te nemen","E-mailsupport, reactie binnen 48 uur","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Afgeronde sites die alleen online en up-to-date moeten blijven."},
     {label:"Plan · II",price:"€150 / maand",name:"Standard",tag:"Light plus actieve aanpassingen.",rec:true,features:["Alles uit Light","Website + je shop-app, als je die hebt (geen extra maandbedrag)","3 uur aanpassingen per maand","Tekstaanpassingen en kleine layout-wijzigingen","Maandelijkse performance-rapportage","Aanpassingen binnen dezelfde week (ma–vr)","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Sites die een paar keer per maand wijzigen: prijzen, menu, content-updates."},
     {label:"Plan · III",price:"€450 / maand",name:"Active",tag:"Ik zit praktisch in je team.",features:["Alles uit Standard","Website + je shop-app, als je die hebt","8 uur aanpassingen per maand","Prioriteitsreactie (volgende werkdag)","Telefoon / WhatsApp-support (ma–vr 9–17, alleen urgent)","Elk kwartaal een strategiegesprek","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Groeiende webshops en actieve marketing: nieuwe pagina's, campagnes en doorlopend werk."},
-    {label:"Plan · IV",price:"€295 / maand",name:"Visible",tag:"Gevonden op Google, Maps en AI-assistenten.",features:["Google-bedrijfsprofiel actueel: 4 posts + foto's per maand","Reacties op reviews voor je klaargezet","Elke maand een nieuw FAQ-blok, elk kwartaal een nieuwe pagina","Maandelijkse herscan van Maps, Google en AI-assistenten, met kort verslag","Garantie: meer profielweergaven en telefoontjes dan vorig jaar na 90 dagen, of maand 4 is gratis"],foot:"Zo werkt het: €950 opstarten + €295/maand, minimaal 3 maanden, voor sites die ik niet heb gebouwd. Gemaakt voor lokale winkels."}
+    {label:"Plan · IV",price:"€295 / maand",name:"Visible",tag:"Gevonden op Google, Maps en AI-assistenten.",features:["Google-bedrijfsprofiel actueel: 4 posts + foto's per maand","Reacties op reviews voor je klaargezet","Elke maand een nieuw FAQ-blok, elk kwartaal een nieuwe pagina","Maandelijkse herscan van Maps, Google en AI-assistenten, met kort verslag","Garantie: meer profielweergaven en telefoontjes dan vorig jaar na 90 dagen, of maand 4 is gratis"],foot:"Zo werkt het: €950 opstarten + €295/maand (beide excl. btw), minimaal 3 maanden, voor sites die ik niet heb gebouwd. Gemaakt voor lokale winkels."}
   ];
   function priceCard(t){
     var feats=t.features.map(function(f){
@@ -889,7 +890,7 @@ html.is-loading{overflow:hidden}
       +'<span class="tier__name">'+t.name+'</span>'
       +'<p class="tier__tag">'+t.tag+'</p>'
       +(t.worth?'<div class="tier__worth">Los van elkaar &asymp; <s>€'+t.worth+'</s></div>':"")
-      +'<div class="tier__price">'+t.price+'</div>'
+      +'<div class="tier__price">'+t.price+'<span class="tier__vat">excl. btw</span></div>'
       +(t.worth?'<p class="tier__save">Eén persoon, één prijs &mdash; geen opslag van vier freelancers.</p>':"")
       +'<ul class="tier__feat">'+feats+'</ul>'
       +'<p class="tier__foot">'+t.foot+'</p>'

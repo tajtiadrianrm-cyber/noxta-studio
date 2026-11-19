@@ -380,6 +380,7 @@ section{position:relative}
 .tier__worth{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;opacity:.5;margin-top:16px}
 .tier__worth s{opacity:.85}
 .tier__price{font-family:var(--font-display);font-weight:700;font-size:1.65rem;color:var(--accent);margin:3px 0 2px}
+.tier__vat{font-family:var(--font-mono);font-size:.66rem;font-weight:400;letter-spacing:.1em;color:var(--fg);opacity:.6;margin-left:8px;white-space:nowrap}
 .tier__save{font-size:.74rem;font-style:italic;opacity:.6;margin:0 0 2px}
 .tier__feat{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:9px;font-size:.92rem}
 .tier__feat li{display:flex;gap:10px;opacity:.85;line-height:1.35;justify-content:space-between;align-items:baseline}
@@ -727,7 +728,7 @@ html.is-loading{overflow:hidden}
       <button data-mode="ret" type="button">Monthly Retainer</button>
     </div>
     <div class="tiers" id="tiers"></div>
-    <p class="pricing__terms reveal">Projects split 50% to start, 50% at launch &mdash; Tier III in three. No surprises.</p>
+    <p class="pricing__terms reveal">All prices are excl. BTW (VAT). Projects split 50% to start, 50% at launch &mdash; Tier III in three. No surprises.</p>
     <div class="careplus reveal">
       <div>
         <h4>Custom Business System <span class="price">&euro;2,500&ndash;4,000 + &euro;79&ndash;99&#8239;/&#8239;mo</span> <span class="setup">&middot; excl. BTW</span></h4>
@@ -737,7 +738,7 @@ html.is-loading{overflow:hidden}
     </div>
     <div class="careplus reveal">
       <div>
-        <h4>Care+ FAQ Assistant <span class="price">+&euro;89&#8239;/&#8239;mo</span> <span class="setup">&middot; &euro;750 setup</span></h4>
+        <h4>Care+ FAQ Assistant <span class="price">+&euro;89&#8239;/&#8239;mo</span> <span class="setup">&middot; &euro;750 setup &middot; excl. BTW</span></h4>
         <p>A small chat box for the questions you already get by email ten times a week. Answers from a FAQ I write with you; books straight into your calendar. Add-on for Standard &amp; Active retainers.</p>
       </div>
       <a href="#contact" class="tier__cta">Ask about it</a>
@@ -769,7 +770,7 @@ html.is-loading{overflow:hidden}
       </div>
       <div class="qa reveal">
         <h3 class="qa__q">&ldquo;What if I need changes later?&rdquo;</h3>
-        <p class="qa__a">Two ways. Email me and I quote the change &mdash; or keep me on a retainer (from &euro;75/mo) where edits are just part of the deal: same-week, no re-explaining who you are each time. Light covers your website; Standard and Active cover your Shop App too, with no separate monthly fee for it. You decide after launch, not before.</p>
+        <p class="qa__a">Two ways. Email me and I quote the change &mdash; or keep me on a retainer (from &euro;75/mo excl. BTW) where edits are just part of the deal: same-week, no re-explaining who you are each time. Light covers your website; Standard and Active cover your Shop App too, with no separate monthly fee for it. You decide after launch, not before.</p>
       </div>
       <div class="qa reveal">
         <h3 class="qa__q">&ldquo;Why not just use Webflow or Squarespace?&rdquo;</h3>
@@ -910,7 +911,7 @@ html.is-loading{overflow:hidden}
     {label:"Plan · I",price:"€75 / month",name:"Light",tag:"Kept up to date and safe.",features:["Website only (Shop Apps are covered on Standard and Active)","Uptime monitoring","Weekly automated backups","Security patches and plugin updates","1 hour of edits per month, rolled forward up to 2 months","Email support, 48h reply","Annual prepay · 12 months for the price of 11"],foot:"Finished sites that just need to stay alive and up to date."},
     {label:"Plan · II",price:"€150 / month",name:"Standard",tag:"Light plus active edits.",rec:true,features:["Everything in Light","Website + your Shop App, if you have one (no extra monthly fee)","3 hours of edits per month","Copy tweaks and small layout changes","Monthly performance report","Same-week edits (Mon–Fri)","Annual prepay · 12 months for the price of 11"],foot:"Sites that change a few times a month: pricing, menu, content updates."},
     {label:"Plan · III",price:"€450 / month",name:"Active",tag:"I'm basically on your team.",features:["Everything in Standard","Website + your Shop App, if you have one","8 hours of edits per month","Priority response (next business day)","Phone / WhatsApp support (Mon–Fri 9–17, urgent only)","Quarterly strategy call","Annual prepay · 12 months for the price of 11"],foot:"Growing shops and active marketing: new pages, campaigns, and ongoing work."},
-    {label:"Plan · IV",price:"€295 / month",name:"Visible",tag:"Found on Google, Maps and AI assistants.",features:["Google Business Profile kept fresh: 4 posts + photos a month","Review replies drafted for you","A new FAQ block every month, a new page every quarter","Monthly re-scan of Maps, Google and AI assistants, with a short report","Guarantee: profile views and calls up vs last year after 90 days, or month 4 is on me"],foot:"How it works: €950 setup + €295/month, 3-month minimum, for sites I didn't build. Made for local shops."}
+    {label:"Plan · IV",price:"€295 / month",name:"Visible",tag:"Found on Google, Maps and AI assistants.",features:["Google Business Profile kept fresh: 4 posts + photos a month","Review replies drafted for you","A new FAQ block every month, a new page every quarter","Monthly re-scan of Maps, Google and AI assistants, with a short report","Guarantee: profile views and calls up vs last year after 90 days, or month 4 is on me"],foot:"How it works: €950 setup + €295/month (both excl. BTW), 3-month minimum, for sites I didn't build. Made for local shops."}
   ];
   function priceCard(t){
     var feats=t.features.map(function(f){
@@ -924,7 +925,7 @@ html.is-loading{overflow:hidden}
       +'<span class="tier__name">'+t.name+'</span>'
       +'<p class="tier__tag">'+t.tag+'</p>'
       +(t.worth?'<div class="tier__worth">Piece by piece &asymp; <s>€'+t.worth+'</s></div>':"")
-      +'<div class="tier__price">'+t.price+'</div>'
+      +'<div class="tier__price">'+t.price+'<span class="tier__vat">excl. BTW</span></div>'
       +(t.worth?'<p class="tier__save">One head, one price &mdash; no four-freelancer markup.</p>':"")
       +'<ul class="tier__feat">'+feats+'</ul>'
       +'<p class="tier__foot">'+t.foot+'</p>'
