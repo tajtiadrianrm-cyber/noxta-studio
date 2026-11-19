@@ -333,6 +333,9 @@ section{position:relative}
 .toggle button.is-active{background:var(--accent);color:var(--bg)}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(38px,5vh,64px)}
 @media(max-width:980px){.tiers{grid-template-columns:1fr}}
+.tiers--4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1280px){.tiers--4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:980px){.tiers--4{grid-template-columns:1fr}}
 .tier{border:2px solid rgba(250,243,232,.22);background:rgba(250,243,232,.04);padding:30px 26px;display:flex;flex-direction:column;border-radius:2px;position:relative}
 .tier.rec{border-color:var(--accent)}
 .tier__badge{position:absolute;top:-13px;right:18px;background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px}
@@ -559,6 +562,11 @@ html.is-loading{overflow:hidden}
         <span class="svc__num">04</span>
         <span class="svc__name">Development</span>
         <span class="svc__desc">Snel, foutloos, gebouwd om te converteren. Schone code die op elk apparaat presteert.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">05</span>
+        <span class="svc__name">Shop-apps</span>
+        <span class="svc__desc">Run je winkel vanaf je telefoon. Bestellingen, voorraad en cijfers in je eigen app.</span>
       </a>
     </div>
     <p class="svc__close reveal">Het doel is niet gewoon een mooiere site. Het is er &eacute;&eacute;n die van &ldquo;mooi werk&rdquo; een geboekt gesprek maakt.</p>
@@ -847,7 +855,8 @@ html.is-loading{overflow:hidden}
   var RETAINER=[
     {label:"Plan · I",price:"€75 / maand",name:"Light",tag:"Up-to-date en veilig gehouden.",features:["Uptime-monitoring","Wekelijkse automatische back-ups","Beveiligingspatches en plugin-updates","1 uur aanpassingen per maand, tot 2 maanden mee te nemen","E-mailsupport, reactie binnen 48 uur","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Afgeronde sites die alleen online en up-to-date moeten blijven."},
     {label:"Plan · II",price:"€150 / maand",name:"Standard",tag:"Light plus actieve aanpassingen.",rec:true,features:["Alles uit Light","3 uur aanpassingen per maand","Tekstaanpassingen en kleine layout-wijzigingen","Maandelijkse performance-rapportage","Aanpassingen binnen dezelfde week (ma–vr)","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Sites die een paar keer per maand wijzigen: prijzen, menu, content-updates."},
-    {label:"Plan · III",price:"€450 / maand",name:"Active",tag:"Ik zit praktisch in je team.",features:["Alles uit Standard","8 uur aanpassingen per maand","Prioriteitsreactie (volgende werkdag)","Telefoon / WhatsApp-support (ma–vr 9–17, alleen urgent)","Elk kwartaal een strategiegesprek","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Groeiende webshops en actieve marketing: nieuwe pagina's, campagnes en doorlopend werk."}
+    {label:"Plan · III",price:"€450 / maand",name:"Active",tag:"Ik zit praktisch in je team.",features:["Alles uit Standard","8 uur aanpassingen per maand","Prioriteitsreactie (volgende werkdag)","Telefoon / WhatsApp-support (ma–vr 9–17, alleen urgent)","Elk kwartaal een strategiegesprek","Jaarlijks vooruit · 12 maanden voor de prijs van 11"],foot:"Groeiende webshops en actieve marketing: nieuwe pagina's, campagnes en doorlopend werk."},
+    {label:"Plan · IV",price:"€295 / maand",name:"Visible",tag:"Gevonden op Google, Maps en AI-assistenten.",features:["Google-bedrijfsprofiel actueel: 4 posts + foto's per maand","Reacties op reviews voor je klaargezet","Elke maand een nieuw FAQ-blok, elk kwartaal een nieuwe pagina","Maandelijkse herscan van Maps, Google en AI-assistenten, met kort verslag","Garantie: meer profielweergaven en telefoontjes dan vorig jaar na 90 dagen, of maand 4 is gratis"],foot:"Zo werkt het: eenmalig opstarten vanaf €950, daarna €295 per maand. Minimaal 3 maanden. Gemaakt voor lokale winkels."}
   ];
   function priceCard(t){
     var feats=t.features.map(function(f){
@@ -870,7 +879,9 @@ html.is-loading{overflow:hidden}
   }
   function renderTiers(mode){
     var box=document.getElementById("tiers"); if(!box) return;
-    box.innerHTML=(mode==="ret"?RETAINER:ONE_TIME).map(priceCard).join("");
+    var list=(mode==="ret"?RETAINER:ONE_TIME);
+    box.classList.toggle("tiers--4", list.length===4);
+    box.innerHTML=list.map(priceCard).join("");
   }
   renderTiers("one");
   Array.prototype.forEach.call(document.querySelectorAll("#priceToggle button"),function(b){

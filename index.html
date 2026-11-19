@@ -368,6 +368,9 @@ section{position:relative}
 .toggle button.is-active{background:var(--accent);color:var(--bg)}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(38px,5vh,64px)}
 @media(max-width:980px){.tiers{grid-template-columns:1fr}}
+.tiers--4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1280px){.tiers--4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:980px){.tiers--4{grid-template-columns:1fr}}
 .tier{border:2px solid rgba(250,243,232,.22);background:rgba(250,243,232,.04);padding:30px 26px;display:flex;flex-direction:column;border-radius:2px;position:relative}
 .tier.rec{border-color:var(--accent)}
 .tier__badge{position:absolute;top:-13px;right:18px;background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px}
@@ -594,6 +597,11 @@ html.is-loading{overflow:hidden}
         <span class="svc__num">04</span>
         <span class="svc__name">Development</span>
         <span class="svc__desc">Fast, flawless, built to convert. Clean code that performs on every device.</span>
+      </a>
+      <a class="svc__row reveal" href="#contact">
+        <span class="svc__num">05</span>
+        <span class="svc__name">Shop Apps</span>
+        <span class="svc__desc">Run your shop from your phone. Orders, stock and numbers in one custom app.</span>
       </a>
     </div>
     <p class="svc__close reveal">The point isn&rsquo;t just a prettier site. It&rsquo;s one that turns &ldquo;nice work&rdquo; into a booked call.</p>
@@ -882,7 +890,8 @@ html.is-loading{overflow:hidden}
   var RETAINER=[
     {label:"Plan · I",price:"€75 / month",name:"Light",tag:"Kept up to date and safe.",features:["Uptime monitoring","Weekly automated backups","Security patches and plugin updates","1 hour of edits per month, rolled forward up to 2 months","Email support, 48h reply","Annual prepay · 12 months for the price of 11"],foot:"Finished sites that just need to stay alive and up to date."},
     {label:"Plan · II",price:"€150 / month",name:"Standard",tag:"Light plus active edits.",rec:true,features:["Everything in Light","3 hours of edits per month","Copy tweaks and small layout changes","Monthly performance report","Same-week edits (Mon–Fri)","Annual prepay · 12 months for the price of 11"],foot:"Sites that change a few times a month: pricing, menu, content updates."},
-    {label:"Plan · III",price:"€450 / month",name:"Active",tag:"I'm basically on your team.",features:["Everything in Standard","8 hours of edits per month","Priority response (next business day)","Phone / WhatsApp support (Mon–Fri 9–17, urgent only)","Quarterly strategy call","Annual prepay · 12 months for the price of 11"],foot:"Growing shops and active marketing: new pages, campaigns, and ongoing work."}
+    {label:"Plan · III",price:"€450 / month",name:"Active",tag:"I'm basically on your team.",features:["Everything in Standard","8 hours of edits per month","Priority response (next business day)","Phone / WhatsApp support (Mon–Fri 9–17, urgent only)","Quarterly strategy call","Annual prepay · 12 months for the price of 11"],foot:"Growing shops and active marketing: new pages, campaigns, and ongoing work."},
+    {label:"Plan · IV",price:"€295 / month",name:"Visible",tag:"Found on Google, Maps and AI assistants.",features:["Google Business Profile kept fresh: 4 posts + photos a month","Review replies drafted for you","A new FAQ block every month, a new page every quarter","Monthly re-scan of Maps, Google and AI assistants, with a short report","Guarantee: profile views and calls up vs last year after 90 days, or month 4 is on me"],foot:"How it works: a one-time setup from €950, then €295 a month. Minimum 3 months. Made for local shops."}
   ];
   function priceCard(t){
     var feats=t.features.map(function(f){
@@ -905,7 +914,9 @@ html.is-loading{overflow:hidden}
   }
   function renderTiers(mode){
     var box=document.getElementById("tiers"); if(!box) return;
-    box.innerHTML=(mode==="ret"?RETAINER:ONE_TIME).map(priceCard).join("");
+    var list=(mode==="ret"?RETAINER:ONE_TIME);
+    box.classList.toggle("tiers--4", list.length===4);
+    box.innerHTML=list.map(priceCard).join("");
   }
   renderTiers("one");
   Array.prototype.forEach.call(document.querySelectorAll("#priceToggle button"),function(b){
